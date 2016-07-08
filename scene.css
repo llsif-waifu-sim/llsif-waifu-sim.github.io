@@ -1,0 +1,102 @@
+#homeScreen{
+    width:1060;
+    height:640;
+}
+
+#container{
+    position: relative;
+    width: 1060px;
+    height: 640px;
+}
+
+/* height should be 591px */
+
+#idol_img{
+    position: absolute;
+  
+    max-height:670px;
+    width: auto;
+    height: auto;
+
+    bottom: 5%;
+    left: -3%;
+ 
+    
+}
+
+#home_but{
+    position: absolute;
+    bottom: -1%;
+    left: 6%;
+
+}
+
+#story_but{
+    position: absolute;
+    bottom: -1.5%;
+    left: 19%;
+
+}
+
+#member_but{
+    position: absolute;
+    bottom: -1.5%;
+    left: 31%;
+
+}
+
+
+
+.bubble 
+{
+    position: absolute;
+    bottom: 18%;
+    left: 7%;
+
+    width:420px;
+    min-height:1.5em;
+    padding: 16px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #7F7F7F solid 2px;
+
+    /* Allows us to make bubble transparent */
+    background-color: rgba(255,255,255,0.7);
+}
+
+.bubble:after 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 20px 15px;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 350px;
+
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.bubble:before 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 21px 16px;
+    border-color: #7F7F7F transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -18px;
+    left: 349px;
+
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
