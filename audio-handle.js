@@ -15,6 +15,45 @@ function refreshBubble()
 	});
 }
 
+function searchId(id, idolized)
+{
+	// Seach for the name linked to the id and idolize value (via textbox and search button)
+
+	// (insert code here)
+
+	// Once we get the info, get the image
+	var path;
+	if(idolized)
+	{
+		path = "scraped-images/" + name + id + "_id.png";
+	}else{
+		path = "scraped-images/" + name + id + ".png";
+	}
+
+	// Check is path exists
+	$.get(path)
+	    .done(function() { 
+	        // Do something now you know the image exists.
+
+	        document.getElementById("idol_img").src=path;
+
+	        globalWaifu = name;
+
+			if (globalAudio!=null){
+					globalAudio.pause();
+			}
+
+
+			setTimeout(function() {
+		    	commandSelect(0);
+			}, 500)
+
+	    }).fail(function() { 
+	        // Image doesn't exist - do something else.
+	        alert('No results found');
+	        return;
+    })
+}
 
 
 function changeWaifu(name){
