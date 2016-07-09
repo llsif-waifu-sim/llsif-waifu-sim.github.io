@@ -6,8 +6,14 @@ var background = 0;
 
 setTimeout(function() {
     commandSelect(0);
-}.bind(this), 1000)
+}, 1000, true)
 
+
+function pauseBackgroundMusic()
+{
+	var audio = document.getElementById("background-music-player");
+	audio.pause();
+}
 
 function playBackgroundMusic()
 {
@@ -118,7 +124,7 @@ function getRandomWaifu()
 
 	setTimeout(function() {
 		commandSelect(0);
-	}.bind(this), 500)
+	}, 500, true)
 
 
 }
@@ -158,7 +164,7 @@ function getRandomCard()
 
 	setTimeout(function() {
 		commandSelect(0);
-	}.bind(this), 500)
+	}, 500, true)
 
 
 }
@@ -232,7 +238,7 @@ function searchId()
 
 			setTimeout(function() {
 				commandSelect(0);
-			}.bind(this), 500)
+			}, 500, true)
 			  }
 		});
 
@@ -253,7 +259,7 @@ function changeWaifu(name){
 
 	setTimeout(function() {
     	commandSelect(0);
-	}.bind(this), 500)
+	}, 500, true)
 
 }
 
