@@ -36,7 +36,7 @@ function searchId()
 	} 
 	
 
-	var strAPI = 'http://schoolido.lu/api/cards/'.concat(id);
+	var strAPI = 'https://schoolido.lu/api/cards/'.concat(id);
 	var name;
 
 	$.getJSON(strAPI, function(data) {
@@ -77,11 +77,11 @@ function searchId()
 		if(idolized == 'yes')
 		{
 			path = "./scraped-images/" + name + "/" + id + "_id.png";
-			realpath = 'http://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
+			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
 
 		}else{
 			path = "./scraped-images/" + name +  "/" + id + ".png";
-			realpath = 'http://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
+			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
 		}
 
 

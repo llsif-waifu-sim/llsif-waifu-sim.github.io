@@ -5,7 +5,29 @@
 	<script src="audio-handle.js"></script>
 	<link rel="stylesheet" type="text/css" href="scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+var idleTime = 0;
+$(document).ready(function () {
+    //Increment the idle time counter every minute.
+    var idleInterval = setInterval(timerIncrement, 10000); // 1 minute
+alert("hello");
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        idleTime = 0;
+      
+    });
+});
 
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 19) { // 20 minutes
+        window.location.reload();
+    }
+}
+	</script>
 
 	<title>Love Live SIF Waifu Simulator</title>
 		
