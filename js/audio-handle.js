@@ -12,7 +12,7 @@ setTimeout(function() {
 function changeBackground()
 {
 	var maxNumBackground = 4;
-	if(background < maxNumBackground)
+	if(background < maxNumBackground-1)
 	{
 		background = background + 1;
 	}else {
