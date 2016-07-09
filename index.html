@@ -5,29 +5,7 @@
 	<script src="audio-handle.js"></script>
 	<link rel="stylesheet" type="text/css" href="scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>
-var idleTime = 0;
-$(document).ready(function () {
-    //Increment the idle time counter every minute.
-    var idleInterval = setInterval(timerIncrement, 10000); // 1 minute
-alert("hello");
-    //Zero the idle timer on mouse movement.
-    $(this).mousemove(function (e) {
-        idleTime = 0;
-    });
-    $(this).keypress(function (e) {
-        idleTime = 0;
-      
-    });
-});
 
-function timerIncrement() {
-    idleTime = idleTime + 1;
-    if (idleTime > 19) { // 20 minutes
-        window.location.reload();
-    }
-}
-	</script>
 
 	<title>Love Live SIF Waifu Simulator</title>
 		
@@ -45,6 +23,19 @@ function timerIncrement() {
 		<tr>
 			<td style="width:190px;">
 				<input type="text" id="card_id" class="form-control" placeholder='Card ID Number'>
+			</td>
+			<td style="width:190px;" >
+				<select ng-model='discussionsSelect' class='form-control' id='idol-select' style='width:160px;'>
+		            <option value='honoka' selected>Honoka</option>
+		            <option value='kotori'>Kotori</option>
+		            <option value='umi'>Umi</option>
+		            <option value='hanayo'>Hanayo</option>
+		            <option value='maki'>Maki</option>
+		            <option value='rin'>Rin</option>
+		            <option value='nozomi'>Nozomi</option>
+		            <option value='eli'>Eli</option>
+		            <option value='nico'>Nico</option>
+		          </select>
 			</td>
 			<td style="width:160px;">
 				<div class="radio">
@@ -67,6 +58,7 @@ function timerIncrement() {
 	</table>
 	</br>
 
+
 	<button type="button" onclick="changeWaifu('hanayo')">Koizumi Hanayo</button>
 	<button type="button" onclick="changeWaifu('rin')">Hoshizora Rin</button>
 	<button type="button" onclick="changeWaifu('maki')">Nishikino Maki</button>
@@ -81,7 +73,9 @@ function timerIncrement() {
 	</br>
 	</br>
 	</br>
-
+	</br>
+	</br>
+	</br>
 	<div id="container">
     	<img id='homeScreen' src='images/background0.png'>
     	<img id="idol_img" src='images/honoka0.png' onclick="waifuClick()">

@@ -29,6 +29,9 @@ function searchId()
 	var id = document.getElementById("card_id").value;
 	var idolized = $('input[id="radio-idol"]:checked').val();
 
+	var e = document.getElementById("idol-select");
+	var name = e.options[e.selectedIndex].value;
+	
 
 	if(!isInt(id) || id > maxNumOfCard){
 		alert('Invalid id input');
@@ -37,91 +40,50 @@ function searchId()
 	
 
 	var strAPI = 'https://schoolido.lu/api/cards/'.concat(id);
-	var name;
+	
 
-	$.getJSON(strAPI, function(data) {
-    	if(data.idol.name == 'Kousaka Honoka'){
-    		name = 'honoka';
-    	} else if (data.idol.name == 'Sonoda Umi'){
-    		name = 'umi';
-    	}else if (data.idol.name == 'Minami Kotori'){
-    		name = 'kotori';
-    	}else if (data.idol.name == 'Koizumi Hanayo'){
-    		name = 'hanayo';
-    	}else if (data.idol.name == 'Hoshizora Rin'){
-    		name = 'rin';
-    	}else if (data.idol.name == 'Nishikino Maki'){
-    		name = 'maki';
-    	}else if (data.idol.name == 'Toujou Nozomi'){
-    		name = 'nozomi';
-    	}else if (data.idol.name == 'Ayase Eli'){
-    		name = 'eli';
-    	}else if (data.idol.name == 'Yazawa Nico'){
-    		name = 'nico';
-    	}else{
-    		name = 'none';
-    	}
-    	//alert(name);
-		
-
-		if(name == 'none')
-		{
-			alert('Please type in a card id that belongs to a Muse member');
-			return;
-		}
-
-
-		// Once we get the info, get the image
-		var path;
-		var realpath;
-		if(idolized == 'yes')
-		{
-			path = "./scraped-images/" + name + "/" + id + "_id.png";
-			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
-
-		}else{
-			path = "./scraped-images/" + name +  "/" + id + ".png";
-			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
-		}
+	// Once we get the info, get the image
+	var path;
+	var realpath;
+	if(idolized == 'yes')
+	{
+		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
+	}else{
+		path = "./scraped-images/" + name +  "/" + id + ".png";
+		realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
+	}
 
 
 
-
-		$.ajax({
-		    url:realpath,
-		    type:'HEAD',
-		    error: function()
-		    {
-		        //file not exists
-		        alert('There is no non-idolized or idolized version of the card. Try filling out the other option bubble.');
-				commandSelect(0);
-				return;
-		    },
-		    success: function()
-		    {
-		        //file exists
-		        document.getElementById("idol_img").src=path;
-
-		globalWaifu = name;
-
-		if (globalAudio!=null){
-			globalAudio.pause();
-		}
-
-
-		setTimeout(function() {
+	$.ajax({
+	    url:path,
+	    type:'HEAD',
+	    error: function()
+	    {
+	        //file not exists
+	        alert('There is no non-idolized or idolized version of the card. Try filling out the other option bubble.');
 			commandSelect(0);
-		}, 500)
-		    }
+			return;
+	    },
+	    success: function()
+	    {
+	        //file exists
+	        document.getElementById("idol_img").src=path;
+
+			globalWaifu = name;
+
+			if (globalAudio!=null){
+				globalAudio.pause();
+			}
+
+
+			setTimeout(function() {
+				commandSelect(0);
+			}, 500)
+			  }
 		});
 
-
-
-
-		
-
-		    
-	});
 }
 
 
