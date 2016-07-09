@@ -1,5 +1,6 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
+var maxNumOfCard = 960;
 
 setTimeout(function() {
     commandSelect(0);
@@ -15,44 +16,138 @@ function refreshBubble()
 	});
 }
 
-function searchId(id, idolized)
+function isInt(value) {
+  return !isNaN(value) && 
+         parseInt(Number(value)) == value && 
+         !isNaN(parseInt(value, 10));
+}
+
+/*
+function fileNameSearch(id)
 {
+
+	
+		var client;
+        if (window.XMLHttpRequest) {
+		    // code for modern browsers
+		    client = new XMLHttpRequest();
+		} else {
+		    // code for IE6, IE5
+		    client = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+        client.onreadystatechange = function()
+        {
+            if( client.responseText != '' )
+            {
+                var txt = client.responseText.split("\n");
+                var i;
+                
+                for(i=0; i<maxNumOfCard;i++)
+                {
+                	alert(txt[i]);
+                	if(txt[i] == '28/honoka/no')
+	                {
+	                	alert('We found it!');
+	                	foundId = true;
+	                	break;
+	                	return foundId;
+	                }
+                }
+
+                
+            }
+        }
+        client.open("GET", "./records/id-list.txt", true);
+        client.send();
+        return foundId;
+        
+}
+*/
+
+function searchId()
+{
+
+	var id = document.getElementById("card_id").value;
+	var idolized = $('input[id="radio-idol"]:checked').val();
+
+
+	if(!isInt(id) || id > maxNumOfCard){
+		alert('Invalid id input');
+		return;
+	} 
+
 	// Seach for the name linked to the id and idolize value (via textbox and search button)
-
 	// (insert code here)
+	
 
-	// Once we get the info, get the image
-	var path;
-	if(idolized)
-	{
-		path = "scraped-images/" + name + id + "_id.png";
-	}else{
-		path = "scraped-images/" + name + id + ".png";
-	}
+	var strAPI = 'http://schoolido.lu/api/cards/'.concat(id);
+	var name;
 
-	// Check is path exists
-	$.get(path)
-	    .done(function() { 
-	        // Do something now you know the image exists.
+	$.getJSON(strAPI, function(data) {
+    	if(data.idol.name == 'Kousaka Honoka'){
+    		name = 'honoka';
+    	} else if (data.idol.name == 'Sonoda Umi'){
+    		name = 'umi';
+    	}else if (data.idol.name == 'Minami Kotori'){
+    		name = 'kotori';
+    	}else if (data.idol.name == 'Koizumi Hanayo'){
+    		name = 'hanayo';
+    	}else if (data.idol.name == 'Hoshizora Rin'){
+    		name = 'rin';
+    	}else if (data.idol.name == 'Nishikino Maki'){
+    		name = 'maki';
+    	}else if (data.idol.name == 'Toujou Nozomi'){
+    		name = 'nozomi';
+    	}else if (data.idol.name == 'Ayase Eli'){
+    		name = 'eli';
+    	}else if (data.idol.name == 'Yazawa Nico'){
+    		name = 'nico';
+    	}else{
+    		name = 'none';
+    	}
+    	//alert(name);
+	
+	
 
-	        document.getElementById("idol_img").src=path;
-
-	        globalWaifu = name;
-
-			if (globalAudio!=null){
-					globalAudio.pause();
-			}
+		if(name == 'none')
+		{
+			alert('Please type in a card id that belongs to a Muse member');
+			return;
+		}
 
 
-			setTimeout(function() {
-		    	commandSelect(0);
-			}, 500)
+		// Once we get the info, get the image
+		var path;
+		if(idolized == 'yes')
+		{
+			path = "./scraped-images/" + name + "/" + id + "_id.png";
+		}else{
+			path = "./scraped-images/" + name +  "/" + id + ".png";
+		}
 
-	    }).fail(function() { 
-	        // Image doesn't exist - do something else.
-	        alert('No results found');
-	        return;
-    })
+
+		
+		// Do something now you know the image exists.
+		alert(path);
+
+
+
+		document.getElementById("idol_img").src=path;
+
+		globalWaifu = name;
+
+		if (globalAudio!=null){
+			globalAudio.pause();
+		}
+
+
+		setTimeout(function() {
+			commandSelect(0);
+		}, 500)
+
+		    
+	});
 }
 
 

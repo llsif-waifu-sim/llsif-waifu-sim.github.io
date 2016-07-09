@@ -1,6 +1,7 @@
-<html>
+<html lang="en">
 	
 	<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 	<script src="audio-handle.js"></script>
 	<link rel="stylesheet" type="text/css" href="scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -18,22 +19,30 @@
 	<h1>Love Live SIF Waifu Simulator</h1>
 	Click on the waifu or any buttons to have her speak. </br></br>
 
-	<div id="container">
-    	<img id='homeScreen' src='images/background0.png'>
-    	<img id="idol_img" src='images/honoka0.png' onclick="waifuClick()">
-    	<img id="home_but" src='images/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
-    	<img id="story_but" src='images/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
-    	<img id="member_but" src='images/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
-
-    	<div id="speech-bubble" class="bubble" style='display:none;'>
-    		<div id='speech-text' style='opacity: 2.0;'>
-		 	 I am ERROR
-		 	 </div>
-		</div>
-	</div>
-
-
-
+	<table>
+		<tr>
+			<td style="width:190px;">
+				<input type="text" id="card_id" class="form-control" placeholder='Card ID Number'>
+			</td>
+			<td style="width:160px;">
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="radio-idol" value="no" checked>
+				    	Non-idolized
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="radio-idol" value="yes">
+				    	Idolized
+				  </label>
+				</div>
+			</td>
+			<td>
+				<button type="button" id="search_but" class="btn btn-primary" onclick="searchId()">Search</button>
+			</td>
+		</tr>
+	</table>
 	</br>
 
 	<button type="button" onclick="changeWaifu('hanayo')">Koizumi Hanayo</button>
@@ -47,7 +56,28 @@
 	<button type="button" onclick="changeWaifu('nozomi')">Tojo Nozomi</button>
 	<button type="button" onclick="changeWaifu('nico')">Yazawa Nico</button>
 	<button type="button" onclick="changeWaifu('eli')">Ayase Eli</button>
+	</br>
+	</br>
+	</br>
 
+	<div id="container">
+    	<img id='homeScreen' src='images/background0.png'>
+    	<img id="idol_img" src='images/honoka0.png' onclick="waifuClick()">
+    	<img id="home_but" src='images/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
+    	<img id="story_but" src='images/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
+    	<img id="member_but" src='images/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
+
+    	<div id="speech-bubble" class="bubble" style='display:none;'>
+    		<div id='speech-text' style='opacity: 2.0;'>
+		 	 404: Comment not found
+		 	 </div>
+		</div>
+	</div>
+
+	</br>
+	</br>
+	</br>
+	</br>
 	
 	</center>
 
