@@ -73,18 +73,22 @@ function searchId()
 
 		// Once we get the info, get the image
 		var path;
+		var realpath;
 		if(idolized == 'yes')
 		{
 			path = "./scraped-images/" + name + "/" + id + "_id.png";
+			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
+
 		}else{
 			path = "./scraped-images/" + name +  "/" + id + ".png";
+			realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
 		}
 
 
 
 
 		$.ajax({
-		    url:path,
+		    url:realpath,
 		    type:'HEAD',
 		    error: function()
 		    {
