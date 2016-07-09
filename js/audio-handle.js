@@ -9,6 +9,14 @@ setTimeout(function() {
 }, 1000)
 
 
+function playBackgroundMusic()
+{
+	var audio = document.getElementById("background-music-player");
+	audio.pause();
+	audio.play();
+}
+
+
 function changeBackground()
 {
 	var maxNumBackground = 4;
