@@ -1,12 +1,12 @@
 #homeScreen{
-    width:1060;
-    height:640;
+    width:1140;
+    height:700;
 }
 
 #container{
     position: relative;
-    width: 1060px;
-    height: 640px;
+    width: 1140px;
+    height: 700px;
 }
 
 /* height should be 591px */

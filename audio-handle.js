@@ -62,7 +62,7 @@ function searchId()
 	    error: function()
 	    {
 	        //file not exists
-	        alert('There is no non-idolized or idolized version of the card. Try filling out the other option bubble.');
+	        alert('Idol not found. Please double check the card id, idol name, and whether or not there exists an idolized or non-idolized version');
 			commandSelect(0);
 			return;
 	    },
