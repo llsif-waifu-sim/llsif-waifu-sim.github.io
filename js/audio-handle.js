@@ -6,7 +6,7 @@ var background = 0;
 
 setTimeout(function() {
     commandSelect(0);
-}, 1000)
+}.bind(this), 1000)
 
 
 function playBackgroundMusic()
@@ -118,7 +118,7 @@ function getRandomWaifu()
 
 	setTimeout(function() {
 		commandSelect(0);
-	}, 500)
+	}.bind(this), 500)
 
 
 }
@@ -158,7 +158,7 @@ function getRandomCard()
 
 	setTimeout(function() {
 		commandSelect(0);
-	}, 500)
+	}.bind(this), 500)
 
 
 }
@@ -232,7 +232,7 @@ function searchId()
 
 			setTimeout(function() {
 				commandSelect(0);
-			}, 500)
+			}.bind(this), 500)
 			  }
 		});
 
@@ -253,7 +253,7 @@ function changeWaifu(name){
 
 	setTimeout(function() {
     	commandSelect(0);
-	}, 500)
+	}.bind(this), 500)
 
 }
 
