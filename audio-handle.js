@@ -22,48 +22,6 @@ function isInt(value) {
          !isNaN(parseInt(value, 10));
 }
 
-/*
-function fileNameSearch(id)
-{
-
-	
-		var client;
-        if (window.XMLHttpRequest) {
-		    // code for modern browsers
-		    client = new XMLHttpRequest();
-		} else {
-		    // code for IE6, IE5
-		    client = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-        client.onreadystatechange = function()
-        {
-            if( client.responseText != '' )
-            {
-                var txt = client.responseText.split("\n");
-                var i;
-                
-                for(i=0; i<maxNumOfCard;i++)
-                {
-                	alert(txt[i]);
-                	if(txt[i] == '28/honoka/no')
-	                {
-	                	alert('We found it!');
-	                	foundId = true;
-	                	break;
-	                	return foundId;
-	                }
-                }
-
-                
-            }
-        }
-        client.open("GET", "./records/id-list.txt", true);
-        client.send();
-        return foundId;
-        
-}
-*/
 
 function searchId()
 {
@@ -76,9 +34,6 @@ function searchId()
 		alert('Invalid id input');
 		return;
 	} 
-
-	// Seach for the name linked to the id and idolize value (via textbox and search button)
-	// (insert code here)
 	
 
 	var strAPI = 'http://schoolido.lu/api/cards/'.concat(id);
@@ -107,8 +62,7 @@ function searchId()
     		name = 'none';
     	}
     	//alert(name);
-	
-	
+		
 
 		if(name == 'none')
 		{
@@ -127,13 +81,22 @@ function searchId()
 		}
 
 
-		
-		// Do something now you know the image exists.
-		alert(path);
 
 
-
-		document.getElementById("idol_img").src=path;
+		$.ajax({
+		    url:path,
+		    type:'HEAD',
+		    error: function()
+		    {
+		        //file not exists
+		        alert('There is no non-idolized or idolized version of the card. Try filling out the other option bubble.');
+				commandSelect(0);
+				return;
+		    },
+		    success: function()
+		    {
+		        //file exists
+		        document.getElementById("idol_img").src=path;
 
 		globalWaifu = name;
 
@@ -145,6 +108,13 @@ function searchId()
 		setTimeout(function() {
 			commandSelect(0);
 		}, 500)
+		    }
+		});
+
+
+
+
+		
 
 		    
 	});
