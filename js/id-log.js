@@ -1,3 +1,4 @@
+var id_log =
 [
 ['28','honoka','no'],
 ['28','honoka','yes'],
@@ -1226,5 +1227,5 @@
 ['944','hanayo','no'],
 ['944','hanayo','yes'],
 ['945','nico','no'],
-['945','nico','yes'],
+['945','nico','yes']
 ];

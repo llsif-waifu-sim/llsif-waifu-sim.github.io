@@ -25,8 +25,9 @@ def idol2path(name):
         return 'none'
     
 text_file = open("records/id-list.txt", "w")
-
-for x in range (554,960):
+text_file.write('[\n')
+print '['
+for x in range (1,960):
     x_str = str(x)
     temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
     data = json.load(urllib2.urlopen(temp_str))
@@ -37,15 +38,19 @@ for x in range (554,960):
     img_url_idol = data['transparent_idolized_image']
 
     if img_url != None and idol2path(name) != 'none':
-        # (id)/(name)/(idolized)
-        text_to_save =  x_str + "/" + idol2path(name) +"/" + "no\n"
+        # [(id),(name)]
+        text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
+        text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
         text_file.write(text_to_save)
 
-        print text_to_save
+        print text_to_prnt
         
     if img_url_idol != None and idol2path(name) != 'none':
-        text_to_save_id =x_str + "/" + idol2path(name) +"/" + "yes\n"
-        text_file.write(text_to_save_id)
-        print text_to_save_id
-
+        text_to_save =  "['" + x_str + "','" + idol2path(name) +"','yes'],\n"
+        text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
+        text_file.write(text_to_save)
+        print text_to_prnt
+        
+text_file.write('];\n')
+print '];'
 text_file.close()

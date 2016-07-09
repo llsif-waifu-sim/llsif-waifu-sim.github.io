@@ -2,11 +2,26 @@ var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
 
+var background = 0;
+
 setTimeout(function() {
     commandSelect(0);
 }, 1000)
 
 
+function changeBackground()
+{
+	var maxNumBackground = 4;
+	if(background < maxNumBackground)
+	{
+		background = background + 1;
+	}else {
+		background = 0;
+	}
+	var backpath = 'images/background' + background.toString() + '.png';
+
+	document.getElementById("homeScreen").src=backpath;
+}
 
 function refreshBubble()
 {
@@ -22,6 +37,138 @@ function isInt(value) {
          !isNaN(parseInt(value, 10));
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function nameAssign(name)
+{
+	globalWaifu = name;
+	var replacement_name = 'Random ' + capitalizeFirstLetter(name);
+	document.getElementById('random-nameplace').innerHTML = replacement_name;
+
+	
+}
+
+function waifuRNG()
+{
+	var maxNum = id_log.length;
+	return Math.floor(Math.random() * maxNum);
+}
+
+function cardRNG()
+{
+	while(true){
+		var maxNum = id_log.length;
+		var n = Math.floor(Math.random() * maxNum);
+		var remainder = id_log.length - n;
+
+		var i;
+		for(i = n; n < remainder; i++)
+		{
+			if(id_log[i][1] == globalWaifu)
+			{
+				return i;
+			}
+		}
+	}
+
+}
+
+
+
+function getRandomWaifu()
+{
+	var i = waifuRNG();
+	var id = parseInt(id_log[i][0]);
+	var name = id_log[i][1];
+	var idolized = id_log[i][2];
+	
+	var path;
+
+	if(idolized == 'yes')
+	{
+		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		document.querySelector("input[value='yes']").checked = true;
+	}else{
+		path = "./scraped-images/" + name +  "/" + id + ".png";
+		document.querySelector("input[value='no']").checked = true;
+	}
+
+
+    //file exists
+	document.getElementById("idol_img").src=path;
+
+	nameAssign(name);
+
+	document.getElementById("card_id").value = id;
+
+	if (globalAudio!=null){
+		globalAudio.pause();
+	}
+
+
+	setTimeout(function() {
+		commandSelect(0);
+	}, 500)
+
+
+}
+
+
+function getRandomCard()
+{
+	var i = cardRNG();
+	var id = parseInt(id_log[i][0]);
+	var name = id_log[i][1];
+	var idolized = id_log[i][2];
+	
+	var path;
+
+	if(idolized == 'yes')
+	{
+		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		document.querySelector("input[value='yes']").checked = true;
+	}else{
+		path = "./scraped-images/" + name +  "/" + id + ".png";
+		document.querySelector("input[value='no']").checked = true;
+	}
+
+
+    //file exists
+	document.getElementById("idol_img").src=path;
+
+	nameAssign(name);
+
+	document.getElementById("card_id").value = id;
+	
+
+	if (globalAudio!=null){
+		globalAudio.pause();
+	}
+
+
+	setTimeout(function() {
+		commandSelect(0);
+	}, 500)
+
+
+}
+
+
+
+function searchNameById(id)
+{
+	var i;
+	for(i = 0; i < id_log.length; i++)
+	{
+		if(id_log[i][0] == id.toString())
+		{
+			return id_log[i][1];
+		}
+	}
+	return 'none';
+}
 
 function searchId()
 {
@@ -29,8 +176,8 @@ function searchId()
 	var id = document.getElementById("card_id").value;
 	var idolized = $('input[id="radio-idol"]:checked').val();
 
-	var e = document.getElementById("idol-select");
-	var name = e.options[e.selectedIndex].value;
+	//var e = document.getElementById("idol-select");
+	//var name = e.options[e.selectedIndex].value;
 	
 
 	if(!isInt(id) || id > maxNumOfCard){
@@ -38,20 +185,17 @@ function searchId()
 		return;
 	} 
 	
-
-	var strAPI = 'https://schoolido.lu/api/cards/'.concat(id);
+	var name = searchNameById(id);
 	
 
 	// Once we get the info, get the image
 	var path;
-	var realpath;
+
 	if(idolized == 'yes')
 	{
 		path = "./scraped-images/" + name + "/" + id + "_id.png";
-		realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '_id.png';
 	}else{
 		path = "./scraped-images/" + name +  "/" + id + ".png";
-		realpath = 'https://llsif-waifu-sim.github.io/scraped-images/' + name + '/' + id + '.png';
 	}
 
 
@@ -62,7 +206,7 @@ function searchId()
 	    error: function()
 	    {
 	        //file not exists
-	        alert('Idol not found. Please double check the card id, idol name, and whether or not there exists an idolized or non-idolized version');
+	        alert('Idolized / Non-idolized version of card not found. Trying filling out the alternate option bubble.');
 			commandSelect(0);
 			return;
 	    },
@@ -71,7 +215,7 @@ function searchId()
 	        //file exists
 	        document.getElementById("idol_img").src=path;
 
-			globalWaifu = name;
+			nameAssign(name);
 
 			if (globalAudio!=null){
 				globalAudio.pause();
@@ -92,7 +236,7 @@ function changeWaifu(name){
 	var path = "images/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
 
-	globalWaifu = name;
+	nameAssign(name);
 
 	if (globalAudio!=null){
 			globalAudio.pause();

@@ -2,8 +2,9 @@
 	
 	<head>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-	<script src="audio-handle.js"></script>
-	<link rel="stylesheet" type="text/css" href="scene.css">
+	<script src="js/id-log.js"></script>
+	<script src="js/audio-handle.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -25,19 +26,7 @@
 			<td style="width:240px;">
 				<input type="text" id="card_id" class="form-control" placeholder='Card ID Number (ex: 46)'>
 			</td>
-			<td style="width:190px;" >
-				<select ng-model='discussionsSelect' class='form-control' id='idol-select' style='width:160px;'>
-		            <option value='honoka' selected>Honoka</option>
-		            <option value='kotori'>Kotori</option>
-		            <option value='umi'>Umi</option>
-		            <option value='hanayo'>Hanayo</option>
-		            <option value='maki'>Maki</option>
-		            <option value='rin'>Rin</option>
-		            <option value='nozomi'>Nozomi</option>
-		            <option value='eli'>Eli</option>
-		            <option value='nico'>Nico</option>
-		          </select>
-			</td>
+
 			<td style="width:160px;">
 				<div class="radio">
 				  <label>
@@ -52,8 +41,14 @@
 				  </label>
 				</div>
 			</td>
-			<td>
-				<button type="button" id="search_but" class="btn btn-primary" onclick="searchId()">Search</button>
+			<td style='width:160'>
+				<button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()">Search</button>
+			</td>
+			<td style='width:160'>
+				<button style='width:140' type="button" class="btn btn-info" onclick="getRandomWaifu()">Random Waifu</button>
+			</td>
+			<td style='width:160'>
+				<button style='width:140' type="button" class="btn btn-info" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button>
 			</td>
 		</tr>
 	</table>
@@ -91,7 +86,8 @@
 	
 	</br>
 	</br>
-	
+	<button type="button" onclick="changeBackground()">Change Wallpaper</button>
+	</br></br>
 	</center>
 
 
