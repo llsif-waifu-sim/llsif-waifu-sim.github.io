@@ -255,8 +255,10 @@ function mainWaifuSet(index)
 	if(idolized == 'yes')
 	{
 		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		document.querySelector("input[value='yes']").checked = true;
 	}else{
 		path = "./scraped-images/" + name +  "/" + id + ".png";
+		document.querySelector("input[value='no']").checked = true;
 	}
 
 
