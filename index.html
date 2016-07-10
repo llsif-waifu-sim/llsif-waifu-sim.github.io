@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	<title>Love Live SIF Waifu Simulator</title>
 		
@@ -18,9 +19,8 @@
 	<body style="background-color:#FF69B4;">
 	<center>
 	<h1 style='color:white'>Love Live SIF Waifu Simulator</h1>
-	<p style='color:white;'>Click on the waifu or any buttons to have her speak. </p>
-	<p style='color:white;'>You can switch card models here. In order to get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
-
+	<p style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
+	
 	<table>
 		<tr>
 			<td style="width:240px;">
@@ -57,11 +57,12 @@
 
 
 	<div id="container">
-    	<img id='homeScreen' src='images/background0.png'>
-    	<img id="idol_img" src='images/honoka0.png' onclick="waifuClick()">
-    	<img id="home_but" src='images/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
-    	<img id="story_but" src='images/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
-    	<img id="member_but" src='images/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
+    	<img id='homeScreen' src='images/background/background0.png'>
+    	<img id="idol_img" src='images/waifu/honoka0.png' onclick="waifuClick()">
+    	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
+    	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
+    	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
+    	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#myModal">
 
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
@@ -102,6 +103,48 @@
 	<audio autoplay loop id='background-music-player'>
 		<source src="audio/background-music.mp3" type="audio/mp3" />
 	</audio>
+
+
+
+
+	<!--      Modal   -->
+
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+        <div class="modal-body">
+
+		<table>
+			<tr>
+				<td style="width: 270px;">
+					<p>Background Music Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="10" min="1" max="100" step="1" onchange="updateVolumeMusic(this.value)"></p>	
+				</td>
+				<td>
+					<p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="10" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
+
+				</td>
+			</tr>
+
+		</table>	
+
+          
+          
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 	</body>
 

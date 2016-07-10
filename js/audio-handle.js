@@ -1,12 +1,36 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
+var voiceVolume = 0.2;
+var musicVolume = 0.2;
 
 var background = 0;
 
-setTimeout(function() {
+
+
+
+
+window.onload = function() {
+    var backgroundAudio=document.getElementById("background-music-player");
+	backgroundAudio.volume= musicVolume;
+
+
+    setTimeout(function() {
+    	commandSelect(0);
+	}, 1000, true)
+}
+
+
+function updateVolumeMusic(soundValue) {
+    musicVolume = soundValue/100;
+    playBackgroundMusic();
+}
+
+function updateVolumeVoice(soundValue) {
+    voiceVolume = soundValue/100;
     commandSelect(0);
-}, 1000, true)
+}
+
 
 
 function pauseBackgroundMusic()
@@ -19,6 +43,7 @@ function playBackgroundMusic()
 {
 	var audio = document.getElementById("background-music-player");
 	audio.pause();
+	audio.volume = musicVolume;
 	audio.play();
 }
 
@@ -32,7 +57,7 @@ function changeBackground()
 	}else {
 		background = 0;
 	}
-	var backpath = 'images/background' + background.toString() + '.png';
+	var backpath = 'images/background/background' + background.toString() + '.png';
 
 	document.getElementById("homeScreen").src=backpath;
 }
@@ -247,7 +272,7 @@ function searchId()
 
 function changeWaifu(name){
 
-	var path = "images/" + name +"0.png";
+	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
 
 	nameAssign(name);
@@ -310,8 +335,9 @@ function changeWaifu(name){
 
 		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
 		globalAudio = new Audio(superString);
-		
+		globalAudio.volume = voiceVolume;
 		globalAudio.play();
+		
 
 		var pathString = "".concat(audioPath, waifuName, file);
 
@@ -363,11 +389,13 @@ function changeWaifu(name){
 	function hoverInBut(clicked_id)
 	{
 		if(clicked_id == 'home_but'){
-			document.getElementById("home_but").src="images/home-button-hover.png";
+			document.getElementById("home_but").src="images/buttons/home-button-hover.png";
 		} else if(clicked_id == 'story_but'){
-			document.getElementById("story_but").src="images/story-button-hover.png";
+			document.getElementById("story_but").src="images/buttons/story-button-hover.png";
 		} else if(clicked_id == 'member_but'){
-			document.getElementById("member_but").src="images/member-button-hover.png";
+			document.getElementById("member_but").src="images/buttons/member-button-hover.png";
+		} else if(clicked_id == 'settings_but'){
+			document.getElementById("settings_but").src="images/buttons/settings-button-hover.png";
 		}
 		
 	}
@@ -375,11 +403,13 @@ function changeWaifu(name){
 	function hoverOutBut(clicked_id)
 	{
 		if(clicked_id == 'home_but'){
-			document.getElementById("home_but").src="images/home-button.png";
+			document.getElementById("home_but").src="images/buttons/home-button.png";
 		} else if(clicked_id == 'story_but'){
-			document.getElementById("story_but").src="images/story-button.png";
+			document.getElementById("story_but").src="images/buttons/story-button.png";
 		} else if(clicked_id == 'member_but'){
-			document.getElementById("member_but").src="images/member-button.png";
+			document.getElementById("member_but").src="images/buttons/member-button.png";
+		} else if(clicked_id == 'settings_but'){
+			document.getElementById("settings_but").src="images/buttons/settings-button.png";
 		}
 	}
 

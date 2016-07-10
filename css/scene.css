@@ -45,6 +45,13 @@
 
 }
 
+#settings_but{
+    position: absolute;
+    bottom: -1.1%;
+    right: 6%;
+
+}
+
 #card_id{
     width:200px;
 }
