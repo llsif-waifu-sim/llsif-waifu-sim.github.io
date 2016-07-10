@@ -15,12 +15,60 @@
 
 
 	
+    <div class="container" style='width:100%'>
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-inverse" style='background-color: #ff0080; border-color:#EA0088' >
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><font style='color:white' style='padding-top:14px;'>Love Live SIF Waifu Simulator</font></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li style='padding:14px;'><input type="text" id="card_id" class="form-control" placeholder='Card ID Number (ex: 46)'></li>
+              <li style='padding-left:10px; padding-right:10px;'><div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="radio-idol" value="no" checked>
+				    	<font style='color:white'>Non-idolized</font>
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="radio-idol" value="yes">
+				    	<font style='color:white'>Idolized</font>
+				  </label>
+				</div></li>
+              <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
+
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li style='padding:14px;'>
+              	<button style='width:140' type="button" class="btn btn-primary" onclick="getRandomWaifu()">Random Waifu</button>
+              </li>
+              <li style='padding:14px;'>
+              	<button style='width:140' type="button" class="btn btn-primary" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+
+    </div>
 
 	<body style="background-color:#FF69B4;">
 	<center>
-	<h1 style='color:white'>Love Live SIF Waifu Simulator</h1>
-	<p style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
 	
+	<p style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
+	<!--<h1 style='color:white'>Love Live SIF Waifu Simulator</h1>
 	<div id='main-random-control'>
 	<table>
 		<tr>
@@ -55,7 +103,7 @@
 	</table>
 	
 	</div>
-
+	-->
 
 	<div id="container">
     	<img id='homeScreen' src='images/background/background0.png'>

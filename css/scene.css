@@ -1,3 +1,8 @@
+.navbar-default {
+    background-color: #bf00ff;
+    border-color: #E7E7E7;
+}
+
 #homeScreen{
     width:1140;
     height:700;
