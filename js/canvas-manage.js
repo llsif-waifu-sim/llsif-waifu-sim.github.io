@@ -2,18 +2,31 @@ function printPhotoCanvas(backgroundpath){
 
 	
     var c = document.getElementById("snapshot-canvas");
+    
+
+
     var ctx = c.getContext("2d");
     var img = document.getElementById("homeScreen");
-    ctx.drawImage(img, 0, 0, 280,140);
+    var imgwaifu = document.getElementById("idol_img");
+    var speechbubble = document.getElementById("speech-text");
+
+
+    c.width  = img.width; // in pixels
+	c.height = img.height;
+
+
+    ctx.drawImage(img, 0, 0, img.width,img.height);    
+    ctx.drawImage(imgwaifu, -80, -70, imgwaifu.width, imgwaifu.height);
+    ctx.drawImage(speechbubble, 0, 0, speechbubble.width, speechbubble.height);
 
 
 
-	
-	//var canvas = document.getElementById("snapshot-canvas");
-	//var ctx = canvas.getContext("2d");
 
-	var html_text = "<table border='1'><tr><td>row 1, cell 1</td><td>row 1, cell 2</td></tr><tr><td>row 2, cell 1</td><td>row 2, cell 2</td></tr></table> Hello World";
-	//var html_text = "<img src='" + backgroundpath +"'>";
+    /*
+	var canvas = document.getElementById("snapshot-canvas");
+
+
+	var html_text = "<div id='speech-text' style='opacity: 2.0; color:white; style='width:200px; height:200px;'></div>";
 
 
 
@@ -33,5 +46,6 @@ function printPhotoCanvas(backgroundpath){
 		DOMURL.revokeObjectURL(url);
 	};
 	img2.src = url;
+	*/
 	
 }

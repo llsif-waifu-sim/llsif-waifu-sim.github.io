@@ -76,7 +76,7 @@
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
     	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
-    	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()' style='visibility: hidden;'>
+    	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
 		 	 404: Comment not found
@@ -184,7 +184,7 @@
 
 
   <div class="modal fade" id="snapshotModal" role="dialog">
-    <div class="modal-dialog" style='width: 1120px; height:680px;'>
+    <div class="modal-dialog" style='width: 1200px; height:800px;'>
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -194,7 +194,7 @@
         </div>
         <div class="modal-body">
         	<center>
-        		<canvas id="snapshot-canvas" style="border:2px solid black; width:1040px; height:600px;"></canvas>
+        		<canvas id="snapshot-canvas"></canvas>
         	</center>
           
         	<script src="js/canvas-manage.js"></script>
@@ -208,7 +208,6 @@
       
     </div>
   </div>
-
 
 
 	</body>
