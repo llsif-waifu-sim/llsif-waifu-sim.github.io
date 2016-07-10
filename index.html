@@ -21,6 +21,7 @@
 	<h1 style='color:white'>Love Live SIF Waifu Simulator</h1>
 	<p style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
 	
+	<div id='main-random-control'>
 	<table>
 		<tr>
 			<td style="width:240px;">
@@ -53,12 +54,12 @@
 		</tr>
 	</table>
 	
-	
+	</div>
 
 
 	<div id="container">
     	<img id='homeScreen' src='images/background/background0.png'>
-    	<img id="idol_img" src='images/waifu/honoka0.png' onclick="waifuClick()">
+    	<img id="idol_img" src='images/waifu/honoka0.png' usemap="#waifumap">
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
@@ -70,6 +71,12 @@
 		 	 </div>
 		</div>
 	</div>
+
+	<map name="waifumap">
+	  <area shape="rect" coords="100,100,760,500" onclick="waifuClick()">	
+	</map>
+
+
 	</br>
 	</br>
 	<p style='color:white;'>Quick Waifu Change</p>

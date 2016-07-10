@@ -50,7 +50,7 @@ function playBackgroundMusic()
 
 function changeBackground()
 {
-	var maxNumBackground = 4;
+	var maxNumBackground = 77;
 	if(background < maxNumBackground-1)
 	{
 		background = background + 1;

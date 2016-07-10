@@ -1,3 +1,13 @@
+
+/*
+483
+210
+
+
+812
+*/
+
+
 #homeScreen{
     width:1140;
     height:700;
@@ -13,13 +23,16 @@
 
 #idol_img{
     position: absolute;
-  
-    max-height:670px;
+
+    /* rect(cut from top, null, null, cut from left)*/
+    clip: rect(72px,2000px,2000px,72px);
+
+    max-height:770px;
     width: auto;
     height: auto;
 
-    bottom: 5%;
-    left: -3%;
+    bottom: 0%;
+    left: -6.5%;
  
     
 }
@@ -60,8 +73,8 @@
 .bubble 
 {
     position: absolute;
-    bottom: 18%;
-    left: 7%;
+    bottom: 20%;
+    left: 8%;
 
     width:420px;
     min-height:1.5em;
