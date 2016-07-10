@@ -18,6 +18,8 @@ window.onload = function() {
     setTimeout(function() {
     	commandSelect(0);
 	}, 1000, true)
+
+	checkCookie();
 }
 
 
@@ -167,6 +169,8 @@ function getRandomWaifu()
 		commandSelect(0);
 	}, 500, true)
 
+	storeCookie(i);
+
 
 }
 
@@ -207,7 +211,78 @@ function getRandomCard()
 		commandSelect(0);
 	}, 500, true)
 
+	storeCookie(i);
 
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function mainWaifuSet(index)
+{
+	var id = parseInt(id_log[index][0]);
+	var name = id_log[index][1];
+	var idolized = id_log[index][2];
+	
+
+	// Once we get the info, get the image
+	var path;
+
+	if(idolized == 'yes')
+	{
+		path = "./scraped-images/" + name + "/" + id + "_id.png";
+	}else{
+		path = "./scraped-images/" + name +  "/" + id + ".png";
+	}
+
+
+
+
+	//file exists
+	document.getElementById("idol_img").src=path;
+
+	nameAssign(name);
+	document.getElementById("card_id").value = id;
+
+	if (globalAudio!=null){
+		globalAudio.pause();
+	}
+
+	
+}
+
+function checkCookie() {
+    var index=getCookie("waifu-index");
+    if (index != null && index != "") {
+        mainWaifuSet(index);
+    } else{
+    	document.getElementById("idol_img").src= 'images/waifu/honoka0.png';
+    }
+}
+
+function storeCookie(index)
+{
+	setCookie("waifu-index", index, 6);
 }
 
 
@@ -225,15 +300,44 @@ function searchNameById(id)
 	return 'none';
 }
 
+
+function searchIndexById(id, idolized)
+{
+	var i;
+	for(i = 0; i < id_log.length; i++)
+	{
+		if(id_log[i][0] == id.toString())
+		{
+			if(idolized == 'yes'){
+				return i + 1;
+			} else{
+				return i;
+			}
+		}
+	}
+	return 'none';
+}
+
+
+function searchIdolizedById(id)
+{
+	var i;
+	for(i = 0; i < id_log.length; i++)
+	{
+		if(id_log[i][0] == id.toString())
+		{
+			return id_log[i][2];
+		}
+	}
+	return 'none';
+}
+
 function searchId()
 {
 
 	var id = document.getElementById("card_id").value;
 	var idolized = $('input[id="radio-idol"]:checked').val();
 
-	//var e = document.getElementById("idol-select");
-	//var name = e.options[e.selectedIndex].value;
-	
 
 	if(!isInt(id) || id > maxNumOfCard){
 		alert('Invalid id input');
@@ -283,10 +387,13 @@ function searchId()
 			  }
 		});
 
+		var index = parseInt(searchIndexById(id, idolized));
+		storeCookie(index);
+
 }
 
 
-function changeWaifu(name){
+function changeWaifu(name, index){
 
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
@@ -301,6 +408,8 @@ function changeWaifu(name){
 	setTimeout(function() {
     	commandSelect(0);
 	}, 500, true)
+	
+	storeCookie(index);
 
 }
 
