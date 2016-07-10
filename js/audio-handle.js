@@ -62,6 +62,22 @@ function changeBackground()
 	document.getElementById("homeScreen").src=backpath;
 }
 
+function changeBackgroundBack()
+{
+	var maxNumBackground = 77;
+	if(background <= 0)
+	{
+		background = maxNumBackground-1;
+		
+	}else {
+		background = background - 1;
+	}
+	var backpath = 'images/background/background' + background.toString() + '.png';
+
+	document.getElementById("homeScreen").src=backpath;
+}
+
+
 function refreshBubble()
 {
 	$(document).ready(function(){

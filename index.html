@@ -43,7 +43,7 @@
 				</div>
 			</td>
 			<td style='width:160'>
-				<button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()">Search</button>
+				<button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button>
 			</td>
 			<td style='width:160'>
 				<button style='width:140' type="button" class="btn btn-info" onclick="getRandomWaifu()">Random Waifu</button>
@@ -94,11 +94,30 @@
 	
 	</br>
 	</br>
-	<button type="button" onclick="changeBackground()">Change Wallpaper</button>
+	<table>
+		<tr>
+			<td style='width:300'>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackground()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+			</td>
+		</tr>
+	</table>
 	</br></br>
 	<p style='color:white'><font size="6">Use buttons below if you are on MOBILE</font></p>
-	<button type="button" onclick="playBackgroundMusic()">Play background music</button>
-	<button type="button" onclick="pauseBackgroundMusic()">Pause background music</button>
+	<table>
+		<tr>
+			<td style='width:280'>
+				<button style='width:240' type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play background music</button>
+			</td>
+			<td>
+				<button style='width:240' type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause background music</button>
+			</td>
+		</tr>
+	</table>
+	
+	
 	</br>
 	
 
