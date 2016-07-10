@@ -17,6 +17,7 @@ window.onload = function() {
 	}, 1000, true)
 
 	checkCookie();
+	checkBackgroundCookie();
 }
 
 
@@ -56,9 +57,12 @@ function changeBackground()
 	}else {
 		background = 0;
 	}
-	var backpath = 'images/background/background' + background.toString() + '.png';
+	storeBackgroundCookie(background);
 
+	var backpath = 'images/background/background' + background.toString() + '.png';
+	
 	document.getElementById("homeScreen").src=backpath;
+	
 }
 
 function changeBackgroundBack()
@@ -71,9 +75,12 @@ function changeBackgroundBack()
 	}else {
 		background = background - 1;
 	}
+	storeBackgroundCookie(background);
+
 	var backpath = 'images/background/background' + background.toString() + '.png';
 
 	document.getElementById("homeScreen").src=backpath;
+	
 }
 
 
@@ -268,6 +275,12 @@ function mainWaifuSet(index)
 	
 }
 
+function mainBackgroundSet(index){
+	background = parseInt(index);
+	var backpath = 'images/background/background' + index.toString() + '.png';
+	document.getElementById("homeScreen").src=backpath;
+}
+
 function checkCookie() {
     var index=getCookie("waifu-index");
     if (index != null && index != "") {
@@ -277,11 +290,25 @@ function checkCookie() {
     }
 }
 
+function checkBackgroundCookie() {
+    var index=getCookie("background-index");
+
+    if (index != null && index != "") {
+        mainBackgroundSet(index);
+    } else{
+    	document.getElementById("homeScreen").src= 'images/background/background0.png';
+    }
+}
+
 function storeCookie(index)
 {
 	setCookie("waifu-index", index, 6);
 }
 
+function storeBackgroundCookie(index)
+{
+	setCookie("background-index", index, 5);
+}
 
 
 function searchNameById(id)
