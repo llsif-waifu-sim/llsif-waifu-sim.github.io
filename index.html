@@ -75,8 +75,8 @@
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
-    	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#myModal">
-
+    	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
+    	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
 		 	 404: Comment not found
@@ -144,10 +144,7 @@
 
 
 
-
-	<!--      Modal   -->
-
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="settingsModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -183,6 +180,36 @@
       
     </div>
   </div>
+
+
+
+  <div class="modal fade" id="snapshotModal" role="dialog">
+    <div class="modal-dialog" style='width: 1120px; height:680px;'>
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Snapshot</h4>
+        </div>
+        <div class="modal-body">
+        	<center>
+        		<canvas id="snapshot-canvas" style="border:2px solid black; width:1040px; height:600px;"></canvas>
+        	</center>
+          
+        	<script src="js/canvas-manage.js"></script>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
 
 	</body>
 

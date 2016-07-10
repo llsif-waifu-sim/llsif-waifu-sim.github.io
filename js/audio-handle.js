@@ -7,9 +7,6 @@ var musicVolume = 0.3;
 var background = 0;
 
 
-
-
-
 window.onload = function() {
     var backgroundAudio=document.getElementById("background-music-player");
 	backgroundAudio.volume= musicVolume;
@@ -408,7 +405,7 @@ function changeWaifu(name, index){
 	setTimeout(function() {
     	commandSelect(0);
 	}, 500, true)
-	
+
 	storeCookie(index);
 
 }
@@ -521,6 +518,8 @@ function changeWaifu(name, index){
 			document.getElementById("member_but").src="images/buttons/member-button-hover.png";
 		} else if(clicked_id == 'settings_but'){
 			document.getElementById("settings_but").src="images/buttons/settings-button-hover.png";
+		} else if(clicked_id == 'camera_but'){
+			document.getElementById("camera_but").src="images/buttons/camera-button-hover.png";
 		}
 		
 	}
@@ -535,6 +534,8 @@ function changeWaifu(name, index){
 			document.getElementById("member_but").src="images/buttons/member-button.png";
 		} else if(clicked_id == 'settings_but'){
 			document.getElementById("settings_but").src="images/buttons/settings-button.png";
+		} else if(clicked_id == 'camera_but'){
+			document.getElementById("camera_but").src="images/buttons/camera-button.png";
 		}
 	}
 
@@ -563,3 +564,42 @@ function changeWaifu(name, index){
         client.open("GET", pathString, true);
         client.send();
     }
+
+	function cameraClick()
+	{
+		var camera_path = 'audio/camera-shutter.mp3'
+		var camera_audio = new Audio(camera_path);
+		//camera_audio.volume = voiceVolume;
+		camera_audio.play();
+
+
+
+
+
+		
+	}
+
+
+	document.addEventListener('DOMContentLoaded',domloaded,false);
+	function domloaded(){
+	    // your code here.
+	    var canvas = document.getElementById("snapshot-canvas");
+		var ctx = canvas.getContext("2d");
+		var data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
+		             "<foreignObject width='100%' height='100%'>" +
+		               "<div xmlns='http://www.w3.org/1999/xhtml' style='font-size:20px'>" +
+		                  "<table border='1'><tr><td>row 1, cell 1</td><td>row 1, cell 2</td></tr><tr><td>row 2, cell 1</td><td>row 2, cell 2</td></tr></table>" +
+		               "</div>" +
+		             "</foreignObject>" +
+		           "</svg>";
+		var DOMURL = self.URL || self.webkitURL || self;
+		var img = new Image();
+		var svg = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
+		var url = DOMURL.createObjectURL(svg);
+		
+		    ctx.drawImage(img, 0, 0);
+		    DOMURL.revokeObjectURL(url);
+		img.src = url;
+	}
+
+

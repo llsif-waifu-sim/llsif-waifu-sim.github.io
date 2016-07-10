@@ -53,6 +53,14 @@
 
 }
 
+#camera_but{
+    position: absolute;
+    max-height: 118px;
+    bottom: 0%;
+    right: 21%;
+
+}
+
 #settings_but{
     position: absolute;
     bottom: -1.1%;
