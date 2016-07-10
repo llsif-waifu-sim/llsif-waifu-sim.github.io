@@ -1,8 +1,8 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
-var voiceVolume = 0.2;
-var musicVolume = 0.2;
+var voiceVolume = 0.3;
+var musicVolume = 0.3;
 
 var background = 0;
 
