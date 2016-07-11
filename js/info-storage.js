@@ -1,6 +1,7 @@
 var voiceVolume = 0.3;
 var musicVolume = 0.3;
 var background = 0;
+var globalIndex = 0;
 
 
 function setCookie(cname, cvalue, exdays) {
@@ -34,6 +35,7 @@ function getCookie(cname) {
 
 function checkCookie() {
     var index=getCookie("waifu-index");
+    globalIndex = index;
     if (index != null && index != "") {
         mainWaifuSet(index);
     } else{
@@ -65,6 +67,17 @@ function checkVolumeCookie() {
     }
 }
 
+function checkWaifuLoadCookie() {
+    var index=getCookie("saved-waifu-index");
+
+    if (index != null && index != "") {
+        globalIndex = index;
+        savedWaifuLoad(index);
+    } else {
+        document.getElementById("waifu_load_but").disabled = true;
+        $('waifu_load_but').prop('disabled', true);   
+    }
+}
 
 
 
@@ -74,8 +87,14 @@ function checkVolumeCookie() {
 
 function storeCookie(index)
 {
-	setCookie("waifu-index", index, 6);
+    setCookie("waifu-index", index, 6);
 }
+
+function storeSaveWaifuCookie(index)
+{
+    setCookie("saved-waifu-index", index, 6);
+}
+
 
 function storeBackgroundCookie(index)
 {
@@ -96,14 +115,13 @@ function storeVolumeVoiceCookie(volume)
 
 
 
-// Functions that uses the cookies
+// Functions that uses the cookies to load the values
 
 function mainWaifuSet(index)
 {
     var id = parseInt(id_log[index][0]);
     var name = id_log[index][1];
     var idolized = id_log[index][2];
-    
 
     // Once we get the info, get the image
     var path;
@@ -133,6 +151,7 @@ function mainWaifuSet(index)
     
 }
 
+
 function mainBackgroundSet(index){
     background = parseInt(index);
     var backpath = 'images/background/background' + index.toString() + '.png';
@@ -157,4 +176,76 @@ function volumeBackSet(volume_value)
     input.value = volume_ex_value;
     
 }
+
+function saveWaifuLoad(index)
+{
+
+    var id = parseInt(id_log[index][0]);
+    var name = id_log[index][1];
+    var idolized = id_log[index][2];
+    
+    
+    document.getElementById("id-saved").innerHTML = id_log[index][0];
+    document.getElementById("name-saved").innerHTML = name;
+
+    // Once we get the info, get the image
+    var path;
+
+    if(idolized == 'yes')
+    {
+        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        document.querySelector("input[value='yes']").checked = true;
+    }else{
+        path = "./scraped-images/" + name +  "/" + id + ".png";
+        document.querySelector("input[value='no']").checked = true;
+    }
+
+
+
+
+    //file exists
+    document.getElementById("idol_img").src=path;
+
+    nameAssign(name);
+    document.getElementById("card_id").value = id;
+
+    if (globalAudio!=null){
+        globalAudio.pause();
+    }
+
+    
+}
+
+function savedWaifuLoad(index)
+{
+    var id = parseInt(id_log[index][0]);
+    var name = id_log[index][1];
+    var idolized = id_log[index][2];
+    
+
+    // Once we get the info, get the image
+    var path;
+
+    if(idolized == 'yes')
+    {
+        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        document.querySelector("input[value='yes']").checked = true;
+    }else{
+        path = "./scraped-images/" + name +  "/" + id + ".png";
+        document.querySelector("input[value='no']").checked = true;
+    }
+
+    //file exists
+    document.getElementById("idol_img").src=path;
+
+    nameAssign(name);
+    document.getElementById("card_id").value = id;
+
+    if (globalAudio!=null){
+        globalAudio.pause();
+    }
+
+}
+
+
 

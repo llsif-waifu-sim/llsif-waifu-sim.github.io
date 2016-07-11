@@ -4,12 +4,15 @@ var maxNumOfCard = 960;
 
 
 
+
+
 window.onload = function() {
 
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();
 	checkVolumeCookie();
+	
 
     var backgroundAudio=document.getElementById("background-music-player");
 	backgroundAudio.volume= musicVolume;
@@ -17,8 +20,8 @@ window.onload = function() {
     setTimeout(function() {
     	commandSelect(0);
 	}, 1000, true)
-
 }
+
 
 
 function updateVolumeMusic(soundValue) {
@@ -149,6 +152,9 @@ function getRandomWaifu()
 	
 	var path;
 
+	globalIndex = i;
+
+
 	if(idolized == 'yes')
 	{
 		path = "./scraped-images/" + name + "/" + id + "_id.png";
@@ -189,6 +195,8 @@ function getRandomCard()
 	var idolized = id_log[i][2];
 	
 	var path;
+
+	globalIndex = i;
 
 	if(idolized == 'yes')
 	{
@@ -282,6 +290,7 @@ function searchId()
 	} 
 	
 	var name = searchNameById(id);
+
 	
 
 	// Once we get the info, get the image
@@ -313,6 +322,8 @@ function searchId()
 
 			nameAssign(name);
 
+			globalIndex = searchIndexById(id);
+
 			if (globalAudio!=null){
 				globalAudio.pause();
 			}
@@ -330,10 +341,14 @@ function searchId()
 }
 
 
+
 function changeWaifu(name, index){
 
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
+
+
+	globalIndex = index;
 
 	nameAssign(name);
 
@@ -405,6 +420,26 @@ function changeWaifu(name, index){
 
 		changeSpeechText(pathString, n);
 		refreshBubble();
+
+	}
+
+	function saveWaifu()
+	{
+		storeSaveWaifuCookie(globalIndex);
+		var i = globalIndex;
+
+
+
+		document.getElementById("waifu_load_but").disabled = false;
+        $('waifu_load_but').prop('disabled', false); 
+
+		var id = parseInt(id_log[i][0]);
+		var name = id_log[i][1];
+		//var idolized = id_log[i][2];
+
+
+		document.getElementById('id-saved').innerHTML = id;
+		document.getElementById('name-saved').innerHTML = name;
 
 	}
 

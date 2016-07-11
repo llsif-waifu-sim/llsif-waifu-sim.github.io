@@ -66,6 +66,9 @@
     </div>
 
 	<body style="background-color:#FF69B4;">
+
+
+
 	<center>
 	
 	<p style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></p>
@@ -214,7 +217,7 @@
 
 
 	<div class="modal fade" id="memberModal" role="dialog">
-	    <div class="modal-dialog">
+	    <div class="modal-dialog" style='width: 900px; height:900px;'>
 	    
 	      <!-- Modal content-->
 	      <div class="modal-content">
@@ -223,8 +226,24 @@
 	          <h4 class="modal-title">Manage Waifu Team</h4>
 	        </div>
 	        <div class="modal-body">
-
-			
+	        	<table>
+	        		<tr>
+	        			<td style='width:160px;'>
+	        				<div id='id-saved'>ID: </div>
+	        			</td>
+	        			<td style='width: 240px;'>
+	        				<div id='name-saved'>Name: </div>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but" class="btn btn-primary" onclick="saveWaifu()">Save</button>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but" class="btn btn-primary" onclick="checkWaifuLoadCookie();">Load</button>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	
+				<script src="js/memberModal.js"></script>
 
 
 	        </div>
