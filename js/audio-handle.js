@@ -438,9 +438,11 @@ function changeWaifu(name, index){
 		//var idolized = id_log[i][2];
 
 
-		document.getElementById('id-saved').innerHTML = id;
-		document.getElementById('name-saved').innerHTML = name;
-
+		var html_id = "ID: " + parseInt(id_log[i][0]);
+	    var html_name = "Name: " + id_log[i][1];
+	    
+	    document.getElementById("id-saved").innerHTML = html_id;
+	    document.getElementById("name-saved").innerHTML = html_name;
 	}
 
 	function homeClick() {

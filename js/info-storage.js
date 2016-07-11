@@ -184,9 +184,11 @@ function saveWaifuLoad(index)
     var name = id_log[index][1];
     var idolized = id_log[index][2];
     
+    var html_id = "ID: " + parseInt(id_log[index][0]);
+    var html_name = "Name: " + id_log[index][1];
     
-    document.getElementById("id-saved").innerHTML = id_log[index][0];
-    document.getElementById("name-saved").innerHTML = name;
+    document.getElementById("id-saved").innerHTML = html_id;
+    document.getElementById("name-saved").innerHTML = html_name;
 
     // Once we get the info, get the image
     var path;
