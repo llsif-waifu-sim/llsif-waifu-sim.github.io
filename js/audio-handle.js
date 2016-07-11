@@ -1,33 +1,35 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
-var voiceVolume = 0.3;
-var musicVolume = 0.3;
 
-var background = 0;
 
 
 window.onload = function() {
+
+	// Preform cookie checks
+	checkCookie();
+	checkBackgroundCookie();
+	checkVolumeCookie();
+
     var backgroundAudio=document.getElementById("background-music-player");
 	backgroundAudio.volume= musicVolume;
-
 
     setTimeout(function() {
     	commandSelect(0);
 	}, 1000, true)
 
-	checkCookie();
-	checkBackgroundCookie();
 }
 
 
 function updateVolumeMusic(soundValue) {
     musicVolume = soundValue/100;
+    storeVolumeMusicCookie(musicVolume);
     playBackgroundMusic();
 }
 
 function updateVolumeVoice(soundValue) {
     voiceVolume = soundValue/100;
+    storeVolumeVoiceCookie(voiceVolume);
     commandSelect(0);
 }
 
@@ -219,98 +221,7 @@ function getRandomCard()
 
 }
 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
 
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function mainWaifuSet(index)
-{
-	var id = parseInt(id_log[index][0]);
-	var name = id_log[index][1];
-	var idolized = id_log[index][2];
-	
-
-	// Once we get the info, get the image
-	var path;
-
-	if(idolized == 'yes')
-	{
-		path = "./scraped-images/" + name + "/" + id + "_id.png";
-		document.querySelector("input[value='yes']").checked = true;
-	}else{
-		path = "./scraped-images/" + name +  "/" + id + ".png";
-		document.querySelector("input[value='no']").checked = true;
-	}
-
-
-
-
-	//file exists
-	document.getElementById("idol_img").src=path;
-
-	nameAssign(name);
-	document.getElementById("card_id").value = id;
-
-	if (globalAudio!=null){
-		globalAudio.pause();
-	}
-
-	
-}
-
-function mainBackgroundSet(index){
-	background = parseInt(index);
-	var backpath = 'images/background/background' + index.toString() + '.png';
-	document.getElementById("homeScreen").src=backpath;
-}
-
-function checkCookie() {
-    var index=getCookie("waifu-index");
-    if (index != null && index != "") {
-        mainWaifuSet(index);
-    } else{
-    	document.getElementById("idol_img").src= 'images/waifu/honoka0.png';
-    }
-}
-
-function checkBackgroundCookie() {
-    var index=getCookie("background-index");
-
-    if (index != null && index != "") {
-        mainBackgroundSet(index);
-    } else{
-    	document.getElementById("homeScreen").src= 'images/background/background0.png';
-    }
-}
-
-function storeCookie(index)
-{
-	setCookie("waifu-index", index, 6);
-}
-
-function storeBackgroundCookie(index)
-{
-	setCookie("background-index", index, 5);
-}
 
 
 function searchNameById(id)
@@ -498,9 +409,6 @@ function changeWaifu(name, index){
 	}
 
 	function homeClick() {
-		//document.getElementById("home_but").src="images/home-button.png";
-
-
     	var x = document.getElementById("homeScreen").useMap = "#clickmap";
 
 		var mode = 0;
@@ -598,7 +506,6 @@ function changeWaifu(name, index){
 	{
 		var camera_path = 'audio/camera-shutter.mp3'
 		var camera_audio = new Audio(camera_path);
-		//camera_audio.volume = voiceVolume;
 		camera_audio.play();
 
 		var backgroundpath = 'images/background/background' + background.toString() + '.png';

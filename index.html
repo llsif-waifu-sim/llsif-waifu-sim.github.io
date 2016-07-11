@@ -3,6 +3,7 @@
 	<head>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 	<script src="js/id-log.js"></script>
+	<script src="js/info-storage.js"></script>
 	<script src="js/audio-handle.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -72,9 +73,9 @@
 	<div id="container">
     	<img id='homeScreen' src='' width="220" height="277">
     	<img id="idol_img" src='' usemap="#waifumap">
-    	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick='homeClick()'>
+    	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
-    	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="memberClick()">
+    	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
     	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
     	<div id="speech-bubble" class="bubble" style='display:none;'>
@@ -161,7 +162,7 @@
 					<p>Background Music Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="30" min="1" max="100" step="1" onchange="updateVolumeMusic(this.value)"></p>	
 				</td>
 				<td>
-					<p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
+					<p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
 
 				</td>
 			</tr>
@@ -173,41 +174,68 @@
 
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+        	<div class="modal-footer">
+          		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+     	 </div>
       
-    </div>
-  </div>
+    	</div>
+  	</div>
 
 
 
-  <div class="modal fade" id="snapshotModal" role="dialog">
-    <div class="modal-dialog" style='width: 1200px; height:800px;'>
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Snapshot</h4>
-        </div>
-        <div class="modal-body">
-        	<center>
-        		<canvas id="snapshot-canvas"></canvas>
-        	</center>
-          
-        	<script src="js/canvas-manage.js"></script>
+	  <div class="modal fade" id="snapshotModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Snapshot</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<center>
+	        		<canvas id="snapshot-canvas"></canvas>
+	        	</center>
+	          
+	        	<script src="js/canvas-manage.js"></script>
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
+
+
+	<div class="modal fade" id="memberModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Manage Waifu Team</h4>
+	        </div>
+	        <div class="modal-body">
+
+			
+
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
 
 
 	</body>

@@ -22,7 +22,7 @@ function printPhotoCanvas(backgroundpath){
 
 
 
-    /*
+    /* Working on trying to solve the speech bubble problem
 	var canvas = document.getElementById("snapshot-canvas");
 
 
