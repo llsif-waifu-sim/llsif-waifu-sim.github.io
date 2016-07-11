@@ -7,8 +7,10 @@ function loadWaifuList()
             var name = "Name: " + id_log[index][1];
             var idolized = id_log[index][2];
             
+            
             document.getElementById("id-saved").innerHTML = id;
             document.getElementById("name-saved").innerHTML = name;
+            document.getElementById("idolized-saved").innerHTML = idolized;
             
         } else {
             document.getElementById("waifu_load_but").disabled = true;

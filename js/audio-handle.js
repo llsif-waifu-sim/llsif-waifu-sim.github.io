@@ -322,7 +322,7 @@ function searchId()
 
 			nameAssign(name);
 
-			globalIndex = searchIndexById(id);
+			globalIndex = searchIndexById(id, idolized);
 
 			if (globalAudio!=null){
 				globalAudio.pause();
@@ -435,14 +435,16 @@ function changeWaifu(name, index){
 
 		var id = parseInt(id_log[i][0]);
 		var name = id_log[i][1];
-		//var idolized = id_log[i][2];
+		var idolized = id_log[i][2];
 
 
 		var html_id = "ID: " + parseInt(id_log[i][0]);
 	    var html_name = "Name: " + id_log[i][1];
+	    var html_idol = "Idolized: " + id_log[i][2];
 	    
 	    document.getElementById("id-saved").innerHTML = html_id;
 	    document.getElementById("name-saved").innerHTML = html_name;
+	    document.getElementById("idolized-saved").innerHTML = html_idol;
 	}
 
 	function homeClick() {
