@@ -209,52 +209,7 @@ function volumeBackSet(volume_value)
     
 }
 
-/*
-function saveWaifuLoad(index)
-{
-        alert('bsss');
 
-        var id = parseInt(id_log[index][0]);
-        var name = id_log[index][1];
-        var idolized = id_log[index][2];
-        
-        var html_id = "ID: " + parseInt(id_log[index][0]);
-        var html_name = "Name: " + getFullName(id_log[index][1]);
-        var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
-
-        
-        document.getElementById("id-saved").innerHTML = html_id;
-        document.getElementById("name-saved").innerHTML = html_name;
-        document.getElementById("idolized-saved").innerHTML = html_idol;
-
-        // Once we get the info, get the image
-        var path;
-
-        if(idolized == 'yes')
-        {
-            path = "./scraped-images/" + name + "/" + id + "_id.png";
-            document.querySelector("input[value='yes']").checked = true;
-        }else{
-            path = "./scraped-images/" + name +  "/" + id + ".png";
-            document.querySelector("input[value='no']").checked = true;
-        }
-
-
-
-
-        //file exists
-        document.getElementById("idol_img").src=path;
-
-        nameAssign(name);
-        document.getElementById("card_id").value = id;
-
-        if (globalAudio!=null){
-            globalAudio.pause();
-        }
-
-    
-}
-*/
 
 function savedWaifuLoad(index)
 {
@@ -285,6 +240,11 @@ function savedWaifuLoad(index)
     if (globalAudio!=null){
         globalAudio.pause();
     }
+
+    setTimeout(function() {
+        commandSelect(0);
+    }, 500, true)
+
 
 }
 
