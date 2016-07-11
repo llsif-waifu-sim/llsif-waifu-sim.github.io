@@ -4,6 +4,8 @@ var background = 0;
 var globalIndex = 0;
 
 
+// Setting and getting the cookies
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -185,8 +187,8 @@ function saveWaifuLoad(index)
     var idolized = id_log[index][2];
     
     var html_id = "ID: " + parseInt(id_log[index][0]);
-    var html_name = "Name: " + id_log[index][1];
-    var html_idol = "Idolized: " + id_log[i][2];
+    var html_name = "Name: " + getFullName(id_log[index][1]);
+    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
 
     
     document.getElementById("id-saved").innerHTML = html_id;
@@ -254,3 +256,38 @@ function savedWaifuLoad(index)
 
 
 
+
+
+
+
+
+// Functions that the cookie functions may need
+function getFullName(name)
+{
+    if(name == 'honoka')
+    {
+        return 'Kousaka Honoka';
+    } else if(name == 'kotori'){
+        return 'Minami Kotori';
+    }else if(name == 'umi'){
+        return 'Sonoda Umi';
+    } else if(name == 'hanayo'){
+        return 'Koizumi Hanayo';
+    } else if(name == 'rin'){
+        return 'Hoshizora Rin';
+    } else if(name == 'maki'){
+        return 'Nishikino Maki';
+    } else if(name == 'nozomi'){
+        return 'Tojo Nozomi';
+    } else if(name == 'eli'){
+        return 'Ayase Eli';
+    } else if(name == 'nico'){
+        return 'Yazawa Nico';
+    } else {
+        return 'none';
+    }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -103,9 +103,7 @@ function isInt(value) {
          !isNaN(parseInt(value, 10));
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
 
 function nameAssign(name)
 {
@@ -439,8 +437,8 @@ function changeWaifu(name, index){
 
 
 		var html_id = "ID: " + parseInt(id_log[i][0]);
-	    var html_name = "Name: " + id_log[i][1];
-	    var html_idol = "Idolized: " + id_log[i][2];
+	    var html_name = "Name: " + getFullName(id_log[i][1]);
+	    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
 	    
 	    document.getElementById("id-saved").innerHTML = html_id;
 	    document.getElementById("name-saved").innerHTML = html_name;
