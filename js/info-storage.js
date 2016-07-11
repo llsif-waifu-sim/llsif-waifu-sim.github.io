@@ -69,16 +69,39 @@ function checkVolumeCookie() {
     }
 }
 
-function checkWaifuLoadCookie() {
-    var index=getCookie("saved-waifu-index");
+function checkWaifuLoadCookie(but_id) {
+    var index=getCookie("saved-waifu-index-1");
+    var index2=getCookie("saved-waifu-index-2");
+    var index3=getCookie("saved-waifu-index-3");
 
     if (index != null && index != "") {
-        globalIndex = index;
-        savedWaifuLoad(index);
-    } else {
-        document.getElementById("waifu_load_but").disabled = true;
-        $('waifu_load_but').prop('disabled', true);   
-    }
+
+        if(but_id == 'waifu_load_but_1'){
+            globalIndex = index;
+            savedWaifuLoad(index);
+        }
+        
+        
+    } 
+
+    if (index2 != null && index2 != "") {
+
+        if(but_id == 'waifu_load_but_2'){
+            globalIndex = index2;
+            savedWaifuLoad(index2);
+        }
+        
+        
+    } 
+
+    if (index3 != null && index3 != "") {
+
+        if(but_id == 'waifu_load_but_3'){
+            globalIndex = index3;
+            savedWaifuLoad(index3);
+        }
+            
+    } 
 }
 
 
@@ -92,9 +115,16 @@ function storeCookie(index)
     setCookie("waifu-index", index, 6);
 }
 
-function storeSaveWaifuCookie(index)
+function storeSaveWaifuCookie(index, but_id)
 {
-    setCookie("saved-waifu-index", index, 6);
+    if(but_id == 'waifu_save_but_1'){
+       setCookie("saved-waifu-index-1", index, 6); 
+   } else if(but_id == 'waifu_save_but_2'){
+       setCookie("saved-waifu-index-2", index, 6); 
+   } if(but_id == 'waifu_save_but_3'){
+       setCookie("saved-waifu-index-3", index, 6); 
+   } 
+    
 }
 
 
@@ -179,52 +209,56 @@ function volumeBackSet(volume_value)
     
 }
 
+/*
 function saveWaifuLoad(index)
 {
+        alert('bsss');
 
-    var id = parseInt(id_log[index][0]);
-    var name = id_log[index][1];
-    var idolized = id_log[index][2];
-    
-    var html_id = "ID: " + parseInt(id_log[index][0]);
-    var html_name = "Name: " + getFullName(id_log[index][1]);
-    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
+        var id = parseInt(id_log[index][0]);
+        var name = id_log[index][1];
+        var idolized = id_log[index][2];
+        
+        var html_id = "ID: " + parseInt(id_log[index][0]);
+        var html_name = "Name: " + getFullName(id_log[index][1]);
+        var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
 
-    
-    document.getElementById("id-saved").innerHTML = html_id;
-    document.getElementById("name-saved").innerHTML = html_name;
-    document.getElementById("idolized-saved").innerHTML = html_idol;
+        
+        document.getElementById("id-saved").innerHTML = html_id;
+        document.getElementById("name-saved").innerHTML = html_name;
+        document.getElementById("idolized-saved").innerHTML = html_idol;
 
-    // Once we get the info, get the image
-    var path;
+        // Once we get the info, get the image
+        var path;
 
-    if(idolized == 'yes')
-    {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
-        document.querySelector("input[value='yes']").checked = true;
-    }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
-        document.querySelector("input[value='no']").checked = true;
-    }
-
-
+        if(idolized == 'yes')
+        {
+            path = "./scraped-images/" + name + "/" + id + "_id.png";
+            document.querySelector("input[value='yes']").checked = true;
+        }else{
+            path = "./scraped-images/" + name +  "/" + id + ".png";
+            document.querySelector("input[value='no']").checked = true;
+        }
 
 
-    //file exists
-    document.getElementById("idol_img").src=path;
 
-    nameAssign(name);
-    document.getElementById("card_id").value = id;
 
-    if (globalAudio!=null){
-        globalAudio.pause();
-    }
+        //file exists
+        document.getElementById("idol_img").src=path;
+
+        nameAssign(name);
+        document.getElementById("card_id").value = id;
+
+        if (globalAudio!=null){
+            globalAudio.pause();
+        }
 
     
 }
+*/
 
 function savedWaifuLoad(index)
 {
+
     var id = parseInt(id_log[index][0]);
     var name = id_log[index][1];
     var idolized = id_log[index][2];

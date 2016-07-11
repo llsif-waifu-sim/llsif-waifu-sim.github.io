@@ -421,28 +421,91 @@ function changeWaifu(name, index){
 
 	}
 
-	function saveWaifu()
+	function saveWaifu(but_id)
 	{
-		storeSaveWaifuCookie(globalIndex);
-		var i = globalIndex;
+	
+		storeSaveWaifuCookie(globalIndex, but_id);
+	
+	    if(but_id == 'waifu_save_but_1'){
 
 
 
-		document.getElementById("waifu_load_but").disabled = false;
-        $('waifu_load_but').prop('disabled', false); 
-
-		var id = parseInt(id_log[i][0]);
-		var name = id_log[i][1];
-		var idolized = id_log[i][2];
+			var i = globalIndex;
 
 
-		var html_id = "ID: " + parseInt(id_log[i][0]);
-	    var html_name = "Name: " + getFullName(id_log[i][1]);
-	    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
-	    
-	    document.getElementById("id-saved").innerHTML = html_id;
-	    document.getElementById("name-saved").innerHTML = html_name;
-	    document.getElementById("idolized-saved").innerHTML = html_idol;
+
+			document.getElementById("waifu_load_but_1").disabled = false;
+	        $('waifu_load_but_1').prop('disabled', false); 
+
+
+			var id = parseInt(id_log[i][0]);
+			var name = id_log[i][1];
+			var idolized = id_log[i][2];
+
+
+			var html_id = "ID: " + parseInt(id_log[i][0]);
+		    var html_name = "Name: " + getFullName(id_log[i][1]);
+		    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
+
+
+
+
+
+		    document.getElementById("id-saved-1").innerHTML = html_id;
+		    document.getElementById("name-saved-1").innerHTML = html_name;
+		    document.getElementById("idolized-saved-1").innerHTML = html_idol;
+		} else if(but_id == 'waifu_save_but_2'){
+
+
+			var i = globalIndex;
+
+
+
+			document.getElementById("waifu_load_but_2").disabled = false;
+	        $('waifu_load_but_2').prop('disabled', false); 
+
+
+			var id = parseInt(id_log[i][0]);
+			var name = id_log[i][1];
+			var idolized = id_log[i][2];
+
+
+			var html_id = "ID: " + parseInt(id_log[i][0]);
+		    var html_name = "Name: " + getFullName(id_log[i][1]);
+		    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
+
+
+
+		    document.getElementById("id-saved-2").innerHTML = html_id;
+		    document.getElementById("name-saved-2").innerHTML = html_name;
+		    document.getElementById("idolized-saved-2").innerHTML = html_idol;
+
+		} else if(but_id == 'waifu_save_but_3'){
+
+			
+			var i = globalIndex;
+
+
+
+			document.getElementById("waifu_load_but_3").disabled = false;
+	        $('waifu_load_but_3').prop('disabled', false); 
+
+
+			var id = parseInt(id_log[i][0]);
+			var name = id_log[i][1];
+			var idolized = id_log[i][2];
+
+
+			var html_id = "ID: " + parseInt(id_log[i][0]);
+		    var html_name = "Name: " + getFullName(id_log[i][1]);
+		    var html_idol = "Idolized: " + capitalizeFirstLetter(id_log[i][2]);
+
+
+		    document.getElementById("id-saved-3").innerHTML = html_id;
+		    document.getElementById("name-saved-3").innerHTML = html_name;
+		    document.getElementById("idolized-saved-3").innerHTML = html_idol;
+
+		} 
 	}
 
 	function homeClick() {
