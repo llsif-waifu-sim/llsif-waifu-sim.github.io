@@ -7,6 +7,16 @@ var away = false;
 
 $(window).blur(function() { 
 	away = true;
+
+	jQuery(function ($) {
+	    var time_final = 20;
+
+	    if(away){
+	    	tabTimer(time_final, 1);
+	    }
+	    
+	});
+
 });
 
 
@@ -20,14 +30,7 @@ $(window).focus(function() {
 
 		
 
-		var neg = forgetWaifuRNG(20);
-
-		if(neg == -1){
-			// If forget waifu speech was not successful
-			setTimeout(function() {
-	    		commandSelect(0);
-			}, 1000, true)
-		}
+		
 
 		
 		
@@ -37,6 +40,48 @@ $(window).focus(function() {
 		
 	}
 });
+
+
+
+function tabTimer(duration, lock) {
+    var timer = duration, minutes, seconds;
+    
+	    setInterval(function () {
+	        minutes = parseInt(timer / 60, 10)
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+
+	        if ((--timer < 0) && !away && lock == 1) {
+	        	lock = 0;
+	            var neg = forgetWaifuRNG(7);
+
+				if(neg == -1 && !away){
+					// If forget waifu speech was not successful
+					setTimeout(function() {
+			    		commandSelect(0);
+					}, 1000, true)
+
+				}
+	            
+	        }
+
+
+	       
+
+	    }, 1000);
+
+	   return;
+	
+
+}
+
+
+
+
 
 function forgetWaifuRNG(maxRandNum)
 {
@@ -56,6 +101,7 @@ function forgetWaifuRNG(maxRandNum)
 		return 0;
 		
 	}
+	return -1;
 }
 
 
