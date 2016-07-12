@@ -1,84 +1,9 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
+var language = 'english';
 
 var away = false;
-
-
-$(window).blur(function() { 
-	away = true;
-
-	jQuery(function ($) {
-	    var time_final = 20;
-
-	    if(away){
-	    	tabTimer(time_final, 1);
-	    }
-	    
-	});
-
-});
-
-
-
-$(window).focus(function() { 
-	if(away){
-		away = false;
-
-		// Welcome back script
-
-
-		
-
-		
-
-		
-		
-
-		
-		
-		
-	}
-});
-
-
-
-function tabTimer(duration, lock) {
-    var timer = duration, minutes, seconds;
-    
-	    setInterval(function () {
-	        minutes = parseInt(timer / 60, 10)
-	        seconds = parseInt(timer % 60, 10);
-
-	        minutes = minutes < 10 ? "0" + minutes : minutes;
-	        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-
-
-	        if ((--timer < 0) && !away && lock == 1) {
-	        	lock = 0;
-	            var neg = forgetWaifuRNG(7);
-
-				if(neg == -1 && !away){
-					// If forget waifu speech was not successful
-					setTimeout(function() {
-			    		commandSelect(0);
-					}, 1000, true)
-
-				}
-	            
-	        }
-
-
-	       
-
-	    }, 1000);
-
-	   return;
-	
-
-}
-
 
 
 
@@ -141,7 +66,10 @@ function forgotSpeech()
     var audioPath = "audio/";
     var waifuName = globalWaifu + "/";
     var file = 'forget/';
-    var n = 0;
+
+    var maxRandNum = 2;
+    var n = Math.floor(Math.random() * maxRandNum);
+
 
     var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
     globalAudio = new Audio(superString);
@@ -937,7 +865,11 @@ function changeWaifu(name, index){
 			document.getElementById("settings_but").src="images/buttons/settings-button-hover.png";
 		} else if(clicked_id == 'camera_but'){
 			document.getElementById("camera_but").src="images/buttons/camera-button-hover.png";
-		}
+		} else if(clicked_id == 'eng_but'){
+			document.getElementById("eng_but").src="images/buttons/english-icon-hover.png";
+		} else if(clicked_id == 'jap_but'){
+			document.getElementById("jap_but").src="images/buttons/japanese-icon-hover.png";
+		} 
 		
 	}
 
@@ -953,14 +885,38 @@ function changeWaifu(name, index){
 			document.getElementById("settings_but").src="images/buttons/settings-button.png";
 		} else if(clicked_id == 'camera_but'){
 			document.getElementById("camera_but").src="images/buttons/camera-button.png";
-		}
+		} else if(clicked_id == 'eng_but'){
+			
+			if(langauge =='english'){
+				document.getElementById("eng_but").src="images/buttons/english-icon-hover.png";
+			} else {
+				document.getElementById("eng_but").src="images/buttons/english-icon.png";
+			}
+
+		} else if(clicked_id == 'jap_but'){
+
+			if(language == 'japanese'){
+				document.getElementById("jap_but").src="images/buttons/japanese-icon-hover.png";
+			} else {
+				document.getElementById("jap_but").src="images/buttons/japanese-icon.png";
+			}
+
+			
+		} 
 	}
 
 
 
 	function changeSpeechText (path, n) {
 		
-		var pathString = "".concat("./", path, "speech.txt");
+		var pathString;
+		if(language == 'english'){
+			pathString = "".concat("./", path, "speech-en.txt");
+		} else if(language == 'japanese'){
+			pathString = "".concat("./", path, "speech.txt");
+		} else {
+			alert('Something went wrong');
+		}
 		
 		var client;
         if (window.XMLHttpRequest) {
@@ -996,5 +952,101 @@ function changeWaifu(name, index){
 	}
 
 
+
+$(window).blur(function() { 
+	away = true;
+
+	jQuery(function ($) {
+	    var time_final = 20;
+
+	    if(away){
+	    	tabTimer(time_final, 1);
+	    }
+	    
+	});
+
+});
+
+
+
+$(window).focus(function() { 
+	if(away){
+		away = false;
+
+	}
+});
+
+
+
+function tabTimer(duration, lock) {
+    var timer = duration, minutes, seconds;
+    var interval;
+	interval = setInterval(function () {
+	        minutes = parseInt(timer / 60, 10)
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+
+	        if ((--timer < 0) && !away && lock == 1) {
+	        	
+	            var neg = forgetWaifuRNG(7);
+
+				if(neg == -1 && !away && lock == 1){
+					// If forget waifu speech was not successful
+					
+					if(lock == 1){
+						lock = 0;
+			    		commandSelect(0);
+					}
+
+			    	clearInterval(interval);
+
+					return;
+				}
+	            return;
+	        }
+
+
+	       
+
+	    }, 1000);
+
+	   return;
+	
+
+}
+
+function changeLanguage(lang_num)
+{
+	var prev_lang = language;
+
+	if(lang_num == 0)
+	{
+		// English
+		language = 'english';
+		document.getElementById('language-tag').innerHTML = 'Current: English';
+
+		if(prev_lang == 'english')
+		{
+			return;
+		}
+
+		document.getElementById("jap_but").src="images/buttons/japanese-icon.png";
+
+	} else if (lang_num == 1){
+		language = 'japanese';
+		document.getElementById('language-tag').innerHTML = 'Current: Japanese';
+		if(prev_lang == 'japanese')
+		{
+			return;
+		}
+
+		document.getElementById("eng_but").src="images/buttons/english-icon.png";
+	}
+	commandSelect(0);
+}
 
 
