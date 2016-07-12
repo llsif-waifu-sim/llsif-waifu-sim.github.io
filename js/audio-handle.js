@@ -17,14 +17,46 @@ $(window).focus(function() {
 
 		// Welcome back script
 
+
 		
-		setTimeout(function() {
-    		commandSelect(0);
-		}, 1000, true)
+
+		var neg = forgetWaifuRNG(20);
+
+		if(neg == -1){
+			// If forget waifu speech was not successful
+			setTimeout(function() {
+	    		commandSelect(0);
+			}, 1000, true)
+		}
+
+		
+		
+
+		
+		
 		
 	}
 });
 
+function forgetWaifuRNG(maxRandNum)
+{
+	// Random number generation for forget speech
+
+	var n = Math.floor(Math.random() * maxRandNum);
+
+	// Forget speech
+	if(n == maxRandNum - 1){
+		var neg = changeWaifuLoadRandom();
+		if(neg == -1)
+		{
+			return -1;
+		}
+
+		forgotSpeech();
+		return 0;
+		
+	}
+}
 
 
 var timeout;
@@ -59,8 +91,7 @@ function inactiveSpeech()
 
 function forgotSpeech()
 {
-	changeWaifuLoadRandom();
-
+	
     var audioPath = "audio/";
     var waifuName = globalWaifu + "/";
     var file = 'forget/';
@@ -114,36 +145,59 @@ function forgetWaifuLoad(index)
 
 }
 
+
+
+
 function changeWaifuLoadRandom() {
     var index=getCookie("saved-waifu-index-1");
     var index2=getCookie("saved-waifu-index-2");
     var index3=getCookie("saved-waifu-index-3");
 
-    if (index != null && index != "") {
 
-        //if(but_id == 'waifu_load_but_1'){
-            globalIndex = index;
-            forgetWaifuLoad(index);
-        //}
-        return 1;
-        
-        
-    } else if (index2 != null && index2 != "") {
 
-        //if(but_id == 'waifu_load_but_2'){
-            globalIndex = index2;
-            forgetWaifuLoad(index2);
-        //}
-        return 2;
-        
-    } else if (index3 != null && index3 != "") {
+    if((index == null && index == "") && (index2 == null && index2 == "") && (index3 == null && index3 == ""))
+    {
+    	return -1;
+    }
 
-        //if(but_id == 'waifu_load_but_3'){
-            globalIndex = index3;
-            forgetWaifuLoad(index3);
-        //}
-        return 3;
-    } 
+
+
+    var nums = [1,2,3],
+    ranNums = [],
+    i = nums.length,
+    j = 0;
+
+	while (i--) {
+	    j = Math.floor(Math.random() * (i+1));
+	    ranNums.push(nums[j]);
+	    if(nums[j] == 1){
+	    	 if (index != null && index != "") {
+		        globalIndex = index;
+		        forgetWaifuLoad(index);
+		        return 1;  
+		    }
+	    } else if (nums[j] == 2){
+	    	if (index2 != null && index2 != "") {
+		        globalIndex = index2;
+		        forgetWaifuLoad(index2);
+		        return 2;	        
+		    }
+	    } else if (nums[j] == 3){
+			if (index3 != null && index3 != "") {
+		        globalIndex = index3;
+		        forgetWaifuLoad(index3);
+		        return 3;
+		    } 
+	    }
+	    
+	    nums.splice(j,1);
+	}
+
+
+
+
+
+     
 
     return -1;
 }
@@ -397,15 +451,14 @@ function cardRNG()
 
 function getRandomWaifu()
 {
-	// Random number generation for forget speech
-	var maxRandNum = 100;
-	var n = Math.floor(Math.random() * maxRandNum);
 
-	// Forget speech
-	if(n == maxRandNum - 1){
-		forgotSpeech();
+	var neg = forgetWaifuRNG(30);
+
+	if(neg == 0){
+		// forgetWaifu speech was successful
 		return;
 	}
+
 
 	var i = waifuRNG();
 	var id = parseInt(id_log[i][0]);
@@ -451,13 +504,10 @@ function getRandomWaifu()
 
 function getRandomCard()
 {
-	// Random number generation for forget speech
-	var maxRandNum = 100;
-	var n = Math.floor(Math.random() * maxRandNum);
+	var neg = forgetWaifuRNG(30);
 
-	// Forget speech
-	if(n == maxRandNum - 1){
-		forgotSpeech();
+	if(neg == 0){
+		// forgetWaifu speech was successful
 		return;
 	}
 
