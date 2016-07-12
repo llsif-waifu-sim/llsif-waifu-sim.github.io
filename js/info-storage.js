@@ -108,6 +108,9 @@ function checkWaifuLoadCookie(but_id) {
 
 
 
+
+
+
 // Store cookies
 
 function storeCookie(index)
@@ -255,6 +258,8 @@ function savedWaifuLoad(index)
 
 
 
+
+
 // Functions that the cookie functions may need
 function getFullName(name)
 {
@@ -285,3 +290,4 @@ function getFullName(name)
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+

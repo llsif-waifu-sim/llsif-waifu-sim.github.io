@@ -5,13 +5,6 @@ var maxNumOfCard = 960;
 var away = false;
 
 
-//var d = new Date();
-//var month = d.getMonth() + 1;
-//var day = d.getDate();
-//var year = d.getFullYear();
-
-
-
 $(window).blur(function() { 
 	away = true;
 });
@@ -31,8 +24,6 @@ $(window).focus(function() {
 		
 	}
 });
-
-
 
 
 
@@ -66,6 +57,96 @@ function inactiveSpeech()
 }
 
 
+function forgotSpeech()
+{
+	changeWaifuLoadRandom();
+
+    var audioPath = "audio/";
+    var waifuName = globalWaifu + "/";
+    var file = 'forget/';
+    var n = 0;
+
+    var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+    globalAudio = new Audio(superString);
+    globalAudio.volume = voiceVolume;
+    globalAudio.play();
+        
+
+    var pathString = "".concat(audioPath, waifuName, file);
+    changeSpeechText(pathString, n);
+    refreshBubble();
+
+
+}
+
+function forgetWaifuLoad(index)
+{
+
+    var id = parseInt(id_log[index][0]);
+    var name = id_log[index][1];
+    var idolized = id_log[index][2];
+
+
+    // Once we get the info, get the image
+    var path;
+
+    if(idolized == 'yes')
+    {
+        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        document.querySelector("input[value='yes']").checked = true;
+    }else{
+        path = "./scraped-images/" + name +  "/" + id + ".png";
+        document.querySelector("input[value='no']").checked = true;
+    }
+
+    //file exists
+    document.getElementById("idol_img").src=path;
+
+    nameAssign(name);
+    document.getElementById("card_id").value = id;
+
+    if (globalAudio!=null){
+        globalAudio.pause();
+    }
+
+  
+
+
+}
+
+function changeWaifuLoadRandom() {
+    var index=getCookie("saved-waifu-index-1");
+    var index2=getCookie("saved-waifu-index-2");
+    var index3=getCookie("saved-waifu-index-3");
+
+    if (index != null && index != "") {
+
+        //if(but_id == 'waifu_load_but_1'){
+            globalIndex = index;
+            forgetWaifuLoad(index);
+        //}
+        return 1;
+        
+        
+    } else if (index2 != null && index2 != "") {
+
+        //if(but_id == 'waifu_load_but_2'){
+            globalIndex = index2;
+            forgetWaifuLoad(index2);
+        //}
+        return 2;
+        
+    } else if (index3 != null && index3 != "") {
+
+        //if(but_id == 'waifu_load_but_3'){
+            globalIndex = index3;
+            forgetWaifuLoad(index3);
+        //}
+        return 3;
+    } 
+
+    return -1;
+}
 
 
 
@@ -160,6 +241,10 @@ function timeSpeech()
 		alert('Something went wrong');
 		return;
 	}
+
+	if (globalAudio!=null){
+        globalAudio.pause();
+    }
 
 	var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
 	globalAudio = new Audio(superString);
@@ -312,6 +397,16 @@ function cardRNG()
 
 function getRandomWaifu()
 {
+	// Random number generation for forget speech
+	var maxRandNum = 100;
+	var n = Math.floor(Math.random() * maxRandNum);
+
+	// Forget speech
+	if(n == maxRandNum - 1){
+		forgotSpeech();
+		return;
+	}
+
 	var i = waifuRNG();
 	var id = parseInt(id_log[i][0]);
 	var name = id_log[i][1];
@@ -356,6 +451,17 @@ function getRandomWaifu()
 
 function getRandomCard()
 {
+	// Random number generation for forget speech
+	var maxRandNum = 100;
+	var n = Math.floor(Math.random() * maxRandNum);
+
+	// Forget speech
+	if(n == maxRandNum - 1){
+		forgotSpeech();
+		return;
+	}
+
+
 	var i = cardRNG();
 	var id = parseInt(id_log[i][0]);
 	var name = id_log[i][1];
@@ -558,6 +664,14 @@ function changeWaifu(name, index){
 			var maxNum = 15;
 			n = Math.floor(Math.random() * maxNum);
 			file = "home/";
+
+
+			// Activate month speech
+			if(n == maxNum - 1){
+				seasonSpeech();
+				return;
+			}
+
 		} else if (mode == 1){
 			// Waifu button RNG
 			var maxNum = 11;
@@ -576,11 +690,7 @@ function changeWaifu(name, index){
 		}
 
 
-		// Activate month speech
-		if(n == maxNum - 1){
-			seasonSpeech();
-			return;
-		}
+		
 
 		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
 		globalAudio = new Audio(superString);
