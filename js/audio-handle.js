@@ -12,7 +12,6 @@ var away = false;
 
 
 
-
 $(window).blur(function() { 
 	away = true;
 });
@@ -25,24 +24,74 @@ $(window).focus(function() {
 
 		// Welcome back script
 
+		
 		setTimeout(function() {
     		commandSelect(0);
 		}, 1000, true)
+		
 	}
 });
 
-var timeout;
-document.onmousemove = function(){
-  clearTimeout(timeout);
-  timeout = setTimeout(function(){
-  	// Inactive script
 
-  }, 30000);
+
+
+
+var timeout;
+var countdown = 25000;
+$(document).on('mousemove', function(){
+
+	clearTimeout(timeout);
+	timeout = setTimeout(inactiveSpeech, countdown);
+
+})
+
+function inactiveSpeech()
+{
+	var id = parseInt(id_log[globalIndex][0]);
+	var name = id_log[globalIndex][1];
+	var idolized = id_log[globalIndex][2];
+			
+	timeSpeech(name);
+	clearTimeout(timeout);
+	timeout = setTimeout(inactiveSpeech, countdown);
 }
 
 
 
-function seasonSpeech()
+
+
+/*
+var timeout;
+document.onmousemove = function(){
+	clearTimeout(timeout);
+
+	if (timeout) {
+		clearTimeout(timeout);
+		timeout = 0;
+	}
+
+
+	timeout = setTimeout(function(){
+  		var id = parseInt(id_log[globalIndex][0]);
+		var name = id_log[globalIndex][1];
+		var idolized = id_log[globalIndex][2];
+			
+		timeSpeech(name);
+
+  	}, 1000);
+
+  
+
+}
+
+*/
+
+
+
+
+
+
+function seasonSpeech(name)
 {
 	var today;
 	today = new Date();
@@ -66,42 +115,70 @@ function seasonSpeech()
 	}
 }
 
-function timeSpeech()
+function timeSpeech(name)
 {
 	var today;
+	today = new Date();
 	var curr_hour = today.getHours();
 
 
-	var maxNum = 1;
+	var maxNum = 4;
 	var n = Math.floor(Math.random() * maxNum);
 
-	//if(curr_hour >= 5 && curr_hour <= 16){
-		// Between 5am and 4pm
+
+	var audioPath = "audio/";
+	var waifuName = globalWaifu + "/";
+	var file = 'inactive/';
+	var n;
+
+
+
+
 
 	if(n == 0){
+		// Play the 12:00am to 11:59pm clip
+		n = 0;
+
+	} else if(n == 1){
+
 		if(curr_hour <= 5 && curr_hour >= 17){
 			// 5am to 5pm
-
-		} else {
-			if(curr_hour >= 5 && curr_hour <= 11){
-				// 5am to 11am
-
-			} else if(curr_hour >= 11 && curr_hour <= 17){
-				// 11am to 5pm
-
-			} else if(curr_hour >= 17 && curr_hour <= 22){
-				// 5pm to 10pm
-
-			} else if(curr_hour >= 22 || curr_hour <= 5){
-				// 10pm to 5am
-
-			}
+			n = 1;
+		} else if(curr_hour <= 17  || curr_hour >= 4){
+			// From 5pm to 4am
+			n = 2;
 		}
-	} else if(n == 1){
-		// Play the 12:00am to 11:59pm clip
 
+	} else if (n >= 2){
+
+		if(curr_hour >= 5 && curr_hour <= 11){
+			// 5am to 11am
+			n = 3;
+		} else if(curr_hour >= 11 && curr_hour <= 17){
+			// 11am to 5pm
+			n = 4;
+		} else if(curr_hour >= 17 && curr_hour <= 22){
+			// 5pm to 10pm
+			n = 5;
+		} else if(curr_hour >= 22 || curr_hour <= 5){
+			// 10pm to 5am
+			n = 6;
+		}
+	
+	} else {
+		alert('Something went wrong');
+		return;
 	}
 
+	var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+	globalAudio = new Audio(superString);
+	globalAudio.volume = voiceVolume;
+	globalAudio.play();
+		
+
+	var pathString = "".concat(audioPath, waifuName, file);
+	changeSpeechText(pathString, n);
+	refreshBubble();
 
 }
 
@@ -682,6 +759,7 @@ function changeWaifu(name, index){
 	function changeSpeechText (path, n) {
 		
 		var pathString = "".concat("./", path, "speech.txt");
+		
 		var client;
         if (window.XMLHttpRequest) {
 		    // code for modern browsers
