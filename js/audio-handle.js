@@ -2,7 +2,108 @@ var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
 
+var away = false;
 
+
+//var d = new Date();
+//var month = d.getMonth() + 1;
+//var day = d.getDate();
+//var year = d.getFullYear();
+
+
+
+
+$(window).blur(function() { 
+	away = true;
+});
+
+
+
+$(window).focus(function() { 
+	if(away = true){
+		away = false;
+
+		// Welcome back script
+
+		setTimeout(function() {
+    		commandSelect(0);
+		}, 1000, true)
+	}
+});
+
+var timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+  	// Inactive script
+
+  }, 30000);
+}
+
+
+
+function seasonSpeech()
+{
+	var today;
+	today = new Date();
+	var curr_year = today.getFullYear();
+	var curr_month = today.getMonth() + 1;
+
+
+	// setFullYear(Year, month, day)
+	if(curr_month >= 3 &&  curr_month <= 5){
+		// Between 3/1 and 5/31
+
+	} else if(curr_month >= 6  &&  curr_month <= 8){
+		// Between 6/1 and 8/31
+
+	} else if(curr_month >= 9 && curr_month <= 11){
+		// 9/1 to 11/30
+
+	} else if( curr_month >= 12 || curr_month <= 2){
+		// 12/1/(year) to 2/29/(year + 1)
+	
+	}
+}
+
+function timeSpeech()
+{
+	var today;
+	var curr_hour = today.getHours();
+
+
+	var maxNum = 1;
+	var n = Math.floor(Math.random() * maxNum);
+
+	//if(curr_hour >= 5 && curr_hour <= 16){
+		// Between 5am and 4pm
+
+	if(n == 0){
+		if(curr_hour <= 5 && curr_hour >= 17){
+			// 5am to 5pm
+
+		} else {
+			if(curr_hour >= 5 && curr_hour <= 11){
+				// 5am to 11am
+
+			} else if(curr_hour >= 11 && curr_hour <= 17){
+				// 11am to 5pm
+
+			} else if(curr_hour >= 17 && curr_hour <= 22){
+				// 5pm to 10pm
+
+			} else if(curr_hour >= 22 || curr_hour <= 5){
+				// 10pm to 5am
+
+			}
+		}
+	} else if(n == 1){
+		// Play the 12:00am to 11:59pm clip
+
+	}
+
+
+}
 
 
 
