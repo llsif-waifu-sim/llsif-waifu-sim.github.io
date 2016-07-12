@@ -57,7 +57,7 @@ function inactiveSpeech()
 			
 	
 	if(!away){
-		timeSpeech(name);
+		timeSpeech();
 		clearTimeout(timeout);
 		timeout = setTimeout(inactiveSpeech, countdown);
 	} else {
@@ -70,7 +70,7 @@ function inactiveSpeech()
 
 
 
-function seasonSpeech(name)
+function seasonSpeech()
 {
 	var today;
 	today = new Date();
@@ -78,23 +78,39 @@ function seasonSpeech(name)
 	var curr_month = today.getMonth() + 1;
 
 
+	var audioPath = "audio/";
+	var waifuName = globalWaifu + "/";
+	var file = 'months/';
+	var n;
+
+
 	// setFullYear(Year, month, day)
 	if(curr_month >= 3 &&  curr_month <= 5){
 		// Between 3/1 and 5/31
-
+		n = 0;
 	} else if(curr_month >= 6  &&  curr_month <= 8){
 		// Between 6/1 and 8/31
-
+		n = 1;
 	} else if(curr_month >= 9 && curr_month <= 11){
 		// 9/1 to 11/30
-
+		n = 2;
 	} else if( curr_month >= 12 || curr_month <= 2){
 		// 12/1/(year) to 2/29/(year + 1)
-	
+		n = 3;
 	}
+
+	var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+	globalAudio = new Audio(superString);
+	globalAudio.volume = voiceVolume;
+	globalAudio.play();
+		
+
+	var pathString = "".concat(audioPath, waifuName, file);
+	changeSpeechText(pathString, n);
+	refreshBubble();
 }
 
-function timeSpeech(name)
+function timeSpeech()
 {
 	var today;
 	today = new Date();
@@ -109,10 +125,6 @@ function timeSpeech(name)
 	var waifuName = globalWaifu + "/";
 	var file = 'inactive/';
 	var n;
-
-
-
-
 
 	if(n == 0){
 		// Play the 12:00am to 11:59pm clip
@@ -543,7 +555,7 @@ function changeWaifu(name, index){
 
 		if(mode == 0){
 			// Home button RNG
-			var maxNum = 14;
+			var maxNum = 15;
 			n = Math.floor(Math.random() * maxNum);
 			file = "home/";
 		} else if (mode == 1){
@@ -564,6 +576,11 @@ function changeWaifu(name, index){
 		}
 
 
+		// Activate month speech
+		if(n == maxNum - 1){
+			seasonSpeech();
+			return;
+		}
 
 		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
 		globalAudio = new Audio(superString);
