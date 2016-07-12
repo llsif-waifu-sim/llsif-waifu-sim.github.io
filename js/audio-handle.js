@@ -19,7 +19,7 @@ $(window).blur(function() {
 
 
 $(window).focus(function() { 
-	if(away = true){
+	if(away){
 		away = false;
 
 		// Welcome back script
@@ -37,13 +37,17 @@ $(window).focus(function() {
 
 
 var timeout;
-var countdown = 25000;
+var countdown = 30000;
+
 $(document).on('mousemove', function(){
 
 	clearTimeout(timeout);
+
+	
 	timeout = setTimeout(inactiveSpeech, countdown);
 
 })
+
 
 function inactiveSpeech()
 {
@@ -51,40 +55,15 @@ function inactiveSpeech()
 	var name = id_log[globalIndex][1];
 	var idolized = id_log[globalIndex][2];
 			
-	timeSpeech(name);
-	clearTimeout(timeout);
-	timeout = setTimeout(inactiveSpeech, countdown);
-}
-
-
-
-
-
-/*
-var timeout;
-document.onmousemove = function(){
-	clearTimeout(timeout);
-
-	if (timeout) {
-		clearTimeout(timeout);
-		timeout = 0;
-	}
-
-
-	timeout = setTimeout(function(){
-  		var id = parseInt(id_log[globalIndex][0]);
-		var name = id_log[globalIndex][1];
-		var idolized = id_log[globalIndex][2];
-			
+	
+	if(!away){
 		timeSpeech(name);
-
-  	}, 1000);
-
-  
-
+		clearTimeout(timeout);
+		timeout = setTimeout(inactiveSpeech, countdown);
+	} else {
+		return;
+	}
 }
-
-*/
 
 
 
