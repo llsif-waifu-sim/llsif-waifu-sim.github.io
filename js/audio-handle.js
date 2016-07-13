@@ -4,8 +4,7 @@ var maxNumOfCard = 960;
 var language = 'english';
 
 var away = false;
-var tabTimerLock = 1;
-var tabTimeOut = false;
+var timerRanOut = false;
 
 
 
@@ -952,12 +951,44 @@ function changeWaifu(name, index){
 	}
 
 
-var interval;
+function countDown(n) {
+    var seconds = n;
+    var mins = 0;
+    function tick() {
+        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
+
+        var current_minutes = mins-1
+        seconds--;
+
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);           
+            } else {
+            	timerRanOut = true;
+            	return;
+            }
+        }
+    }
+    if(away){
+    	tick();
+    }else {
+    	return;
+    }
+    
+}
+
+
+
+
 
 // If we leave tab
 $(window).blur(function() { 
 	away = true;
 
+	timerRanOut = false;
+	countDown(20);
 
 });
 
@@ -967,15 +998,17 @@ $(window).focus(function() {
 	if(away){
 		away = false;
 		
+		if(timerRanOut){
 
-	    var neg = forgetWaifuRNG(7);
+		    var neg = forgetWaifuRNG(7);
 
-		if(neg == -1){
-			// If forget waifu speech was not successful
-			commandSelect(0);			    	
-	
+			if(neg == -1){
+				// If forget waifu speech was not successful
+				commandSelect(0);			    	
+		
+			}
+
 		}
-
 
 	}
 });
