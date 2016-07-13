@@ -1,4 +1,4 @@
-var numOfSongs = 17;
+var numOfSongs = 48;
 var currSong = 0;
 
 function playClick()
@@ -13,6 +13,8 @@ function playClick()
 	var songPath = "".concat("./songs/", currSong, ".ogg");
 	oggMusic.src = songPath;
 
+	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
+
 	audio.volume = musicVolume;
 	audio.play();
 }
@@ -25,7 +27,7 @@ function changeSong()
 	} else {
 		currSong = currSong + 1;
 	}
-	
+	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
 }
 
 function changeSongBack()
@@ -36,4 +38,5 @@ function changeSongBack()
 	} else {
 		currSong = currSong - 1;
 	}
+	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
 }
