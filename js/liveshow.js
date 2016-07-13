@@ -88,19 +88,17 @@ function stopClick()
 	prevMusic.currentTime = 0;
 	
 	
-	
 
-	if(!musicChanged){
-		// We haven't switched songs
+
+	if((currplayingSong == currSong)  && musicPlaying){
+		// We haven't switched songs and music is currently playing
 		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
 		musicStopped = true;
 		musicChanged = false;
-	} else {
-		// We will switching music
+	} else if ( !(currplayingSong == currSong)  ){
+		// We switched music
 		musicStopped = true;
 		musicChanged = true;
-
-
 	}
 	musicPlaying = false;
 }
