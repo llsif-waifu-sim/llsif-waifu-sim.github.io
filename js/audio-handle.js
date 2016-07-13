@@ -864,6 +864,10 @@ function changeWaifu(name, index){
 			document.getElementById("settings_but").src="images/buttons/settings-button-hover.png";
 		} else if(clicked_id == 'camera_but'){
 			document.getElementById("camera_but").src="images/buttons/camera-button-hover.png";
+		} else if(clicked_id == 'liveshow_but'){
+			document.getElementById("liveshow_but").src="images/buttons/liveshow-button-hover.png";
+
+
 		} else if(clicked_id == 'eng_but'){
 			document.getElementById("eng_but").src="images/buttons/english-icon-hover.png";
 		} else if(clicked_id == 'jap_but'){
@@ -884,6 +888,9 @@ function changeWaifu(name, index){
 			document.getElementById("settings_but").src="images/buttons/settings-button.png";
 		} else if(clicked_id == 'camera_but'){
 			document.getElementById("camera_but").src="images/buttons/camera-button.png";
+		} else if(clicked_id == 'liveshow_but'){
+			document.getElementById("liveshow_but").src="images/buttons/liveshow-button.png";
+
 		} else if(clicked_id == 'eng_but'){
 			
 			if(langauge =='english'){

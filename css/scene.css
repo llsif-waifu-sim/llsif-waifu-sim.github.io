@@ -57,14 +57,22 @@
     position: absolute;
     max-height: 118px;
     bottom: 0%;
-    right: 21%;
+    right: 23%;
 
 }
 
 #settings_but{
     position: absolute;
     bottom: -1.1%;
-    right: 6%;
+    right: 10%;
+
+}
+
+#liveshow_but{
+    position: absolute;
+    max-height: 118px;
+    bottom: -1%;
+    right: 35%;
 
 }
 

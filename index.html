@@ -90,6 +90,9 @@
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
     	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
+
+    	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
+
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
 		 	 404: Comment not found
@@ -152,8 +155,10 @@
 
 
 	<audio autoplay loop id='background-music-player'>
-		<source src="audio/background-music.mp3" type="audio/mp3" />
+		<source id='mp3-player' src="audio/background-music.mp3" type="audio/mp3" />
+		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
 	</audio>
+
 
 
 
@@ -318,7 +323,7 @@
 
 
 
-	  <div class="modal fade" id="liveShowModal" role="dialog">
+	  <div class="modal fade" id="liveshowModal" role="dialog">
 	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
 	    
 	      <!-- Modal content-->
@@ -328,12 +333,30 @@
 	          <h4 class="modal-title">Live Show</h4>
 	        </div>
 	        <div class="modal-body">
+	        	<script src="js/liveshow.js"></script>
+
+	        	<center>
+
+		        	<table>
+						<tr>
+							<td>
+								<button style='width:100' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
+							</td>
+							<td>
+								<button style='width:140' type="button" id="liveshow-play-but" class="btn btn-primary" onclick="playClick()">Play</button>
+							</td>
+							<td>
+								<button style='width:100' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							</td>
+						</tr>
+					</table>
+
 	        	
+	        		
+	        	</center>
 
 
-
-
-
+				        	
 	        </div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
