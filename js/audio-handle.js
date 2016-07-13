@@ -892,15 +892,16 @@ function changeWaifu(name, index){
 			document.getElementById("liveshow_but").src="images/buttons/liveshow-button.png";
 
 		} else if(clicked_id == 'eng_but'){
-			
-			if(langauge =='english'){
+			// If we hover out of the English button
+			if(language == 'english'){
 				document.getElementById("eng_but").src="images/buttons/english-icon-hover.png";
 			} else {
+				// The language is Japanese at the time we hovered out
 				document.getElementById("eng_but").src="images/buttons/english-icon.png";
 			}
 
 		} else if(clicked_id == 'jap_but'){
-
+			// If we hover out of the Japanese button
 			if(language == 'japanese'){
 				document.getElementById("jap_but").src="images/buttons/japanese-icon-hover.png";
 			} else {
