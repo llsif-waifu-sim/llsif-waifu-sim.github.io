@@ -336,28 +336,37 @@
 	        	<script src="js/songlist.js"></script>
 	        	<script src="js/liveshow.js"></script>
 
-	        	<img id='liveshowScreen' src='./images/background/background7.png' style='width:1100px; height:600px;'>
-
 
 	        	<center>
+
+	        	<div id='container-liveshow'>
+	        		<img id='liveshowScreen' src='./images/background/background16.png'>
+	        		<img id='liveshowAlbum' src='./images/album-covers/0.jpg' style='width:400px; height:400px;'>
+	        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
+	        	</div>
+
+	        	
 
 	        		
 		        	<table>
 						<tr>
-							<td>
-								<button style='width:100' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
 							</td>
-							<td>
-								<button style='width:140' type="button" id="liveshow-play-but" class="btn btn-primary" onclick="playClick()">Play</button>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-play-but" class="btn btn-success btn-circle" onclick="playClick()"><span class="glyphicon glyphicon-play" style='font-size: 20px';></button>
 							</td>
-							<td>
-								<button style='width:100' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-stop-but" class="btn btn-danger btn-circle" onclick="stopClick()"><span class="glyphicon glyphicon-stop" style='font-size: 20px';></button>
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
 							</td>
 						</tr>
 					</table>
 
 					</br>
-	        		<span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span>	        	
+	        		        	
 	        		
 	        	</center>
 

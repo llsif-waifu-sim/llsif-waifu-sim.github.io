@@ -47,5 +47,5 @@ var songlist_ar =
 'HEART to HEART!',
 'Arashi no Naka no Koi dakara',
 'MOMENT RING',
-'Sayounara e Sayonara!'
+'Sayounara e Sayonara!',
 ]
