@@ -4,7 +4,8 @@ var maxNumOfCard = 960;
 var language = 'english';
 
 var away = false;
-
+var tabTimerLock = 1;
+var tabTimeOut = false;
 
 
 
@@ -31,7 +32,7 @@ function forgetWaifuRNG(maxRandNum)
 
 
 var timeout;
-var countdown = 30000;
+var countdown = 20000;
 
 $(document).on('mousemove', function(){
 
@@ -671,7 +672,6 @@ function changeWaifu(name, index){
 		if (globalAudio!=null){
 			globalAudio.pause();
 		}
-		
 
 		var audioPath = "audio/";
 		var waifuName = globalWaifu + "/";
@@ -952,72 +952,34 @@ function changeWaifu(name, index){
 	}
 
 
+var interval;
 
+// If we leave tab
 $(window).blur(function() { 
 	away = true;
 
-	jQuery(function ($) {
-	    var time_final = 20;
-
-	    if(away){
-	    	tabTimer(time_final, 1);
-	    }
-	    
-	});
 
 });
 
 
-
+// If we reenter tab
 $(window).focus(function() { 
 	if(away){
 		away = false;
+		
+
+	    var neg = forgetWaifuRNG(7);
+
+		if(neg == -1){
+			// If forget waifu speech was not successful
+			commandSelect(0);			    	
+	
+		}
+
 
 	}
 });
 
-
-
-function tabTimer(duration, lock) {
-    var timer = duration, minutes, seconds;
-    var interval;
-	interval = setInterval(function () {
-	        minutes = parseInt(timer / 60, 10)
-	        seconds = parseInt(timer % 60, 10);
-
-	        minutes = minutes < 10 ? "0" + minutes : minutes;
-	        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-
-
-	        if ((--timer < 0) && !away && lock == 1) {
-	        	
-	            var neg = forgetWaifuRNG(7);
-
-				if(neg == -1 && !away && lock == 1){
-					// If forget waifu speech was not successful
-					
-					if(lock == 1){
-						lock = 0;
-			    		commandSelect(0);
-					}
-
-			    	clearInterval(interval);
-
-					return;
-				}
-	            return;
-	        }
-
-
-	       
-
-	    }, 1000);
-
-	   return;
-	
-
-}
 
 function changeLanguage(lang_num)
 {
