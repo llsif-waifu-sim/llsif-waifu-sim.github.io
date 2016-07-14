@@ -22,6 +22,30 @@ def getIdolURL(name):
         return 'http://schoolido.lu/api/cards/?name=Kurosawa%20Dia'
     elif name == 'mari':
         return 'http://schoolido.lu/api/cards/?name=Ohara%20Mari'
+
+
+    
+    elif name == 'hanayo':
+        return 'http://schoolido.lu/api/cards/?name=Koizumi%20Hanayo'
+    elif name == 'maki':
+        return 'http://schoolido.lu/api/cards/?name=Nishikino%20Maki'
+    elif name == 'rin':
+        return 'http://schoolido.lu/api/cards/?name=Hoshizora%20Rin'
+    elif name == 'honoka':
+        return 'http://schoolido.lu/api/cards/?name=Kousaka%20Honoka'
+    elif name == 'umi':
+        return 'http://schoolido.lu/api/cards/?name=Sonoda%20Umi'
+    elif name == 'kotori':
+        return 'http://schoolido.lu/api/cards/?name=Minami%20Kotori'
+    elif name == 'eli':
+        return 'http://schoolido.lu/api/cards/?name=Ayase%20Eli'
+    elif name == 'nozomi':
+        return 'http://schoolido.lu/api/cards/?name=Toujou%20Nozomi'
+    elif name == 'nico':
+        return 'http://schoolido.lu/api/cards/?name=Yazawa%20Nico'
+
+
+    
     else:
         print 'Invalid idol name'
         exit()
@@ -30,7 +54,8 @@ def getIdolURL(name):
 
 name = 'mari'
 
-txt_str = "../records/aqours/id-list-" + name + ".txt"
+#txt_str = "../records/aqours/id-list-" + name + ".txt"
+txt_str = "../records/muse/id-list-" + name + ".txt"
 
 text_file = open(txt_str, "w")
 text_file.write('[\n')
@@ -53,15 +78,23 @@ for x in range (0,maxIter):
 
     if img_url != None:
         # [(id),(name)]
-        text_to_save =  "['" + x_str + "','" + name +"','no'],\n"
-        text_to_prnt =  "['" + x_str + "','" + name +"','no'],"
+        if(x!= maxIter):
+            text_to_save =  "['" + x_str + "','" + name +"','no'],\n"
+            text_to_prnt =  "['" + x_str + "','" + name +"','no'],"
+        else:
+            text_to_save =  "['" + x_str + "','" + name +"','no']\n"
+            text_to_prnt =  "['" + x_str + "','" + name +"','no']"
         text_file.write(text_to_save)
 
         print text_to_prnt
         
     if img_url_idol != None:
-        text_to_save =  "['" + x_str + "','" + name +"','yes'],\n"
-        text_to_prnt =  "['" + x_str + "','" + name +"','yes'],"
+        if(x!= maxIter):
+            text_to_save =  "['" + x_str + "','" + name +"','yes'],\n"
+            text_to_prnt =  "['" + x_str + "','" + name +"','yes'],"
+        else:
+            text_to_save =  "['" + x_str + "','" + name +"','yes']\n"
+            text_to_prnt =  "['" + x_str + "','" + name +"','yes']"
         text_file.write(text_to_save)
         print text_to_prnt
     

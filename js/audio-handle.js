@@ -456,7 +456,46 @@ function getWaifuAr(name)
 		for (var i = 0; i < kanan_ar.length; i++){
 		    newArray[i] = kanan_ar[i].slice();
 		}
-	} else if(name== 'hanamaru'){
+
+	} else if(name== 'hanayo'){
+		for (var i = 0; i < hanayo_ar.length; i++){
+		    newArray[i] = hanayo_ar[i].slice();
+		}
+	} else if(name== 'maki'){
+		for (var i = 0; i < maki_ar.length; i++){
+		    newArray[i] = maki_ar[i].slice();
+		}
+	} else if(name== 'rin'){
+		for (var i = 0; i < rin_ar.length; i++){
+		    newArray[i] = rin_ar[i].slice();
+		}
+	} else if(name== 'honoka'){
+		for (var i = 0; i < honoka_ar.length; i++){
+		    newArray[i] = honoka_ar[i].slice();
+		}
+	} else if(name== 'umi'){
+		for (var i = 0; i < umi_ar.length; i++){
+		    newArray[i] = umi_ar[i].slice();
+		}
+	} else if(name== 'kotori'){
+		for (var i = 0; i < kotori_ar.length; i++){
+		    newArray[i] = kotori_ar[i].slice();
+		}
+	} else if(name== 'eli'){
+		for (var i = 0; i < eli_ar.length; i++){
+		    newArray[i] = eli_ar[i].slice();
+		}
+	} else if(name== 'nico'){
+		for (var i = 0; i < nico_ar.length; i++){
+		    newArray[i] = nico_ar[i].slice();
+		}
+	} else if(name== 'nozomi'){
+		for (var i = 0; i < nozomi_ar.length; i++){
+		    newArray[i] = nozomi_ar[i].slice();
+		}
+	
+
+	} else {
 		alert('getWaifuAr() has failed');
 		return null;
 	} 
@@ -469,23 +508,23 @@ function getWaifuAr(name)
 
 function cardRNG()
 {
-	while(true){
-		var maxNum = id_log.length;
-		var n = Math.floor(Math.random() * maxNum);
-		var remainder = id_log.length - n;
+	var temp_ar = getWaifuAr(globalWaifu);
 
-		var i;
-		for(i = n; n < remainder; i++)
-		{
-			if(id_log[i][1] == globalWaifu)
-			{
-				return i;
-			}
-		}
-	}
+	var maxNum = temp_ar.length;
+	var n = Math.floor(Math.random() * maxNum);
+	
+	var temp_index = n;
+	var temp_id = temp_ar[temp_index][0];
+	var temp_idolized = temp_ar[temp_index][2];
+
+	//alert(temp_id);
+
+	// Get the index from the main id_log array
+	return searchIndexById(temp_id, temp_idolized);
 
 }
 
+/*
 function cardRNGAqours()
 {
 
@@ -506,7 +545,7 @@ function cardRNGAqours()
 
 }
 
-
+*/
 
 function getRandomWaifu()
 {
@@ -574,8 +613,8 @@ function getRandomCard()
 
 
 
-	var i; 
-
+	var i = cardRNG(); 
+	/*
 	if(isAqours(globalWaifu)){
 		//alert('checking cardRNG');
 		i = cardRNGAqours();
@@ -583,12 +622,14 @@ function getRandomCard()
 	} else {
 		i = cardRNG(); 
 	}
-	
+	*/
 
 
 	var id = parseInt(id_log[i][0]);
 	var name = id_log[i][1];
 	var idolized = id_log[i][2];
+
+	//alert(id);
 	
 	var path;
 
@@ -649,7 +690,8 @@ function searchIndexById(id, idolized)
 	{
 		if(id_log[i][0] == id.toString())
 		{
-			if(idolized == 'yes'){
+			//alert(id_log[i][0]);
+			if(idolized == 'yes' && ( id_log[i+1][0] == id.toString() )){
 				return i + 1;
 			} else{
 				return i;
