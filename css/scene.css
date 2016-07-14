@@ -68,6 +68,12 @@
 
 }
 
+#chatroom-div{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+}
+
 #story_but{
     position: absolute;
     bottom: -1.5%;

@@ -11,7 +11,14 @@ var beginning = true;
 
 
 var prevMusic = document.getElementById("background-music-player");
+var originMusic = document.getElementById("origin-music-player");
 
+$('#background-music-player').on('ended', function() {
+	
+   stopClick();
+   changeSong();
+   playClick();
+});
 
 
 
@@ -32,7 +39,7 @@ function playClick()
 		beginning = false;
 		musicStopped = false;
 
-
+		originMusic.pause();
 		prevMusic.pause();
 
 		var oggMusic = document.getElementById("background-music-player");
@@ -60,7 +67,7 @@ function playClick()
 
 	}else if((musicPaused || musicStopped) && !musicPlaying && !beginning && !musicChanged){
 		// Continue music
-		
+		originMusic.pause();
 		prevMusic.play();
 		beginning = false;
 		musicPlaying = true;

@@ -96,6 +96,14 @@
 
     	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
 
+
+
+    	<div id='chatroom-div'>
+    		<button style='width:50px; height:20px;' type="button" class="btn btn-primary" data-toggle="modal" data-target="#chatModal"></button>
+    	</div>
+
+
+
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
 		 	 404: Comment not found
@@ -169,10 +177,16 @@
 	</center>
 
 
-	<audio autoplay loop id='background-music-player'>
+	<audio autoplay id='background-music-player'>
+		<source id='mp3-player' src="" type="audio/mp3" />
+		<source id='ogg-player' src="" type="audio/ogg" />
+	</audio>
+
+	<audio autoplay loop id='origin-music-player'>
 		<source id='mp3-player' src="audio/background-music.mp3" type="audio/mp3" />
 		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
 	</audio>
+
 
 
 
@@ -396,9 +410,43 @@
 	    </div>
 	  </div>
 
+<div class="modal fade" id="chatModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+
+	   <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+
+		
 
 
 
+		<script>var __v='barc-user-vanstorm9';</script>
+                  <script type="text/javascript">
+                      (function(d) {
+                          var b = d.createElement("script"); b.type = "text/javascript"; b.async = true;
+                          b.src = ("https:" == d.location.protocol ? "https" : "http") + "://barc.com/js/libs/barc/barc.js";
+                          var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(b, s);
+                      })(document);
+                  </script>
+
+          
+          
+
+
+        </div>
+        	<div class="modal-footer">
+          		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+     	 </div>
+      
+    	</div>
+  	</div>
+</div>
+  	</div>
 
 	</body>
 

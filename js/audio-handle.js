@@ -308,7 +308,7 @@ window.onload = function() {
 	checkVolumeCookie();
 	
 
-    var backgroundAudio=document.getElementById("background-music-player");
+    var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
 
     setTimeout(function() {
@@ -334,13 +334,15 @@ function updateVolumeVoice(soundValue) {
 
 function pauseBackgroundMusic()
 {
-	var audio = document.getElementById("background-music-player");
+	var audio = document.getElementById("origin-music-player"); // For the main background
 	audio.pause();
 }
 
 function playBackgroundMusic()
 {
-	var audio = document.getElementById("background-music-player");
+	var audio = document.getElementById("origin-music-player"); // For the main background
+	var mainAudio = document.getElementById("background-music-player"); // For the music player
+	mainAudio.pause();
 	audio.pause();
 	audio.volume = musicVolume;
 	audio.play();
