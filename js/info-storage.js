@@ -282,9 +282,29 @@ function getFullName(name)
         return 'Ayase Eli';
     } else if(name == 'nico'){
         return 'Yazawa Nico';
+
+
+    } else if (name == 'chika'){
+        return 'Takami Chika';
+    } else if(name == 'you'){
+        return 'Watanabe You';
+    }else if(name == 'riko'){
+        return 'Sakurauchi Riko';
+    } else if(name == 'ruby'){
+        return 'Kurosawa Ruby';
+    } else if(name == 'hanamaru'){
+        return 'Kunikida Hanamaru';
+    } else if(name == 'yoshiko'){
+        return 'Tsushima Yoshiko';
+    } else if(name == 'dia'){
+        return 'Kurosawa Dia';
+    } else if(name == 'mari'){
+        return 'Ohara Mari';
+    } else if(name == 'kanan'){
+        return 'Matssura Kanan';
     } else {
         return 'none';
-    }
+    } 
 }
 
 function capitalizeFirstLetter(string) {
