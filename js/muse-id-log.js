@@ -1,4 +1,4 @@
-var id_log = 
+var id_log_muse = 
 [
 ['28','honoka','no'],
 ['28','honoka','yes'],

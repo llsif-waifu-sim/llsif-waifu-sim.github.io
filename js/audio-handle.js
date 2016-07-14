@@ -7,6 +7,18 @@ var away = false;
 var timerRanOut = false;
 
 
+function isAqours(waifu)
+{
+	if(waifu == 'chika' || waifu == 'you' || waifu == 'riko' ||
+		waifu == 'hanamaru' || waifu == 'yoshiko' || waifu == 'ruby' ||
+		waifu == 'kanan' || waifu == 'mari' || waifu == 'dia'){
+
+		return true;
+
+	}else {
+		return false;
+	}
+}
 
 function forgetWaifuRNG(maxRandNum)
 {
@@ -402,6 +414,59 @@ function waifuRNG()
 	return Math.floor(Math.random() * maxNum);
 }
 
+
+function getWaifuAr(name)
+{
+	var newArray = [];
+
+	if(name == 'ruby')
+	{
+		for (var i = 0; i < ruby_ar.length; i++){
+		    newArray[i] = ruby_ar[i].slice();
+		}
+	} else if(name== 'hanamaru'){
+		for (var i = 0; i < hanamaru_ar.length; i++){
+		    newArray[i] = hanamaru_ar[i].slice();
+		}
+	} else if(name== 'yoshiko'){
+		for (var i = 0; i < yoshiko_ar.length; i++){
+		    newArray[i] = yoshiko_ar[i].slice();
+		}
+	} else if(name== 'chika'){
+		for (var i = 0; i < chika_ar.length; i++){
+		    newArray[i] = chika_ar[i].slice();
+		}
+	} else if(name== 'you'){
+		for (var i = 0; i < you_ar.length; i++){
+		    newArray[i] = you_ar[i].slice();
+		}
+	} else if(name== 'riko'){
+		for (var i = 0; i < riko_ar.length; i++){
+		    newArray[i] = riko_ar[i].slice();
+		}
+	} else if(name== 'dia'){
+		for (var i = 0; i < dia_ar.length; i++){
+		    newArray[i] = dia_ar[i].slice();
+		}
+	} else if(name== 'mari'){
+		for (var i = 0; i < mari_ar.length; i++){
+		    newArray[i] = mari_ar[i].slice();
+		}
+	} else if(name== 'kanan'){
+		for (var i = 0; i < kanan_ar.length; i++){
+		    newArray[i] = kanan_ar[i].slice();
+		}
+	} else if(name== 'hanamaru'){
+		alert('getWaifuAr() has failed');
+		return null;
+	} 
+
+
+
+	return newArray;
+}
+
+
 function cardRNG()
 {
 	while(true){
@@ -418,6 +483,26 @@ function cardRNG()
 			}
 		}
 	}
+
+}
+
+function cardRNGAqours()
+{
+
+		var aq_ar = getWaifuAr(globalWaifu);
+
+		var maxNum = aq_ar.length;
+		var n = Math.floor(Math.random() * maxNum);
+	
+		var aq_index = n;
+		var aq_id = aq_ar[aq_index][0];
+		var aq_idolized = aq_ar[aq_index][2];
+
+		//alert(aq_id);
+
+		// Get the index from the main id_log array
+		return searchIndexById(aq_id, aq_idolized);
+	
 
 }
 
@@ -478,15 +563,29 @@ function getRandomWaifu()
 
 function getRandomCard()
 {
+	//alert('getRandomCard');
 	var neg = forgetWaifuRNG(30);
 
 	if(neg == 0){
 		// forgetWaifu speech was successful
+		//alert('forgotten waifu will appear');
 		return;
 	}
 
 
-	var i = cardRNG();
+
+	var i; 
+
+	if(isAqours(globalWaifu)){
+		//alert('checking cardRNG');
+		i = cardRNGAqours();
+		//alert(i);
+	} else {
+		i = cardRNG(); 
+	}
+	
+
+
 	var id = parseInt(id_log[i][0]);
 	var name = id_log[i][1];
 	var idolized = id_log[i][2];

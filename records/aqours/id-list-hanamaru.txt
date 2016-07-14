@@ -1,0 +1,12 @@
+[
+['792','hanamaru','no'],
+['792','hanamaru','yes'],
+['916','hanamaru','no'],
+['916','hanamaru','yes'],
+['925','hanamaru','no'],
+['925','hanamaru','yes'],
+['934','hanamaru','no'],
+['934','hanamaru','yes'],
+['952','hanamaru','no'],
+['952','hanamaru','yes']
+];

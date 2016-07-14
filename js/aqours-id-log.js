@@ -1,4 +1,4 @@
-var id_log_aquors = 
+var id_log_aqours = 
 [
 ['786','chika','no'],
 ['786','chika','yes'],
@@ -101,5 +101,5 @@ var id_log_aquors =
 ['957','you','no'],
 ['957','you','yes'],
 ['959','dia','no'],
-['959','dia','yes'],
+['959','dia','yes']
 ];

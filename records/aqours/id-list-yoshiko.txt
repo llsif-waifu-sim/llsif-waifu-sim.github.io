@@ -1,0 +1,12 @@
+[
+['791','yoshiko','no'],
+['791','yoshiko','yes'],
+['915','yoshiko','no'],
+['915','yoshiko','yes'],
+['924','yoshiko','no'],
+['924','yoshiko','yes'],
+['933','yoshiko','no'],
+['933','yoshiko','yes'],
+['951','yoshiko','no'],
+['951','yoshiko','yes']
+];

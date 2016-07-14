@@ -1,0 +1,16 @@
+[
+['786','chika','no'],
+['786','chika','yes'],
+['894','chika','no'],
+['894','chika','yes'],
+['910','chika','no'],
+['910','chika','yes'],
+['919','chika','no'],
+['919','chika','yes'],
+['928','chika','no'],
+['928','chika','yes'],
+['946','chika','no'],
+['946','chika','yes'],
+['955','chika','no'],
+['955','chika','yes']
+];
