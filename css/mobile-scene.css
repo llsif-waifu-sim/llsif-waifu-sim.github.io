@@ -3,6 +3,7 @@
     border-color: #E7E7E7;
 }
 
+/*
 #homeScreen{
     width:940px;
     height:700px;
@@ -42,13 +43,12 @@
 
 
 }
-
+*/
 /* height should be 591px */
-
+/*
 #idol_img{
     position: absolute;
 
-    /* rect(cut from top, null, null, cut from left)*/
     clip: rect(72px,2000px,2000px,72px);
 
     max-height:770px;
@@ -114,7 +114,7 @@
 #card_id{
     width:200px;
 }
-
+*/
 
 .bubble 
 {
