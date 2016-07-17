@@ -1,11 +1,14 @@
 <html>
 	
 	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="css/scene.css">
+	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 
 	<!--
 	<script src="js/id-log.js"></script>
@@ -32,6 +35,7 @@
       <!-- Static navbar -->
       <nav class="navbar navbar-inverse" style='background-color: #ff0080; border-color:#EA0088'  >
         <div class="container-fluid">
+
           <div class="navbar-header" >
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -40,22 +44,25 @@
               <span class="icon-bar"></span>
             </button>
           </div>
+
+
           <div id="navbar" class="navbar-collapse collapse" style='width:100%; padding:10px;'>
           <center>
             <ul class="nav navbar-nav" style='width:95%;'>
               <li style='width:80%;'><input type="text" id="card_id" class="form-control" placeholder='Card ID Number (ex: 46)' style='width:98%'></li>
-              <li ><div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="radio-idol" value="no" checked>
-				    	<font style='color:white'>Non-idolized</font>
-				  </label>
+              <li style='width:20%;'>
+
+              	<div class="btn-group">
+				    <button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
+				        Select Idolization <span class="caret"></span>
+				    </button>
+				    <ul class="dropdown-menu" role="menu">
+				        <li><a href="#">Non-Idolized</a></li>
+				        <li><a href="#">Idolized</a></li>
+				    </ul>
 				</div>
-				<div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="radio-idol" value="yes">
-				    	<font style='color:white'>Idolized</font>
-				  </label>
-				</div></li>
+
+              </li>
 
 			<!--
               <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
@@ -64,9 +71,9 @@
             </ul>
 
 
-             <ul class="nav navbar-nav" style='width:95%;'>
-              <li style='width:50%;'> <button type="button" class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button> </li>
-              <li ><button type="button" class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button></li>
+             <ul class="nav navbar-nav" style='width:95%; padding:10px;'>
+              <li style='width:50%;'> <button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button> </li>
+              <li style='width:50%'><button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button></li>
 
 			<!--
               <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>

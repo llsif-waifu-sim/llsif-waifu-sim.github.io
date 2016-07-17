@@ -44,11 +44,11 @@
 }
 
 /* height should be 591px */
-
+/*
 #idol_img{
     position: absolute;
 
-    /* rect(cut from top, null, null, cut from left)*/
+
     clip: rect(72px,2000px,2000px,72px);
 
     max-height:50%;
@@ -57,8 +57,7 @@
 
     bottom: 0%;
     left: -6.5%;
- 
-    
+
 }
 
 #home_but{
@@ -114,6 +113,9 @@
 #card_id{
     width:200px;
 }
+ */
+
+
 
 
 .bubble 
