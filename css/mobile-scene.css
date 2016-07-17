@@ -1,0 +1,201 @@
+.navbar-default {
+    background-color: #bf00ff;
+    border-color: #E7E7E7;
+}
+
+#homeScreen{
+    width:100%;
+    height:75%;
+}
+
+#container{
+    position: relative;
+    width: 100%;
+    height: 75%;
+}
+
+#container-liveshow{
+    position: relative;
+    width: 950px;
+    height: 650px;  
+}
+
+#song-title-tag
+{
+    position: absolute;
+    bottom: 5%;
+    right: 25%;
+    left: 25%;
+
+}
+
+#liveshowScreen
+{
+    width:950px; 
+    height:650px;
+}
+
+#liveshowAlbum{
+    position: absolute;
+    top: 18%;
+    right: 28%;
+
+
+}
+
+/* height should be 591px */
+
+#idol_img{
+    position: absolute;
+
+    /* rect(cut from top, null, null, cut from left)*/
+    clip: rect(72px,2000px,2000px,72px);
+
+    max-height:50%;
+    width: auto;
+    height: auto;
+
+    bottom: 0%;
+    left: -6.5%;
+ 
+    
+}
+
+#home_but{
+    position: absolute;
+    bottom: -1%;
+    left: 6%;
+
+}
+
+#chatroom-div{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+}
+
+#story_but{
+    position: absolute;
+    bottom: -1.5%;
+    left: 19%;
+
+}
+
+#member_but{
+    position: absolute;
+    bottom: -1.5%;
+    left: 31%;
+
+}
+
+#camera_but{
+    position: absolute;
+    max-height: 118px;
+    bottom: 0%;
+    right: 23%;
+
+}
+
+#settings_but{
+    position: absolute;
+    bottom: -1.1%;
+    right: 10%;
+
+}
+
+#liveshow_but{
+    position: absolute;
+    max-height: 118px;
+    bottom: -1%;
+    right: 35%;
+
+}
+
+#card_id{
+    width:200px;
+}
+
+
+.bubble 
+{
+    position: absolute;
+    bottom: 20%;
+    left: 8%;
+
+    width:420px;
+    min-height:1.5em;
+    padding: 16px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #7F7F7F solid 2px;
+
+    /* Allows us to make bubble transparent */
+    background-color: rgba(255,255,255,0.7);
+}
+
+.bubble:after 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 20px 15px;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 350px;
+
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.bubble:before 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 21px 16px;
+    border-color: #7F7F7F transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -18px;
+    left: 349px;
+
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+
+
+
+
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
