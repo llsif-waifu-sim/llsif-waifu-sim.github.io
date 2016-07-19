@@ -3,18 +3,18 @@
     border-color: #E7E7E7;
 }
 
-/*
+
 #homeScreen{
-    width:940px;
-    height:700px;
+    width:100%;
+    height:auto;
 }
 
 #container{
     position: relative;
-    width: 940px;
-    height: 700px;
+    min-width:screen.width;
+    height:auto;
 }
-
+/*
 #container-liveshow{
     position: relative;
     width: 950px;
@@ -45,22 +45,21 @@
 }
 */
 /* height should be 591px */
-/*
+
 #idol_img{
     position: absolute;
 
-    clip: rect(72px,2000px,2000px,72px);
 
-    max-height:770px;
+    height:90%;
     width: auto;
-    height: auto;
+
 
     bottom: 0%;
     left: -6.5%;
  
     
 }
-
+/*
 #home_but{
     position: absolute;
     bottom: -1%;
