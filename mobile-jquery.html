@@ -14,9 +14,8 @@
 
 
 
-	<!--
+
 	<script src="js/id-log.js"></script>
-	-->
 	<script src="js/aqours-id-log.js"></script>
 	<script src="js/indiv-aqours-id-log.js"></script>
 	<script src="js/indiv-muse-id-log.js"></script>
@@ -24,11 +23,8 @@
 	<!--
 	<script src="js/info-storage.js"></script>
 	<script src="js/audio-handle.js"></script>
-	-->
-
-
-	<!--
-  	<script src="js/bootstrap.min.js"></script>
+	
+	
   	-->
   	<!--
   	<script src="js/analytics.js"></script>
@@ -41,68 +37,7 @@
 		
 	</head>
 
-	<!--
-	 <div class="container" style='width:100%;'>
-
-    
-      <nav class="navbar navbar-inverse" style='background-color: #ff0080; border-color:#EA0088; width:100%;'  >
-        <div class="container-fluid">
-
-
-
-          <div id="navbar" style='width:100%; padding:10px;'>
-          <center>
-            <ul class="nav navbar-nav" style='width:95%;'>
-              <li style='width:80%;'><input type="text" id="card_id" class="form-control" placeholder='Card ID Number (ex: 46)' style='width:98%'></li>
-              <li style='width:20%;'>
-
-              	<div class="btn-group">
-				    <button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
-				        Select Idolization <span class="caret"></span>
-				    </button>
-				    <ul class="dropdown-menu" role="menu">
-				        <li><a href="#">Non-Idolized</a></li>
-				        <li><a href="#">Idolized</a></li>
-				    </ul>
-				</div>
-
-              </li>
-
-		
-              <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
-		
-             
-            </ul>
-
-
-             <ul class="nav navbar-nav" style='width:95%; padding:10px;'>
-              <li style='width:50%;'> <button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button> </li>
-              <li style='width:50%'><button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button></li>
-
-              <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
-		
-             
-            </ul>
-            </center>
-          
-            <ul class="nav navbar-nav navbar-right">
-              <li style='padding:14px;'>
-              	<button style='width:140' type="button" class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button>
-              </li>
-              <li style='padding:14px;'>
-              	<button style='width:150' type="button" class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button>
-              </li>
-            </ul>
-           
-          </div>
-        </div>
-
-      </nav>
-
-
-
-    </div>
-	-->
+	
 
 	<div data-role="header">
     <h1>LLSIF Waifu Sim</h1>
@@ -138,16 +73,15 @@
 
 		<font style='color:white'><div id='language-tag'>Current: English</div></font>
 	</div>
-	<center>
-		<font style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></font>
-	
+
+
 	
 	
 	<center>
 	<div id="container">
     	<img id='homeScreen' src='images/background/background0.png'>
     	<img id="idol_img" src='images/waifu/honoka0.png' usemap="#waifumap">
-    	<!--
+    	
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
@@ -157,10 +91,7 @@
     	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
 	
 
-    	<div id='chatroom-div'>
-     		<button style='' type="button" class="btn btn-primary" data-toggle="modal" data-target="#chatModal">Engage the chatroom!</button>
-     	</div>
-		-->
+  
 
 
     	<div id="speech-bubble" class="bubble" style='display:none;'>
@@ -174,9 +105,27 @@
 	  <area shape="rect" coords="100,100,760,500" onclick="waifuClick()">	
 	</map>
 
+	<table style='width:100%'>
+		<tr>
+			<td style='width:49%'>
+				<button style='width:100%' type="button" class="btn btn-info" onclick="changeBackgroundBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td style='width:49%'>
+				<button style='width:100%' type="button" class="btn btn-info" onclick="changeBackground()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+			</td>
+		</tr>
+	</table>
 
-	</br>
-	</br>
+       
+    <select name="idolization" id="select-idol" style='width:100%'>
+		<option value="honoka">Kousaka Honoka</option>
+		<option value="umi">Sonoda Umi</option>
+		<option value="umi">Minami Kotori</option>
+	</select>
+
+       
+     
+	
 	<!--
 	<p style='color:white;'>Quick Waifu Change</p>
 	<button type="button" onclick="changeWaifu('hanayo',14)">Koizumi Hanayo</button>
@@ -203,36 +152,21 @@
 	<button type="button" onclick="changeWaifu('mari',793)">Ohara Mari</button>
 	<button type="button" onclick="changeWaifu('kanan',788)">Matsuura Kanan</button>
 	-->
-	</br>
-	</br>
-	<table>
-		<tr>
-			<td style='width:300'>
-				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
-			</td>
-			<td>
-				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackground()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
-			</td>
-		</tr>
-	</table>
-	</br></br>
-	<p style='color:white'><font size="6">Use buttons below if you are on MOBILE</font></p>
-	<table>
-		<tr>
-			<td style='width:280'>
-				<button style='width:240' type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play background music</button>
-			</td>
-			<td>
-				<button style='width:240' type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause background music</button>
-			</td>
-		</tr>
-	</table>
-	
-	
-	</br>
-	
 
-	</br>
+
+	
+	<table style='width:100%'>
+		<tr>
+			<td style='width:49%'>
+				<button  type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play</button>
+			</td>
+			<td style='width:49%'>
+				<button  type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause</button>
+			</td>
+		</tr>
+	</table>
+	
+	
 	</br>
 	</center>
 

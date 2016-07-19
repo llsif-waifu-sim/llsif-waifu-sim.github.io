@@ -59,61 +59,60 @@
  
     
 }
-/*
+
 #home_but{
     position: absolute;
+    max-height: 15%;
     bottom: -1%;
-    left: 6%;
+    left: 2%;
 
 }
 
-#chatroom-div{
-    position: absolute;
-    top: 5%;
-    right: 3%;
-}
 
 #story_but{
     position: absolute;
+    max-height: 15%;
     bottom: -1.5%;
-    left: 19%;
+    left: 17%;
 
 }
 
 #member_but{
     position: absolute;
+    max-height: 16%;
     bottom: -1.5%;
-    left: 31%;
-
-}
-
-#camera_but{
-    position: absolute;
-    max-height: 118px;
-    bottom: 0%;
-    right: 23%;
-
-}
-
-#settings_but{
-    position: absolute;
-    bottom: -1.1%;
-    right: 10%;
+    left: 30%;
 
 }
 
 #liveshow_but{
     position: absolute;
-    max-height: 118px;
+    max-height: 15%;
     bottom: -1%;
-    right: 35%;
+    left: 44%;
 
 }
 
-#card_id{
-    width:200px;
+#camera_but{
+    position: absolute;
+    max-height: 18%;
+    bottom: 0%;
+    left: 71%;
+
 }
-*/
+
+#settings_but{
+    position: absolute;
+    max-height: 15%;
+    bottom: -1.1%;
+    left: 82%;
+
+}
+
+
+
+
+
 
 .bubble 
 {
