@@ -1,0 +1,508 @@
+
+<html lang="en">
+	
+	<head>
+
+	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+
+
+	<script src="js/id-log.js"></script>
+	<script src="js/aqours-id-log.js"></script>
+	<script src="js/indiv-aqours-id-log.js"></script>
+	<script src="js/indiv-muse-id-log.js"></script>
+	<script src="js/info-storage.js"></script>
+	<script src="js/audio-handle.js"></script>
+	
+	<!--
+  	<script src="js/bootstrap.min.js"></script>
+  	-->
+  	<!--
+  	<script src="js/analytics.js"></script>
+	-->
+
+
+  	<script>//alert('hello');</script>
+
+	<title>Love Live SIF Waifu Simulator</title>
+		
+	</head>
+
+	<!--
+	 <div class="container" style='width:100%;'>
+
+    
+      <nav class="navbar navbar-inverse" style='background-color: #ff0080; border-color:#EA0088; width:100%;'  >
+        <div class="container-fluid">
+
+
+
+          <div id="navbar" style='width:100%; padding:10px;'>
+          <center>
+            <ul class="nav navbar-nav" style='width:95%;'>
+              <li style='width:80%;'><input type="text" id="card_id" class="form-control" placeholder='Card ID Number (ex: 46)' style='width:98%'></li>
+              <li style='width:20%;'>
+
+              	<div class="btn-group">
+				    <button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
+				        Select Idolization <span class="caret"></span>
+				    </button>
+				    <ul class="dropdown-menu" role="menu">
+				        <li><a href="#">Non-Idolized</a></li>
+				        <li><a href="#">Idolized</a></li>
+				    </ul>
+				</div>
+
+              </li>
+
+		
+              <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
+		
+             
+            </ul>
+
+
+             <ul class="nav navbar-nav" style='width:95%; padding:10px;'>
+              <li style='width:50%;'> <button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button> </li>
+              <li style='width:50%'><button type="button" style='width:97%'class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button></li>
+
+              <li style='padding:14px;'><button style='width:140' type="button" id="search_but" class="btn btn-primary" onclick="searchId()"><span class="glyphicon glyphicon-search"></span> Search</button></li>
+		
+             
+            </ul>
+            </center>
+          
+            <ul class="nav navbar-nav navbar-right">
+              <li style='padding:14px;'>
+              	<button style='width:140' type="button" class="btn btn-warning" onclick="getRandomWaifu()">Random Waifu</button>
+              </li>
+              <li style='padding:14px;'>
+              	<button style='width:150' type="button" class="btn btn-warning" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></button>
+              </li>
+            </ul>
+           
+          </div>
+        </div>
+
+      </nav>
+
+
+
+    </div>
+	-->
+
+	<div data-role="header">
+    <h1>LLSIF Waifu Sim</h1>
+  </div>
+   <div data-role="navbar">
+      <ul>
+        <li><input type="search" name="search" id="search" placeholder="Card ID # (ex: 46)"></li>
+        <li>
+        	<select name="idolization" id="select-idol">
+		      <option value="no">Non-Idolized</option>
+		      <option value="yes">Idolized</option>
+		    </select>
+
+        </li>
+      </ul>
+    </div>
+     <div data-role="navbar">
+      <ul>
+        <li><a href="#">Random Waifu</a></li>
+        <li><a href="#">Random Honoka</a></li>
+      </ul>
+    </div>
+
+
+
+
+	<body style="background-color:#FF69B4;">
+
+
+	<div style='left:20px; position: absolute;'>
+		<img id='eng_but' src="images/buttons/english-icon-hover.png" onclick="changeLanguage(0)" onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'> 
+		<img id='jap_but' src="images/buttons/japanese-icon.png" onclick="changeLanguage(1)" onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'> 
+
+		<font style='color:white'><div id='language-tag'>Current: English</div></font>
+	</div>
+	<center>
+		<font style='color:white;'>Touch the buttons or waifu for her to speak. To get the card id and check its idolization, <a href="http://schoolido.lu/cards/" target="_blank">go to this site</a></font>
+	
+	
+	
+	<center>
+	<div id="container">
+    	<img id='homeScreen' src=''>
+    	<img id="idol_img" src='' usemap="#waifumap">
+    	<!--
+    	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
+    	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
+    	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
+    	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
+    	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
+
+    	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
+	
+
+    	<div id='chatroom-div'>
+     		<button style='' type="button" class="btn btn-primary" data-toggle="modal" data-target="#chatModal">Engage the chatroom!</button>
+     	</div>
+		-->
+
+
+    	<div id="speech-bubble" class="bubble" style='display:none;'>
+    		<div id='speech-text' style='opacity: 2.0;'>
+		 	 404: Comment not found
+		 	 </div>
+		</div>
+	</div>
+
+	<map name="waifumap">
+	  <area shape="rect" coords="100,100,760,500" onclick="waifuClick()">	
+	</map>
+
+
+	</br>
+	</br>
+	<!--
+	<p style='color:white;'>Quick Waifu Change</p>
+	<button type="button" onclick="changeWaifu('hanayo',14)">Koizumi Hanayo</button>
+	<button type="button" onclick="changeWaifu('rin',8)">Hoshizora Rin</button>
+	<button type="button" onclick="changeWaifu('maki',10)">Nishikino Maki</button>
+
+	<button type="button" onclick="changeWaifu('kotori',4)">Minami Kotori</button>
+	<button type="button" onclick="changeWaifu('honoka', 0)">Kousaka Honoka</button>
+	<button type="button" onclick="changeWaifu('umi',6)">Sonoda Umi</button>
+
+	<button type="button" onclick="changeWaifu('nozomi',12)">Tojo Nozomi</button>
+	<button type="button" onclick="changeWaifu('nico',16)">Yazawa Nico</button>
+	<button type="button" onclick="changeWaifu('eli',2)">Ayase Eli</button>
+	
+	</br>
+	</br>
+	<button type="button" onclick="changeWaifu('ruby',794)">Kurosawa Ruby</button>
+	<button type="button" onclick="changeWaifu('hanamaru',792)">Kunikida Hanamaru</button>
+	<button type="button" onclick="changeWaifu('yoshiko',791)">Tsushima Yoshiko</button>
+	<button type="button" onclick="changeWaifu('you',790)">Watanabe You</button>
+	<button type="button" onclick="changeWaifu('chika',786)">Takami Chika</button>
+	<button type="button" onclick="changeWaifu('riko',787)">Sakurauchi Riko</button>
+	<button type="button" onclick="changeWaifu('dia',789)">Kurosawa Dia</button>
+	<button type="button" onclick="changeWaifu('mari',793)">Ohara Mari</button>
+	<button type="button" onclick="changeWaifu('kanan',788)">Matsuura Kanan</button>
+	-->
+	</br>
+	</br>
+	<table>
+		<tr>
+			<td style='width:300'>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackground()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+			</td>
+		</tr>
+	</table>
+	</br></br>
+	<p style='color:white'><font size="6">Use buttons below if you are on MOBILE</font></p>
+	<table>
+		<tr>
+			<td style='width:280'>
+				<button style='width:240' type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play background music</button>
+			</td>
+			<td>
+				<button style='width:240' type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause background music</button>
+			</td>
+		</tr>
+	</table>
+	
+	
+	</br>
+	
+
+	</br>
+	</br>
+	</center>
+
+
+	<audio id='background-music-player'>
+		<source id='mp3-player' src="" type="audio/mp3" />
+		<source id='ogg-player' src="" type="audio/ogg" />
+	</audio>
+
+	<audio id='origin-music-player'>
+		<source id='mp3-player' src="audio/background-music.mp3" type="audio/mp3" />
+		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
+	</audio>
+
+
+
+
+
+	<div class="modal fade" id="settingsModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+        <div class="modal-body">
+
+		<table>
+			<tr>
+				<td style="width: 270px;">
+					<p>Background Music Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="30" min="1" max="100" step="1" onchange="updateVolumeMusic(this.value)"></p>	
+				</td>
+				<td>
+					<p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
+
+				</td>
+			</tr>
+
+		</table>	
+
+          
+          
+
+
+        </div>
+        	<div class="modal-footer">
+          		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+     	 </div>
+      
+    	</div>
+  	</div>
+
+
+
+	  <div class="modal fade" id="snapshotModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Snapshot</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<center>
+	        		<canvas id="snapshot-canvas"></canvas>
+	        	</center>
+	          
+	        	<script src="js/canvas-manage.js"></script>
+
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
+
+
+	<div class="modal fade" id="memberModal" role="dialog">
+	    <div class="modal-dialog" style='width: 900px; height:900px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Manage Waifu Team</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<table  >
+	        		<tr >
+	        			<td style='width:50px;'>
+	        				<img src='images/attributes/smile-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	        			<td style='width:100px;'>
+	        				<div id='id-saved-1'>ID: </div>
+	        			</td>
+	        			<td style='width: 340px;'>
+	        				<div id='name-saved-1'>Name: </div>
+	        			</td>
+	        			<td style='width: 240px;'>
+	        				<div id='idolized-saved-1'>Idolized: </div>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_1" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_1" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td><p></p></td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width:50px;'>
+	        				<img src='images/attributes/cool-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	        			<td style='width:100px;'>
+	        				<div id='id-saved-2'>ID: </div>
+	        			</td>
+	        			<td style='width: 340px;'>
+	        				<div id='name-saved-2'>Name: </div>
+	        			</td>
+	        			<td style='width: 240px;'>
+	        				<div id='idolized-saved-2'>Idolized: </div>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_2" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_2" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td><p></p></td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width:50px;'>
+	        				<img src='images/attributes/pure-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	        			<td style='width:100px;'>
+	        				<div id='id-saved-3'>ID: </div>
+	        			</td>
+	        			<td style='width: 340px;'>
+	        				<div id='name-saved-3'>Name: </div>
+	        			</td>
+	        			<td style='width: 240px;'>
+	        				<div id='idolized-saved-3'>Idolized: </div>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_3" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_3" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	
+				<script src="js/memberModal.js"></script>
+
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
+
+	  <div class="modal fade" id="liveshowModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Live Show</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<script src="js/songlist.js"></script>
+	        	<script src="js/liveshow.js"></script>
+
+
+	        	<center>
+
+	        	<div id='container-liveshow'>
+	        		<img id='liveshowScreen' src='./images/background/background16.png'>
+	        		<img id='liveshowAlbum' src='./images/album-covers/0.jpg' style='width:400px; height:400px;'>
+	        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
+	        	</div>
+
+	        	
+
+	        		
+		        	<table>
+						<tr>
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-play-but" class="btn btn-success btn-circle" onclick="playClick()"><span class="glyphicon glyphicon-play" style='font-size: 20px';></button>
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-stop-but" class="btn btn-danger btn-circle" onclick="stopClick()"><span class="glyphicon glyphicon-stop" style='font-size: 20px';></button>
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							</td>
+						</tr>
+					</table>
+
+					</br>
+	        		        	
+	        		
+	        	</center>
+
+
+				        	
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
+
+
+	  -<div class="modal fade" id="chatModal" role="dialog">
+ 	    <div class="modal-dialog" style='width: 450px; height:450px;'>
+ 
+ 	   <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title"></h4>
+         </div>
+         <div class="modal-body">
+ 
+           
+  	<script id="cid0020000129466773743" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 317px;height: 442px;">{"handle":"lovelivesifwaifusim","arch":"js","styles":{"a":"ff99ff","b":100,"c":"000000","d":"000000","k":"ff99ff","l":"ff99ff","m":"ff99ff","p":"10","q":"ff99ff","r":100,"fwtickm":1}}</script>
+  	<br><br><br>
+  		<a  href="https://www.facebook.com/sharer/sharer.php?u=https%3A//llsif-waifu-sim.github.io/" target="_blank"><button type="button" style='right:10px;' class="btn btn-primary" >Share on Facebook</button></a>
+
+         </div>
+         	<div class="modal-footer">
+           		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         	</div>
+      	 </div>
+      
+    	</div>
+   	</div>
+ </div>
+   	</div>
+
+
+
+
+
+
+
+	  <script id="cid0020000129463856544" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 302px;height: 446px;">{"handle":"lovelivesifwaifusim","arch":"js","styles":{"a":"6600cc","b":100,"c":"FFFFFF","d":"FFFFFF","k":"6600cc","l":"6600cc","m":"6600cc","n":"FFFFFF","p":"10","q":"6600cc","r":100,"pos":"br","cv":1,"cvbg":"993399","cvfg":"000000","cvw":200,"cvh":30,"ticker":1,"fwtickm":1}}</script>
+
+	</body>
+
+
+</html>
