@@ -313,9 +313,9 @@ window.onload = function() {
     var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
 
-    setTimeout(function() {
-    	commandSelect(0);
-	}, 1000, true)
+    
+    commandSelect(0);
+	
 }
 
 
@@ -576,9 +576,9 @@ function getRandomWaifu()
 	}
 
 
-	setTimeout(function() {
-		commandSelect(0);
-	}, 500, true)
+	
+	commandSelect(0);
+	
 
 	storeCookie(i);
 
@@ -644,9 +644,9 @@ function getRandomCard()
 	}
 
 
-	setTimeout(function() {
-		commandSelect(0);
-	}, 500, true)
+	
+	commandSelect(0);
+	
 
 	storeCookie(i);
 
@@ -753,6 +753,7 @@ function searchId()
 	        document.getElementById("idol_img").src=path;
 
 			nameAssign(name);
+			$('#select-waifu').val(name).selectmenu('refresh');
 
 			globalIndex = searchIndexById(id, idolized);
 
@@ -761,9 +762,9 @@ function searchId()
 			}
 
 
-			setTimeout(function() {
-				commandSelect(0);
-			}, 500, true)
+			
+			commandSelect(0);
+			
 			  }
 		});
 
@@ -838,9 +839,9 @@ function changeWaifu(){
 	}
 
 
-	setTimeout(function() {
-    	commandSelect(0);
-	}, 500, true)
+	
+    commandSelect(0);
+	
 
 	storeCookie(index);
 
@@ -903,7 +904,7 @@ function changeWaifu(){
 		globalAudio = new Audio(superString);
 		globalAudio.volume = voiceVolume;
 		globalAudio.play();
-		
+			
 
 		var pathString = "".concat(audioPath, waifuName, file);
 
