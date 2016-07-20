@@ -2,6 +2,7 @@
 <html lang="en">
 	
 	<head>
+	<meta charset="utf-8"/>
 
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -20,12 +21,12 @@
 	<script src="js/indiv-aqours-id-log.js"></script>
 	<script src="js/indiv-muse-id-log.js"></script>
 
-	<!--
-	<script src="js/info-storage.js"></script>
-	<script src="js/audio-handle.js"></script>
+	
+	<script src="mobile-js/info-storage-mobile.js"></script>
+	<script src="mobile-js/audio-handle-mobile.js"></script>
 	
 	
-  	-->
+  	
   	<!--
   	<script src="js/analytics.js"></script>
 	-->
@@ -44,9 +45,9 @@
   </div>
    <div data-role="navbar">
       <ul>
-        <li><input type="search" name="search" id="search" placeholder="Card ID # (ex: 46)"></li>
+        <li><input type="search" name="card_id" id="card_id" placeholder="Card ID # (ex: 46)" onclick="this.select()" onKeyDown="if(event.keyCode==13) searchId();" ></li>
         <li>
-        	<select name="idolization" id="select-idol">
+        	<select class="select-idol" name="select-idol" id="select-idol" onchange="searchId();">
 		      <option value="no">Non-Idolized</option>
 		      <option value="yes">Idolized</option>
 		    </select>
@@ -56,8 +57,8 @@
     </div>
      <div data-role="navbar">
       <ul>
-        <li><a href="#">Random Waifu</a></li>
-        <li><a href="#">Random Honoka</a></li>
+        <li><a href="#" onclick="getRandomWaifu()">Random Waifu</a></li>
+        <li><a href="#" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></a></li>
       </ul>
     </div>
 
@@ -79,8 +80,8 @@
 	
 	<center>
 	<div id="container">
-    	<img id='homeScreen' src='images/background/background0.png'>
-    	<img id="idol_img" src='images/waifu/honoka0.png' usemap="#waifumap">
+    	<img id='homeScreen' src=''>
+    	<img id="idol_img" src='' usemap="#waifumap">
     	
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
@@ -117,41 +118,27 @@
 	</table>
 
        
-    <select name="idolization" id="select-idol" style='width:100%'>
+    <select class="select-waifu" name="select-waifu" id="select-waifu" style='width:100%' onchange="changeWaifu(0)">
 		<option value="honoka">Kousaka Honoka</option>
+		<option value="kotori">Minami Kotori</option>
 		<option value="umi">Sonoda Umi</option>
-		<option value="umi">Minami Kotori</option>
+		<option value="hanayo">Koizumi Hanayo</option>
+		<option value="rin">Hoshizora Rin</option>
+		<option value="maki">Nishikino Maki</option>
+		<option value="eli">Ayase Eli</option>
+		<option value="nozomi">Tojo Nozomi</option>
+		<option value="nico">Yazawa Nico</option>
+
+		<option value="hanamaru">Kunikida Hanamaru</option>
+		<option value="ruby">Kurosawa Ruby</option>
+		<option value="yoshiko">Tsushima Yoshiko</option>
+		<option value="chika">Takami Chika</option>
+		<option value="riko">Sakurauchi Riko</option>
+		<option value="you">Watanabe You</option>
+		<option value="dia">Kurosawa Dia</option>
+		<option value="kanan">Matsuura Kanan</option>
+		<option value="mari">Ohara Mari</option>
 	</select>
-
-       
-     
-	
-	<!--
-	<p style='color:white;'>Quick Waifu Change</p>
-	<button type="button" onclick="changeWaifu('hanayo',14)">Koizumi Hanayo</button>
-	<button type="button" onclick="changeWaifu('rin',8)">Hoshizora Rin</button>
-	<button type="button" onclick="changeWaifu('maki',10)">Nishikino Maki</button>
-
-	<button type="button" onclick="changeWaifu('kotori',4)">Minami Kotori</button>
-	<button type="button" onclick="changeWaifu('honoka', 0)">Kousaka Honoka</button>
-	<button type="button" onclick="changeWaifu('umi',6)">Sonoda Umi</button>
-
-	<button type="button" onclick="changeWaifu('nozomi',12)">Tojo Nozomi</button>
-	<button type="button" onclick="changeWaifu('nico',16)">Yazawa Nico</button>
-	<button type="button" onclick="changeWaifu('eli',2)">Ayase Eli</button>
-	
-	</br>
-	</br>
-	<button type="button" onclick="changeWaifu('ruby',794)">Kurosawa Ruby</button>
-	<button type="button" onclick="changeWaifu('hanamaru',792)">Kunikida Hanamaru</button>
-	<button type="button" onclick="changeWaifu('yoshiko',791)">Tsushima Yoshiko</button>
-	<button type="button" onclick="changeWaifu('you',790)">Watanabe You</button>
-	<button type="button" onclick="changeWaifu('chika',786)">Takami Chika</button>
-	<button type="button" onclick="changeWaifu('riko',787)">Sakurauchi Riko</button>
-	<button type="button" onclick="changeWaifu('dia',789)">Kurosawa Dia</button>
-	<button type="button" onclick="changeWaifu('mari',793)">Ohara Mari</button>
-	<button type="button" onclick="changeWaifu('kanan',788)">Matsuura Kanan</button>
-	-->
 
 
 	
