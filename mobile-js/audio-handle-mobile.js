@@ -41,6 +41,24 @@ function forgetWaifuRNG(maxRandNum)
 	return -1;
 }
 
+/*
+$("#img_idol").on("tap",function(){
+	alert('hi');
+  waifuClick();
+});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 var timeout;
 var countdown = 20000;
@@ -180,13 +198,6 @@ function changeWaifuLoadRandom() {
 	    
 	    nums.splice(j,1);
 	}
-
-
-
-
-
-     
-
     return -1;
 }
 
@@ -561,8 +572,6 @@ function getRandomWaifu()
 		$('#select-idol').val('no').selectmenu('refresh');
 		
 	}
-
-
     //file exists
 	document.getElementById("idol_img").src=path;
 
@@ -573,52 +582,26 @@ function getRandomWaifu()
 
 	if (globalAudio!=null){
 		globalAudio.pause();
-	}
-
-
-	
+	}	
 	commandSelect(0);
-	
-
 	storeCookie(i);
-
-
 }
 
 
 function getRandomCard()
 {
-	//alert('getRandomCard');
 	var neg = forgetWaifuRNG(30);
 
 	if(neg == 0){
 		// forgetWaifu speech was successful
-		//alert('forgotten waifu will appear');
 		return;
 	}
 
-
-
 	var i = cardRNG(); 
-	/*
-	if(isAqours(globalWaifu)){
-		//alert('checking cardRNG');
-		i = cardRNGAqours();
-		//alert(i);
-	} else {
-		i = cardRNG(); 
-	}
-	*/
-
-
 	var id = parseInt(id_log[i][0]);
 	var name = id_log[i][1];
 	var idolized = id_log[i][2];
-
-	//alert(id);
-	
 	var path;
-
 	globalIndex = i;
 
 	if(idolized == 'yes')
@@ -629,27 +612,15 @@ function getRandomCard()
 		path = "./scraped-images/" + name +  "/" + id + ".png";
 		$('#select-idol').val('no').selectmenu('refresh');
 	}
-
-
     //file exists
 	document.getElementById("idol_img").src=path;
-
 	nameAssign(name);
-
 	document.getElementById("card_id").value = id;
-	
-
 	if (globalAudio!=null){
 		globalAudio.pause();
 	}
-
-
-	
 	commandSelect(0);
-	
-
 	storeCookie(i);
-
 }
 
 

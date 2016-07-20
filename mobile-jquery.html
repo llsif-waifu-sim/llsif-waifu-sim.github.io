@@ -81,7 +81,8 @@
 	<center>
 	<div id="container">
     	<img id='homeScreen' src=''>
-    	<img id="idol_img" src='' usemap="#waifumap">
+
+    	<div id='idol_img_div'><img id="idol_img" src=''></div>
     	
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
@@ -92,7 +93,22 @@
     	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
 	
 
-  
+  <script>
+  	var theElement = document.getElementById("idol_img_div");
+
+theElement.addEventListener("mouseup", tapOrClick, false);
+theElement.addEventListener("touchend", tapOrClick, false);
+
+function tapOrClick(event) {
+   //handle tap or click.
+   waifuClick();
+    event.preventDefault();
+    return false;
+}
+
+
+
+  </script>
 
 
     	<div id="speech-bubble" class="bubble" style='display:none;'>
@@ -102,10 +118,7 @@
 		</div>
 	</div>
 
-	<map name="waifumap">
-	  <area shape="rect" coords="100,100,760,500" onclick="waifuClick()">	
-	</map>
-
+	
 	<table style='width:100%'>
 		<tr>
 			<td style='width:49%'>
