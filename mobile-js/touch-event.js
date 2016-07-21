@@ -1,7 +1,7 @@
 var getPointerEvent = function(event) {
     return event.originalEvent.targetTouches ? event.originalEvent.targetTouches[0] : event;
 };
-var $touchArea = $('#touchArea'),
+var $touchArea = $('#idol_img_div'),
     touchStarted = false, // detect if a touch event is sarted
     currX = 0,
     currY = 0,

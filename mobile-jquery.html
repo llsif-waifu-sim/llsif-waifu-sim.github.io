@@ -87,29 +87,13 @@
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
-    	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
+    	<a href="#settingsPanel"><img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'></a>
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
 
     	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
 	
 
-  <script>
-  	var theElement = document.getElementById("idol_img_div");
-
-theElement.addEventListener("mouseup", tapOrClick, false);
-theElement.addEventListener("touchend", tapOrClick, false);
-
-function tapOrClick(event) {
-   //handle tap or click.
-   waifuClick();
-    event.preventDefault();
-    return false;
-}
-
-
-
-  </script>
-
+  		<script src='mobile-js/touch-event.js'></script>
 
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
@@ -181,6 +165,11 @@ function tapOrClick(event) {
 		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
 	</audio>
 
+
+	<div data-role="panel" id="settingsPanel">
+	    <h2>Settings</h2>
+	    <p>You can close the panel by clicking outside the panel, pressing the Esc key or by swiping.</p>
+	  </div>
 
 
 
