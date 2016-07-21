@@ -89,11 +89,11 @@
     	
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
-    	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
+    	<a href="#memberPanel"><img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()"></a>
     	<a href="#settingsPanel"><img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'></a>
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
 
-    	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
+    	<a href='#liveShowPanel'><img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''></a>
 	
 
   		<script src='mobile-js/touch-event.js'></script>
@@ -176,9 +176,181 @@
 	    <h2>Settings</h2>
 
 	    <p>Background Music Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="30" min="1" max="100" step="1" onchange="updateVolumeMusic(this.value)"></p>	
-	    
+
 	    <p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
 	
+
+
+	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+    </div>
+
+
+
+
+
+    <div data-role="panel" id="memberPanel" data-display="overlay">
+	    <h2>Manage Waifu Team</h2>
+
+	    	<table  >
+	    			<tr>
+	    				<td style='width:50px;'>
+	        				<img src='images/attributes/smile-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	    			</tr>
+	    			<tr>
+	    				<td style='width:100px;'>
+	        				<div id='id-saved-1'>ID: </div>
+	        			</td>
+	    			</tr>
+	    			<tr>
+	    				<td style='width: 340px;'>
+	        				<div id='name-saved-1'>Name: </div>
+	        			</td>
+	    			</tr>
+	    			<tr>
+	    				<td style='width: 240px;'>
+	        				<div id='idolized-saved-1'>Idolized: </div>
+	        			</td>
+	        			
+	    			</tr>
+	        		
+	        		<tr>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_1" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        
+	        		</tr>
+	        		<tr>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_1" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	</br>
+	        	</br>
+	        	<table>
+	        		<tr>
+	        			<td style='width:50px;'>
+	        				<img src='images/attributes/cool-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width:100px;'>
+	        				<div id='id-saved-2'>ID: </div>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width: 340px;'>
+	        				<div id='name-saved-2'>Name: </div>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width: 240px;'>
+	        				<div id='idolized-saved-2'>Idolized: </div>
+	        			</td>
+	        	
+	        		</tr>
+	        		<tr>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_2" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_2" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	</br>
+	        	</br>
+	        	<table>
+	        		<tr>
+	        			<td style='width:50px;'>
+	        				<img src='images/attributes/pure-icon.png' style='height:30px; width:30px;'>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width:100px;'>
+	        				<div id='id-saved-3'>ID: </div>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width: 340px;'>
+	        				<div id='name-saved-3'>Name: </div>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td style='width: 240px;'>
+	        				<div id='idolized-saved-3'>Idolized: </div>
+	        			</td>
+	        			
+	        		</tr>
+	        		<tr>
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_save_but_3" class="btn btn-primary" onclick="saveWaifu(this.id)">Save</button>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			
+	        			<td style='width:250px;'>
+	        				<button style='width:140' type="button" id="waifu_load_but_3" class="btn btn-primary" onclick="checkWaifuLoadCookie(this.id);">Load</button>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	
+				<script src="js/memberModal.js"></script>
+		</br></br>
+
+
+	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+    </div>
+
+
+
+
+
+
+
+    <div data-role="panel" id="liveShowPanel" data-display="overlay">
+	    <script src="js/songlist.js"></script>
+	        	<script src="js/liveshow.js"></script>
+
+
+	        	<center>
+
+	        	<div id='container-liveshow'>
+	        		<img id='liveshowScreen' src='./images/background/background16.png'>
+	        		<img id='liveshowAlbum' src='./images/album-covers/0.jpg' style='width:400px; height:400px;'>
+	        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
+	        	</div>
+
+	        	
+
+	        		
+		        	<table>
+						<tr>
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-play-but" class="btn btn-success btn-circle" onclick="playClick()"><span class="glyphicon glyphicon-play" style='font-size: 20px';></button>
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:60px; height:60px;' type="button" id="liveshow-stop-but" class="btn btn-danger btn-circle" onclick="stopClick()"><span class="glyphicon glyphicon-stop" style='font-size: 20px';></button>
+							</td>
+							<td style='padding:10px;'>
+								<button style='width:100px; height:40px;' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							</td>
+						</tr>
+					</table>
+
+					</br>
+	        		        	
+	        		
+	        	</center>
+
+
 
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>

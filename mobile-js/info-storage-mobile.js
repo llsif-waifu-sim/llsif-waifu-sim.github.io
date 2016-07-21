@@ -233,10 +233,10 @@ function savedWaifuLoad(index)
     if(idolized == 'yes')
     {
         path = "./scraped-images/" + name + "/" + id + "_id.png";
-        document.querySelector("input[value='yes']").checked = true;
+        $('#select-idol').val('yes').selectmenu('refresh');
     }else{
         path = "./scraped-images/" + name +  "/" + id + ".png";
-        document.querySelector("input[value='no']").checked = true;
+        $('#select-idol').val('no').selectmenu('refresh');
     }
 
     //file exists
