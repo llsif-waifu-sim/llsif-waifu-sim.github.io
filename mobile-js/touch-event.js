@@ -20,12 +20,16 @@ $touchArea.on('touchstart mousedown',function (e){
     touchStarted = true;
     //$touchArea.text('Touchstarted');
     // detecting if after 200ms the finger is still in the same position
+
+
+    
+
     setTimeout(function (){
         if ((cachedX === currX) && !touchStarted && (cachedY === currY)) {
             // Here you get the Tap event
             //$touchArea.text('Tap');
-
-            waifuClick();
+            
+            
         }
     },200);
 });
@@ -34,6 +38,7 @@ $touchArea.on('touchend mouseup touchcancel',function (e){
     // here we can consider finished the touch event
     touchStarted = false;
     //$touchArea.text('Touchended');
+    waifuClick();
 });
 $touchArea.on('touchmove mousemove',function (e){
     e.preventDefault();
