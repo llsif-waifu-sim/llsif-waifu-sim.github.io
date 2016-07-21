@@ -16,6 +16,8 @@
 
 
 
+
+
 	<script src="js/id-log.js"></script>
 	<script src="js/aqours-id-log.js"></script>
 	<script src="js/indiv-aqours-id-log.js"></script>
@@ -40,6 +42,7 @@
 
 	
 
+
 	<div data-role="header">
     <h1>LLSIF Waifu Sim</h1>
   </div>
@@ -62,7 +65,7 @@
       </ul>
     </div>
 
-
+    
 
 
 	<body style="background-color:#FF69B4;">
@@ -165,11 +168,22 @@
 		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
 	</audio>
 
+	
+	
 
-	<div data-role="panel" id="settingsPanel">
+
+	<div data-role="panel" id="settingsPanel" data-display="overlay">
 	    <h2>Settings</h2>
-	    <p>You can close the panel by clicking outside the panel, pressing the Esc key or by swiping.</p>
-	  </div>
+
+	    <p>Background Music Volume: <input type="range" style='width:220px;' id="volumeSliderMusic" value="30" min="1" max="100" step="1" onchange="updateVolumeMusic(this.value)"></p>	
+	    
+	    <p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
+	
+
+
+	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+    </div>
+
 
 
 
