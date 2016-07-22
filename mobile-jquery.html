@@ -1,4 +1,3 @@
-
 <html>
 	
 	<head>
@@ -43,9 +42,17 @@
 	
 
 
-	<div data-role="header">
-    <h1>LLSIF Waifu Sim</h1>
+    
+
+    <!--<body style="background-color:#FF69B4;">-->
+	<body>
+
+
+  <div data-role="page" id="pageone">
+    <div data-role="header">
+     <h1>LLSIF Waifu Sim</h1>
   </div>
+
    <div data-role="navbar">
       <ul>
         <li><input type="search" name="card_id" id="card_id" placeholder="Card ID # (ex: 46)" onchange="searchId();"></li>
@@ -65,24 +72,7 @@
       </ul>
     </div>
 
-    
-
-
-	<body style="background-color:#FF69B4;">
-
-
-	<div style='left:20px; position: absolute;'>
-		<img id='eng_but' src="images/buttons/english-icon-hover.png" onclick="changeLanguage(0)" onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'> 
-		<img id='jap_but' src="images/buttons/japanese-icon.png" onclick="changeLanguage(1)" onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'> 
-
-		<font style='color:white'><div id='language-tag'>Current: English</div></font>
-	</div>
-
-
-	
-	
-	<center>
-	<div id="container">
+    <div id="container">
     	<img id='homeScreen' src=''>
 
     	<div id='idol_img_div'><img id="idol_img" src=''></div>
@@ -91,7 +81,7 @@
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<a href="#memberPanel"><img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()"></a>
     	<a href="#settingsPanel"><img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'></a>
-    	<a href="#cameraPanel"><img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'></a>
+    	<a href="#snapshotPage"><img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'></a>
 
     	<a href='#liveShowPanel'><img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''></a>
 	
@@ -187,16 +177,6 @@
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
     </div>
 
-
-    <div data-role="panel" id="cameraPanel" data-display="overlay">
-	    <h2>Snapshot</h2>
-
-
-	        	<canvas id="snapshot-canvas"></canvas>
-	        	
-	          
-	        	<script src="mobile-js/canvas-manage-mobile.js"></script>
-    </div>
 
 
 
@@ -376,9 +356,66 @@
 
 
 	<!--
-
 	  <script id="cid0020000129463856544" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 302px;height: 446px;">{"handle":"lovelivesifwaifusim","arch":"js","styles":{"a":"6600cc","b":100,"c":"FFFFFF","d":"FFFFFF","k":"6600cc","l":"6600cc","m":"6600cc","n":"FFFFFF","p":"10","q":"6600cc","r":100,"pos":"br","cv":1,"cvbg":"993399","cvfg":"000000","cvw":200,"cvh":30,"ticker":1,"fwtickm":1}}</script>
+	-->
 
+ <!--
+  <div data-role="main" class="ui-content">
+    <p>Welcome! If you click on the link below, it will take you to Page Two.</p>
+    <a href="#pagetwo">Go to Page Two</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+-->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Snapshot page -->
+<div data-role="page" id="snapshotPage">
+  <div data-role="header">
+    <h1>Waifu Snapshot</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  
+  <center>
+  	<canvas id="snapshot-canvas" style='width:100%; height:auto;'></canvas>
+	</center>  	
+	          
+	<script src="mobile-js/canvas-manage-mobile.js"></script>
+
+	<br>
+    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+  </div>
+
+  <!--
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+-->
+
+</div>
+
+
+	<!--
+	  <script id="cid0020000129463856544" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 302px;height: 446px;">{"handle":"lovelivesifwaifusim","arch":"js","styles":{"a":"6600cc","b":100,"c":"FFFFFF","d":"FFFFFF","k":"6600cc","l":"6600cc","m":"6600cc","n":"FFFFFF","p":"10","q":"6600cc","r":100,"pos":"br","cv":1,"cvbg":"993399","cvfg":"000000","cvw":200,"cvh":30,"ticker":1,"fwtickm":1}}</script>
 	-->
 
 	</body>
