@@ -3,6 +3,8 @@ var musicVolume = 0.3;
 var background = 0;
 var globalIndex = 0;
 
+var liveshowBackground = true;
+var waifuVoiceEnable = true;
 
 
 // Setting and getting the cookies

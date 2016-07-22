@@ -91,7 +91,7 @@
     	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<a href="#memberPanel"><img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()"></a>
     	<a href="#settingsPanel"><img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'></a>
-    	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
+    	<a href="#cameraPanel"><img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'></a>
 
     	<a href='#liveShowPanel'><img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''></a>
 	
@@ -179,13 +179,28 @@
 
 	    <p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
 	
+	    <p>Enable Waifu Voice: <input type="checkbox" data-role="flipswitch" name="waifuVoiceSwitch" id="waifuVoiceSwitch" data-wrapper-class="custom-size-flipswitch" checked=""></p>
 
+	    <p>Liveshow backplayer mode: <input type="checkbox" data-role="flipswitch" name="LiveshowSwitch" id="LiveshowSwitch" data-wrapper-class="custom-size-flipswitch" checked=""></p>
+	    
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
     </div>
 
 
+    <div data-role="panel" id="cameraPanel" data-display="overlay">
+	    <h2>Snapshot</h2>
 
+
+	        	<canvas id="snapshot-canvas"></canvas>
+	        	
+	          
+	        	<script src="mobile-js/canvas-manage-mobile.js"></script>
+    </div>
+
+
+
+    <script src="mobile-js/settings-mobile.js"></script>
 
 
     <div data-role="panel" id="memberPanel" data-display="overlay">
@@ -313,8 +328,8 @@
 
 
     <div data-role="panel" id="liveShowPanel" data-display="overlay">
-	    <script src="js/songlist.js"></script>
-	        	<script src="js/liveshow.js"></script>
+	    		<script src="js/songlist.js"></script>
+	        	<script src="mobile-js/liveshow-mobile.js"></script>
 
 
 	        	<center>

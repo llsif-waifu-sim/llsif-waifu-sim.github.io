@@ -2,6 +2,9 @@ var globalAudio = null;
 var globalWaifu = 'honoka';
 var maxNumOfCard = 960;
 var language = 'english';
+var background_playing = false;
+
+
 
 var away = false;
 var timerRanOut = false;
@@ -336,6 +339,7 @@ function updateVolumeMusic(soundValue) {
     musicVolume = soundValue/100;
     storeVolumeMusicCookie(musicVolume);
     playBackgroundMusic();
+    background_playing = true;
 }
 
 function updateVolumeVoice(soundValue) {
@@ -350,6 +354,7 @@ function pauseBackgroundMusic()
 {
 	var audio = document.getElementById("origin-music-player"); // For the main background
 	audio.pause();
+	background_playing = false;
 }
 
 function playBackgroundMusic()
@@ -360,6 +365,7 @@ function playBackgroundMusic()
 	audio.pause();
 	audio.volume = musicVolume;
 	audio.play();
+	background_playing = true;
 }
 
 
@@ -874,12 +880,12 @@ function changeWaifu(){
 
 
 		
-
-		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
-		globalAudio = new Audio(superString);
-		globalAudio.volume = voiceVolume;
-		globalAudio.play();
-			
+		if(waifuVoiceEnable){
+			var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+			globalAudio = new Audio(superString);
+			globalAudio.volume = voiceVolume;
+			globalAudio.play();
+		}
 
 		var pathString = "".concat(audioPath, waifuName, file);
 
@@ -1161,8 +1167,11 @@ $(window).blur(function() {
 	var audio = document.getElementById("origin-music-player"); // For the main background
 	var mainAudio = document.getElementById("background-music-player"); // For the music player
 
-	mainAudio.pause();
 	audio.pause();
+
+	if(!liveshowBackground){
+		mainAudio.pause();
+	}
 
 
 	
@@ -1175,7 +1184,7 @@ $(window).blur(function() {
 
 // If we reenter tab
 $(window).focus(function() { 
-	if(away){
+	if(away && background_playing){
 		away = false;
 		var audio = document.getElementById("origin-music-player"); 
 		audio.play();
@@ -1184,6 +1193,17 @@ $(window).focus(function() {
 });
 
 
+/*
+var waifuVoiceVal = 'on';
+$('select#waifuVoiceSwitch').change(function() {
+    if(waifuVoiceVal!==$(this).val()){
+        alert($(this).val());
+        waifuVoiceEnable = false;
+    }
+    waifuVoiceVal = $(this).val();
+    waifuVoiceEnable = true;
+});
+*/
 
 function changeLanguage(lang_num)
 {
