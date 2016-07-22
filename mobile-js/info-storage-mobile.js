@@ -4,6 +4,7 @@ var background = 0;
 var globalIndex = 0;
 
 
+
 // Setting and getting the cookies
 
 function setCookie(cname, cvalue, exdays) {
@@ -41,6 +42,7 @@ function checkCookie() {
     if (index != null && index != "") {
         mainWaifuSet(index);
     } else{
+        globalIndex = 0;
     	document.getElementById("idol_img").src= 'images/waifu/honoka0.png';
     }
 }

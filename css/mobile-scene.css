@@ -14,13 +14,14 @@
     min-width:screen.width;
     height:auto;
 }
-/*
+
 #container-liveshow{
     position: relative;
-    width: 950px;
-    height: 650px;  
+    width: 95%;
+    height: auto;  
 }
 
+/*
 #song-title-tag
 {
     position: absolute;
@@ -29,21 +30,25 @@
     left: 25%;
 
 }
+*/
 
 #liveshowScreen
 {
-    width:950px; 
-    height:650px;
+    width: 98%;
+    height: auto;
 }
 
 #liveshowAlbum{
     position: absolute;
-    top: 18%;
-    right: 28%;
-
+    width:48%; 
+    height:auto;
+    
+    top: 12%;
+    left: 28%;
+    
 
 }
-*/
+
 /* height should be 591px */
 
 #idol_img{

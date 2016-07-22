@@ -63,6 +63,7 @@ $("#img_idol").on("tap",function(){
 var timeout;
 var countdown = 20000;
 
+/* Commented out so that inactivity does not happen
 $(document).on('mousemove', function(){
 
 	clearTimeout(timeout);
@@ -71,7 +72,7 @@ $(document).on('mousemove', function(){
 	timeout = setTimeout(inactiveSpeech, countdown);
 
 })
-
+*/
 
 function inactiveSpeech()
 {
@@ -602,7 +603,10 @@ function getRandomCard()
 	var name = id_log[i][1];
 	var idolized = id_log[i][2];
 	var path;
+
 	globalIndex = i;
+
+
 
 	if(idolized == 'yes')
 	{
@@ -886,7 +890,8 @@ function changeWaifu(){
 
 	function saveWaifu(but_id)
 	{
-	
+		
+		
 		storeSaveWaifuCookie(globalIndex, but_id);
 	
 	    if(but_id == 'waifu_save_but_1'){
@@ -917,6 +922,8 @@ function changeWaifu(){
 		    document.getElementById("id-saved-1").innerHTML = html_id;
 		    document.getElementById("name-saved-1").innerHTML = html_name;
 		    document.getElementById("idolized-saved-1").innerHTML = html_idol;
+
+
 		} else if(but_id == 'waifu_save_but_2'){
 
 
@@ -1151,8 +1158,17 @@ function countDown(n) {
 $(window).blur(function() { 
 	away = true;
 
-	timerRanOut = false;
-	countDown(20);
+	var audio = document.getElementById("origin-music-player"); // For the main background
+	var mainAudio = document.getElementById("background-music-player"); // For the music player
+
+	mainAudio.pause();
+	audio.pause();
+
+
+	
+
+	//timerRanOut = false;
+	//countDown(20);
 
 });
 
@@ -1161,21 +1177,12 @@ $(window).blur(function() {
 $(window).focus(function() { 
 	if(away){
 		away = false;
-		
-		if(timerRanOut){
-
-		    var neg = forgetWaifuRNG(7);
-
-			if(neg == -1){
-				// If forget waifu speech was not successful
-				commandSelect(0);			    	
-		
-			}
-
-		}
+		var audio = document.getElementById("origin-music-player"); 
+		audio.play();
 
 	}
 });
+
 
 
 function changeLanguage(lang_num)
