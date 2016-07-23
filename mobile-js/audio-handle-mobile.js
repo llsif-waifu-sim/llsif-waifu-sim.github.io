@@ -393,7 +393,7 @@ function changeBackgroundBack()
 function refreshBubble()
 {
 	$(document).ready(function(){
-		$("#speech-bubble").hide();
+		$("#speech-bubbles").hide();
 		$("#speech-bubble").fadeIn();
 	});
 }
