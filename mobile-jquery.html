@@ -3,6 +3,7 @@
 	<head>
 	<meta charset="utf-8"/>
 
+	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -87,7 +88,7 @@
 	
 
   		<script src='mobile-js/touch-event.js'></script>
-  		
+
     	<div id="speech-bubble" class="bubble" style='display:none; '>
     		<font size="3"><div id='speech-text' style='opacity: 2.0;'>
 		 	 404: Comment not found
@@ -323,20 +324,21 @@
 
 
 	        		
-		        	<table>
+		        	<table style='width:100%'>
 						<tr>
-							<td style='padding:10px;'>
-								<button style='width:25%; height:10%;' type="button" class="btn btn-primary" onclick="changeSong()"><span class="glyphicon glyphicon-chevron-left">
+							<td style='padding:10px;width:20%'>
+								<a href="#" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" onclick="changeSong()"></a>
 							</td>
-							<td style='padding:10px;'>
-								<button style='width:18% height:18%;' type="button" id="liveshow-play-but" class="btn btn-success btn-circle" onclick="playClick()"><span class="glyphicon glyphicon-play" style='font-size: 20px';></button>
+							<td style='padding:10px;width:20%'>
+								<a href="#" class="ui-btn ui-corner-all ui-icon-play ui-btn-icon-notext" onclick="playClick()"></a>
 							</td>
-							<td style='padding:10px;'>
-								<button style='width:18% height:18%;' type="button" id="liveshow-stop-but" class="btn btn-danger btn-circle" onclick="stopClick()"><span class="glyphicon glyphicon-stop" style='font-size: 20px';></button>
+							<td style='padding:10px;width:20%'>
+								<a href="#" class="ui-btn ui-corner-all ui-icon-square ui-btn-icon-notext" onclick="stopClick()"></a>
 							</td>
-							<td style='padding:10px;'>
-								<button style='width:25% height:10%;' type="button" class="btn btn-primary" onclick="changeSongBack()"><span class="glyphicon glyphicon-chevron-right"></span></button>
+							<td style='padding:10px;width:20%'>
+								<a href="#" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext" onclick="changeSongBack()"></a>
 							</td>
+
 						</tr>
 					</table>
 
