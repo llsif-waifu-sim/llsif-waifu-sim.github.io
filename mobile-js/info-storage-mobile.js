@@ -52,6 +52,7 @@ function checkCookie() {
 
 function checkBackgroundCookie() {
     var index=getCookie("background-index");
+    
     if (index != null && index != "") {
         mainBackgroundSet(index);
     } else{
@@ -108,6 +109,38 @@ function checkWaifuLoadCookie(but_id) {
     } 
 }
 
+function checkWaifuVoiceEnableCookie() {
+    var index=getCookie("waifuVoice-enable");
+    
+    if (index != null && index != "") {
+        if(index=='false'){
+            waifuVoiceEnable = false;
+            $("#waifuVoiceSwitch").prop( "checked", false ).flipswitch( "refresh" ) ;
+
+
+        } else {
+            waifuVoiceEnable = true;
+        }
+        
+
+    } 
+}
+
+
+
+function checkLiveshowPlayerEnableCookie() {
+    var index=getCookie("liveshowPlayer-enable");
+    if (index != null && index != "") {
+        if(index=='false'){
+            liveshowBackground = false;
+            $("#LiveshowSwitch").prop( "checked", false ).flipswitch( "refresh" ) ;
+            
+        } else {
+            liveshowBackground = true;
+        }
+    } 
+}
+
 
 
 
@@ -150,6 +183,24 @@ function storeVolumeVoiceCookie(volume)
     setCookie("volumeVoice-value", volume, 4);
 }
 
+function enableVoiceCookie(bool)
+{
+    if(bool){
+        setCookie("waifuVoice-enable", 'true', 4);
+    } else {
+        setCookie("waifuVoice-enable", 'false', 4);
+    }
+    
+}
+
+function liveshowBackplayerCookie(bool)
+{
+    if(bool){
+        setCookie("liveshowPlayer-enable", 'true', 4);
+    } else {
+        setCookie("liveshowPlayer-enable", 'false', 4);
+    }
+}
 
 
 
@@ -247,7 +298,11 @@ function savedWaifuLoad(index)
     document.getElementById("idol_img").src=path;
 
     nameAssign(name);
+    $('#select-waifu').val(name).selectmenu('refresh');
+
     document.getElementById("card_id").value = id;
+
+
 
     if (globalAudio!=null){
         globalAudio.pause();

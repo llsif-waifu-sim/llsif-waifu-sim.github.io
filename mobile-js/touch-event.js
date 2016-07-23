@@ -39,6 +39,7 @@ $touchArea.on('touchend mouseup touchcancel',function (e){
     touchStarted = false;
     //$touchArea.text('Touchended');
     waifuClick();
+    
 });
 $touchArea.on('touchmove mousemove',function (e){
     e.preventDefault();

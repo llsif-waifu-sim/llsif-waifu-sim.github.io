@@ -44,23 +44,6 @@ function forgetWaifuRNG(maxRandNum)
 	return -1;
 }
 
-/*
-$("#img_idol").on("tap",function(){
-	alert('hi');
-  waifuClick();
-});
-*/
-
-
-
-
-
-
-
-
-
-
-
 
 
 var timeout;
@@ -323,13 +306,15 @@ window.onload = function() {
 	checkCookie();
 	checkBackgroundCookie();
 	checkVolumeCookie();
+	checkWaifuVoiceEnableCookie();
+	checkLiveshowPlayerEnableCookie();
 	
 
     var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
 
     
-    commandSelect(0);
+    //commandSelect(0);
 	
 }
 
@@ -378,10 +363,10 @@ function changeBackground()
 	}else {
 		background = 0;
 	}
-	storeBackgroundCookie(background);
+
 
 	var backpath = 'images/background/background' + background.toString() + '.png';
-	
+
 	document.getElementById("homeScreen").src=backpath;
 	
 }
@@ -657,7 +642,6 @@ function searchIndexById(id, idolized)
 	{
 		if(id_log[i][0] == id.toString())
 		{
-			//alert(id_log[i][0]);
 			if(idolized == 'yes' && ( id_log[i+1][0] == id.toString() )){
 				return i + 1;
 			} else{
@@ -681,14 +665,6 @@ function searchIdolizedById(id)
 	}
 	return 'none';
 }
-
-/*
-document.getElementById('card_id').onkeydown = function(event) {
-    if (event.keyCode == 13) {
-        alert('5');
-    }
-}
-*/
 
 function searchId()
 {
@@ -1193,17 +1169,6 @@ $(window).focus(function() {
 });
 
 
-/*
-var waifuVoiceVal = 'on';
-$('select#waifuVoiceSwitch').change(function() {
-    if(waifuVoiceVal!==$(this).val()){
-        alert($(this).val());
-        waifuVoiceEnable = false;
-    }
-    waifuVoiceVal = $(this).val();
-    waifuVoiceEnable = true;
-});
-*/
 
 function changeLanguage(lang_num)
 {
