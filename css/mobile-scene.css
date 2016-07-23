@@ -55,7 +55,7 @@
     position: absolute;
 
 
-    height:90%;
+    height:95%;
     width: auto;
 
 
@@ -124,9 +124,9 @@
     top: 68%;
     left: 1%;
 
-    width:50%;
+    width:90%;
     min-height:1.5em;
-    padding: 16px;
+    padding: 15px;
     background: #FFFFFF;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -135,6 +135,7 @@
 
     /* Allows us to make bubble transparent */
     background-color: rgba(255,255,255,0.7);
+    pointer-events: none;
 }
 
 .bubble:after 
@@ -152,6 +153,7 @@
 
     opacity: 0.7;
     filter: alpha(opacity=70);
+    pointer-events: none;
 }
 
 .bubble:before 
@@ -169,6 +171,7 @@
 
     opacity: 0.7;
     filter: alpha(opacity=70);
+    pointer-events: none;
 }
 
 

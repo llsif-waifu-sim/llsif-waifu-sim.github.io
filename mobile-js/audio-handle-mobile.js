@@ -329,6 +329,7 @@ function updateVolumeMusic(soundValue) {
 
 function updateVolumeVoice(soundValue) {
     voiceVolume = soundValue/100;
+    alert(voiceVolume);
     storeVolumeVoiceCookie(voiceVolume);
     commandSelect(0);
 }

@@ -49,7 +49,7 @@
 	<body>
 
 
-  <div data-role="page" id="pageone">
+  <div data-role="page" id="pageone" style="background:#FF69B4;">
     <div data-role="header">
      <h1>LLSIF Waifu Sim</h1>
   </div>
@@ -68,8 +68,8 @@
     </div>
      <div data-role="navbar">
       <ul>
-        <li><a href="#" onclick="getRandomWaifu()">Random Waifu</a></li>
-        <li><a href="#" onclick="getRandomCard()"><div id='random-nameplace'>Random Honoka</div></a></li>
+        <li style='width:50%;padding-left:1%;'><a href="#" onclick="getRandomWaifu()" style="background:orange;border-color:orange;"><font color='white' >Random Waifu</font></a></li>
+        <li style='width:50%;padding-left:1%;'><a href="#" onclick="getRandomCard()" style="background:orange;border-color:orange;"><font color='white'><div id='random-nameplace'>Random Honoka</div></font></a></li>
       </ul>
     </div>
 
@@ -100,10 +100,10 @@
 	<table style='width:100%'>
 		<tr>
 			<td style='width:49%'>
-				<button style='width:100%' type="button" class="btn btn-info" onclick="changeBackgroundBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+				<button style='width:100%; background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-carat-l ui-btn-icon-left" onclick="changeBackgroundBack()"><font color='white' >Wallpaper</font></button>
 			</td>
 			<td style='width:49%'>
-				<button style='width:100%' type="button" class="btn btn-info" onclick="changeBackground()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+				<button style='width:100%; background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-carat-r ui-btn-icon-right" onclick="changeBackground()"><font color='white' >Wallpaper</font></button>
 			</td>
 		</tr>
 	</table>
@@ -136,10 +136,10 @@
 	<table style='width:100%'>
 		<tr>
 			<td style='width:49%'>
-				<button  type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play</button>
+				<button style='background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-play ui-btn-icon-left" onclick="playBackgroundMusic()"><font color='white' >Play Theme</font></button>
 			</td>
 			<td style='width:49%'>
-				<button  type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause</button>
+				<button style='background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-stop ui-btn-icon-left" onclick="pauseBackgroundMusic()"><font color='white' >Pause Theme</font></button>
 			</td>
 		</tr>
 	</table>
@@ -173,7 +173,12 @@
 	    <p>Enable Waifu Voice: <input type="checkbox" data-role="flipswitch" name="waifuVoiceSwitch" id="waifuVoiceSwitch" data-wrapper-class="custom-size-flipswitch" checked=""></p>
 
 	    <p>Liveshow backplayer mode: <input type="checkbox" data-role="flipswitch" name="LiveshowSwitch" id="LiveshowSwitch" data-wrapper-class="custom-size-flipswitch" checked=""></p>
-	    
+	    <p>
+	    	<select class="select-waifu" name="select-waifu" id="select-waifu" style='width:100%' onchange="changeLanguage(0)">
+				<option value="1">English</option>
+				<option value="2">Japanese</option>
+			</select>
+	    </p>
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
 	    <script src="mobile-js/settings-mobile.js"></script>
