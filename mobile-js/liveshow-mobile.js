@@ -61,8 +61,7 @@ function playClick()
 
 
 		
-		 $('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
-	
+		$('#liveshow-play-but').removeClass('ui-icon-play').addClass('ui-icon-pause').trigger('refresh');
 		
 
 	}else if((musicPaused || musicStopped) && !musicPlaying && !beginning && !musicChanged){
@@ -72,14 +71,14 @@ function playClick()
 		beginning = false;
 		musicPlaying = true;
 		currplayingSong = currSong;
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		$('#liveshow-play-but').removeClass('ui-icon-play').addClass('ui-icon-pause').trigger('refresh');
 
 
 	} else {
 		// Pause music
 		
 		prevMusic.pause();
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 		musicPaused = true;
 		musicChanged = false;
 		musicPlaying = false;
@@ -99,7 +98,7 @@ function stopClick()
 
 	if((currplayingSong == currSong)  && musicPlaying){
 		// We haven't switched songs and music is currently playing
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 		musicStopped = true;
 		musicChanged = false;
 	} else if ( !(currplayingSong == currSong)  ){
@@ -139,11 +138,11 @@ function changeSong()
 
 	if(   (currplayingSong == currSong) && musicPlaying    ){
 		// We came back to our original song and music is playing
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		$('#liveshow-play-but').removeClass('ui-icon-play').addClass('ui-icon-pause').trigger('refresh');
 		musicChanged = false;
 	} else if (!musicChanged &&  musicPlaying){
 		// We are switching songs
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 		musicChanged = true;
 	}
 	
@@ -176,10 +175,10 @@ function changeSongBack()
 	if((currplayingSong == currSong) && musicPlaying){
 		// We came back to our original song
 		musicChanged = false;
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		$('#liveshow-play-but').removeClass('ui-icon-play').addClass('ui-icon-pause').trigger('refresh');
 	} else if (!musicChanged &&  musicPlaying){
 		// We are switching songs
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 		musicChanged = true;
 	}
 
