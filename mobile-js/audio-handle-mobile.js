@@ -763,8 +763,6 @@ function searchId()
 				globalAudio.pause();
 			}
 
-
-			
 			commandSelect(0);
 			
 			  }
