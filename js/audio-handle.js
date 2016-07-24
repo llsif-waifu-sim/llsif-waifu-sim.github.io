@@ -768,6 +768,8 @@ function searchId()
 				globalAudio.pause();
 			}
 
+			var index = parseInt(searchIndexById(id, idolized));
+			storeCookie(index);
 
 			setTimeout(function() {
 				commandSelect(0);
@@ -775,8 +777,7 @@ function searchId()
 			  }
 		});
 
-		var index = parseInt(searchIndexById(id, idolized));
-		storeCookie(index);
+		
 
 }
 

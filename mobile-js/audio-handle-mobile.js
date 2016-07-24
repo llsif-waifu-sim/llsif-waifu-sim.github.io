@@ -767,13 +767,15 @@ function searchId()
 				globalAudio.pause();
 			}
 
+			var index = parseInt(searchIndexById(id, idolized));
+		storeCookie(index);
+
 			commandSelect(0);
 			
 			  }
 		});
 
-		var index = parseInt(searchIndexById(id, idolized));
-		storeCookie(index);
+		
 
 }
 

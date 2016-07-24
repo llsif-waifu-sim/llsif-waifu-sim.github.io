@@ -41,7 +41,7 @@ function getCookie(cname) {
 function checkCookie() {
     var index=getCookie("waifu-index");
     globalIndex = index;
-    if (index != null && index != "") {
+    if (index != null && index != "" && !isNaN(index)) {
         mainWaifuSet(index);
     } else{
         globalIndex = 0;
@@ -79,7 +79,7 @@ function checkWaifuLoadCookie(but_id) {
     var index2=getCookie("saved-waifu-index-2");
     var index3=getCookie("saved-waifu-index-3");
 
-    if (index != null && index != "") {
+    if (index != null && index != "" && !isNaN(index)) {
 
         if(but_id == 'waifu_load_but_1'){
             globalIndex = index;
@@ -89,7 +89,7 @@ function checkWaifuLoadCookie(but_id) {
         
     } 
 
-    if (index2 != null && index2 != "") {
+    if (index2 != null && index2 != "" && !isNaN(index)) {
 
         if(but_id == 'waifu_load_but_2'){
             globalIndex = index2;
@@ -99,7 +99,7 @@ function checkWaifuLoadCookie(but_id) {
         
     } 
 
-    if (index3 != null && index3 != "") {
+    if (index3 != null && index3 != "" && !isNaN(index)) {
 
         if(but_id == 'waifu_load_but_3'){
             globalIndex = index3;
