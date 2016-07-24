@@ -1,9 +1,17 @@
 <html lang="en">
 	
 	<head>
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+	<link href="css/bootstrap-switch.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/scene.css">
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+  	<script src="js/bootstrap-switch.js"></script>
+
+
 	<script src="js/id-log.js"></script>
 	<script src="js/aqours-id-log.js"></script>
 	<script src="js/indiv-aqours-id-log.js"></script>
@@ -11,7 +19,8 @@
 	<script src="js/info-storage.js"></script>
 	<script src="js/audio-handle.js"></script>
 	
-  	<script src="js/bootstrap.min.js"></script>
+  	
+
   	<script src="js/analytics.js"></script>
 
 
@@ -194,7 +203,7 @@
 
 	<div class="modal fade" id="settingsModal" role="dialog">
     <div class="modal-dialog">
-    
+    <script>$("[name='my-checkbox']").bootstrapSwitch();</script>
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -211,6 +220,11 @@
 				<td>
 					<p>Voice Volume: <input type="range" style='width:220px;' id="volumeSliderVoice" value="30" min="1" max="100" step="1" onchange="updateVolumeVoice(this.value)"></p>
 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Enable waifu to speak outside of tab<input type="checkbox" name="my-checkbox" checked></p>
 				</td>
 			</tr>
 
@@ -449,6 +463,8 @@
 
 	  <script id="cid0020000129463856544" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 302px;height: 446px;">{"handle":"lovelivesifwaifusim","arch":"js","styles":{"a":"6600cc","b":100,"c":"FFFFFF","d":"FFFFFF","k":"6600cc","l":"6600cc","m":"6600cc","n":"FFFFFF","p":"10","q":"6600cc","r":100,"pos":"br","cv":1,"cvbg":"993399","cvfg":"000000","cvw":200,"cvh":30,"ticker":1,"fwtickm":1}}</script>
 
+	  		<script>$("[name='my-checkbox']").bootstrapSwitch();</script>
+			
 	</body>
 
 
