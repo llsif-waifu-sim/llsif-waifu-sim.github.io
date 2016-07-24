@@ -1,4 +1,5 @@
-var songlist_ar = 
+var numOfSongsMuseAll = 48;
+var muse_together_ar = 
 [
 'Bokura no LIVE Kimi to no LIFE',
 'Yuujou No Change',
@@ -50,6 +51,7 @@ var songlist_ar =
 'Sayounara e Sayonara!'
 ]
 
+var numOfSongsMuseSub = 31;
 var muse_subgroup_ar = 
 [
 'Love marginal',
@@ -85,55 +87,62 @@ var muse_subgroup_ar =
 'Shunjou Romantic'
 ]
 
-
+var numOfSongsMuseOther = 46;
 var muse_individual_ar =
 [
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
+'Mermaid festa vol.2 Passionate',
+'Someday of my life',
+'Koi no Signal Rin rin rin!',
+'Kokuhaku Biyori, desu!',
+'Blueberry Train',
+'Kodoku na Heaven',
+'Otome Shiki Renai Juku',
+'Mahoutsukai Hajimemashita!',
+'Junai Lens',
+'Soldier Game',
+'Daring!!',
+'Yuuki no Reason',
+'Arifureta Kanashimi no Hate',
+'Ai wa Taiyou Ja Nai?',
+'Mou Hitori Ja Nai yo',
+'Watashitachi wa Mirai no Hana',
+'Spicaterrible',
+'Listen to my heart!!',
+'After School NAVIGATORS',
+'Yume Naki Yume wa Yume ja nai',
+'Anemone Heart',
+'Nawatobi',
+'Beat in Angel',
+'Niko puri Joshi dou',
+'Garasu No Hanazono',
+'LONELIEST BABY',
+'Shiawase Iki No SMILING!',
+'Zurui Yo Magnetic Today',
+'Kururin MIRACLE',
+'Storm in Lover',
+'Moshimo Kara Kitto',
+'Suki desu ga Suki desu ka?',
+'Soshite Saigo No Page Ni Wa',
+'Korekara',
+'ENDLESS PARADE',
+'Dreamin Go! Go!!',
+'Kakumei desu ne? Kamisama!',
+'Hane wa Shitte Shimatta no?',
+'Senkou Resolution',
+'Kaku Mo Yuubi Na Hi To Narite',
+'I will smile for yours',
+'Kodoku No Kairou',
+'Himitsu To Hanazono',
+'Koko De Matteru Yo',
+'Yume ONCE AGAIN',
+'NEURON,NEURON!!'
+]
+
+var numOfSongsAqoursTogether = 4;
+var aqours_together = 
+[
+'Kimi no Kokoro wa Kagayaiteru Kai?',
+'Step! ZERO to ONE',
+'Aqours HEROES',
+'Aozora Jumping Heart'
 ]

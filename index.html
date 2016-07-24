@@ -106,11 +106,6 @@
     	<img id="liveshow_but" src='images/buttons/liveshow-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#liveshowModal" onclick=''>
 
 
-    	<div id='chatroom-div' style='display:none;'>
- -    		<button style='' type="button" class="btn btn-primary" data-toggle="modal" data-target="#chatModal" >Engage the chatroom!</button>
- -    	</div>
-
-
 
     	<div id="speech-bubble" class="bubble" style='display:none;'>
     		<div id='speech-text' style='opacity: 2.0;'>
@@ -386,7 +381,16 @@
 
 	        	<div id='container-liveshow'>
 	        		<img id='liveshowScreen' src='./images/background/background16.png'>
-	        		<img id='liveshowAlbum' src='./images/album-covers/0.jpg' style='width:400px; height:400px;'>
+	        		<img id='liveshowAlbum' src='./images/album-covers/muse-together/0.jpg' style='width:400px; height:400px;'>
+
+	        		<div id='song-category-div' onchange='changeCategory();'>
+			 -    		<select class="songCategorySelect" id='songCategorySelect'>
+						  <option value="0">Muse All Together</option>
+						  <option value="1">Muse Sub-Idol Groups</option>
+						  <option value="2">Muse Others</option>
+						  <option value="3">Aqours All Together</option>
+						</select>
+					</div>
 	        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
 	        	</div>
 
