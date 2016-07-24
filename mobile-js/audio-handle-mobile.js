@@ -14,8 +14,10 @@ function getCurrentOrientation()
 {
 	if(window.innerHeight > window.innerWidth){
 	    orientationMode = 'portrait';
+	    document.getElementById("speech-font").style.font = "9px arial";
 	} else {
 		orientationMode = 'landscape';
+		document.getElementById("speech-font").style.font = "14px arial";
 	}
 }
 
@@ -24,8 +26,10 @@ $(window).bind("orientationchange", function(e){
    if(ow == "p")
    {
    		orientationMode = 'portrait';
+   		document.getElementById("speech-font").style.font = "9px arial";
    } else {
    		orientationMode = 'landscape';
+   		document.getElementById("speech-font").style.font = "14px arial";
    }	
 });
 
