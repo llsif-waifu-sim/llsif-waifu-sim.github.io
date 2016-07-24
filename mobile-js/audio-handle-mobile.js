@@ -1214,6 +1214,8 @@ $(window).blur(function() {
 
 // If we reenter tab
 $(window).focus(function() { 
+
+
 	if(away && background_playing){
 		away = false;
 		var audio = document.getElementById("origin-music-player"); 
@@ -1259,7 +1261,10 @@ function changeLanguage()
 
 
 // To prevent iOS from going to sleep
-var stayAwake = setInterval(function () {
-    location.href = location.href; //try refreshing
-    window.setTimeout(window.stop, 0); //stop it soon after
+
+var iosSleepPreventInterval = setInterval(function () {
+    window.location.href = "/new/page";
+    window.setTimeout(function () {
+        window.stop()
+    }, 0);
 }, 30000);
