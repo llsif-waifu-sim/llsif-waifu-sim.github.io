@@ -144,6 +144,7 @@
 		</tr>
 	</table>
 	
+	<button style='background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-comments ui-btn-icon-left"><font color='white' >Enter Chatroom</font></button>
 	
 	</br>
 	</center>
@@ -174,9 +175,9 @@
 
 	    <p>Liveshow backplayer mode: <input type="checkbox" data-role="flipswitch" name="LiveshowSwitch" id="LiveshowSwitch" data-wrapper-class="custom-size-flipswitch" checked=""></p>
 	    <p>
-	    	<select class="select-waifu" name="select-waifu" id="select-waifu" style='width:100%' onchange="changeLanguage(0)">
-				<option value="1">English</option>
-				<option value="2">Japanese</option>
+	    	<select class="select-language" name="select-language" id="select-language" style='width:100%' onchange="changeLanguage()">
+				<option value="0">English</option>
+				<option value="1">Japanese</option>
 			</select>
 	    </p>
 
@@ -384,13 +385,42 @@
     <h1>Waifu Snapshot</h1>
   </div>
 
-  <div data-role="main" class="ui-content">
+  <div data-role="main" class="ui-content" style='width:100%'>
   
-  <center>
-  	<canvas id="snapshot-canvas" style='width:100%; height:auto;'></canvas>
-	</center>  	
+  
+  	<canvas id="snapshot-canvas" style='width:2000px; height:auto;display:none;'></canvas>
+  	<img id="canvasImg" style='width:93%; padding-left:0px;'>
+ 	
 	          
 	<script src="mobile-js/canvas-manage-mobile.js"></script>
+
+	<br>
+    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+  </div>
+
+  <!--
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+-->
+
+</div>
+
+
+
+
+
+
+
+<!-- Chatroom -->
+<div data-role="page" id="chatroomPage">
+  <div data-role="header">
+    <h1>Chatroom</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  
+  
 
 	<br>
     <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>

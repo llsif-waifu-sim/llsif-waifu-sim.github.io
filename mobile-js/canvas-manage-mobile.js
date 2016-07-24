@@ -11,14 +11,21 @@ function printPhotoCanvas(backgroundpath){
     var speechbubble = document.getElementById("speech-text");
 
 
-    c.width  = img.width; // in pixels
-	c.height = img.height;
+    c.width  = img.width*2; // in pixels
+	c.height = img.height*2;
 
 
-    ctx.drawImage(img, 0, 0, img.width,img.height);    
-    ctx.drawImage(imgwaifu, -20, 20, imgwaifu.width, imgwaifu.height);
-    ctx.drawImage(speechbubble, 0, 0, speechbubble.width, speechbubble.height);
+    ctx.drawImage(img, 0, 0, img.width*2,img.height*2);    
+    ctx.drawImage(imgwaifu, -20, 20, imgwaifu.width*2, imgwaifu.height*2);
+    //ctx.drawImage(speechbubble, 0, 0, speechbubble.width, speechbubble.height);
 
+
+    // save canvas image as data url (png format by default)
+    var dataURL = c.toDataURL();
+
+    // set canvasImg image src to dataURL
+    // so it can be saved as an image
+    document.getElementById('canvasImg').src = dataURL;
 
 
 

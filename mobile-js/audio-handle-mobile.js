@@ -1170,8 +1170,11 @@ $(window).focus(function() {
 
 
 
-function changeLanguage(lang_num)
+function changeLanguage()
 {
+
+	
+	var lang_num = $(".select-language option:selected").val();
 	var prev_lang = language;
 
 	if(lang_num == 0)
