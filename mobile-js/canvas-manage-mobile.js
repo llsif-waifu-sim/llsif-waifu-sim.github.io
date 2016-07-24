@@ -1,5 +1,7 @@
-function printPhotoCanvas(backgroundpath){
 
+
+function printPhotoCanvas(backgroundpath){
+	
 	
     var c = document.getElementById("snapshot-canvas");
     
@@ -28,7 +30,7 @@ function printPhotoCanvas(backgroundpath){
     document.getElementById('canvasImg').src = dataURL;
 
 
-
+    
     /* Working on trying to solve the speech bubble problem
 	var canvas = document.getElementById("snapshot-canvas");
 
