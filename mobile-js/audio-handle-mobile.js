@@ -1258,3 +1258,8 @@ function changeLanguage()
 }
 
 
+// To prevent iOS from going to sleep
+var stayAwake = setInterval(function () {
+    location.href = location.href; //try refreshing
+    window.setTimeout(window.stop, 0); //stop it soon after
+}, 30000);
