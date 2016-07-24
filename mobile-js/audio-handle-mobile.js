@@ -8,6 +8,28 @@ var background_playing = false;
 
 var away = false;
 var timerRanOut = false;
+var orientationMode = 'portrait'
+
+function getCurrentOrientation()
+{
+	if(window.innerHeight > window.innerWidth){
+	    orientationMode = 'portrait';
+	} else {
+		orientationMode = 'landscape';
+	}
+}
+
+$(window).bind("orientationchange", function(e){
+   var ow = (e.orientation=="portrait" ? "p" : "l");
+   if(ow == "p")
+   {
+   		orientationMode = 'portrait';
+   } else {
+   		orientationMode = 'landscape';
+   }	
+});
+
+
 
 
 function isAqours(waifu)
@@ -313,7 +335,8 @@ window.onload = function() {
     var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
 
-    
+    getCurrentOrientation();
+
     //commandSelect(0);
 	
 }
@@ -572,6 +595,14 @@ function getRandomWaifu()
 
 	document.getElementById("card_id").value = id;
 
+	if(orientationMode == 'landscape'){
+		$('html, body').animate({
+	    scrollTop: $('#container').offset().top
+	  });
+		
+	}
+	
+
 	if (globalAudio!=null){
 		globalAudio.pause();
 	}	
@@ -611,6 +642,14 @@ function getRandomCard()
 	document.getElementById("idol_img").src=path;
 	nameAssign(name);
 	document.getElementById("card_id").value = id;
+
+	if(orientationMode == 'landscape'){
+		$('html, body').animate({
+	    scrollTop: $('#container').offset().top
+	  });
+	}
+
+
 	if (globalAudio!=null){
 		globalAudio.pause();
 	}
@@ -714,6 +753,12 @@ function searchId()
 
 			globalIndex = searchIndexById(id, idolized);
 
+			if(orientationMode == 'landscape'){
+				$('html, body').animate({
+			    scrollTop: $('#container').offset().top
+			  });
+			}
+
 			if (globalAudio!=null){
 				globalAudio.pause();
 			}
@@ -786,6 +831,11 @@ function changeWaifu(){
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
 
+	if(orientationMode == 'landscape'){
+		$('html, body').animate({
+	    scrollTop: $('#container').offset().top
+	  });
+	}
 
 	globalIndex = index;
 
