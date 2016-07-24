@@ -244,9 +244,11 @@ function changeCategory()
 		alert('Something went wrong in changeCategory()')
 	}
 
+
 	if(currplayingSong != currSong){
+		// If the current song is not equal to the currently playing song, we switched categories, and : don't change button to pause
 		displayingPlayBut = true;
-	}
+	} 
 
 	currSong = 0;
 	changedCategory = true;
@@ -265,7 +267,15 @@ function changeCategory()
 		// To switch to play button if we switch categories
 		// And to stay as play button if we 
 		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		displayingPlayBut = true;
+
+	}	else if(currplayingSong==0 && prevCategoryID == currcategoryID){
+		// If current playing song is 0 and we came back to the same category as the playing song, switch to pause
+		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		displayingPlayBut = false;
+		musicChanged = false;
 	}
+
 	
 }
 
