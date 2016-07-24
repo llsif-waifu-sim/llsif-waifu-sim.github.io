@@ -324,14 +324,14 @@
 
 	        	<div id='container-liveshow'>
 	        		<img id='liveshowScreen' src='./images/background/background16.png'>
-	        		<img id='liveshowAlbum' src='./images/album-covers/0.jpg'>
+	        		<img id='liveshowAlbum' src='./images/album-covers/muse-together/0.jpg'>
 	        		
 	        	</div>
 
 
 	        		
 		        	<table style='width:100%'>
-						<tr>
+						<tr style='width:100%'>
 							<td style='padding:10px;width:20%'>
 								<a href="#" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" onclick="changeSong()"></a>
 							</td>
@@ -346,11 +346,23 @@
 							</td>
 
 						</tr>
+						
 					</table>
-
-     	
+					
 	        		<font size="4"><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
 	        		</br>
+	        		<table style='width:100%'>
+						<tr >
+							<td style='width:100%'>
+								<select style='width:80%' class="songCategorySelect" name="songCategorySelect" id="songCategorySelect" onchange="changeCategory();">
+							      <option value="0">Muse All Together</option>
+								  <option value="1">Muse Sub-Idols</option>
+								  <option value="2">Muse Others</option>
+								  <option value="3">Aqours All Together</option>
+							    </select>
+							</td>
+						</tr>
+					</table>
 
 	        	</center>
 
