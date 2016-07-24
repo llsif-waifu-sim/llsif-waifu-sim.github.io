@@ -21,16 +21,6 @@
     height: auto;  
 }
 
-/*
-#song-title-tag
-{
-    position: absolute;
-    bottom: 5%;
-    right: 25%;
-    left: 25%;
-
-}
-*/
 
 #liveshowScreen
 {
@@ -40,11 +30,11 @@
 
 #liveshowAlbum{
     position: absolute;
-    width:48%; 
-    height:auto;
+    height:80%;
+    width:auto; 
     
     top: 12%;
-    left: 28%;
+    left: 20%;
     
 
 }
