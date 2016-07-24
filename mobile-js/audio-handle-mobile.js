@@ -1258,13 +1258,3 @@ function changeLanguage()
 	}
 	commandSelect(0);
 }
-
-
-// To prevent iOS from going to sleep
-
-var iosSleepPreventInterval = setInterval(function () {
-    window.location.href = "/new/page";
-    window.setTimeout(function () {
-        window.stop()
-    }, 0);
-}, 30000);
