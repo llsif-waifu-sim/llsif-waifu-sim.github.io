@@ -5,7 +5,7 @@ var language = 'english';
 
 var away = false;
 var timerRanOut = false;
-
+var enableOutsideVal = true;
 
 function isAqours(waifu)
 {
@@ -45,12 +45,16 @@ function forgetWaifuRNG(maxRandNum)
 var timeout;
 var countdown = 20000;
 
+
+
 $(document).on('mousemove', function(){
 
 	clearTimeout(timeout);
 
-	
+
 	timeout = setTimeout(inactiveSpeech, countdown);
+	
+	
 
 })
 
@@ -66,6 +70,22 @@ function inactiveSpeech()
 		timeSpeech();
 		clearTimeout(timeout);
 		timeout = setTimeout(inactiveSpeech, countdown);
+	} else {
+		return;
+	}
+}
+
+function outsideSpeak()
+{
+	var id = parseInt(id_log[globalIndex][0]);
+	var name = id_log[globalIndex][1];
+	var idolized = id_log[globalIndex][2];
+			
+	
+	if(away && enableOutsideVal){
+		commandSelect(0);
+		clearTimeout(timeout);
+		timeout = setTimeout(outsideSpeak, countdown);
 	} else {
 		return;
 	}
@@ -132,7 +152,10 @@ function forgetWaifuLoad(index)
 }
 
 
-
+function enableOutside()
+{
+	enableOutsideVal = document.getElementById('outsideCheckbox').checked;
+}
 
 function changeWaifuLoadRandom() {
     var index=getCookie("saved-waifu-index-1");
@@ -1225,6 +1248,11 @@ $(window).blur(function() {
 
 	timerRanOut = false;
 	countDown(20);
+
+
+
+	clearTimeout(timeout);
+	timeout = setTimeout(outsideSpeak, countdown);
 
 });
 
