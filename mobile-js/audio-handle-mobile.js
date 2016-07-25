@@ -377,6 +377,7 @@ function playBackgroundMusic()
 	mainAudio.pause();
 	audio.pause();
 	audio.volume = musicVolume;
+	
 	audio.play();
 	background_playing = true;
 }
