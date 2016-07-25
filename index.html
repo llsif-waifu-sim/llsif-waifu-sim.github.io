@@ -191,8 +191,8 @@
 	</audio>
 
 	<audio autoplay loop id='origin-music-player'>
-		<source id='mp3-player' src="audio/background-music.mp3" type="audio/mp3" />
-		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
+		<source id='mp3-player' src="audio/background-music1.mp3" type="audio/mp3" />
+		<source id='ogg-player' src="audio/background-music1.mp3" type="audio/ogg" />
 	</audio>
 
 
@@ -226,7 +226,19 @@
 					<p>Enable waifu to speak outside of tab: <input type="checkbox" id='outsideCheckbox' onchange='enableOutside()' name='outsideCheckbox' checked></p>
 				</td>
 			</tr>
-			
+			<tr>
+				<td>
+					<p>
+						<div id='background-music-div' onchange='changeBGMusic();'>
+			     		<select id="bgmusicselect"> 
+						  <option value="0">Muse Background Music</option>
+						  <option value="1" selected>Aqours Background Music</option>
+						</select>
+					</div>
+					</p>
+				</td>
+			</tr>
+
 		</table>	
 
           

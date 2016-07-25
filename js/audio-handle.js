@@ -329,6 +329,7 @@ window.onload = function() {
 	checkCookie();
 	checkBackgroundCookie();
 	checkVolumeCookie();
+	checkBGMCookie();
 	
 
     var backgroundAudio=document.getElementById("origin-music-player");
@@ -371,6 +372,26 @@ function playBackgroundMusic()
 	audio.play();
 }
 
+function changeBGMusic()
+{
+	var bgmusic = document.getElementById("bgmusicselect").value;
+	var audio = document.getElementById("origin-music-player");
+
+	audio.pause();
+
+	if(bgmusic == 0)
+	{
+		// Muse background music
+		audio.src = 'audio/background-music.mp3';
+		storeBGMusicCookie('MU');
+	} else if(bgmusic == 1){
+		// Aqours background music
+		audio.src = 'audio/background-music1.mp3';
+		storeBGMusicCookie('AQ');
+
+	}
+	audio.play();
+}
 
 function changeBackground()
 {

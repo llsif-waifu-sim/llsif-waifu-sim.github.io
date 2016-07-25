@@ -2,6 +2,7 @@ var voiceVolume = 0.3;
 var musicVolume = 0.3;
 var background = 0;
 var globalIndex = 0;
+var backgroundMusic = 1;
 
 
 // Setting and getting the cookies
@@ -45,6 +46,19 @@ function checkCookie() {
     }
 }
 
+function checkBGMCookie() {
+    var index=getCookie("background-music");
+    globalIndex = index;
+    if (index != null && index != "") {
+        if(index == 'MU')
+        {
+            document.getElementById("bgmusicselect").value = "0";
+            var audio = document.getElementById("origin-music-player");
+            audio.src = 'audio/background-music.mp3';
+            backgroundMusic = 0;
+        }
+    } 
+}
 
 function checkBackgroundCookie() {
     var index=getCookie("background-index");
@@ -116,6 +130,11 @@ function checkWaifuLoadCookie(but_id) {
 function storeCookie(index)
 {
     setCookie("waifu-index", index, 6);
+}
+
+function storeBGMusicCookie(index)
+{
+    setCookie("background-music", index, 6);
 }
 
 function storeSaveWaifuCookie(index, but_id)
