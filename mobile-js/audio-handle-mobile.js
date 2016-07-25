@@ -854,7 +854,7 @@ function changeWaifu(){
 
 	var name = $(".select-waifu option:selected").val();
 
-	var index = getIndexChangeWaifu(name);
+	var index = searchIndexById(getIndexChangeWaifu(name), 'no');
 
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
@@ -956,7 +956,7 @@ function changeWaifu(){
 		
 		storeSaveWaifuCookie(globalIndex, but_id);
 
-		
+
 	
 	    if(but_id == 'waifu_save_but_1'){
 

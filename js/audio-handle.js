@@ -832,7 +832,7 @@ function changeWaifu(name, index){
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
 
-
+	index = searchIndexById(index, 'no');
 	globalIndex = index;
 
 	nameAssign(name);
