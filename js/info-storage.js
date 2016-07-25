@@ -48,7 +48,6 @@ function checkCookie() {
 
 function checkBGMCookie() {
     var index=getCookie("background-music");
-    globalIndex = index;
     if (index != null && index != "") {
         if(index == 'MU')
         {
