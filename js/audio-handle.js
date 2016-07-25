@@ -324,17 +324,16 @@ function timeSpeech()
 
 
 window.onload = function() {
+	backgroundAudio=document.getElementById("origin-music-player");
 
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();
 	checkBGMCookie();
 	checkVolumeCookie();
-	
-	
 
-    var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
+	backgroundAudio.play();
 
     setTimeout(function() {
     	commandSelect(0);
