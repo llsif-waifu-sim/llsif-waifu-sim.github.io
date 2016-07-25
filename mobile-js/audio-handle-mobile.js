@@ -372,12 +372,20 @@ function pauseBackgroundMusic()
 
 function playBackgroundMusic()
 {
+	var bgmusic = document.getElementById("select-bgmusic").value;
+
 	var audio = document.getElementById("origin-music-player"); // For the main background
 	var mainAudio = document.getElementById("background-music-player"); // For the music player
 	mainAudio.pause();
 	audio.pause();
 	audio.volume = musicVolume;
-
+	if(bgmusic == 0)
+	{
+		// Muse background music
+		audio.src = 'audio/background-music.mp3';
+	} else if(bgmusic == 1){
+		audio.src = 'audio/background-music1.mp3';
+	}
 	audio.play();
 	background_playing = true;
 }
