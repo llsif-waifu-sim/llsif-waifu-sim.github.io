@@ -56,6 +56,11 @@ function checkBGMCookie() {
             var audio = document.getElementById("origin-music-player");
             audio.src = 'audio/background-music.mp3';
             backgroundMusic = 0;
+        } else {
+            document.getElementById("bgmusicselect").value = "1";
+            var audio = document.getElementById("origin-music-player");
+            audio.src = 'audio/background-music1.mp3';
+            backgroundMusic = 1;
         }
     } 
 }
