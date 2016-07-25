@@ -377,7 +377,7 @@ function playBackgroundMusic()
 	mainAudio.pause();
 	audio.pause();
 	audio.volume = musicVolume;
-	
+
 	audio.play();
 	background_playing = true;
 }
@@ -950,9 +950,13 @@ function changeWaifu(){
 
 	function saveWaifu(but_id)
 	{
-		
+		if(globalIndex == null || globalIndex == '' || isNaN(globalIndex)){
+			globalIndex = 0;
+		}
 		
 		storeSaveWaifuCookie(globalIndex, but_id);
+
+		
 	
 	    if(but_id == 'waifu_save_but_1'){
 
