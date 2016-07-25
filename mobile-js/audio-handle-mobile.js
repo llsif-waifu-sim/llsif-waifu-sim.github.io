@@ -334,6 +334,7 @@ window.onload = function() {
 	checkVolumeCookie();
 	checkWaifuVoiceEnableCookie();
 	checkLiveshowPlayerEnableCookie();
+	checkBGMCookie();
 	
 
     var backgroundAudio=document.getElementById("origin-music-player");
@@ -378,6 +379,28 @@ function playBackgroundMusic()
 	audio.volume = musicVolume;
 	audio.play();
 	background_playing = true;
+}
+
+
+function changeBGMusic()
+{
+	var bgmusic = document.getElementById("select-bgmusic").value;
+	var audio = document.getElementById("origin-music-player");
+
+	audio.pause();
+
+	if(bgmusic == 0)
+	{
+		// Muse background music
+		audio.src = 'audio/background-music.mp3';
+		storeBGMusicCookie('MU');
+	} else if(bgmusic == 1){
+		// Aqours background music
+		audio.src = 'audio/background-music1.mp3';
+		storeBGMusicCookie('AQ');
+
+	}
+	audio.play();
 }
 
 
@@ -1186,7 +1209,9 @@ function countDown(n) {
     
 }
 
-
+function isPlaying(audelem) { 
+	return !audelem.paused; 
+}
 
 
 
@@ -1218,8 +1243,13 @@ $(window).focus(function() {
 
 	if(away && background_playing){
 		away = false;
-		var audio = document.getElementById("origin-music-player"); 
-		audio.play();
+		var audio = document.getElementById("origin-music-player");
+		var mainAudio = document.getElementById("background-music-player"); 
+		if(!isPlaying(mainAudio))
+		{
+			audio.play();
+		} 
+					
 
 	}
 });

@@ -49,6 +49,18 @@ function checkCookie() {
     }
 }
 
+function checkBGMCookie() {
+    var index=getCookie("background-music");
+    globalIndex = index;
+    if (index != null && index != "") {
+        if(index == 'MU')
+        {
+            $('#select-bgmusic').val('0').selectmenu('refresh');
+            var audio = document.getElementById("origin-music-player");
+            audio.src = 'audio/background-music.mp3';
+        }
+    } 
+}
 
 function checkBackgroundCookie() {
     var index=getCookie("background-index");
@@ -165,6 +177,11 @@ function storeSaveWaifuCookie(index, but_id)
        setCookie("saved-waifu-index-3", index, 6); 
    } 
     
+}
+
+function storeBGMusicCookie(index)
+{
+    setCookie("background-music", index, 6);
 }
 
 

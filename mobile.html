@@ -5,9 +5,9 @@
 
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
-
+	<!--
 	<script src="mobile-js/redirect-mobile.js"></script>
-
+	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -159,8 +159,8 @@
 	</audio>
 
 	<audio loop id='origin-music-player'>
-		<source id='mp3-player' src="audio/background-music.mp3" type="audio/mp3" />
-		<source id='ogg-player' src="audio/background-music.mp3" type="audio/ogg" />
+		<source id='mp3-player' src="audio/background-music1.mp3" type="audio/mp3" />
+		<source id='ogg-player' src="audio/background-music1.mp3" type="audio/ogg" />
 	</audio>
 
 	
@@ -181,6 +181,12 @@
 	    	<select class="select-language" name="select-language" id="select-language" style='width:100%' onchange="changeLanguage()">
 				<option value="0">English</option>
 				<option value="1">Japanese</option>
+			</select>
+	    </p>
+	    <p>
+	    	<select class="select-bgmusic" name="select-bgmusic" id="select-bgmusic" style='width:100%' onchange="changeBGMusic()">
+				<option value="0">Muse Background Music</option>
+				<option value="1" selected>Aqours Background Music</option>
 			</select>
 	    </p>
 
