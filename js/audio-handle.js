@@ -328,8 +328,9 @@ window.onload = function() {
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();
-	checkVolumeCookie();
 	checkBGMCookie();
+	checkVolumeCookie();
+	
 	
 
     var backgroundAudio=document.getElementById("origin-music-player");
