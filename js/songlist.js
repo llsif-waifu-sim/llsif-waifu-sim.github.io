@@ -49,7 +49,7 @@ var muse_together_ar =
 'Arashi no Naka no Koi dakara',
 'MOMENT RING',
 'Sayounara e Sayonara!'
-]
+];
 
 var numOfSongsMuseSub = 31;
 var muse_subgroup_ar = 
@@ -85,7 +85,7 @@ var muse_subgroup_ar =
 'Otohime Heart de Love Kyuuden',
 'Omoide Ijou ni Naritakute',
 'Shunjou Romantic'
-]
+];
 
 var numOfSongsMuseOther = 46;
 var muse_individual_ar =
@@ -136,13 +136,35 @@ var muse_individual_ar =
 'Koko De Matteru Yo',
 'Yume ONCE AGAIN',
 'NEURON,NEURON!!'
-]
+];
 
-var numOfSongsAqoursTogether = 4;
+var numOfSongsAqoursTogether = 8;
 var aqours_together = 
 [
 'Kimi no Kokoro wa Kagayaiteru Kai?',
 'Step! ZERO to ONE',
 'Aqours HEROES',
-'Aozora Jumping Heart'
-]
+'Aozora Jumping Heart',
+'Koi Ni Naritai AQUARIUM',
+'Humming Friend',
+'Mattete Ai no Uta',
+'Todokanai Hoshi da to Shitemo'
+];
+
+var numOfSongsAqoursSub = 6;
+var aqours_subgroup_ar = 
+[
+'Strawberry Trapper',
+'Guilty Night, Guilty Kiss!',
+'Genki Zenkai DAY! DAY! DAY!',
+'Yozora wa Nandemo Shitteru no?',
+'Tokimeki Bunruigaku',
+'Torikoriko PLEASE',
+];
+
+var numOfSongsAqoursOthers = 2;
+var aqours_others_ar = 
+[
+'Daisuki dattara Daijoubu!',
+'Kimeta yo Hand in Hand',
+];

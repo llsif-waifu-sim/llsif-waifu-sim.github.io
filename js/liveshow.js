@@ -240,6 +240,20 @@ function changeCategory()
 		songlist_ar = aqours_together;
 
 		currcategoryID = 3;
+	}else if (categoryID == 4){
+		// Aqours all together
+		numOfSongs = numOfSongsAqoursSub;
+		subPath = 'aqours-sub-group/';
+		songlist_ar = aqours_subgroup_ar;
+
+		currcategoryID = 4;
+	}else if (categoryID == 5){
+		// Aqours all together
+		numOfSongs = numOfSongsAqoursOthers;
+		subPath = 'aqours-individual/';
+		songlist_ar = aqours_others_ar;
+
+		currcategoryID = 5;
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
