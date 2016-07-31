@@ -1,14 +1,14 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
-var maxNumOfCard = 965;
+var maxNumOfCard = id_log[id_log.length-1][0];
 var language = 'english';
 var background_playing = false;
-
 
 
 var away = false;
 var timerRanOut = false;
 var orientationMode = 'portrait'
+
 
 function getCurrentOrientation()
 {
@@ -749,7 +749,7 @@ function searchId()
 	
 
 	if(!isInt(id) || id > maxNumOfCard){
-		alert('Invalid id input');
+		alert('Invalid id input. Please enter a number between 1 and ' + maxNumOfCard.toString());
 		return;
 	} 
 	
