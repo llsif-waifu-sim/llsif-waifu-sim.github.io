@@ -1,6 +1,6 @@
 var globalAudio = null;
 var globalWaifu = 'honoka';
-var maxNumOfCard = 965;
+var maxNumOfCard = id_log[id_log.length-1][0];
 var language = 'english';
 
 var away = false;

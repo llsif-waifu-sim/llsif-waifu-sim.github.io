@@ -840,6 +840,8 @@ var kotori_ar =
 ['939','kotori','yes'],
 ['963','kotori','no'],
 ['963','kotori','yes'],
+['968','kotori','no'],
+['968','kotori','yes']
 ];
 var eli_ar = 
 [
@@ -979,6 +981,8 @@ var eli_ar =
 ['938','eli','yes'],
 ['962','eli','no'],
 ['962','eli','yes'],
+['967','eli','no'],
+['967','eli','yes']
 ];
 var nozomi_ar = 
 [
