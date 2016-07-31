@@ -749,7 +749,7 @@ function searchId()
 	
 
 	if(!isInt(id) || id > maxNumOfCard){
-		alert('Invalid id input. Please enter a number between 1 and ' + maxNumOfCard.toString());
+		alert('Invalid id input. Please enter a number between 28 and ' + maxNumOfCard.toString());
 		return;
 	} 
 	
