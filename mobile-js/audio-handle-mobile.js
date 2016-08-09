@@ -328,7 +328,7 @@ function timeSpeech()
 
 
 window.onload = function() {
-
+	$.mobile.changePage('#updateModal');
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();

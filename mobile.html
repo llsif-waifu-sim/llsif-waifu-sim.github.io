@@ -5,9 +5,9 @@
 
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
-	
+	<!--
 	<script src="mobile-js/redirect-mobile.js"></script>
-	
+	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -109,7 +109,11 @@
 		</tr>
 	</table>
 
-       
+
+
+
+
+ 
     <select class="select-waifu" name="select-waifu" id="select-waifu" style='width:100%' onchange="changeWaifu()">
 		<option value="honoka">Kousaka Honoka</option>
 		<option value="kotori">Minami Kotori</option>
@@ -187,6 +191,9 @@
 				<option value="1" selected>Aqours Background Music</option>
 			</select>
 	    </p>
+		<p>
+			<a href="#updateModal" data-rel="dialog" style="background:orange;border-color:orange;" class="ui-btn ui-btn-inline ui-corner-all"><span style='color:white;'>View Updates</span></a>
+		</p>
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
 	    <script src="mobile-js/settings-mobile.js"></script>
@@ -456,6 +463,32 @@
 -->
 
 </div>
+
+
+
+<div data-role="dialog" id="updateModal" class="ui-content">
+	<div data-role="header">
+        <h1>Updates</h1>
+      </div>
+      <div data-role="main" class="ui-content">
+	    <b>Updates for August 9, 2016:</b>
+			<ul>
+				<li>Translations for all Aqours members have been completed.</li>
+				<li>More Aqours songs have been added.</li>
+				<li>Cards all the way ID #980 has been added.</li>
+				<li>More backgrounds has been added.</li>
+			</ul>
+			<!--
+			<a href="#pageone" data-rel="close" >Exit</a>
+			-->
+			 <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Continue</a>
+		
+	  </div>
+</div>
+ 
+
+
+
 
 	</body>
 
