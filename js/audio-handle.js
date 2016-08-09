@@ -327,6 +327,8 @@ function timeSpeech()
 window.onload = function() {
 	backgroundAudio=document.getElementById("origin-music-player");
 
+	$('#updateModal').modal('show');
+
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();

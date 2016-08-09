@@ -233,12 +233,18 @@
 				<td>
 					<p>
 						<div id='background-music-div' onchange='changeBGMusic();'>
+						Change background music:
 			     		<select id="bgmusicselect"> 
 						  <option value="0">Muse Background Music</option>
 						  <option value="1" selected>Aqours Background Music</option>
 						</select>
 					</div>
 					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button type="button" class="btn btn-primary" onclick="$('#updateModal').modal('show');">View Updates</button>
 				</td>
 			</tr>
 
@@ -483,6 +489,32 @@
 
 
 
+   	<div class="modal fade" id="updateModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Update</h4>
+	        </div>
+	        <div class="modal-body">
+		        <b>Updates for August 9, 2016:</b>
+		        <ul>
+			        <li>Translations for all Aqours members have been completed.</li>
+			        <li>More Aqours songs have been added.</li>
+			        <li>Cards all the way ID #980 has been added.</li>
+			        <li>More background has been added.</li>
+		        </ul>
+		    </div>
+
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
 
 
 
