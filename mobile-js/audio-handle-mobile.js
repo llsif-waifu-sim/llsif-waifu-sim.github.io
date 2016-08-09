@@ -3,6 +3,7 @@ var globalWaifu = 'honoka';
 var maxNumOfCard = id_log[id_log.length-1][0];
 var language = 'english';
 var background_playing = false;
+var maxNumBackground = 97;
 
 
 var away = false;
@@ -415,7 +416,6 @@ function changeBGMusic()
 
 function changeBackground()
 {
-	var maxNumBackground = 77;
 	if(background < maxNumBackground-1)
 	{
 		background = background + 1;
@@ -432,7 +432,6 @@ function changeBackground()
 
 function changeBackgroundBack()
 {
-	var maxNumBackground = 77;
 	if(background <= 0)
 	{
 		background = maxNumBackground-1;
