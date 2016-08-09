@@ -91,7 +91,7 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 # The ending value should be the last id value + 1
-for x in range (965,975):
+for x in range (980,981):
     x_str = str(x)
     temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
     data = json.load(urllib2.urlopen(temp_str))

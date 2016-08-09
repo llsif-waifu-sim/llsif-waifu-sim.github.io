@@ -31,7 +31,9 @@ var you_ar =
 ['950','you','no'],
 ['950','you','yes'],
 ['957','you','no'],
-['957','you','yes']
+['957','you','yes'],
+['976','you','no'],
+['976','you','yes']
 ];
 
 var riko_ar =
@@ -83,7 +85,9 @@ var hanamaru_ar =
 ['952','hanamaru','no'],
 ['952','hanamaru','yes'],
 ['974','hanamaru','no'],
-['974','hanamaru','yes']
+['974','hanamaru','yes'],
+['977','hanamaru','no'],
+['977','hanamaru','yes']
 ];
 var yoshiko_ar = 
 [

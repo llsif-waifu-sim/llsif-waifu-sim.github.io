@@ -1,3 +1,5 @@
+
+
 var id_log = 
 [
 ['28','honoka','no'],
@@ -1353,6 +1355,16 @@ var id_log =
 ['973','yoshiko','no'],
 ['973','yoshiko','yes'],
 ['974','hanamaru','no'],
-['974','hanamaru','yes']
+['974','hanamaru','yes'],
+['976','you','no'],
+['976','you','yes'],
+['977','hanamaru','no'],
+['977','hanamaru','yes'],
+['978','eli','no'],
+['978','eli','yes'],
+['979','nozomi','no'],
+['979','nozomi','yes'],
+['980','honoka','no'],
+['980','honoka','yes']
 ];
 
