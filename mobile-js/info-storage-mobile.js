@@ -5,13 +5,13 @@ var globalIndex = 0;
 
 var liveshowBackground = true;
 var waifuVoiceEnable = true;
-
+var cookieExpireDate = 100*365;
 
 // Setting and getting the cookies
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000*999999999999));
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
@@ -170,48 +170,48 @@ function checkLiveshowPlayerEnableCookie() {
 
 function storeCookie(index)
 {
-    setCookie("waifu-index", index, 6);
+    setCookie("waifu-index", index, cookieExpireDate);
 }
 
 function storeSaveWaifuCookie(index, but_id)
 {
     if(but_id == 'waifu_save_but_1'){
-       setCookie("saved-waifu-index-1", index, 6); 
+       setCookie("saved-waifu-index-1", index, cookieExpireDate); 
    } else if(but_id == 'waifu_save_but_2'){
-       setCookie("saved-waifu-index-2", index, 6); 
+       setCookie("saved-waifu-index-2", index, cookieExpireDate); 
    } if(but_id == 'waifu_save_but_3'){
-       setCookie("saved-waifu-index-3", index, 6); 
+       setCookie("saved-waifu-index-3", index, cookieExpireDate); 
    } 
     
 }
 
 function storeBGMusicCookie(index)
 {
-    setCookie("background-music", index, 6);
+    setCookie("background-music", index, cookieExpireDate);
 }
 
 
 function storeBackgroundCookie(index)
 {
-	setCookie("background-index", index, 5);
+	setCookie("background-index", index, cookieExpireDate);
 }
 
 function storeVolumeMusicCookie(volume)
 {
-	setCookie("volumeBack-value", volume, 4);
+	setCookie("volumeBack-value", volume, cookieExpireDate);
 }
 
 function storeVolumeVoiceCookie(volume)
 {
-    setCookie("volumeVoice-value", volume, 4);
+    setCookie("volumeVoice-value", volume, cookieExpireDate);
 }
 
 function enableVoiceCookie(bool)
 {
     if(bool){
-        setCookie("waifuVoice-enable", 'true', 4);
+        setCookie("waifuVoice-enable", 'true', cookieExpireDate);
     } else {
-        setCookie("waifuVoice-enable", 'false', 4);
+        setCookie("waifuVoice-enable", 'false', cookieExpireDate);
     }
     
 }
@@ -219,9 +219,9 @@ function enableVoiceCookie(bool)
 function liveshowBackplayerCookie(bool)
 {
     if(bool){
-        setCookie("liveshowPlayer-enable", 'true', 4);
+        setCookie("liveshowPlayer-enable", 'true', cookieExpireDate);
     } else {
-        setCookie("liveshowPlayer-enable", 'false', 4);
+        setCookie("liveshowPlayer-enable", 'false', cookieExpireDate);
     }
 }
 
