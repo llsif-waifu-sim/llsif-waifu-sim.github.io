@@ -2,7 +2,6 @@
 
 function printPhotoCanvas(backgroundpath){
 	
-	window.location.href = window.location.href.substr(0, window.location.href.indexOf('#'));
 	
     var c = document.getElementById("snapshot-canvas");
     
