@@ -347,6 +347,9 @@ window.onload = function() {
 	
 }
 
+$(document).on("mobileinit", function(){
+	$.mobile.changePage.defaults.changeHash = false;
+});
 
 
 function updateVolumeMusic(soundValue) {

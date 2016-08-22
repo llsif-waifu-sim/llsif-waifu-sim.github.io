@@ -278,7 +278,9 @@ var maki_ar =
 ['906','maki','no'],
 ['906','maki','yes'],
 ['942','maki','no'],
-['942','maki','yes']
+['942','maki','yes'],
+['989','maki','no'],
+['989','maki','yes']
 ];
 var rin_ar = 
 [
@@ -702,7 +704,11 @@ var umi_ar =
 ['940','umi','no'],
 ['940','umi','yes'],
 ['965','umi','no'],
-['965','umi','yes']
+['965','umi','yes'],
+['988','umi','no'],
+['988','umi','yes'],
+['990','umi','no'],
+['990','umi','yes']
 ];
 var kotori_ar = 
 [
@@ -1269,5 +1275,8 @@ var nico_ar =
 ['909','nico','no'],
 ['909','nico','yes'],
 ['945','nico','no'],
-['945','nico','yes']
+['945','nico','yes'],
+['987','nico','yes'],
+['991','nico','no'],
+['991','nico','yes']
 ];

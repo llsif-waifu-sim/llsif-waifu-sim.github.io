@@ -43,7 +43,7 @@ def idol2path(name):
         return 'none'
     
 # The ending value should be the last id value + 1
-for x in range (980,985+1):
+for x in range (991,991+1):
     x_str = str(x)
     temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
     data = json.load(urllib2.urlopen(temp_str))
