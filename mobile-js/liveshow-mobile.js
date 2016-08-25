@@ -134,7 +134,7 @@ function test()
 
 function playClick()
 {
-	if(beginning || musicStopped || changedCategory ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
+	if(beginning || musicStopped || (changedCategory && !random_mode) ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
 		// Play music from beginning 
 		// OR We are currently playing something, but not at our original song
 		// OR we paused and switched to a different song
