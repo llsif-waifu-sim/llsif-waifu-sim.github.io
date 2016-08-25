@@ -160,7 +160,7 @@ function playClick()
 		
 		currplayingSong = currSong;
 
-		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
+		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 		document.getElementById("liveshowAlbum").src =  picPath;
 
 		oggMusic.src = songPath;
@@ -242,7 +242,7 @@ function changeSong()
 			$("#liveshowAlbum").fadeIn();
 		});
 
-		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
+		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 
 		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
 			// We came back to our original song and music is playing
@@ -334,7 +334,7 @@ function changeSongBack()
 		});
 
 
-		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
+		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 
 		
 
@@ -516,7 +516,7 @@ function changeCategory()
 	var songPath = "".concat("./songs/",subPath, currSong, ".ogg");
 	var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
 	
-	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong];
+	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 	document.getElementById("liveshowAlbum").src =  picPath;
 
 	
