@@ -36,21 +36,56 @@ var firstRandom = false;
 var loop_mode = false;
 
 
+
 $('#background-music-player').on('ended', function() {
 
 	stopClick();
 	if(!loop_mode){
-
+		//alert('test1');
 		if(random_mode){
 			// If engaged in random mode
 			changeSongRandom(); 
 		} else {
 		    changeSong();  	
 		}
-	}
-	playClick();
+		//alert('test2');
+		playClick();
+		//alert('test3');
 
+	} else {
+		loopPlay();
+	}
+	
 });
+
+function loopPlay()
+{
+	/*
+	if ((!musicChanged &&  musicPlaying)){
+		// We are in the same song we are looping
+		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+
+	}
+	*/
+	prevCategoryID = currcategoryID;
+	//currplayingSong = currSong; // Replace currSong with a value that indicates 
+
+	musicPlaying = true;
+	musicPaused = false;
+	musicChanged = false;
+	beginning = false;
+	musicStopped = false;
+
+	backgroundAudio=document.getElementById("background-music-player");
+	backgroundAudio.play();
+
+
+	
+	
+
+
+	displayingPlayBut = false;
+}
 
 function randomSwitch()
 {
@@ -75,7 +110,7 @@ function randomSwitch()
 		if(!musicPlaying)
 		{
 			// If no music was playing when we activated random button
-			random_index = 0;
+			random_index = -1;
 
 			firstRandom = true;
 
@@ -83,7 +118,7 @@ function randomSwitch()
 			changeSongRandom();
 			playClick();
 
-			prevCategoryID = currCategoryID;
+			prevCategoryID = currcategoryID;
 
 		}
 
@@ -156,7 +191,9 @@ function playClick()
 
 		
 		
-		 $('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		 //$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		 $('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
+
 		displayingPlayBut = false;
 		
 
@@ -167,14 +204,16 @@ function playClick()
 		beginning = false;
 		musicPlaying = true;
 		currplayingSong = currSong;
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 		displayingPlayBut = false;
 
 	} else {
 		// Pause music
 		
 		prevMusic.pause();
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 		displayingPlayBut = true;
 		musicPaused = true;
 		musicChanged = false;
@@ -191,14 +230,23 @@ function stopClick()
 	prevMusic.pause();
 
 	prevMusic.currentTime = 0;
-	
+	/*
+	alert('test');
+	alert(musicPlaying);
+	alert(currplayingSong);
+	alert(currSong);
+	alert((currplayingSong == currSong)  && musicPlaying);
+	*/
 	if(changedCategory && musicPlaying){
 		musicStopped = true;
 		musicChanged = true;
 
 	}else if((currplayingSong == currSong)  && musicPlaying){
+		//alert('changing play but now');
 		// We haven't switched songs and music is currently playing
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
+		//alert('changed but');
 		displayingPlayBut = true;
 		musicStopped = true;
 		musicChanged = false;
@@ -239,12 +287,15 @@ function changeSong()
 
 		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
 			// We came back to our original song and music is playing
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
 			musicChanged = false;
+
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
 		}
@@ -311,14 +362,18 @@ function changeSong()
 
 
 
-		if((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)){
+		if((currplayingSong == currSong) && musicPlaying){
 			// We came back to our original song and we have not changed categories
 			musicChanged = false;
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
+
+			currplayingSong = currSong;
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
 		}
@@ -358,11 +413,13 @@ function changeSongBack()
 		if((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)){
 			// We came back to our original song and we have not changed categories
 			musicChanged = false;
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
 		}
@@ -433,17 +490,20 @@ function changeSongBack()
 		
 
 
-		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
+		if(   ((currplayingSong == currSong) && musicPlaying) ){
 			// We came back to our original song and music is playing
 			//alert('1');
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
 			musicChanged = false;
 			firstRandom = true;
+			currplayingSong = currSong;
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
 			//alert('2');
-			$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
 			firstRandom = false;
@@ -504,12 +564,6 @@ function changeSongRandom(){
 
 	currSong = randSongInt;
 
-	/*
-	alert(picPath);
-	alert(folder);
-	alert(chosenNum);
-	alert(randSongInt);
-	*/
 }
 
 
@@ -592,12 +646,14 @@ function changeCategory()
 	if(musicPlaying && (prevCategoryID != currcategoryID) && !displayingPlayBut){
 		// To switch to play button if we switch categories
 		// And to stay as play button if we 
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 		displayingPlayBut = true;
 
 	}	else if(currplayingSong==0 && prevCategoryID == currcategoryID){
 		// If current playing song is 0 and we came back to the same category as the playing song, switch to pause
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 		displayingPlayBut = false;
 		musicChanged = false;
 	}
@@ -772,7 +828,7 @@ function generateRandomSongArray()
 
 function searchIndexByNameLiveShow(name)
 {
-	alert(name);
+	//alert(name);
 	//alert(random_sorted_ar);
 	for(var i=0; i < random_sorted_ar.length; i++)
 	{
