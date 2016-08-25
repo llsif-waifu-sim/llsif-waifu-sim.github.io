@@ -199,9 +199,11 @@ function stopClick()
 	prevMusic.pause();
 
 	prevMusic.currentTime = 0;
-	if(changedCategory && musicPlaying){
+	if(changedCategory && musicPlaying  && !(prevCategoryID == currcategoryID)){
+		// We are in a different category
 		musicStopped = true;
 		musicChanged = true;
+
 
 	}else if((currplayingSong == currSong)  && musicPlaying){
 		// We haven't switched songs and music is currently playing

@@ -205,7 +205,7 @@ function stopClick()
 
 	prevMusic.currentTime = 0;
 
-	if(changedCategory && musicPlaying){
+	if(changedCategory && musicPlaying   && !(prevCategoryID == currcategoryID)){
 		musicStopped = true;
 		musicChanged = true;
 
