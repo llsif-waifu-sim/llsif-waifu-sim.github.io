@@ -156,17 +156,13 @@ function playClick()
 		
 		currplayingSong = currSong;
 
-		//document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		//document.getElementById("liveshowAlbum").src =  picPath;
 
 		oggMusic.src = songPath;
 
 		prevMusic.volume = musicVolume;
 		prevMusic.play();
 
-		
-		
-		 //$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+
 		 $('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 
 		displayingPlayBut = false;
@@ -179,7 +175,6 @@ function playClick()
 		beginning = false;
 		musicPlaying = true;
 		currplayingSong = currSong;
-		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
 		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 		displayingPlayBut = false;
 
@@ -187,7 +182,6 @@ function playClick()
 		// Pause music
 		
 		prevMusic.pause();
-		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
 		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 		displayingPlayBut = true;
 		musicPaused = true;
@@ -291,7 +285,7 @@ function changeSong()
 
 		currSong = randSongInt;
 
-		if((currplayingSong == currSong) && musicPlaying){
+		if((currplayingSong == currSong) && musicPlaying  && (prevCategoryID == currcategoryID)){
 			// We came back to our original song and we have not changed categories
 			musicChanged = false;
 			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
@@ -391,10 +385,8 @@ function changeSongBack()
 
 		currSong = randSongInt;
 
-		if(   ((currplayingSong == currSong) && musicPlaying) ){
+		if(   ((currplayingSong == currSong) && musicPlaying)  && (prevCategoryID == currcategoryID)){
 			// We came back to our original song and music is playing
-			//alert('1');
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
 			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
 			musicChanged = false;
@@ -402,8 +394,6 @@ function changeSongBack()
 			currplayingSong = currSong;
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
-			//alert('2');
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
 			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
