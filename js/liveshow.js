@@ -182,7 +182,7 @@ function playClick()
 		// Pause music
 		
 		prevMusic.pause();
-		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 		displayingPlayBut = true;
 		musicPaused = true;
 		musicChanged = false;
@@ -216,6 +216,7 @@ function stopClick()
 		musicStopped = true;
 		musicChanged = true;
 	} 
+	$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 	musicPlaying = false;
 }
 

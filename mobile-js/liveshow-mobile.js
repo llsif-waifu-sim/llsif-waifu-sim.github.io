@@ -220,6 +220,7 @@ function stopClick()
 		musicStopped = true;
 		musicChanged = true;
 	} 
+	$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 	musicPlaying = false;
 }
 
