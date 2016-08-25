@@ -134,7 +134,7 @@ function test()
 
 function playClick()
 {
-	if(beginning || changedCategory ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
+	if(beginning || musicStopped || changedCategory ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
 		// Play music from beginning 
 		// OR We are currently playing something, but not at our original song
 		// OR we paused and switched to a different song
@@ -206,22 +206,20 @@ function stopClick()
 	prevMusic.currentTime = 0;
 
 	if(changedCategory && musicPlaying   && !(prevCategoryID == currcategoryID)){
-		musicStopped = true;
 		musicChanged = true;
 
 	}else if((currplayingSong == currSong)  && musicPlaying){
 		// We haven't switched songs and music is currently playing
 		$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 		displayingPlayBut = true;
-		musicStopped = true;
 		musicChanged = false;
 	} else if ( !(currplayingSong == currSong)  ){
 		// We switched music
-		musicStopped = true;
 		musicChanged = true;
 	} 
 	$('#liveshow-play-but').removeClass('ui-icon-pause').addClass('ui-icon-play').trigger('refresh');
 	musicPlaying = false;
+	musicStopped = true;
 }
 
 function changeSong()

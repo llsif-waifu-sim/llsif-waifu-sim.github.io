@@ -132,10 +132,11 @@ function playClick()
 	
 
 
-	if(beginning || changedCategory ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
+	if(beginning || musicStopped || (changedCategory && !random_mode) ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
 		// Play music from beginning 
 		// OR We are currently playing something, but not at our original song
 		// OR we paused and switched to a different song
+
 		prevCategoryID = currcategoryID;
 	
 		musicPlaying = true;
@@ -170,6 +171,7 @@ function playClick()
 
 	}else if((musicPaused || musicStopped) && !musicPlaying && !beginning && !musicChanged){
 		// Continue music
+
 		originMusic.pause();
 		prevMusic.play();
 		beginning = false;
@@ -180,7 +182,7 @@ function playClick()
 
 	} else {
 		// Pause music
-		
+
 		prevMusic.pause();
 		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 		displayingPlayBut = true;
@@ -201,7 +203,6 @@ function stopClick()
 	prevMusic.currentTime = 0;
 	if(changedCategory && musicPlaying  && !(prevCategoryID == currcategoryID)){
 		// We are in a different category
-		musicStopped = true;
 		musicChanged = true;
 
 
@@ -209,15 +210,14 @@ function stopClick()
 		// We haven't switched songs and music is currently playing
 		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 		displayingPlayBut = true;
-		musicStopped = true;
 		musicChanged = false;
 	} else if ( !(currplayingSong == currSong)  ){
 		// We switched music
-		musicStopped = true;
 		musicChanged = true;
 	} 
 	$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 	musicPlaying = false;
+	musicStopped = true;
 }
 
 function changeSong()
