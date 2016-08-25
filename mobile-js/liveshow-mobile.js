@@ -262,6 +262,7 @@ function changeSong()
 		var folder = random_ar[chosenNum][1];       // folder is the name of the folder the song is located in
 		random_category = folder;
 		changeCategoryRandom();
+		$('#songCategorySelect').val(random_category).selectmenu('refresh');
 		
 		if(folder==0){
 			subPath = 'muse-together/';
@@ -356,6 +357,7 @@ function changeSongBack()
 
 		random_category = folder;
 		changeCategoryRandom();
+		$('#songCategorySelect').val(random_category).selectmenu('refresh');
 		
 		if(folder==0){
 			subPath = 'muse-together/';
@@ -413,6 +415,7 @@ function changeSongRandom(){
 
 	random_category = folder;
 	changeCategoryRandom();
+	$('#songCategorySelect').val(random_category).selectmenu('refresh');
 
 	var subPath = '';
 
@@ -589,10 +592,7 @@ function changeCategoryRandom()
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
-	/*
-	$('select[id=songCategorySelect]').val(currcategoryID);
-	$('#songCategorySelect').selectpicker('refresh');
-	*/
+
 
 	if(currplayingSong != currSong){
 		// If the current song is not equal to the currently playing song, we switched categories, and : don't change button to pause
