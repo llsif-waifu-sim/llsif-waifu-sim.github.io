@@ -27,31 +27,21 @@ var random_sorted_ar = generateSortedRandomArray(); // contains an ordered list 
 var random_counter_ar = generateRandomSongArray(); // contains a shuffled list of song indexes
 var random_category = 0;
 
-
 var random_index = 0
-
-
 var firstRandom = false;
-
 var loop_mode = false;
-
-
 
 $('#background-music-player').on('ended', function() {
 
 	stopClick();
 	if(!loop_mode){
-		//alert('test1');
 		if(random_mode){
 			// If engaged in random mode
 			changeSongRandom(); 
 		} else {
 		    changeSong();  	
 		}
-		//alert('test2');
 		playClick();
-		//alert('test3');
-
 	} else {
 		loopPlay();
 	}
@@ -60,16 +50,7 @@ $('#background-music-player').on('ended', function() {
 
 function loopPlay()
 {
-	/*
-	if ((!musicChanged &&  musicPlaying)){
-		// We are in the same song we are looping
-		$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
-
-	}
-	*/
-	prevCategoryID = currcategoryID;
-	//currplayingSong = currSong; // Replace currSong with a value that indicates 
-
+	//prevCategoryID = currcategoryID;
 	musicPlaying = true;
 	musicPaused = false;
 	musicChanged = false;
@@ -78,12 +59,6 @@ function loopPlay()
 
 	backgroundAudio=document.getElementById("background-music-player");
 	backgroundAudio.play();
-
-
-	
-	
-
-
 	displayingPlayBut = false;
 }
 
@@ -230,23 +205,13 @@ function stopClick()
 	prevMusic.pause();
 
 	prevMusic.currentTime = 0;
-	/*
-	alert('test');
-	alert(musicPlaying);
-	alert(currplayingSong);
-	alert(currSong);
-	alert((currplayingSong == currSong)  && musicPlaying);
-	*/
 	if(changedCategory && musicPlaying){
 		musicStopped = true;
 		musicChanged = true;
 
 	}else if((currplayingSong == currSong)  && musicPlaying){
-		//alert('changing play but now');
 		// We haven't switched songs and music is currently playing
-		//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
 		$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
-		//alert('changed but');
 		displayingPlayBut = true;
 		musicStopped = true;
 		musicChanged = false;
@@ -270,55 +235,31 @@ function changeSong()
 		}
 
 		var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
-		
-
-
 		$(document).ready(function(){
 			$("#liveshowAlbum").hide();
 			document.getElementById("liveshowAlbum").src =  picPath;
 			$("#liveshowAlbum").fadeIn();
 		});
-
-
-
-		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-
-		
-
+		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];		
 		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
 			// We came back to our original song and music is playing
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
 			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
 			displayingPlayBut = false;
 			musicChanged = false;
 
 		} else if (!musicChanged &&  musicPlaying){
 			// We are switching songs
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
 			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
 			displayingPlayBut = true;
 			musicChanged = true;
 		}
 	} else {
-
 		// We are in random_mode, going back
-
-	
-
-		///////////////////////////////////////////////////////
 		var chosenNum = getNextRandomSong('-');  // choenNum is the index of the random array 
-
-		//var chosenNum = searchIndexByNameLiveShow(random_ar[chosenNum][0]);
-
 		var folder = random_ar[chosenNum][1];       // folder is the name of the folder the song is located in
-
-
 		random_category = folder;
 		changeCategoryRandom();
 		
-	
-
-
 		if(folder==0){
 			subPath = 'muse-together/';
 		} else if (folder==1){
@@ -336,12 +277,7 @@ function changeSong()
 			return;
 		}
 
-
-
-		//var chosenNumSorted = searchIndexByNameLiveShow(random_ar[chosenNum][0]);
 		var randSongInt = calc_random_local_index(chosenNum, folder);
-
-		
 
 		var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
 		
@@ -353,14 +289,7 @@ function changeSong()
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
 
-
-
 		currSong = randSongInt;
-		////////////////////////////////////////////////////
-
-		
-
-
 
 		if((currplayingSong == currSong) && musicPlaying){
 			// We came back to our original song and we have not changed categories
@@ -425,26 +354,13 @@ function changeSongBack()
 		}
 
 	} else {
-		
 		// We are in random_mode, going forward
-		var ptr = random_index;
-
-		ptr = ptr + 1;
-
-		///////////////////////////////////////////////////////
 		var chosenNum = getNextRandomSong('+');  // choenNum is the index of the random array 
-
-		//var chosenNum = searchIndexByNameLiveShow(random_ar[chosenNum][0]);
-
 		var folder = random_ar[chosenNum][1];       // folder is the name of the folder the song is located in
-
 
 		random_category = folder;
 		changeCategoryRandom();
 		
-	
-
-
 		if(folder==0){
 			subPath = 'muse-together/';
 		} else if (folder==1){
@@ -462,13 +378,7 @@ function changeSongBack()
 			return;
 		}
 
-
-
-		//var chosenNumSorted = searchIndexByNameLiveShow(random_ar[chosenNum][0]);
 		var randSongInt = calc_random_local_index(chosenNum, folder);
-
-		
-
 		var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
 		
 		$(document).ready(function(){
@@ -479,16 +389,7 @@ function changeSongBack()
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
 
-
-
 		currSong = randSongInt;
-
-		///////////////////////////////////////////////////////
-
-		
-
-		
-
 
 		if(   ((currplayingSong == currSong) && musicPlaying) ){
 			// We came back to our original song and music is playing
@@ -542,14 +443,7 @@ function changeSongRandom(){
 		alert('Something bad happened in changeSongRandom()');
 		return;
 	}
-
-
-
-
 	var randSongInt = calc_random_local_index(chosenNum, folder);
-
-	
-
 	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
 	
 	$(document).ready(function(){
@@ -559,9 +453,6 @@ function changeSongRandom(){
 	});
 
 	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-
-
-
 	currSong = randSongInt;
 
 }
@@ -800,15 +691,13 @@ function calc_random_local_index(chosenNum, folder)
 }
 
 function generate_random_ar(){
-	// Generate array that will store all songs of Love Live
-	
+	// Generate array that will store all songs of Love Live	
 	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
 	var temp1 = temp0.concat(muse_individual_ar);
 	var temp2 = temp1.concat(aqours_together);
 	var temp3 = temp2.concat(aqours_together);
 	var temp4 = temp3.concat(aqours_subgroup_ar);
 	var temp5 = temp4.concat(aqours_others_ar);
-
 
 	return temp5;
 }
@@ -820,24 +709,18 @@ function generateRandomSongArray()
 	{
 		foo.push(i);
 	}
-
 	shuffleArray(foo);
-
 	return foo;
 }
 
 function searchIndexByNameLiveShow(name)
 {
-	//alert(name);
-	//alert(random_sorted_ar);
 	for(var i=0; i < random_sorted_ar.length; i++)
 	{
 		if(name.localeCompare(random_ar[i][0]) == 0)
 		{
 			return i;
 		}
-		//alert(random_sorted_ar[i][0]);
-
 	}
 	alert('Nothing found :(');
 	return -1;
@@ -850,8 +733,6 @@ function generateSortedRandomArray()
 	{
 		foo.push(i);
 	}
-
-
 	return foo;
 }
 
@@ -868,7 +749,6 @@ function shuffleArray(a) {
 
 function getNextRandomSong(state)
 {
-
 	if(state=='+'){
 		// Move the reference index
 		if(random_index == random_counter_ar.length)
@@ -879,9 +759,7 @@ function getNextRandomSong(state)
 
 			random_counter_ar = generateRandomSongArray();
 			document.getElementById("leftSongBut").disabled = true;
-
 			return 0;
-
 
 		} else {
 			random_index = random_index + 1;
@@ -892,13 +770,9 @@ function getNextRandomSong(state)
 				document.getElementById("leftSongBut").disabled = true;
 			} else {
 				document.getElementById("leftSongBut").disabled = false;
-			}
-
-
-			
+			}		
 		}
 	} else if (state == '-'){
-
 		// Move the reference index
 		if(random_index == 0)
 		{
@@ -907,8 +781,6 @@ function getNextRandomSong(state)
 			document.getElementById("leftSongBut").disabled = true;
 
 			return 0;
-
-
 		} else {
 			random_index = random_index - 1;
 
@@ -917,64 +789,8 @@ function getNextRandomSong(state)
 				document.getElementById("leftSongBut").disabled = true;
 			}
 		}
-
-
 	} else {
 		alert('Something went wrong in getNextRandomSong() :(');
 	}
-
 	return random_counter_ar[random_index];
 }
-
-/*
-function getNextRandomSongWOIndex()
-{
-	var temp = random_index;
-
-	// Move the reference index
-	if(temp == random_counter_ar.length)
-	{
-		// We are at the end of song array
-		temp = 0;
-		alert('No songs left');
-		return temp;
-
-
-	} else {
-		temp = temp + 1
-	}
-
-
-	return random_counter_ar[temp];
-}
-
-*/
-
-/*
-function getNextRandomSong()
-{
-	// Generate an array from 0 all the way until main_song_ar.length -1
-	// For each next song, remove it from the array
-
-	if(random_counter_ar.length == 0)
-	{
-		// If all songs have played, refresh entire array
-		random_counter_ar = generateRandomSongArray();
-	}
-
-    ranNums = [];
-    i = random_counter_ar.length;
-    j = 0;
-
-	
-	j = Math.floor(Math.random() * i);
-	ranNums.push(random_counter_ar[j]);
-
-	var chosenNum = random_counter_ar[j];
-
-	random_counter_ar.splice(j,1);
-
-	return chosenNum;
-
-}
-*/

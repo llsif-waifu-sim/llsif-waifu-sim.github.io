@@ -5,9 +5,10 @@
 
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	
 	<script src="mobile-js/redirect-mobile.js"></script>
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -355,7 +356,7 @@
 		        	<table style='width:100%'>
 						<tr style='width:100%'>
 							<td style='padding:10px;width:20%'>
-								<a href="#" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" onclick="changeSong()"></a>
+								<a href="#" id="leftSongBut" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" onclick="changeSong()"></a>
 							</td>
 							<td style='padding:10px;width:20%'>
 								<a href="#" id='liveshow-play-but' class="ui-btn ui-corner-all ui-icon-play ui-btn-icon-notext" onclick="playClick()"></a>
@@ -364,11 +365,23 @@
 								<a href="#" class="ui-btn ui-corner-all ui-icon-square ui-btn-icon-notext" onclick="stopClick()"></a>
 							</td>
 							<td style='padding:10px;width:20%'>
-								<a href="#" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext" onclick="changeSongBack()"></a>
+								<a href="#" id="rightSongBut" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext" onclick="changeSongBack()"></a>
 							</td>
 
 						</tr>
 						
+					</table>
+					<table style='width:98%'>
+						<tr style='width:98%'>
+							<td style='width:48%;'>
+								<a href="#"  id='randomBut' onclick="randomSwitch()" class="ui-btn ui-btn-inline ui-corner-all" style="background:#2ECCFA;border-color:#2ECCFA; width:65%"><font color='white' ><i class="fa fa-random fa" aria-hidden="true"></i></font></a>
+							</td>
+							<td>
+								<td style='width:48%;'>
+								<a href="#" id='loopBut' onclick="loopSwitch()" class="ui-btn ui-btn-inline ui-corner-all" style="background:#2ECCFA;border-color:#2ECCFA; width:65%"><font color='white' ><i class="fa fa-repeat fa" aria-hidden="true"></i></font></a>
+							</td>
+							</td>
+						</tr>
 					</table>
 					
 	        		<font size="4"><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
@@ -402,19 +415,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Snapshot page -->
 <div data-role="page" id="snapshotPage">
   <div data-role="header">
@@ -444,10 +444,6 @@
 
 
 
-
-
-
-
 <!-- Chatroom -->
 <div data-role="page" id="chatroomPage">
   <div data-role="header">
@@ -464,24 +460,20 @@
     <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
   </div>
 
-  <!--
-  <div data-role="footer">
-    <h1>Footer Text</h1>
-  </div>
--->
+
 
 </div>
 
 
 
-<div data-role="dialog" id="updateModal" class="ui-content">
+<div data-history="false" data-role="dialog" id="updateModal" class="ui-content">
 	<div data-role="header">
         <h1>Updates</h1>
       </div>
       <div data-role="main" class="ui-content">
-	    <b>Updates for August 22, 2016:</b>
+	    <b>Updates for August 25, 2016:</b>
 			<ul>
-				<li>- Cards all the way ID #991 has been added.</li>
+				<li>Liveshow player now has a shuffle and a loop button. Now you can randomize the playlist of Love Live songs you listen to or listen to the same song over and over again!</li>
 			</ul>
 
 			 <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline  ui-corner-all">Continue</a>

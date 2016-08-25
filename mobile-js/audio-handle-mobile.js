@@ -348,6 +348,11 @@ window.onload = function() {
 }
 
 $(document).on("mobileinit", function(){
+	
+	$.mobile.changePage($('#updateModal'), {
+        changeHash : false,
+        role       : 'dialog'
+    });
 	$.mobile.changePage.defaults.changeHash = false;
 });
 
