@@ -60,6 +60,10 @@ function loopPlay()
 	backgroundAudio=document.getElementById("background-music-player");
 	backgroundAudio.play();
 	displayingPlayBut = false;
+	if(!changedCategory && !(currplayingSong == currSong))
+	{
+		$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
+	}
 }
 
 function randomSwitch()
