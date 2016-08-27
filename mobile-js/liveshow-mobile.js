@@ -63,7 +63,7 @@ function loopPlay()
 	backgroundAudio.play();
 	displayingPlayBut = false;
 
-	if(!changedCategory && !(currplayingSong == currSong))
+	if(!changedCategory && (currplayingSong == currSong))
 	{
 		$('#liveshow-play-but').removeClass('ui-icon-play').addClass('ui-icon-pause').trigger('refresh');
 	}
