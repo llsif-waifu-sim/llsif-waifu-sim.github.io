@@ -144,7 +144,9 @@ var aqours_together =
 ['Koi Ni Naritai AQUARIUM',3],
 ['Humming Friend',3],
 ['Mattete Ai no Uta',3],
-['Todokanai Hoshi da to Shitemo',3]
+['Todokanai Hoshi da to Shitemo',3],
+['Yume Kataru yori Yume Utaou',3],
+['Sunshine Pikkapika Ondo',3]
 ];
 
 var aqours_subgroup_ar = 

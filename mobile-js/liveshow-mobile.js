@@ -672,10 +672,10 @@ function generate_random_ar(){
 	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
 	var temp1 = temp0.concat(muse_individual_ar);
 	var temp2 = temp1.concat(aqours_together);
-	var temp3 = temp2.concat(aqours_together);
-	var temp4 = temp3.concat(aqours_subgroup_ar);
-	var temp5 = temp4.concat(aqours_others_ar);
-	return temp5;
+	var temp3 = temp2.concat(aqours_subgroup_ar);
+	var temp4 = temp3.concat(aqours_others_ar);
+
+	return temp4;
 }
 
 function generateRandomSongArray()

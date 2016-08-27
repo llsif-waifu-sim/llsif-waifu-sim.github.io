@@ -651,30 +651,26 @@ function calc_random_local_index(chosenNum, folder)
 	} else if(folder == 3){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther;
 
-		if (num >= numOfSongsAqoursTogether)
+		if (num > numOfSongsAqoursTogether)
 		{
-			return num - 8;
+			return num - numOfSongsAqoursTogether;
 		}
 
 		return num;
 
 	} else if(folder == 4){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether;
-		//alert('folder 4');
-		//alert(numOfSongsAqoursTogether);
 		if (num >= numOfSongsAqoursSub)
 		{
-			return num - 8;
+			return num - numOfSongsAqoursSub;
 		}
 
 		return num;
 	} else if(folder == 5){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub;
-		//alert('folder 5');
-		//alert(numOfSongsAqoursSub);
 		if (num >= numOfSongsAqoursOthers)
 		{
-			return num - 8;
+			return num - numOfSongsAqoursOthers;
 		}
 		return num;
 	} else {
@@ -688,11 +684,10 @@ function generate_random_ar(){
 	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
 	var temp1 = temp0.concat(muse_individual_ar);
 	var temp2 = temp1.concat(aqours_together);
-	var temp3 = temp2.concat(aqours_together);
-	var temp4 = temp3.concat(aqours_subgroup_ar);
-	var temp5 = temp4.concat(aqours_others_ar);
+	var temp3 = temp2.concat(aqours_subgroup_ar);
+	var temp4 = temp3.concat(aqours_others_ar);
 
-	return temp5;
+	return temp4;
 }
 
 function generateRandomSongArray()
