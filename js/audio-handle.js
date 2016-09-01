@@ -103,7 +103,7 @@ function specialQuoteSpeech()
 	var chosenIndex = indexAr[0];
 	var maxIndex = indexAr[1]; 
 
-	
+
 	// If the card does not have a special quote
 	if (chosenIndex == -1)
 	{
@@ -964,8 +964,10 @@ function changeWaifu(name, index){
 					return;
 				}
 				// If not, recalculate random number generator
-				var tempNum = 15;
+				var tempNum = 14;
 				n = Math.floor(Math.random() * tempNum);
+
+				
 				
 			}
 

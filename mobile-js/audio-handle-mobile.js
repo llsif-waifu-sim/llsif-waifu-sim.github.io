@@ -1007,7 +1007,7 @@ function changeWaifu(){
 					return;
 				}
 				// If not, recalculate random number generator
-				var tempNum = 15;
+				var tempNum = 14;
 				n = Math.floor(Math.random() * tempNum);
 				
 			}
