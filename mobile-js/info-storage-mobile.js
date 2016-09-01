@@ -40,6 +40,7 @@ function getCookie(cname) {
 
 function checkCookie() {
     var index=getCookie("waifu-index");
+
     globalIndex = index;
     if (index != null && index != "" && !isNaN(index)) {
         mainWaifuSet(index);
@@ -51,7 +52,6 @@ function checkCookie() {
 
 function checkBGMCookie() {
     var index=getCookie("background-music");
-    globalIndex = index;
     if (index != null && index != "") {
         if(index == 'MU')
         {

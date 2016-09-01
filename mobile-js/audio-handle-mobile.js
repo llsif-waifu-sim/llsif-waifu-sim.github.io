@@ -103,6 +103,47 @@ function inactiveSpeech()
 	}
 }
 
+function specialQuoteSpeech()
+{
+	// Activate special quote
+	var audioPath = "special-quotes/"
+	var id = id_log[globalIndex][0];
+
+	var indexAr = searchQuoteIndexByID(id);
+
+	var chosenIndex = indexAr[0];
+	var maxIndex = indexAr[1]; 
+
+	
+	// If the card does not have a special quote
+	if (chosenIndex == -1)
+	{
+		return -1;
+	}
+
+	
+	var addValue = Math.floor(Math.random() * maxIndex);
+	
+	
+
+	var filePath = "".concat(id,"-", addValue.toString());
+	var superString = "".concat(audioPath, filePath, ".mp3");
+
+
+	globalAudio = new Audio(superString);
+    globalAudio.volume = voiceVolume;
+    globalAudio.play();
+
+
+    var fileIndex = chosenIndex  + addValue;
+    var pathString = "".concat(audioPath);
+    //alert(pathString);
+    changeSpeechText(pathString, fileIndex);
+    refreshBubble();
+
+    return 0;
+}
+
 
 function forgotSpeech()
 {
@@ -697,6 +738,40 @@ function getRandomCard()
 	storeCookie(i);
 }
 
+function checkOutOfBoundsQuoteIndex(id)
+{
+	var i = 0;
+	while(true)
+	{
+		// Check if we are out of bounds of the entire array
+		if(quote_id_log.length <= id + i){
+			return i - 1;
+		}
+
+		if(quote_id_log[id + i] != quote_id_log[id])
+		{
+			// If we are out of bounds of our card id number
+
+			return i - 1;
+		}
+		i++;
+	}
+}
+
+
+function searchQuoteIndexByID(id)
+{
+	// Get the quote index 
+	var i;
+	for(i = 0; i < quote_id_log.length; i++)
+	{
+		if(quote_id_log[i] == id)
+		{
+			return [i, checkOutOfBoundsQuoteIndex(i)];
+		}
+	}
+	return [-1,-1];
+}
 
 
 
@@ -917,9 +992,25 @@ function changeWaifu(){
 
 		if(mode == 0){
 			// Home button RNG
-			var maxNum = 15;
+			var maxNum = 17;
 			n = Math.floor(Math.random() * maxNum);
 			file = "home/";
+
+
+			// Activate special quote
+			if(n >= maxNum - 3){
+				var errorCheck = -1;
+				var errorCheck = specialQuoteSpeech();
+				if(errorCheck == 0)
+				{
+					// If card had a quote, then we are done
+					return;
+				}
+				// If not, recalculate random number generator
+				var tempNum = 15;
+				n = Math.floor(Math.random() * tempNum);
+				
+			}
 
 
 			// Activate month speech
