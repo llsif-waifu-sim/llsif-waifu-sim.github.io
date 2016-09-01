@@ -29,21 +29,23 @@ def addUntransformed(targets):
             
             if value is None:
                 # If we encounter an mp3 file
-                        
+
+                z = 1 + 1
+                '''
                 for a in td.findAll('a', href=True):
                     downloadPath = prePath + str(cardID) +'-'+ str(countT) + ".mp3"
                     urllib.urlretrieve(a['href'], downloadPath)
                     countT = countT + 1
-                            
+                '''         
             else:
                 # If we encounter a Japanese quote
 
                 # Write Japanese text to file
-                quote_speech_file.write(value.encode('utf8') + '\n')
+                #quote_speech_file.write(value.encode('utf8') + '\n')
                 # write referencfindChildrene index to file
                 id_index_file.write(str(cardID) + '\n')
                         
-                print value
+                #print value
                 countT = countT + 1
             
 
@@ -64,7 +66,7 @@ def checkNormal():
 
 prePath = '../special-quotes/'
 
-quote_speech_file = open(prePath + "quote-speech-slave.txt", "w")
+#quote_speech_file = open(prePath + "quote-speech-slave.txt", "w")
 id_index_file = open(prePath + "id-index-slave.txt", "w")
 
 for cardID in range(begin,last+1):
@@ -121,26 +123,28 @@ for cardID in range(begin,last+1):
 
             if value is None:
                 # If we encounter an mp3 file
-                
+                z = 1 + 1
+                '''
                 for a in cell.findAll('a', href=True):
                     downloadPath = prePath + str(cardID) +'-'+ str(count) + ".mp3"
                     urllib.urlretrieve(a['href'], downloadPath)
 
                     count = count + 1
-                    
+                ''' 
             else:
                 # If we encounter a Japanese quote
 
                 # Write Japanese text to file
-                quote_speech_file.write(value.encode('utf8') + '\n')
+                #quote_speech_file.write(value.encode('utf8') + '\n')
                 # write reference index to file
-                id_index_file.write(str(cardID) + '\n')
+                id_index_file.write(str(cardID) + ',\n')
                 
-                print value
+                #print value
+                print cardID,','
                 textCount = textCount + 1
 
 
-quote_speech_file.close()
+#quote_speech_file.close()
 id_index_file.close() 
 
 
