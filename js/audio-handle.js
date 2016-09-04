@@ -979,9 +979,11 @@ function changeWaifu(name, index){
 					return;
 				}
 				
+				
+				
 			}
 
-			
+
 			
 			
 
