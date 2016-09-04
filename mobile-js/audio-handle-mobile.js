@@ -997,6 +997,13 @@ function changeWaifu(){
 			file = "home/";
 
 
+			// Activate month speech
+			if(n == maxNum - 1){
+				seasonSpeech();
+				return;
+			}
+
+
 			// Activate special quote
 			if(n >= maxNum - 3){
 				var errorCheck = -1;
@@ -1007,16 +1014,17 @@ function changeWaifu(){
 					return;
 				}
 				// If not, recalculate random number generator
-				var tempNum = 14;
-				n = Math.floor(Math.random() * tempNum);
+				maxNum = 15;
+				n = Math.floor(Math.random() * maxNum);
+
+				// Activate month speech
+				if(n == maxNum - 1){
+					seasonSpeech();
+					return;
+				}
 				
-			}
-
-
-			// Activate month speech
-			if(n == maxNum - 1){
-				seasonSpeech();
-				return;
+				
+				
 			}
 
 		} else if (mode == 1){
