@@ -420,7 +420,9 @@ var rin_ar =
 ['941','rin','no'],
 ['941','rin','yes'],
 ['964','rin','no'],
-['964','rin','yes']
+['964','rin','yes'],
+['1001','rin','no'],
+['1001','rin','yes']
 ];
 var honoka_ar = 
 [
@@ -849,7 +851,9 @@ var kotori_ar =
 ['963','kotori','no'],
 ['963','kotori','yes'],
 ['968','kotori','no'],
-['968','kotori','yes']
+['968','kotori','yes'],
+['1002','kotori','no'],
+['1002','kotori','yes']
 ];
 var eli_ar = 
 [

@@ -150,7 +150,9 @@ var mari_ar =
 ['972','mari','no'],
 ['972','mari','yes'],
 ['997','mari','no'],
-['997','mari','yes']
+['997','mari','yes'],
+['1000','mari','no'],
+['1000','mari','yes']
 ];
 
 var kanan_ar =  
@@ -166,5 +168,7 @@ var kanan_ar =
 ['948','kanan','no'],
 ['948','kanan','yes'],
 ['983','kanan','no'],
-['983','kanan','yes']
+['983','kanan','yes'],
+['999','kanan','no'],
+['999','kanan','yes']
 ];

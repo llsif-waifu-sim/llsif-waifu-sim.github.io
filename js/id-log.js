@@ -1400,6 +1400,14 @@ var id_log =
 ['996','dia','no'],
 ['996','dia','yes'],
 ['997','mari','no'],
-['997','mari','yes']
+['997','mari','yes'],
+['999','kanan','no'],
+['999','kanan','yes'],
+['1000','mari','no'],
+['1000','mari','yes'],
+['1001','rin','no'],
+['1001','rin','yes'],
+['1002','kotori','no'],
+['1002','kotori','yes']
 ];
 

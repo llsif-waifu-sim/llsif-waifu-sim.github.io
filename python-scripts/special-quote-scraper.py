@@ -5,8 +5,8 @@ import idolName
 
 # Note, DO NOT START AT AT 28, START AT 55
 # The rare cards below 55 will just give you inital selection of the game quotes
-begin = 55
-last = 997
+begin = 997
+last = 1002
 
 
 def addUntransformed(targets):
@@ -144,7 +144,7 @@ for cardID in range(begin,last+1):
                 textCount = textCount + 1
 
 
-#quote_speech_file.close()
+quote_speech_file.close()
 id_index_file.close() 
 
 

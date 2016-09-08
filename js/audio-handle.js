@@ -844,7 +844,7 @@ function searchId()
 	var idolized = $('input[id="radio-idol"]:checked').val();
 
 
-	if(!isInt(id) || id > maxNumOfCard){
+	if(!isInt(id) || parseInt(id) > maxNumOfCard){
 		alert('Invalid id input');
 		//alert('Invalid id input. Please enter a number between 28 and ' + maxNumOfCard.toString());
 		return;
