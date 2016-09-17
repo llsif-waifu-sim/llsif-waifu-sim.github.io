@@ -1,6 +1,7 @@
 import json
 import urllib
 import urllib2
+from specialQuoteScraper import extractQuote
 
 def idol2path(name):
     if name == 'Koizumi Hanayo':
@@ -48,8 +49,11 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 
+begin = 1002
+last = 1007
+
 # The ending value should be the last id value + 1
-for x in range (997,1002+1):
+for x in range (begin,last+1):
     x_str = str(x)
     temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
     data = json.load(urllib2.urlopen(temp_str))
@@ -79,7 +83,10 @@ for x in range (997,1002+1):
         text_file.write(text_to_save)
         print text_to_prnt
 
+
 text_file.write('];\n')
 print '];'
+extractQuote(begin,last)
+
 text_file.close()      
     
