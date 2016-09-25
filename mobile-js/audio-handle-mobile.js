@@ -3,7 +3,7 @@ var globalWaifu = 'honoka';
 var maxNumOfCard = id_log[id_log.length-1][0];
 var language = 'english';
 var background_playing = false;
-var maxNumBackground = 97;
+var maxNumBackground = 105;
 
 
 var away = false;
