@@ -568,7 +568,9 @@ var honoka_ar =
 ['937','honoka','no'],
 ['937','honoka','yes'],
 ['980','honoka','no'],
-['980','honoka','yes']
+['980','honoka','yes'],
+['1009','honoka','no'],
+['1009','honoka','yes']
 ];
 var umi_ar = 
 [
@@ -1282,5 +1284,7 @@ var nico_ar =
 ['945','nico','yes'],
 ['987','nico','yes'],
 ['991','nico','no'],
-['991','nico','yes']
+['991','nico','yes'],
+['1010','nico','no'],
+['1010','nico','yes']
 ];

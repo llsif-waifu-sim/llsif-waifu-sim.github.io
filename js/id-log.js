@@ -1420,6 +1420,6 @@ var id_log =
 ['1009','honoka','no'],
 ['1009','honoka','yes'],
 ['1010','nico','no'],
-['1010','nico','yes'],
+['1010','nico','yes']
 ];
 
