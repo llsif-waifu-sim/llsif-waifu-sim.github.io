@@ -146,7 +146,9 @@ var aqours_together =
 ['Mattete Ai no Uta',3],
 ['Todokanai Hoshi da to Shitemo',3],
 ['Yume Kataru yori Yume Utaou',3],
-['Sunshine Pikkapika Ondo',3]
+['Sunshine Pikkapika Ondo',3],
+['Yume de Yozora o Terashitai',3],
+['Mijuku DREAMER',3]
 ];
 
 var aqours_subgroup_ar = 
@@ -162,7 +164,8 @@ var aqours_subgroup_ar =
 var aqours_others_ar = 
 [
 ['Daisuki dattara Daijoubu!',5],
-['Kimeta yo Hand in Hand',5]
+['Kimeta yo Hand in Hand',5],
+['Pops heart de Odorun damon!',5]
 ];
 
 

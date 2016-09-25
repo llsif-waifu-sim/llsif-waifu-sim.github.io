@@ -3,6 +3,10 @@ import urllib
 import urllib2
 from specialQuoteScraper import extractQuote
 
+# Note to self, we ignored card 1012 due to transparency issue
+# Remember to overlap 1012's quotes during the slave-to-main file process
+
+
 def idol2path(name):
     if name == 'Koizumi Hanayo':
         return 'hanayo'
@@ -49,8 +53,8 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 
-begin = 1002
-last = 1007
+begin = 1008
+last = 1011
 
 # The ending value should be the last id value + 1
 for x in range (begin,last+1):
