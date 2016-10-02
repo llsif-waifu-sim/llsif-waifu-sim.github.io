@@ -21,7 +21,7 @@ function searchURLById()
 	return 'none';
 }
 
-function storyClick(){
+function storyVideoShow(){
 	currID = document.getElementById('card_id').value;
 
 	var URLlink = getURL();
