@@ -615,28 +615,6 @@ function cardRNG()
 
 }
 
-/*
-function cardRNGAqours()
-{
-
-		var aq_ar = getWaifuAr(globalWaifu);
-
-		var maxNum = aq_ar.length;
-		var n = Math.floor(Math.random() * maxNum);
-	
-		var aq_index = n;
-		var aq_id = aq_ar[aq_index][0];
-		var aq_idolized = aq_ar[aq_index][2];
-
-		//alert(aq_id);
-
-		// Get the index from the main id_log array
-		return searchIndexById(aq_id, aq_idolized);
-	
-
-}
-
-*/
 
 function getRandomWaifu()
 {

@@ -6,6 +6,7 @@ var backgroundMusic = 1;
 var cookieExpireDate = 100*365;
 
 
+
 // Setting and getting the cookies
 
 function setCookie(cname, cvalue, exdays) {

@@ -22,6 +22,7 @@
 	<script src="js/indiv-aqours-id-log.js"></script>
 	<script src="js/indiv-muse-id-log.js"></script>
 	<script src="js/quote-id-list.js"></script>
+	<script src="js/story-log.js"></script>
 	<script src="js/info-storage.js"></script>
 	<script src="js/audio-handle.js"></script>
 	
@@ -112,7 +113,7 @@
     	<img id='homeScreen' src='' width="220" height="277">
     	<img id="idol_img" src='' usemap="#waifumap">
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
-    	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
+    	<img id="story_but" data-toggle="modal" data-target="#storyModal" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
     	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
@@ -177,8 +178,7 @@
 	</br>
 	</br>
 	
-	</br></br>
-	<p style='color:white'><font size="6">Use buttons below if you are on MOBILE</font></p>
+
 	<table>
 		<tr>
 			<td style='width:280'>
@@ -308,6 +308,45 @@
 	  </div>
 
 
+
+	  <div class="modal fade" id="storyModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title"><span id="StoryLabel"></span></h4>
+	        </div>
+	        <div class="modal-body" style="height:80%;">
+	        	
+	        	
+	        	<iframe id='storyVideoPlayer' src="" width="860" height="615" frameborder="0" allowfullscreen></iframe>
+
+	        	<script src="js/story-log.js"></script>
+	        	<script src="js/storyScript.js"></script>
+
+
+				</br></br>
+				<table>
+					<tr>
+						<td style='width:280'>
+							<button style='width:240' type="button" class="btn btn-default" onclick="playBackgroundMusic()"><span class="glyphicon glyphicon-play"></span>Play background music</button>
+						</td>
+						<td>
+							<button style='width:240' type="button" class="btn btn-default" onclick="pauseBackgroundMusic()"><span class="glyphicon glyphicon-pause"></span>Pause background music</button>
+						</td>
+					</tr>
+				</table>
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
 
 
 	<div class="modal fade" id="memberModal" role="dialog">

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+
+var maxWidth = 300;
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+//var txt = "Hello World"
+var txt = "There is a long sentence this thing must survive"
+
+if(ctx.measureText(txt).width >= maxWidth)
+{
+    alert('Greater than');
+} else {
+	ctx.fillText(ctx.measureText(txt).width, 10, 50);
+	ctx.fillText(txt, 10, 100);	
+}
+
+
+</script>
+
+
+</body>
+</html>
+
