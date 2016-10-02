@@ -27,7 +27,8 @@ function storyClick(){
 	var URLlink = getURL();
 	if(URLlink == "none")
 	{
-		document.getElementById('StoryLabel').innerHTML = 'Nothing to see here :(';
+		document.getElementById('StoryLabel').innerHTML = 'Video not avaliable yet :(';
+		document.getElementById('storyVideoPlayer').src = "";
 	} else {
 		document.getElementById('StoryLabel').innerHTML = storyAr[idIndex][2];
 		//alert(URLlink);

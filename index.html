@@ -113,7 +113,12 @@
     	<img id='homeScreen' src='' width="220" height="277">
     	<img id="idol_img" src='' usemap="#waifumap">
     	<img id="home_but" src='images/buttons/home-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'  onclick='homeClick()'>
+    	<!--
     	<img id="story_but" data-toggle="modal" data-target="#storyModal" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyClick()">
+    	-->
+    	<img id="story_but" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)'>
+
+
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
     	<img id="settings_but" src='images/buttons/settings-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#settingsModal">
     	<img id="camera_but" src='images/buttons/camera-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#snapshotModal" onclick='cameraClick()'>
@@ -320,7 +325,7 @@
 	        </div>
 	        <div class="modal-body" style="height:80%;">
 	        	
-	        	
+
 	        	<iframe id='storyVideoPlayer' src="" width="860" height="615" frameborder="0" allowfullscreen></iframe>
 
 	        	<script src="js/story-log.js"></script>
