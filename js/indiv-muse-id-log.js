@@ -137,7 +137,9 @@ var hanayo_ar =
 ['908','hanayo','no'],
 ['908','hanayo','yes'],
 ['944','hanayo','no'],
-['944','hanayo','yes']
+['944','hanayo','yes'],
+['1011','hanayo','no'],
+['1011','hanayo','yes']
 ];
 var maki_ar = 
 [
@@ -280,7 +282,9 @@ var maki_ar =
 ['942','maki','no'],
 ['942','maki','yes'],
 ['989','maki','no'],
-['989','maki','yes']
+['989','maki','yes'],
+['1012','maki','no'],
+['1012','maki','yes']
 ];
 var rin_ar = 
 [
