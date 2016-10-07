@@ -87,7 +87,9 @@ var ruby_ar =
 ['995','ruby','no'],
 ['995','ruby','yes'],
 ['1017','ruby','no'],
-['1017','ruby','yes']
+['1017','ruby','yes'],
+['1021','ruby','no'],
+['1021','ruby','yes']
 ];
 
 var hanamaru_ar =
@@ -126,7 +128,9 @@ var yoshiko_ar =
 ['994','yoshiko','no'],
 ['994','yoshiko','yes'],
 ['1018','yoshiko','no'],
-['1018','yoshiko','yes']
+['1018','yoshiko','yes'],
+['1020','yoshiko','no'],
+['1020','yoshiko','yes']
 ];
 var dia_ar = 
 [
