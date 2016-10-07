@@ -802,6 +802,7 @@ function searchIndexById(id, idolized)
 }
 
 
+
 function searchIdolizedById(id)
 {
 	var i;
@@ -882,15 +883,18 @@ function searchId()
 
 
 
-function changeWaifu(name, index){
+function changeWaifu(name, indexFun){
 
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
 
-	index = searchIndexById(index, 'no');
-	globalIndex = index;
+
+	globalIndex = indexFun;
 
 	nameAssign(name);
+	//alert(indexFun);
+	//alert(id_log[indexFun][0]);
+	document.getElementById("card_id").value = id_log[indexFun][0];
 
 	if (globalAudio!=null){
 			globalAudio.pause();
@@ -901,7 +905,7 @@ function changeWaifu(name, index){
     	commandSelect(0);
 	}, 500, true)
 
-	storeCookie(index);
+	storeCookie(indexFun);
 
 }
 

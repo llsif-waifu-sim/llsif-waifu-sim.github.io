@@ -1,5 +1,3 @@
-
-
 var id_log = 
 [
 ['28','honoka','no'],
