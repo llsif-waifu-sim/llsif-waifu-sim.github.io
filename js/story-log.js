@@ -421,5 +421,14 @@ var storyAr =
 ['776', 'https://www.youtube.com/embed/HKVFGF8y8_o', 'Stay Focused'],
 ['778', 'https://www.youtube.com/embed/Ni8OMkDxPIM', 'Fashionable Animals'],
 ['780', 'https://www.youtube.com/embed/4VWAUtuNL4o', "Our Important Partners"],
-['782', 'https://www.youtube.com/embed/8gzElF5UP6o', "Don't Forget to Smile"]
+['782', 'https://www.youtube.com/embed/8gzElF5UP6o', "Don't Forget to Smile"],
+['786', 'https://www.youtube.com/embed/RhUnT3MX_rw', "Chika Takami's Greetings"],
+['787', 'https://www.youtube.com/embed/pSYkIhlWbuA', "Riko Sakurauchi's Greetings"],
+['788', 'https://www.youtube.com/embed/wJDBUpG4l-c', "Kanan Matsuura's Greetings"],
+['789', 'https://www.youtube.com/embed/qDbz6biaRwU', "Dia Kurosawa's Greetings"],
+['790', 'https://www.youtube.com/embed/eCLdSVACiF4', "You Watanabe's Greetings"],
+['791', 'https://www.youtube.com/embed/6W7a2F3kEhY', "Yoshiko Tsushima's Greetings"],
+['792', 'https://www.youtube.com/embed/secVxGGztmE', "Hanamaru Kunikida's Greetings"],
+['793', 'https://www.youtube.com/embed/q7U8nPsk50k', "Mari Ohara's Greetings"],
+['794', 'https://www.youtube.com/embed/9iSQ7VongbU', "Ruby Kurosawa's Greetings"]
 ];
