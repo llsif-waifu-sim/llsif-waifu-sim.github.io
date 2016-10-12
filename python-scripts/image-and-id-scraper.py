@@ -50,8 +50,8 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 
-begin = 1018
-last = 1022
+begin = 1022
+last = 1025
 
 # The ending value should be the last id value + 1
 for x in range (begin,last+1):
