@@ -168,6 +168,12 @@ var aqours_others_ar =
 ['Pops heart de Odorun damon!',5]
 ];
 
+var idol_others_ar = 
+[
+['Private Wars',6],
+['Shocking Party',6]
+];
+
 
 
 
@@ -179,3 +185,5 @@ var numOfSongsMuseOther = muse_individual_ar.length;
 var numOfSongsAqoursTogether = aqours_together.length;
 var numOfSongsAqoursSub = aqours_subgroup_ar.length;
 var numOfSongsAqoursOthers = aqours_others_ar.length;
+
+var numOfSongsIdolsOthers = idol_others_ar.length;

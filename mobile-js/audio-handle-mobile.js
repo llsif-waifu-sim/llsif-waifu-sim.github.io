@@ -606,6 +606,20 @@ function getWaifuAr(name)
 		}
 	
 
+
+	} else if(name== 'tsubasa'){
+		for (var i = 0; i < tsubasa_ar.length; i++){
+		    newArray[i] = tsubasa_ar[i].slice();
+		}
+	} else if(name== 'anju'){
+		for (var i = 0; i < anju_ar.length; i++){
+		    newArray[i] = anju_ar[i].slice();
+		}
+	} else if(name== 'erena'){
+		for (var i = 0; i < erena_ar.length; i++){
+		    newArray[i] = erena_ar[i].slice();
+		}
+
 	} else {
 		alert('getWaifuAr() has failed');
 		return null;

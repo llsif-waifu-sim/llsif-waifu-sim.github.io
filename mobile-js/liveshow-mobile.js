@@ -280,6 +280,8 @@ function changeSong()
 			subPath = 'aqours-sub-group/';
 		} else if (folder==5){
 			subPath = 'aqours-individual/';
+		} else if (folder==6){
+			subPath = 'other-idols/';
 		} else {
 			alert('Something bad happened in changeSongRandom()');
 			return;
@@ -375,6 +377,8 @@ function changeSongBack()
 			subPath = 'aqours-sub-group/';
 		} else if (folder==5){
 			subPath = 'aqours-individual/';
+		} else if (folder==6){
+			subPath = 'other-idols/';
 		} else {
 			alert('Something bad happened in changeSongRandom()');
 			return;
@@ -436,6 +440,8 @@ function changeSongRandom(){
 		subPath = 'aqours-sub-group/';
 	} else if (folder==5){
 		subPath = 'aqours-individual/';
+	} else if (folder==6){
+			subPath = 'other-idols/';
 	} else {
 		alert('Something bad happened in changeSongRandom()');
 		return;
@@ -503,6 +509,13 @@ function changeCategory()
 		songlist_ar = aqours_others_ar;
 
 		currcategoryID = 5;
+	}else if (categoryID == 6){
+		// Aqours all together
+		numOfSongs = numOfSongsIdolsOthers;
+		subPath = 'other-idols/';
+		songlist_ar = idol_others_ar;
+
+		currcategoryID = 6;
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
@@ -593,6 +606,13 @@ function changeCategoryRandom()
 		songlist_ar = aqours_others_ar;
 
 		currcategoryID = 5;
+	}else if (categoryID == 6){
+		// Aqours all together
+		numOfSongs = numOfSongsIdolsOthers;
+		subPath = 'other-idols/';
+		songlist_ar = idol_others_ar;
+
+		currcategoryID = 6;
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
@@ -618,14 +638,6 @@ function changeCategoryRandom()
 function calc_random_local_index(chosenNum, folder)
 {
 	// Calculate the value to subtract from random_ar.length
-	/*
-	var numOfSongsMuseAll = muse_together_ar.length;
-	var numOfSongsMuseSub = muse_subgroup_ar.length;
-	var numOfSongsMuseOther = muse_individual_ar.length;
-	var numOfSongsAqoursTogether = aqours_together.length;
-	var numOfSongsAqoursSub = aqours_subgroup_ar.length;
-	var numOfSongsAqoursOthers = aqours_others_ar.length;
-	*/
 
 	if(folder == 0){
 		return chosenNum;
@@ -640,31 +652,19 @@ function calc_random_local_index(chosenNum, folder)
 	} else if(folder == 3){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther;
 
-		if (num >= numOfSongsAqoursTogether)
-		{
-			return num - 8;
-		}
-
 		return num;
 
 	} else if(folder == 4){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether;
-		//alert('folder 4');
-		//alert(numOfSongsAqoursTogether);
-		if (num >= numOfSongsAqoursSub)
-		{
-			return num - 8;
-		}
 
 		return num;
 	} else if(folder == 5){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub;
-		//alert('folder 5');
-		//alert(numOfSongsAqoursSub);
-		if (num >= numOfSongsAqoursOthers)
-		{
-			return num - 8;
-		}
+
+		return num;
+	} else if(folder == 6){
+		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub - numOfSongsAqoursOthers;
+
 		return num;
 	} else {
 		alert('Something went wrong in calc_random_local_index()');

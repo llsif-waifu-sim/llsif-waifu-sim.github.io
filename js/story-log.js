@@ -430,5 +430,8 @@ var storyAr =
 ['791', 'https://www.youtube.com/embed/6W7a2F3kEhY', "Yoshiko Tsushima's Greetings"],
 ['792', 'https://www.youtube.com/embed/secVxGGztmE', "Hanamaru Kunikida's Greetings"],
 ['793', 'https://www.youtube.com/embed/q7U8nPsk50k', "Mari Ohara's Greetings"],
-['794', 'https://www.youtube.com/embed/9iSQ7VongbU', "Ruby Kurosawa's Greetings"]
+['794', 'https://www.youtube.com/embed/9iSQ7VongbU', "Ruby Kurosawa's Greetings"],
+['837', 'https://www.youtube.com/embed/q38_OR9SPng', "A-RISE's Prerogative"],
+['838', 'https://www.youtube.com/embed/2ExVaYK2Sbo', "Trusting My Instinct"],
+['839', 'https://www.youtube.com/embed/pNb-dTsIyts', "Interview"]
 ];

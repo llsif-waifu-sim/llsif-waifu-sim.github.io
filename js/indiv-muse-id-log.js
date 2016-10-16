@@ -1298,3 +1298,32 @@ var nico_ar =
 ['1024','nico','no'],
 ['1024','nico','yes']
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+var tsubasa_ar = 
+[
+['837','tsubasa','no'],
+['837','tsubasa','yes']
+];
+
+var anju_ar = 
+[
+['838','anju','no'],
+['838','anju','yes']
+];
+
+var erena_ar = 
+[
+['839','erena','no'],
+['839','erena','yes']
+];
