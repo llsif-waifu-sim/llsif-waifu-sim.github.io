@@ -389,6 +389,15 @@ function getFullName(name)
         return 'Ohara Mari';
     } else if(name == 'kanan'){
         return 'Matssura Kanan';
+
+
+
+    } else if(name == 'tsubasa'){
+        return 'Kira Tsubasa';
+    } else if(name == 'anju'){
+        return 'Yuki Anju';
+    } else if(name == 'erena'){
+        return 'Todo Erena';
     } else {
         return 'none';
     } 
