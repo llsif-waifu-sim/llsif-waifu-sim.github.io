@@ -121,6 +121,13 @@ function specialQuoteSpeech()
 		return -1;
 	}
 
+	// Special case for A-RISE
+	if(id == '837' || id == '838' || id == '839')
+	{
+		// For some reason, we have special quotes which are untranslated, so let's skip them
+		return -1;
+	}
+
 	
 	var addValue = Math.floor(Math.random() * maxIndex);
 	
