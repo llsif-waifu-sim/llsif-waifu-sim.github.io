@@ -110,7 +110,14 @@ function specialQuoteSpeech()
 		return -1;
 	}
 
-	
+	// Special case for A-RISE
+	if(id == '837' || id == '838' || id == '839')
+	{
+		// For some reason, we have special quotes which are untranslated, so let's skip them
+		return -1;
+	}
+
+
 	var addValue = Math.floor(Math.random() * maxIndex);
 	
 	
@@ -126,7 +133,6 @@ function specialQuoteSpeech()
 
     var fileIndex = chosenIndex  + addValue;
     var pathString = "".concat(audioPath);
-    //alert(pathString);
     changeSpeechText(pathString, fileIndex);
     refreshBubble();
 
@@ -964,10 +970,12 @@ function changeWaifu(name, indexFun){
 
 			// Activate special quote
 			if(n >= maxNum - 3){
+				
 				var errorCheck = -1;
 				var errorCheck = specialQuoteSpeech();
 				if(errorCheck == 0)
 				{
+
 					// If card had a quote, then we are done
 					return;
 				}
@@ -977,6 +985,7 @@ function changeWaifu(name, indexFun){
 
 				// Activate month speech
 				if(n == maxNum - 1){
+					
 					seasonSpeech();
 					return;
 				}
@@ -1015,7 +1024,7 @@ function changeWaifu(name, indexFun){
 		globalAudio = new Audio(superString);
 		globalAudio.volume = voiceVolume;
 		globalAudio.play();
-		
+	
 
 		var pathString = "".concat(audioPath, waifuName, file);
 
