@@ -1,94 +1,14 @@
 <!DOCTYPE html>
 <html>
+<head>
+	
+</head>
+
 <body>
 
-<canvas id="myCanvas" width="700" height="550" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
-
-<script>
-
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.font = "30px Arial";
-
-var maxWidth = 700;
-var remainder = maxWidth;
-
-var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
-var maxWidthChar = Math.floor(maxWidth/letterWidth);
-
-
-function reconstruct(arr, last)
-{
-	var sentence = "";
-
-	var i = 0;
-
-
-	if(!last)
-	{
-		arr.pop();	
-	}
-	
-
-	for(var value = ""; value = arr.pop();)
-	{
-
-		sentence = (" ".concat(value)).concat(sentence);
-		
-	}
-
-	return sentence;
-}
-
-//var txt = "Hello World"
-//var txt = "Th"
-var mainTxt = "I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list."
-var txt = mainTxt;
-
-if(ctx.measureText(txt).width >= maxWidth)
-{
-	// That means the text width is zero   
-
-	var rowPosition = 50;
-	var incrementRowVal = 30; // Increment 
-
-	while(true)
-	{
-		if(txt.length <= 0)
-		{
-			break;
-		}
-
-		var last = true;
-		if(ctx.measureText(txt).width >= maxWidth)
-	    {
-	    	last = false;
-	    } 
-
-		var remainderTxt = txt.substring(0, maxWidthChar*2);
-
-	    var splitArray = remainderTxt.split(" ");
-
-	    
-	    var temp = reconstruct(splitArray, last);
-
-	    ctx.fillText(temp, 10, rowPosition);	
-	    rowPosition = rowPosition + incrementRowVal;
-
-	    txt = txt.substring(temp.length, txt.length);
-
-	}
-
-
-} else {
-	//ctx.fillText(ctx.measureText(txt).width, 10, 50);
-	ctx.fillText(txt, 10, 50);	
-	//ctx.fillText(txt, 10, 100);	
-}
-
-
-</script>
+<script src="js/storyGenFunct.js"></script>
 
 
 </body>
