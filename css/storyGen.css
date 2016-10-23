@@ -1,0 +1,67 @@
+#homeScreen{
+    width:1240px;
+    height:700px;
+}
+
+#container{
+    position: relative;
+    width: 1140px;
+    height: 700px;
+}
+
+
+
+#idol_img_center{
+    position: absolute;
+
+    /* rect(cut from top, null, null, cut from left)*/
+    clip: rect(72px,2000px,2000px,72px);
+
+    max-height:770px;
+    width: auto;
+    height: auto;
+
+    bottom: 0%;
+    left: 20%;
+ 
+    
+}
+
+
+
+#idol_img_left{
+    position: absolute;
+
+    /* rect(cut from top, null, null, cut from left)*/
+    clip: rect(72px,2000px,2000px,72px);
+
+    max-height:770px;
+    width: auto;
+    height: auto;
+
+    bottom: 0%;
+    left: -13.5%;
+ 
+    
+}
+
+
+#idol_img_right{
+    position: absolute;
+
+    /* rect(cut from top, null, null, cut from left)*/
+    clip: rect(72px,2000px,2000px,72px);
+
+    max-height:770px;
+    width: auto;
+    height: auto;
+
+    bottom: 0%;
+    left: 50%;
+ 
+    
+}
+
+
+
+
