@@ -47,6 +47,7 @@ var storyAr =
 ['78', 'https://www.youtube.com/embed/OftuRC-K3Rw ', 'Clumsy Hanayo'],
 ['79', 'https://www.youtube.com/embed/_IOs8u1ZOaY', 'Super Idol'],
 ['81', 'https://www.youtube.com/embed/ofg2KMs3N4c', "A Rabbit's Feelings"],
+['83', 'https://www.youtube.com/embed/SnlUZCIrNUQ', 'Alpaca Scene'],
 ['86', 'https://www.youtube.com/embed/-QR-VPZTZQE', 'School Protector'],
 ['87', 'https://www.youtube.com/embed/ER2Fjgyaeyg', 'Your Guide'],
 ['88', 'https://www.youtube.com/embed/Ixs_SMgkHNI', 'An Angel!'],
@@ -240,6 +241,7 @@ var storyAr =
 ['376', 'https://www.youtube.com/embed/QWHhsyxxhjk', "I'll Come to Save You"],
 ['377', 'https://www.youtube.com/embed/qaJ8ltDN6fQ', 'Have Some Tea'],
 ['378', 'https://www.youtube.com/embed/jencXr6p85U', 'Mesmerizing Silk'],
+['382', 'https://www.youtube.com/embed/SnlUZCIrNUQ', 'Alpaca Scene'],
 ['392', 'https://www.youtube.com/embed/KjQEqnIaS0o', 'Bored at the Pool'],
 ['394', 'https://www.youtube.com/embed/FZt_a3__qJ0', 'What I Want You to See'],
 ['395', 'https://www.youtube.com/embed/dpPPEkF2Z_c', 'It Comes Naturally'],
@@ -374,6 +376,7 @@ var storyAr =
 ['626', 'https://www.youtube.com/embed/0gJGoNuncTM', 'Achieve together'],
 ['627', 'https://www.youtube.com/embed/Qyx8kzQx6xY', 'Achieve together'],
 ['628', 'https://www.youtube.com/embed/jonmYLwaz7U', 'Nico the Spirit of Joy'],
+['629', 'https://www.youtube.com/embed/SnlUZCIrNUQ', 'Alpaca Scene'],
 ['633', 'https://www.youtube.com/embed/NJGgAmMLTJE', 'Love Spell'],
 ['634', 'https://www.youtube.com/embed/E_6fHUyFUr8', 'I Might Have Talent'],
 ['636', 'https://www.youtube.com/embed/Pa5Va0FYPBY', 'Beat Up the Ogres!'],
@@ -447,4 +450,5 @@ var storyAr =
 ['918', 'https://www.youtube.com/embed/2K2jTaCdwxA', "We Did a Show!"],
 ['959', 'https://www.youtube.com/embed/SPry8mKlNqk', "Wishing's Not Enough"],  
 ['960', 'https://www.youtube.com/embed/lNXtDsFJSZQ', "My Secret Wish"], 
+['1022', 'https://www.youtube.com/embed/LKjGsn-z-ss', 'Shiitake Scene']
 ];
