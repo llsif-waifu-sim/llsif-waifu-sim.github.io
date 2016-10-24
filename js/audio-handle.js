@@ -8,6 +8,8 @@ var away = false;
 var timerRanOut = false;
 var enableOutsideVal = true;
 
+
+
 function isAqours(waifu)
 {
 	if(waifu == 'chika' || waifu == 'you' || waifu == 'riko' ||
@@ -177,14 +179,22 @@ function forgetWaifuLoad(index)
     // Once we get the info, get the image
     var path;
 
-    if(idolized == 'yes')
-    {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
-        document.querySelector("input[value='yes']").checked = true;
-    }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
-        document.querySelector("input[value='no']").checked = true;
-    }
+    var scrapePath = "./scraped-images/";
+
+	if(isOthers(name)){
+		scrapePath = "./scraped-images/z-others/"
+	} 
+
+	
+	// If talking about Muse & Aqours
+	if(idolized == 'yes')
+	{
+		path = scrapePath + name + "/" + id + "_id.png";
+		document.querySelector("input[value='yes']").checked = true;
+	}else{
+		path = scrapePath + name +  "/" + id + ".png";
+		document.querySelector("input[value='no']").checked = true;
+	}
 
     //file exists
     document.getElementById("idol_img").src=path;
@@ -612,6 +622,15 @@ function getWaifuAr(name)
 		    newArray[i] = erena_ar[i].slice();
 		}
 
+
+
+    // OTHERS
+	} else if (name== 'shiitake'){
+		return ['1022','shiitake','yes'];
+
+	} else if (name== 'alpaca'){
+		return ['83','apalca','yes'];
+
 	} else {
 		alert('getWaifuAr() has failed');
 		return null;
@@ -662,15 +681,29 @@ function getRandomWaifu()
 
 	globalIndex = i;
 
+	if(isOthers(name)){
+		scrapePath = "./scraped-images/z-others/"
+	} 
 
+	
+	if(isOthers(name)){
+		scrapePath = "./scraped-images/z-others/"
+	} 
+
+	
+	// If talking about Muse & Aqours
 	if(idolized == 'yes')
 	{
-		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		path = scrapePath + name + "/" + id + "_id.png";
 		document.querySelector("input[value='yes']").checked = true;
 	}else{
-		path = "./scraped-images/" + name +  "/" + id + ".png";
+		path = scrapePath + name +  "/" + id + ".png";
 		document.querySelector("input[value='no']").checked = true;
 	}
+
+
+
+
 
 
     //file exists
@@ -702,22 +735,13 @@ function getRandomCard()
 
 	if(neg == 0){
 		// forgetWaifu speech was successful
-		//alert('forgotten waifu will appear');
 		return;
 	}
 
 
 
 	var i = cardRNG(); 
-	/*
-	if(isAqours(globalWaifu)){
-		//alert('checking cardRNG');
-		i = cardRNGAqours();
-		//alert(i);
-	} else {
-		i = cardRNG(); 
-	}
-	*/
+
 
 
 	var id = parseInt(id_log[i][0]);
@@ -730,14 +754,21 @@ function getRandomCard()
 
 	globalIndex = i;
 
+	if(isOthers(name)){
+		scrapePath = "./scraped-images/z-others/"
+	} 
+
+	
+	// If talking about Muse & Aqours
 	if(idolized == 'yes')
 	{
-		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		path = scrapePath + name + "/" + id + "_id.png";
 		document.querySelector("input[value='yes']").checked = true;
 	}else{
-		path = "./scraped-images/" + name +  "/" + id + ".png";
+		path = scrapePath + name +  "/" + id + ".png";
 		document.querySelector("input[value='no']").checked = true;
 	}
+
 
 
     //file exists
@@ -862,14 +893,22 @@ function searchId()
 	// Once we get the info, get the image
 	var path;
 
+	var scrapePath = "./scraped-images/";
+	
+	if(isOthers(name)){
+		scrapePath = "./scraped-images/z-others/"
+	} 
+
+	
+	// If talking about Muse & Aqours
 	if(idolized == 'yes')
 	{
-		path = "./scraped-images/" + name + "/" + id + "_id.png";
+		path = scrapePath + name + "/" + id + "_id.png";
 	}else{
-		path = "./scraped-images/" + name +  "/" + id + ".png";
+		path = scrapePath + name +  "/" + id + ".png";
 	}
 
-
+	
 
 	$.ajax({
 	    url:path,

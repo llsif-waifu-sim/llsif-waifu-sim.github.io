@@ -5,6 +5,19 @@ var globalIndex = 0;
 var backgroundMusic = 1;
 var cookieExpireDate = 100*365;
 
+var othersArray = ['shiitake','alpaca']
+
+function isOthers(waifu)
+{
+    for (var i=0; i < othersArray.length; i++) {
+        if(waifu == othersArray[i])
+        {
+            return true;
+        }
+    }
+    return false;
+
+}
 
 
 // Setting and getting the cookies
@@ -187,16 +200,25 @@ function mainWaifuSet(index)
     // Once we get the info, get the image
     var path;
 
+    var scrapePath = "./scraped-images/";
+
+    if(isOthers(name)){
+        scrapePath = "./scraped-images/z-others/"
+    } 
+
+    
+    // If talking about Muse & Aqours
     if(idolized == 'yes')
     {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        path = scrapePath + name + "/" + id + "_id.png";
         document.querySelector("input[value='yes']").checked = true;
     }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
+        path = scrapePath + name +  "/" + id + ".png";
         document.querySelector("input[value='no']").checked = true;
     }
 
 
+        
 
 
     //file exists
@@ -336,6 +358,9 @@ function getFullName(name)
         return 'Yuki Anju';
     } else if(name == 'erena'){
         return 'Todo Erena';
+
+
+
     } else {
         return 'none';
     } 
