@@ -629,7 +629,9 @@ function getWaifuAr(name)
 		return ['1022','shiitake','yes'];
 
 	} else if (name== 'alpaca'){
-		return ['83','apalca','yes'];
+		for (var i = 0; i < alpaca_ar.length; i++){
+		    newArray[i] = alpaca_ar[i].slice();
+		}
 
 	} else {
 		alert('getWaifuAr() has failed');
@@ -681,11 +683,6 @@ function getRandomWaifu()
 
 	globalIndex = i;
 
-	if(isOthers(name)){
-		scrapePath = "./scraped-images/z-others/"
-	} 
-
-	
 	if(isOthers(name)){
 		scrapePath = "./scraped-images/z-others/"
 	} 
@@ -939,9 +936,7 @@ function searchId()
 			storeCookie(index);
 
 			setTimeout(function() {
-				
 				commandSelect(0);
-				
 			}, 500, true)
 			  }
 		});

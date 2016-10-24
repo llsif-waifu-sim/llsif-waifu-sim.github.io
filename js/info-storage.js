@@ -273,12 +273,18 @@ function savedWaifuLoad(index)
     // Once we get the info, get the image
     var path;
 
+    var scrapePath = "./scraped-images/";
+
+    if(isOthers(name)){
+        scrapePath = "./scraped-images/z-others/"
+    } 
+
     if(idolized == 'yes')
     {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        path = scrapePath + name + "/" + id + "_id.png";
         document.querySelector("input[value='yes']").checked = true;
     }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
+        path = scrapePath + name +  "/" + id + ".png";
         document.querySelector("input[value='no']").checked = true;
     }
 

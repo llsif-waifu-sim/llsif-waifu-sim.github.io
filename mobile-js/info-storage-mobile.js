@@ -7,6 +7,20 @@ var liveshowBackground = true;
 var waifuVoiceEnable = true;
 var cookieExpireDate = 100*365;
 
+var othersArray = ['shiitake','alpaca']
+
+function isOthers(waifu)
+{
+    for (var i=0; i < othersArray.length; i++) {
+        if(waifu == othersArray[i])
+        {
+            return true;
+        }
+    }
+    return false;
+
+}
+
 // Setting and getting the cookies
 
 function setCookie(cname, cvalue, exdays) {
@@ -239,14 +253,21 @@ function mainWaifuSet(index)
     // Once we get the info, get the image
     var path;
 
+    var scrapePath = "./scraped-images/";
+
+    if(isOthers(name)){
+        scrapePath = "./scraped-images/z-others/"
+    } 
+
     if(idolized == 'yes')
     {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        path = scrapePath + name + "/" + id + "_id.png";
         $('#select-idol').val('yes').selectmenu('refresh');
     }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
+        path = scrapePath + name +  "/" + id + ".png";
         $('#select-idol').val('no').selectmenu('refresh');
     }
+
 
 
 
@@ -308,12 +329,18 @@ function savedWaifuLoad(index)
     // Once we get the info, get the image
     var path;
 
+    var scrapePath = "./scraped-images/";
+
+    if(isOthers(name)){
+        scrapePath = "./scraped-images/z-others/"
+    } 
+
     if(idolized == 'yes')
     {
-        path = "./scraped-images/" + name + "/" + id + "_id.png";
+        path = scrapePath + name + "/" + id + "_id.png";
         $('#select-idol').val('yes').selectmenu('refresh');
     }else{
-        path = "./scraped-images/" + name +  "/" + id + ".png";
+        path = scrapePath + name +  "/" + id + ".png";
         $('#select-idol').val('no').selectmenu('refresh');
     }
 
@@ -398,6 +425,14 @@ function getFullName(name)
         return 'Yuki Anju';
     } else if(name == 'erena'){
         return 'Todo Erena';
+
+     // For the other characters
+    } else if(name == 'shiitake'){
+        return 'Shiitake';
+    } else if(name == 'alpaca'){
+        return 'Alpaca';
+
+
     } else {
         return 'none';
     } 

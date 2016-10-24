@@ -1331,3 +1331,10 @@ var erena_ar =
 ['839','erena','no'],
 ['839','erena','yes']
 ];
+
+var alpaca_ar = 
+[
+['83','alpaca','yes'],
+['382','alpaca','yes'],
+['629','alpaca','yes']
+];
