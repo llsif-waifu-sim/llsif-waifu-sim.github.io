@@ -683,6 +683,7 @@ function getRandomWaifu()
 
 	globalIndex = i;
 
+	var scrapePath = "./scraped-images/";
 	if(isOthers(name)){
 		scrapePath = "./scraped-images/z-others/"
 	} 
@@ -753,6 +754,7 @@ function getRandomCard()
 
 	globalIndex = i;
 
+	var scrapePath = "./scraped-images/";
 	if(isOthers(name)){
 		scrapePath = "./scraped-images/z-others/"
 	} 
