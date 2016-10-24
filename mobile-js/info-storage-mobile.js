@@ -61,6 +61,7 @@ function checkCookie() {
     } else{
         globalIndex = 0;
     	document.getElementById("idol_img").src= 'images/waifu/honoka0.png';
+        document.getElementById("card_id").value = 28;
     }
 }
 
