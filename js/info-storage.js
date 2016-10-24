@@ -360,6 +360,11 @@ function getFullName(name)
         return 'Todo Erena';
 
 
+    // For the other characters
+    } else if(name == 'shiitake'){
+        return 'Shiitake';
+    } else if(name == 'alpaca'){
+        return 'Alpaca';
 
     } else {
         return 'none';

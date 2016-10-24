@@ -720,6 +720,8 @@ function getRandomWaifu()
 
 	setTimeout(function() {
 		commandSelect(0);
+		
+		
 	}, 500, true)
 
 	storeCookie(i);
@@ -937,7 +939,9 @@ function searchId()
 			storeCookie(index);
 
 			setTimeout(function() {
+				
 				commandSelect(0);
+				
 			}, 500, true)
 			  }
 		});
@@ -980,6 +984,7 @@ function changeWaifu(name, indexFun){
 		// mode == 1 is waifu button
 		// mode == 2 is story button
 		// mode == 3 is member button
+		// mode == 4 is waifu / home for other characters
 		if (globalAudio!=null){
 			globalAudio.pause();
 		}
@@ -987,6 +992,11 @@ function changeWaifu(name, indexFun){
 		var audioPath = "audio/";
 		var waifuName = globalWaifu + "/";
 		var file;
+
+		if(isOthers(globalWaifu))
+		{
+			mode = 4;
+		}
 
 
 		// Number between 0 and maxNum
@@ -1054,6 +1064,19 @@ function changeWaifu(name, indexFun){
 			var maxNum = 1;
 			n = Math.floor(Math.random() * maxNum);
 			file = "member/";
+		} else if (mode == 4){
+
+			var maxNum = 5; 
+			n = Math.floor(Math.random() * maxNum);
+			file = "home/";
+			waifuName = "z-others/"
+
+			var pathString = "".concat(audioPath, waifuName, file);
+
+			changeSpeechText(pathString, n);
+			refreshBubble();
+
+			return;
 		}
 
 
