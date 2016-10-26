@@ -136,6 +136,7 @@ function checkWaifuLoadCookie(but_id) {
         }
             
     } 
+    globalIndex = 0;
 }
 
 
