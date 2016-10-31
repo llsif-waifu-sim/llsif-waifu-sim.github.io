@@ -396,6 +396,7 @@ var storyAr =
 ['664', 'https://www.youtube.com/embed/NOQm_ml-7j8', 'First Pool Trip'],
 ['665', 'https://www.youtube.com/embed/WmA_5U02rd8', "The School Pool's Lame"],
 ['669', 'https://www.youtube.com/embed/0l990K1Z8CE', 'I Love My Routine!'],
+['672', 'https://www.youtube.com/embed/Y1Uh1gsZeF4', 'Ninja Transformation?'],
 ['677', 'https://www.youtube.com/embed/pW5biWlF6jg', 'Right Here, Right Now'],
 ['679', 'https://www.youtube.com/embed/hMMefLwoSok', 'A Different Me'],
 ['680', 'https://www.youtube.com/embed/ngMOpKM9pRg', 'A Different Me'],
