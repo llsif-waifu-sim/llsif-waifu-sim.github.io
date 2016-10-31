@@ -3,7 +3,7 @@ var globalWaifu = 'honoka';
 var maxNumOfCard = id_log[id_log.length-1][0];
 var language = 'english';
 var maxNumBackground = 105;
-
+var globalIndex = 0;
 var away = false;
 var timerRanOut = false;
 var enableOutsideVal = true;
@@ -98,7 +98,8 @@ function specialQuoteSpeech()
 {
 	// Activate special quote
 	var audioPath = "special-quotes/"
-	var id = id_log[globalIndex][0];
+	var id = id_log[globalIndex
+	][0];
 
 	var indexAr = searchQuoteIndexByID(id);
 
