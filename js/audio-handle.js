@@ -126,7 +126,7 @@ function specialQuoteSpeech()
 	
 
 	var filePath = "".concat(id,"-", addValue.toString());
-	var superString = "".concat(audioPath, filePath, ".mp3");
+	var superString = "".concat(audioPath, "audio/" , filePath, ".mp3");
 
 
 	globalAudio = new Audio(superString);
