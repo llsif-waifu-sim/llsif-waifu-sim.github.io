@@ -32,7 +32,7 @@ def addUntransformed(targets):
                 z = 1 + 1
                
                 for a in td.findAll('a', href=True):
-                    downloadPath = prePath + str(cardID) +'-'+ str(countT) + ".mp3"
+                    downloadPath = prePath + "audio/" + str(cardID) +'-'+ str(countT) + ".mp3"
                     urllib.urlretrieve(a['href'], downloadPath)
                     countT = countT + 1
                         
@@ -125,7 +125,7 @@ def extractQuote(begin,last):
                     z =  + 1
                 
                     for a in cell.findAll('a', href=True):
-                        downloadPath = prePath + str(cardID) +'-'+ str(count) + ".mp3"
+                        downloadPath = prePath + "audio/" + str(cardID) +'-'+ str(count) + ".mp3"
                         urllib.urlretrieve(a['href'], downloadPath)
 
                         count = count + 1
