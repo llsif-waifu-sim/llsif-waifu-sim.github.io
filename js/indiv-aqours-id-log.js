@@ -19,7 +19,9 @@ var chika_ar =
 ['993','chika','no'],
 ['993','chika','yes'],
 ['1029','chika','no'],
-['1029','chika','yes']
+['1029','chika','yes'],
+['1043','chika','no'],
+['1043','chika','yes']
 ];
 
 var you_ar = 
@@ -43,7 +45,9 @@ var you_ar =
 ['1004','you','no'],
 ['1004','you','yes'],
 ['1027','you','no'],
-['1027','you','yes']
+['1027','you','yes'],
+['1044','you','no'],
+['1044','you','yes']
 ];
 
 var riko_ar =
