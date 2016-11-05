@@ -950,10 +950,11 @@ function searchId()
 
 
 
-function changeWaifu(name, indexFun){
+function changeWaifu(name, id){
 
 	var path = "images/waifu/" + name +"0.png";
 	document.getElementById("idol_img").src=path;
+	var indexFun = searchIndexById(id, 'no');
 
 
 	globalIndex = indexFun;
@@ -961,7 +962,7 @@ function changeWaifu(name, indexFun){
 	nameAssign(name);
 	//alert(indexFun);
 	//alert(id_log[indexFun][0]);
-	document.getElementById("card_id").value = id_log[indexFun][0];
+	document.getElementById("card_id").value = id;
 
 	if (globalAudio!=null){
 			globalAudio.pause();

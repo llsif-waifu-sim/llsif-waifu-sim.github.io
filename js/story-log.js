@@ -4,7 +4,7 @@ var storyAr =
 ['29', 'https://www.youtube.com/embed/omNbdaPgpdM', 'Speaking of Summer...'],
 ['30', 'https://www.youtube.com/embed/wk5EJtmO51s', 'Speaking of Summer...'],
 ['31', 'https://www.youtube.com/embed/85mbXy0e7EE', 'Speaking of Summer...'],
-['32', 'https://www.youtube.com/embed/85mbXy0e7EE', 'Speaking of Summer...'],
+['32', 'https://www.youtube.com/embed/9p4VHisdIc0', 'Speaking of Summer...'],
 ['33', 'https://www.youtube.com/embed/jRXKMzu8_4I', 'Speaking of Summer...'],
 ['34', 'https://www.youtube.com/embed/vDj697_MkKM', 'Speaking of Summer...'],
 ['35', 'https://www.youtube.com/embed/AI1zBJhol9Q', 'Speaking of Summer...'],
