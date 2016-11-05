@@ -165,7 +165,8 @@ var aqours_others_ar =
 [
 ['Daisuki dattara Daijoubu!',5],
 ['Kimeta yo Hand in Hand',5],
-['Pops heart de Odorun damon!',5]
+['Pops heart de Odorun damon!',5],
+['Sora mo Kokoro mo Hareru kara',5]
 ];
 
 var idol_others_ar = 
