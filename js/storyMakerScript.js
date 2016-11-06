@@ -1,3 +1,94 @@
+function getStoryWaifuAr(name)
+{
+	var newArray = [];
+
+	if(name == 'ruby')
+	{
+		for (var i = 0; i < rubyStoryAr.length; i++){
+		    newArray[i] = rubyStoryAr[i].slice();
+		}
+	} else if(name== 'hanamaru'){
+		for (var i = 0; i < hanamaruStoryAr.length; i++){
+		    newArray[i] = hanamaruStoryAr[i].slice();
+		}
+	} else if(name== 'yoshiko'){
+		for (var i = 0; i < yoshikoStoryAr.length; i++){
+		    newArray[i] = yoshikoStoryAr[i].slice();
+		}
+	} else if(name== 'chika'){
+		for (var i = 0; i < chikaStoryAr.length; i++){
+		    newArray[i] = chikaStoryAr[i].slice();
+		}
+	} else if(name== 'you'){
+		for (var i = 0; i < youStoryAr.length; i++){
+		    newArray[i] = youStoryAr[i].slice();
+		}
+	} else if(name== 'riko'){
+		for (var i = 0; i < rikoStoryAr.length; i++){
+		    newArray[i] = rikoStoryAr[i].slice();
+		}
+	} else if(name== 'dia'){
+		for (var i = 0; i < diaStoryAr.length; i++){
+		    newArray[i] = diaStoryAr[i].slice();
+		}
+	} else if(name== 'mari'){
+		for (var i = 0; i < mariStoryAr.length; i++){
+		    newArray[i] = mariStoryAr[i].slice();
+		}
+	} else if(name== 'kanan'){
+		for (var i = 0; i < kananStoryAr.length; i++){
+		    newArray[i] = kananStoryAr[i].slice();
+		}
+
+	} else if(name== 'hanayo'){
+		for (var i = 0; i < hanayoStoryAr.length; i++){
+		    newArray[i] = hanayoStoryAr[i].slice();
+		}
+	} else if(name== 'maki'){
+		for (var i = 0; i < makiStoryAr.length; i++){
+		    newArray[i] = makiStoryAr[i].slice();
+		}
+	} else if(name== 'rin'){
+		for (var i = 0; i < rinStoryAr.length; i++){
+		    newArray[i] = rinStoryAr[i].slice();
+		}
+	} else if(name== 'honoka'){
+		for (var i = 0; i < honokaStoryAr.length; i++){
+		    newArray[i] = honokaStoryAr[i].slice();
+		}
+	} else if(name== 'umi'){
+		for (var i = 0; i < umiStoryAr.length; i++){
+		    newArray[i] = umiStoryAr[i].slice();
+		}
+	} else if(name== 'kotori'){
+		for (var i = 0; i < kotoriStoryAr.length; i++){
+		    newArray[i] = kotoriStoryAr[i].slice();
+		}
+	} else if(name== 'eli'){
+		for (var i = 0; i < eliStoryAr.length; i++){
+		    newArray[i] = eliStoryAr[i].slice();
+		}
+	} else if(name== 'nico'){
+		for (var i = 0; i < nicoStoryAr.length; i++){
+		    newArray[i] = nicoStoryAr[i].slice();
+		}
+	} else if(name== 'nozomi'){
+		for (var i = 0; i < nozomiStoryAr.length; i++){
+		    newArray[i] = nozomiStoryAr[i].slice();
+		}
+	
+
+
+	} else {
+		alert('getWaifuAr() has failed');
+		return null;
+	} 
+
+
+
+	return newArray;
+}
+
 function show (toBlock){
   setDisplay(toBlock, 'block');
 }
@@ -9,7 +100,7 @@ function setDisplay (target, str) {
 }
 
 
-function loadOptions()
+function loadStoryOptions()
 {
 	for(var i=1; i <= 3; i++){
 
@@ -24,14 +115,67 @@ function loadOptions()
 		    x.add(option);
 		}
 	}
+
+
+	
 }
 
 
-function searchIdStoryMain(type, name, num1, num2)
+function loadStoryCostumeMoodOptions(optionNum, name)
+{
+	var newArray = [];
+
+	newArray = getStoryWaifuAr(name)
+
+
+	var scrapePath = "./stories/images/";
+	var costumePath = "waifuStoryCostumeOption" + optionNum;
+	var moodPath = "waifuStoryMoodOption" + optionNum;
+
+	for(var j=0; j < newArray.length; j++)
+	{
+		// Costume option
+	   	var x = document.getElementById(costumePath);
+	    var option = document.createElement("option");
+	    option.text = newArray[j][1];
+	    x.add(option);
+
+	    // Mood option
+	    var x = document.getElementById(moodPath);
+	    var option = document.createElement("option");
+	    option.text = newArray[j][2];
+	    x.add(option);
+	}
+
+}
+
+
+function searchIdStoryMain(type)
 {
 	var scrapePath = "./stories/images/";
 
-	path = scrapePath + name + "_" + num1 + "_" + num2 + ".png"
+	var optionInt;
+	if(type == 'center'){
+		optionInt = 2;
+	} else if(type == 'right'){
+		optionInt = 3;
+	} else if(type == 'left'){
+		optionInt = 1;
+	}
+
+
+	var namePath = "waifuStoryOption" + optionInt;
+	var costumePath = "waifuStoryCostumeOption" + optionInt;
+	var moodPath = "waifuStoryMoodOption" + optionInt;
+
+	var name = document.getElementById(namePath).value;
+	var num1 = document.getElementById(costumePath).value;
+	var num2 = document.getElementById(moodPath).value;
+
+
+	path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png"
+
+	
 
 	if(type == 'center'){
 	    document.getElementById("idol_img_center").src=path;
@@ -153,4 +297,9 @@ function searchIdStory(type)
 
 // Loading functions
 
-loadOptions();
+loadStoryOptions();
+
+for(var i = 1; i <= 3; i++)
+{
+	loadStoryCostumeMoodOptions(i, 'eli');
+}

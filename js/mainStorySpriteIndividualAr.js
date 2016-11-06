@@ -1,21 +1,4 @@
-var mainStorySpriteAR = [
-['chika','01','01'],
-['chika','01','02'],
-['chika','01','03'],
-['chika','03','01'],
-['chika','03','02'],
-['chika','03','03'],
-
-['dia','01','01'],
-['dia','01','02'],
-['dia','01','03'],
-['dia','01','04'],
-['dia','01','05'],
-['dia','03','01'],
-['dia','03','03'],
-['dia','03','04'],
-['dia','03','05'],
-
+var eliStoryAr = [
 ['eli','01','01'],
 ['eli','01','02'],
 ['eli','01','03'],
@@ -56,30 +39,26 @@ var mainStorySpriteAR = [
 ['eli','12','05'],
 ['eli','14','01'],
 ['eli','16','01'],
-
 ];
 
-
-
-var mainStoryWaifuSelectionAR = [
-'honoka',
-'kotori',
-'umi',
-'hanayo',
-'maki',
-'rin',
-'eli',
-'nozomi',
-'nico',
-
-
-'chika',
-'riko',
-'you',
-'ruby',
-'hanamaru',
-'yoshiko',
-'dia',
-'mari',
-'kanan'
+var chikaStoryAr = [
+['chika','01','01'],
+['chika','01','02'],
+['chika','01','03'],
+['chika','03','01'],
+['chika','03','02'],
+['chika','03','03']
 ];
+
+var diaStoryAr = [
+['dia','01','01'],
+['dia','01','02'],
+['dia','01','03'],
+['dia','01','04'],
+['dia','01','05'],
+['dia','03','01'],
+['dia','03','03'],
+['dia','03','04'],
+['dia','03','05']
+];
+
