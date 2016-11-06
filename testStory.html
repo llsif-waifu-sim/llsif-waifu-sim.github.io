@@ -31,7 +31,7 @@
 
 
 	<script src="js/mainStorySpriteAr.js"></script>
-	<script src="js/storyScript.js"></script>
+	
 
 </head>
 
@@ -138,41 +138,14 @@
  		</tr>
  	</table>
 
- 	<script>
- 		
-	    
-	    
-	    
-	    for(var i=1; i <= 3; i++){
-
-	    	var path = "waifuStoryOption" + i;
-	    	
-		    
-		    for(var j=0; j < mainStoryWaifuSelectionAR.length; j++)
-		    {
-		    	var x = document.getElementById(path);
-		    	var option = document.createElement("option");
-		    	option.text = capitalizeFirstLetter(mainStoryWaifuSelectionAR[j]);
-		    	x.add(option);
-		    }
-		}
-	    
- 	</script>
+ 	
 
  </div>
 
+ <script src="js/storyMakerScript.js"></script>
+
 <br><br><br>
-<script>
-  function show (toBlock){
-    setDisplay(toBlock, 'block');
-  }
-  function hide (toNone) {
-    setDisplay(toNone, 'none');
-  }
-  function setDisplay (target, str) {
-    document.getElementById(target).style.display = str;
-  }
-</script>
+
 
 </center>
 
