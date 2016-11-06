@@ -5,7 +5,7 @@ var globalIndex = 0;
 var backgroundMusic = 1;
 var cookieExpireDate = 100*365;
 
-var othersArray = ['shiitake','alpaca']
+var othersArray = ['shiitake','alpaca'];
 
 function isOthers(waifu)
 {
