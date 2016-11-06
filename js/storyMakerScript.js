@@ -172,41 +172,73 @@ function loadStoryCostumeMoodOptions(optionNum, name)
 			moodLastInt = newArray[j][2];
 		}
 	}
-
-
-	
 }
 
-function refreshStoryCostumeMoodOptions()
+function purgeOptions()
+{
+	$('#mySelect')
+    .find('option')
+    .remove()
+    .end()
+    .append('<option value="whatever">text</option>')
+    .val('whatever');
+}
+
+
+function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 {
 	var newArray = [];
 
-	newArray = getStoryWaifuAr(name)
+	var waifuOptionPath = "waifuStoryOption" + optionNum;
+
+	var waifuOption = document.getElementById(waifuOptionPath);
+	
+	var name = waifuOption.options[waifuOption.selectedIndex].text.toLowerCase();
+	var costumeSelectedInt = $('select[id=waifuStoryCostumeOption1]').val();
+	var moodSelectedInt = $('select[id=waifuStoryMoodOption1]').val();
+
+
+
+	newArray = getStoryWaifuAr(name);
 
 
 	var scrapePath = "./stories/images/";
 	var costumePath = "waifuStoryCostumeOption" + optionNum;
 	var moodPath = "waifuStoryMoodOption" + optionNum;
 
-	var costumeSelectedInt = $('select[id=waifuStoryCostumeOption1]').val();
-	var moodSelectedInt = $('select[name=selector]').val();
+	
 
-	alert(costumeSelectedInt);
 
 	var costumeLastInt = " ";
 	var moodLastInt = " ";
+
+
+	var hashCostume = "#" + costumePath;
+	var hashMood = "#" + moodPath;
+
+	if(changeNum == 0){
+		$(hashCostume).find('option').remove();
+		$(hashMood).find('option').remove();
+	} else if(changeNum == 1){
+		$(hashMood).find('option').remove();
+	}
+	
+
+
 	for(var j=0; j < newArray.length; j++)
 	{
 		// Costume option
-		if(newArray[j][1] != costumeLastInt){
-		   	var x = document.getElementById(costumePath);
-		    var option = document.createElement("option");
-		    option.text = newArray[j][1];
-		    x.add(option);
+		if(changeNum == 0){
+			if(newArray[j][1] != costumeLastInt){
+			   	var x = document.getElementById(costumePath);
+			    var option = document.createElement("option");
+			    option.text = newArray[j][1];
+			    x.add(option);
 
-		    costumeLastInt = newArray[j][1];
+			    costumeLastInt = newArray[j][1];
 
-		} 
+			} 
+		}
 
 		// For adding mood options
 		if(costumeSelectedInt == newArray[j][1])
