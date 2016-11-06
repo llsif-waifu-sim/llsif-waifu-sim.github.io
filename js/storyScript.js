@@ -113,6 +113,23 @@ function storyVideoShow(){
 
 
 
+function searchIdStoryMain(type, name, num1, num2)
+{
+	var scrapePath = "./stories/images/";
+
+	path = scrapePath + name + "_" + num1 + "_" + num2 + ".png"
+
+	if(type == 'center'){
+	    document.getElementById("idol_img_center").src=path;
+	} else if(type == 'right'){
+	    document.getElementById("idol_img_right").src=path;
+	} else if(type == 'left'){
+	    document.getElementById("idol_img_left").src=path;
+	} else {
+	    alert('We encountered an error here');
+	}
+}
+
 
 
 function searchIdStory(type)
