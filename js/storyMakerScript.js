@@ -99,7 +99,7 @@ function setDisplay (target, str) {
   document.getElementById(target).style.display = str;
 }
 
-
+// FOR INITALIZATION ONLY
 function loadStoryOptions()
 {
 	for(var i=1; i <= 3; i++){
@@ -112,15 +112,25 @@ function loadStoryOptions()
 		   	var x = document.getElementById(path);
 		    var option = document.createElement("option");
 		    option.text = capitalizeFirstLetter(mainStoryWaifuSelectionAR[j]);
+
+
+
+
 		    x.add(option);
 		}
+
 	}
+
+	document.getElementById('waifuStoryOption1').selectedIndex = 2;
+	document.getElementById('waifuStoryOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryOption3').selectedIndex = 1;
 
 
 	
+	
 }
 
-
+// FOR INITALIZATION ONLY
 function loadStoryCostumeMoodOptions(optionNum, name)
 {
 	var newArray = [];
@@ -132,21 +142,84 @@ function loadStoryCostumeMoodOptions(optionNum, name)
 	var costumePath = "waifuStoryCostumeOption" + optionNum;
 	var moodPath = "waifuStoryMoodOption" + optionNum;
 
+	var costumeSelectedInt = 1;
+	var moodSelectedInt = 1;
+
+
+	var costumeLastInt = " ";
+	var moodLastInt = " ";
 	for(var j=0; j < newArray.length; j++)
 	{
 		// Costume option
-	   	var x = document.getElementById(costumePath);
-	    var option = document.createElement("option");
-	    option.text = newArray[j][1];
-	    x.add(option);
+		if(newArray[j][1] != costumeLastInt){
+		   	var x = document.getElementById(costumePath);
+		    var option = document.createElement("option");
+		    option.text = newArray[j][1];
+		    x.add(option);
 
-	    // Mood option
-	    var x = document.getElementById(moodPath);
-	    var option = document.createElement("option");
-	    option.text = newArray[j][2];
-	    x.add(option);
+		    costumeLastInt = newArray[j][1];
+
+		} 
+
+		// For adding mood options
+		if(newArray[j][1] == costumeSelectedInt)
+		{
+			var x = document.getElementById(moodPath);
+			var option = document.createElement("option");
+			option.text = newArray[j][2];
+			x.add(option);
+
+			moodLastInt = newArray[j][2];
+		}
 	}
 
+
+	
+}
+
+function refreshStoryCostumeMoodOptions()
+{
+	var newArray = [];
+
+	newArray = getStoryWaifuAr(name)
+
+
+	var scrapePath = "./stories/images/";
+	var costumePath = "waifuStoryCostumeOption" + optionNum;
+	var moodPath = "waifuStoryMoodOption" + optionNum;
+
+	var costumeSelectedInt = $('select[id=waifuStoryCostumeOption1]').val();
+	var moodSelectedInt = $('select[name=selector]').val();
+
+	alert(costumeSelectedInt);
+
+	var costumeLastInt = " ";
+	var moodLastInt = " ";
+	for(var j=0; j < newArray.length; j++)
+	{
+		// Costume option
+		if(newArray[j][1] != costumeLastInt){
+		   	var x = document.getElementById(costumePath);
+		    var option = document.createElement("option");
+		    option.text = newArray[j][1];
+		    x.add(option);
+
+		    costumeLastInt = newArray[j][1];
+
+		} 
+
+		// For adding mood options
+		if(costumeSelectedInt == newArray[j][1])
+		{
+			var x = document.getElementById(moodPath);
+			var option = document.createElement("option");
+			option.text = newArray[j][2];
+			x.add(option);
+
+			moodLastInt = newArray[j][2];
+		}
+
+	}
 }
 
 
@@ -299,7 +372,6 @@ function searchIdStory(type)
 
 loadStoryOptions();
 
-for(var i = 1; i <= 3; i++)
-{
-	loadStoryCostumeMoodOptions(i, 'eli');
-}
+loadStoryCostumeMoodOptions(1, 'umi');
+loadStoryCostumeMoodOptions(2, 'honoka');
+loadStoryCostumeMoodOptions(3, 'kotori');
