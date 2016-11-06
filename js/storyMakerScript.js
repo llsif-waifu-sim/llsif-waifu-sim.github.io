@@ -199,8 +199,11 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	var waifuOption = document.getElementById(waifuOptionPath);
 	
 	var name = waifuOption.options[waifuOption.selectedIndex].text.toLowerCase();
-	var costumeSelectedInt = $('select[id=waifuStoryCostumeOption1]').val();
-	var moodSelectedInt = $('select[id=waifuStoryMoodOption1]').val();
+	var costumeStr = 'select[id=waifuStoryCostumeOption' + optionNum + ']';
+	var moodStr = 'select[id=waifuStoryMoodOption' + optionNum + ']';
+
+	var costumeSelectedInt = $(costumeStr).val();
+	var moodSelectedInt = $(moodStr).val();
 
 
 
