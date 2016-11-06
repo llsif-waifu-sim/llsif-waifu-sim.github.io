@@ -99,6 +99,11 @@ function setDisplay (target, str) {
   document.getElementById(target).style.display = str;
 }
 
+function addStoryText()
+{
+	document.getElementById('edit_text_box').innerHTML = document.getElementById("story-textfield").value;
+}
+
 // FOR INITALIZATION ONLY
 function loadStoryOptions()
 {

@@ -49,7 +49,7 @@ var honokaStoryAr = [
 ['honoka','15','04'],
 ['honoka','16','01'],
 ['honoka','16','02'],
-['honoka','16','03']
+['honoka','16','04']
 ];
 
 var umiStoryAr = [
@@ -191,6 +191,14 @@ var chikaStoryAr = [
 ['chika','03','01'],
 ['chika','03','02'],
 ['chika','03','03']
+];
+
+var youStoryAr = [
+['you','01','01'],
+['you','01','02'],
+['you','01','03'],
+['you','03','01'],
+['you','03','02']
 ];
 
 var diaStoryAr = [
