@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>	
-	<link rel="stylesheet" type="text/css" href="css/storyGen.css">
-
-
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-select.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
@@ -15,6 +12,7 @@
 	<script src="js/bootstrap.min.js"></script>
   	<script src="js/bootstrap-switch.js"></script>
 
+  	<link rel="stylesheet" type="text/css" href="css/storyGen.css">
 
 
 	<script src="js/id-log.js"></script>
@@ -39,7 +37,7 @@
 <br><br>
 <center>
 	<div id="container">
-	    	<img id='homeScreen' src='images/background/background0.png'>
+	    	<img id='homeScreenStory' src='images/background/background0.png'>
 	    	<img id="idol_img_left" src='stories/images/umi_01_01.png'>
 	    	<img id="idol_img_center" src='stories/images/honoka_01_01.png'>
 	    	<img id="idol_img_right" src='stories/images/kotori_01_01.png'>
@@ -51,6 +49,17 @@
 
 <br><br><br>
 
+	<table>
+		<tr>
+			<td style='width:300'>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundStoryBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td>
+				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundStory()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+			</td>
+		</tr>
+	</table>
+<br><br>
 <button id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
 <button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
 
@@ -139,11 +148,10 @@
  				<button style='width:100%' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStoryMain('right')">Add</button>
  			</td>
  		</tr>
- 	</table>
-
- 	
+ 	</table> 	
 
  </div>
+ 
  <br><br>
  <div style="width:60%">
  	<input type="text" id="story-textfield" class="form-control" placeholder='Enter dank meme text here'>

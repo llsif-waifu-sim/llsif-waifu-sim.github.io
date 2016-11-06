@@ -89,6 +89,42 @@ function getStoryWaifuAr(name)
 	return newArray;
 }
 
+
+function changeBackgroundStory()
+{	
+	if(background < maxNumBackground-1)
+	{
+		background = background + 1;
+	}else {
+		background = 0;
+	}
+	storeBackgroundCookie(background);
+
+	var backpath = 'images/background/background' + background.toString() + '.png';
+	
+	document.getElementById("homeScreenStory").src=backpath;
+	
+}
+
+function changeBackgroundStoryBack()
+{
+
+	if(background <= 0)
+	{
+		background = maxNumBackground-1;
+		
+	}else {
+		background = background - 1;
+	}
+	storeBackgroundCookie(background);
+
+	var backpath = 'images/background/background' + background.toString() + '.png';
+
+	document.getElementById("homeScreenStory").src=backpath;
+	
+}
+
+
 function show (toBlock){
   setDisplay(toBlock, 'block');
 }
