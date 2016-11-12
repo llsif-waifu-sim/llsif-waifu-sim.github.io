@@ -203,10 +203,10 @@ function mainWaifuSet(index)
     // Once we get the info, get the image
     var path;
 
-    var scrapePath = "./scraped-images/";
+    var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 
     if(isOthers(name)){
-        scrapePath = "./scraped-images/z-others/"
+        scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
     } 
 
     
@@ -276,10 +276,10 @@ function savedWaifuLoad(index)
     // Once we get the info, get the image
     var path;
 
-    var scrapePath = "./scraped-images/";
+    var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 
     if(isOthers(name)){
-        scrapePath = "./scraped-images/z-others/"
+        scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
     } 
 
     if(idolized == 'yes')
