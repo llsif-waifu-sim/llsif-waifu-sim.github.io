@@ -43,6 +43,8 @@
 	    	<img id="idol_img_right" src='stories/images/kotori_01_01.png'>
 	    	
 	    	<div id="entire_story_text_box">
+	    		<img id="story_speaker_img" src="images/pink-textbox.png">
+	    		<h2><font style="color:white;"><div id="edit_speaker_box"></div></font></h2>
 		    	<img id="temp_text_box_img" src="images/pink-textbox.png">
 		    	<h2><font style="color:white;"><div id="edit_text_box"></div></font></h2>
 			</div>
@@ -156,13 +158,20 @@
  
  <br><br>
  <div style="width:60%">
+ 	<input style='width:40%' type="text" id="story-speaker-textfield" class="form-control" placeholder='Who is speaking'>
+ 	<button style='width:40%' type="button" id="insertspeakerText_but" class="btn btn-primary" onclick="addSpeakerText();">Insert Text</button>
+ 	
+ </div>
+ <br><br>
+ <div style="width:60%">
  	<input type="text" id="story-textfield" class="form-control" placeholder='Enter dank meme text here'>
  	<button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="addStoryText();">Insert Text</button>
  	
  </div>
+
  <br><br>
 
- printStoryCanvas
+ 
  <button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Print image</button>
 
 

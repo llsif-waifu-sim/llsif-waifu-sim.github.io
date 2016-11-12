@@ -152,6 +152,11 @@ function addStoryText()
 	document.getElementById('edit_text_box').innerHTML = document.getElementById("story-textfield").value;
 }
 
+function addSpeakerText()
+{
+	document.getElementById('edit_speaker_box').innerHTML = document.getElementById("story-speaker-textfield").value;
+}
+
 // FOR INITALIZATION ONLY
 function loadStoryOptions()
 {
@@ -521,6 +526,8 @@ function addText(ctx, txt, mainTxt)
 function printStoryCanvas(){
 
 	var mainTxt = document.getElementById("story-textfield").value;
+	var speakerTxt = document.getElementById("story-speaker-textfield").value;
+
 	mainTxt = mainTxt.concat(" ");
 
 	var c = document.getElementById("story-canvas");
@@ -532,6 +539,7 @@ function printStoryCanvas(){
 	var imgwaifuCenter = document.getElementById("idol_img_center");
 	var imgwaifuRight = document.getElementById("idol_img_right");
 	var speechbox = document.getElementById("temp_text_box_img");
+	var speakerbox = document.getElementById("story_speaker_img");
 
     c.width  = img.width; // in pixels
 	c.height = img.height;
@@ -544,6 +552,7 @@ function printStoryCanvas(){
 
     ctx.globalAlpha = 0.7;
    
+   ctx.drawImage(speakerbox, 65, 430, speakerbox.width, speakerbox.height);
     ctx.drawImage(speechbox, 65, 490, speechbox.width, speechbox.height);
 
     ctx.globalAlpha = 1;
@@ -559,7 +568,8 @@ function printStoryCanvas(){
 
 	addText(ctx, txt, mainTxt);
 
-
+	// Speaker text
+	ctx.fillText(speakerTxt, 78, 465);	
 
 }
 // Loading functions
