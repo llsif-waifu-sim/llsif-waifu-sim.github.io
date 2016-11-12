@@ -156,7 +156,7 @@ function playClick()
 		var mp3Music = document.getElementById("background-music-player");
 
 
-		var songPath = "".concat("./songs/",subPath, currSong, ".ogg");
+		var songPath = "".concat("https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-songs-ogg/master/songs/",subPath, currSong, ".ogg");
 		var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
 		
 		currplayingSong = currSong;
@@ -537,7 +537,7 @@ function changeCategory()
 	
 	currSong = 0;
 	
-	var songPath = "".concat("./songs/",subPath, currSong, ".ogg");
+	var songPath = "".concat("https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-songs-ogg/master/songs/",subPath, currSong, ".ogg");
 	var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
 		
 	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
