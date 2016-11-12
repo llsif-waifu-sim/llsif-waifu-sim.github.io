@@ -188,10 +188,10 @@ function forgetWaifuLoad(index)
 
     // Once we get the info, get the image
     var path;
-    var scrapePath = "./scraped-images/";
+    var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 
     if(isOthers(name)){
-		scrapePath = "./scraped-images/z-others/"
+		scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
 	} 
 
     if(idolized == 'yes')
@@ -700,10 +700,10 @@ function getRandomWaifu()
 	var path;
 
 	globalIndex = i;
-	var scrapePath = "./scraped-images/";
+	var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 
 	if(isOthers(name)){
-		scrapePath = "./scraped-images/z-others/"
+		scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
 	} 
 
 	
@@ -758,10 +758,10 @@ function getRandomCard()
 
 	globalIndex = i;
 
-	var scrapePath = "./scraped-images/";
+	var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 
 	if(isOthers(name)){
-		scrapePath = "./scraped-images/z-others/"
+		scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
 	} 
 
     if(idolized == 'yes')
@@ -894,9 +894,9 @@ function searchId()
 
 	// Once we get the info, get the image
 	var path;
-	var scrapePath = "./scraped-images/";
+	var scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/";
 	if(isOthers(name)){
-		scrapePath = "./scraped-images/z-others/"
+		scrapePath = "https://llsif-waifu-sim.github.io/scraped-images/z-others/"
 	} 
 
 	
