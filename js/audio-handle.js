@@ -684,9 +684,9 @@ function getRandomWaifu()
 
 	globalIndex = i;
 
-	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/llsif-waifu-girl-images/scraped-images/";
+	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
 	if(isOthers(name)){
-		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/llsif-waifu-girl-images/scraped-images/z-others/"
+		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
 	} 
 
 	
