@@ -1482,6 +1482,10 @@ var id_log =
 ['1043','chika','no'],
 ['1043','chika','yes'],
 ['1044','you','no'],
-['1044','you','yes']
+['1044','you','yes'],
+['1045','kotori','no'],
+['1045','kotori','yes'],
+['1046','nozomi','no'],
+['1046','nozomi','yes']
 ];
 
