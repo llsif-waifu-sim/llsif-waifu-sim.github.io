@@ -106,7 +106,8 @@ function inactiveSpeech()
 function specialQuoteSpeech()
 {
 	// Activate special quote
-	var audioPath = "special-quotes/"
+	var audioPath = "https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-special-quotes/master/special-quotes/";
+	var simpleAudioPath = "special-quotes/";
 	var id = id_log[globalIndex][0];
 
 	var indexAr = searchQuoteIndexByID(id);
@@ -143,8 +144,7 @@ function specialQuoteSpeech()
 
 
     var fileIndex = chosenIndex  + addValue;
-    var pathString = "".concat(audioPath);
-    //alert(pathString);
+    var pathString = "".concat(simpleAudioPath);
     changeSpeechText(pathString, fileIndex);
     refreshBubble();
 
