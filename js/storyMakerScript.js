@@ -1,9 +1,15 @@
-var maxWidth = 1400;
+var c = document.getElementById("story-canvas");
+    
+var ctx = c.getContext("2d");
+
+//var speechbubble = document.getElementById("speech-text");
+
+var maxWidth = 420;
 var remainder = maxWidth;
 var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
 var maxWidthChar = Math.floor(maxWidth/letterWidth);
 
-
+var mainTxt = "";
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -474,12 +480,11 @@ function addText(ctx, txt, mainTxt)
 	{
 		// That means the text width is zero   
 
-		var rowPosition = 50;
+		var rowPosition = 530;
 		var incrementRowVal = 30; // Increment 
 
 		while(true)
 		{
-			alert(txt);
 			if(txt.length <= 0)
 			{
 				break;
@@ -498,7 +503,7 @@ function addText(ctx, txt, mainTxt)
 		    
 		    var temp = reconstruct(splitArray, last);
 
-		    ctx.fillText(temp, 540, rowPosition);	
+		    ctx.fillText(temp, 68, rowPosition);	
 		    rowPosition = rowPosition + incrementRowVal;
 
 		    txt = txt.substring(temp.length, txt.length);
@@ -515,19 +520,18 @@ function addText(ctx, txt, mainTxt)
 
 function printStoryCanvas(){
 
-	
-    var c = document.getElementById("story-canvas");
+	var mainTxt = document.getElementById("story-textfield").value;
+	mainTxt = mainTxt.concat(" ");
+
+	var c = document.getElementById("story-canvas");
     
+	var ctx = c.getContext("2d");
 
-
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("homeScreenStory");
-    var imgwaifuLeft = document.getElementById("idol_img_left");
-    var imgwaifuCenter = document.getElementById("idol_img_center");
-    var imgwaifuRight = document.getElementById("idol_img_right");
-    var speechbox = document.getElementById("temp_text_box_img");
-    //var speechbubble = document.getElementById("speech-text");
-
+	var img = document.getElementById("homeScreenStory");
+	var imgwaifuLeft = document.getElementById("idol_img_left");
+	var imgwaifuCenter = document.getElementById("idol_img_center");
+	var imgwaifuRight = document.getElementById("idol_img_right");
+	var speechbox = document.getElementById("temp_text_box_img");
 
     c.width  = img.width; // in pixels
 	c.height = img.height;
@@ -549,7 +553,7 @@ function printStoryCanvas(){
 
 
 	//var mainTxt = "I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list."
-	var mainTxt = "Derp";
+	//var mainTxt = "Derp";
 	var txt = mainTxt;
 
 
