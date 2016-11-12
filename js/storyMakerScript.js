@@ -398,7 +398,7 @@ function searchIdStory(type)
 	// Once we get the info, get the image
 	var path;
 
-	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/llsif-waifu-girl-images/scraped-images/";
+	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
 	
 	if(isOthers(name)){
 		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
