@@ -147,6 +147,12 @@ function setDisplay (target, str) {
   document.getElementById(target).style.display = str;
 }
 
+function addStoryAndSpeakerText()
+{
+	addStoryText();
+	addSpeakerText();
+}
+
 function addStoryText()
 {
 	document.getElementById('edit_text_box').innerHTML = document.getElementById("story-textfield").value;
@@ -486,7 +492,7 @@ function addText(ctx, txt, mainTxt)
 		// That means the text width is zero   
 
 		var rowPosition = 530;
-		var incrementRowVal = 30; // Increment 
+		var incrementRowVal = 35; // Increment 
 
 		while(true)
 		{
