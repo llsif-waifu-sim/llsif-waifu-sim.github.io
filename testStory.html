@@ -42,8 +42,10 @@
 	    	<img id="idol_img_center" src='stories/images/honoka_01_01.png'>
 	    	<img id="idol_img_right" src='stories/images/kotori_01_01.png'>
 	    	
-	    	<img id="temp_text_box_img" src="images/pink-textbox.png">
-	    	<h2><font style="color:white;"><div id="edit_text_box"></div></font></h2>
+	    	<div id="entire_story_text_box">
+		    	<img id="temp_text_box_img" src="images/pink-textbox.png">
+		    	<h2><font style="color:white;"><div id="edit_text_box"></div></font></h2>
+			</div>
 	</div>
 
 
@@ -158,13 +160,18 @@
  	<button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="addStoryText();">Insert Text</button>
  	
  </div>
+ <br><br>
 
+ printStoryCanvas
+ <button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Print image</button>
  <script src="js/storyMakerScript.js"></script>
 
 <br><br><br>
 
-
+<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
+
 
 <!--
 <canvas id="myCanvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">

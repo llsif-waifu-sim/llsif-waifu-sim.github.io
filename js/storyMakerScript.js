@@ -1,3 +1,9 @@
+var maxWidth = 1400;
+var remainder = maxWidth;
+var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
+var maxWidthChar = Math.floor(maxWidth/letterWidth);
+
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -441,9 +447,117 @@ function searchIdStory(type)
 
 }
 
+function reconstruct(arr, last)
+{
+	var sentence = "";
+	var i = 0;
+
+	if(!last)
+	{
+		arr.pop();	
+	}
+	
+	for(var value = ""; value = arr.pop();)
+	{
+		sentence = (" ".concat(value)).concat(sentence);	
+	}
+
+	return sentence;
+}
+
+// This script is to mainly construct text on a computer
+function addText(ctx, txt, mainTxt)
+{
+	ctx.fillStyle = 'white';
+
+	if(ctx.measureText(txt).width >= maxWidth)
+	{
+		// That means the text width is zero   
+
+		var rowPosition = 50;
+		var incrementRowVal = 30; // Increment 
+
+		while(true)
+		{
+			alert(txt);
+			if(txt.length <= 0)
+			{
+				break;
+			}
+
+			var last = true;
+			if(ctx.measureText(txt).width >= maxWidth)
+		    {
+		    	last = false;
+		    } 
+
+			var remainderTxt = txt.substring(0, maxWidthChar*2);
+
+		    var splitArray = remainderTxt.split(" ");
+
+		    
+		    var temp = reconstruct(splitArray, last);
+
+		    ctx.fillText(temp, 540, rowPosition);	
+		    rowPosition = rowPosition + incrementRowVal;
+
+		    txt = txt.substring(temp.length, txt.length);
+
+		}
+
+
+	} else {
+		ctx.fillText(txt, 105, 540);	
+	}
+
+}
+
+
+function printStoryCanvas(){
+
+	
+    var c = document.getElementById("story-canvas");
+    
+
+
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("homeScreenStory");
+    var imgwaifuLeft = document.getElementById("idol_img_left");
+    var imgwaifuCenter = document.getElementById("idol_img_center");
+    var imgwaifuRight = document.getElementById("idol_img_right");
+    var speechbox = document.getElementById("temp_text_box_img");
+    //var speechbubble = document.getElementById("speech-text");
+
+
+    c.width  = img.width; // in pixels
+	c.height = img.height;
+
+
+    ctx.drawImage(img, 0, 0, img.width,img.height);    
+    ctx.drawImage(imgwaifuLeft, -150, -70, imgwaifuLeft.width, imgwaifuLeft.height);
+    ctx.drawImage(imgwaifuCenter, 220, -70, imgwaifuCenter.width, imgwaifuCenter.height);
+    ctx.drawImage(imgwaifuRight, 580, -70, imgwaifuRight.width, imgwaifuRight.height);
+
+    ctx.globalAlpha = 0.7;
+   
+    ctx.drawImage(speechbox, 65, 490, speechbox.width, speechbox.height);
+
+    ctx.globalAlpha = 1;
+
+    // Preparing to write text
+    ctx.font = "30px Arial";
+
+
+	//var mainTxt = "I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list."
+	var mainTxt = "Derp";
+	var txt = mainTxt;
+
+
+	addText(ctx, txt, mainTxt);
 
 
 
+}
 // Loading functions
 
 loadStoryOptions();
