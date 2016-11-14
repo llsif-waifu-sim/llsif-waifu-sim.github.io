@@ -148,7 +148,9 @@ var aqours_together =
 ['Yume Kataru yori Yume Utaou',3],
 ['Sunshine Pikkapika Ondo',3],
 ['Yume de Yozora o Terashitai',3],
-['Mijuku DREAMER',3]
+['Mijuku DREAMER',3],
+['MIRAI TICKET',3],
+['Omoi yo Hitotsu ni Nare',3]
 ];
 
 var aqours_subgroup_ar = 
