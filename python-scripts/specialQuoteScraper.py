@@ -64,6 +64,7 @@ def checkNormal():
 
 def extractQuote(begin,last):
     prePath = '../special-quotes/'
+    prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
 
     quote_speech_file = open(prePath + "quote-speech-slave.txt", "w")
     id_index_file = open(prePath + "id-index-slave.txt", "w")
@@ -125,7 +126,7 @@ def extractQuote(begin,last):
                     z =  + 1
                 
                     for a in cell.findAll('a', href=True):
-                        downloadPath = prePath + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
+                        downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
                         urllib.urlretrieve(a['href'], downloadPath)
 
                         count = count + 1

@@ -1308,7 +1308,8 @@ var nico_ar =
 ['1010','nico','no'],
 ['1010','nico','yes'],
 ['1024','nico','no'],
-['1024','nico','yes']
+['1024','nico','yes'],
+['1055','nico','yes']
 ];
 
 

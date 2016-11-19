@@ -850,7 +850,16 @@ function searchIndexById(id, idolized)
 	{
 		if(id_log[i][0] == id.toString())
 		{
-			//alert(id_log[i][0]);
+			
+
+			// If we are at the end of the array, no need to check if there is anything a step further
+			if(i == id_log.length - 1) 
+			{
+				return i;
+			} 
+
+
+			// During normal conditions
 			if(idolized == 'yes' && ( id_log[i+1][0] == id.toString() )){
 				return i + 1;
 			} else{
