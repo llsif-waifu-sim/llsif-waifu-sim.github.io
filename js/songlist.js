@@ -150,7 +150,8 @@ var aqours_together =
 ['Yume de Yozora o Terashitai',3],
 ['Mijuku DREAMER',3],
 ['MIRAI TICKET',3],
-['Omoi yo Hitotsu ni Nare',3]
+['Omoi yo Hitotsu ni Nare',3],
+['Jingle Bells ga Tomaranai',3]
 ];
 
 var aqours_subgroup_ar = 
