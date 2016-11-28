@@ -151,7 +151,8 @@ var aqours_together =
 ['Mijuku DREAMER',3],
 ['MIRAI TICKET',3],
 ['Omoi yo Hitotsu ni Nare',3],
-['Jingle Bells ga Tomaranai',3]
+['Jingle Bells ga Tomaranai',3],
+['Seinaru Hi no Inori',3]
 ];
 
 var aqours_subgroup_ar = 
@@ -169,7 +170,8 @@ var aqours_others_ar =
 ['Daisuki dattara Daijoubu!',5],
 ['Kimeta yo Hand in Hand',5],
 ['Pops heart de Odorun damon!',5],
-['Sora mo Kokoro mo Hareru kara',5]
+['Sora mo Kokoro mo Hareru kara',5],
+['Waku-Waku-Week!',5]
 ];
 
 var idol_others_ar = 

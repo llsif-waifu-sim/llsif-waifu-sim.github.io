@@ -288,7 +288,9 @@ var maki_ar =
 ['1012','maki','no'],
 ['1012','maki','yes'],
 ['1058','maki','no'],
-['1058','maki','yes']
+['1058','maki','yes'],
+['1059','maki','no'],
+['1059','maki','yes']
 ];
 var rin_ar = 
 [
@@ -582,7 +584,9 @@ var honoka_ar =
 ['980','honoka','no'],
 ['980','honoka','yes'],
 ['1009','honoka','no'],
-['1009','honoka','yes']
+['1009','honoka','yes'],
+['1060','honoka','no'],
+['1060','honoka','yes']
 ];
 var umi_ar = 
 [
