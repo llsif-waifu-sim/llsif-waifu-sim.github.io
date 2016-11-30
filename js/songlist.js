@@ -177,7 +177,8 @@ var aqours_others_ar =
 var idol_others_ar = 
 [
 ['Private Wars',6],
-['Shocking Party',6]
+['Shocking Party',6],
+['SELF CONTROL!!', 6]
 ];
 
 
