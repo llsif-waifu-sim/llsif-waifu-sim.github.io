@@ -23,7 +23,9 @@ var chika_ar =
 ['1043','chika','no'],
 ['1043','chika','yes'],
 ['1053','chika','no'],
-['1053','chika','yes']
+['1053','chika','yes'],
+['1062','chika','no'],
+['1062','chika','yes']
 ];
 
 var you_ar = 
@@ -51,7 +53,9 @@ var you_ar =
 ['1044','you','no'],
 ['1044','you','yes'],
 ['1051','you','no'],
-['1051','you','yes']
+['1051','you','yes'],
+['1066','you','no'],
+['1066','you','yes']
 ];
 
 var riko_ar =
@@ -77,7 +81,9 @@ var riko_ar =
 ['1014','riko','no'],
 ['1014','riko','yes'],
 ['1041','riko','no'],
-['1041','riko','yes']
+['1041','riko','yes'],
+['1063','riko','no'],
+['1063','riko','yes']
 ];
 
 var ruby_ar =
@@ -198,7 +204,9 @@ var mari_ar =
 ['1016','mari','no'],
 ['1016','mari','yes'],
 ['1052','mari','no'],
-['1052','mari','yes']
+['1052','mari','yes'],
+['1064','mari','no'],
+['1064','mari','yes']
 ];
 
 var kanan_ar =  
@@ -222,5 +230,7 @@ var kanan_ar =
 ['1015','kanan','no'],
 ['1015','kanan','yes'],
 ['1037','kanan','no'],
-['1037','kanan','yes']
+['1037','kanan','yes'],
+['1065','kanan','no'],
+['1065','kanan','yes']
 ];

@@ -1503,6 +1503,16 @@ var id_log =
 ['1059','maki','no'],
 ['1059','maki','yes'],
 ['1060','honoka','no'],
-['1060','honoka','yes']
+['1060','honoka','yes'],
+['1062','chika','no'],
+['1062','chika','yes'],
+['1063','riko','no'],
+['1063','riko','yes'],
+['1064','mari','no'],
+['1064','mari','yes'],
+['1065','kanan','no'],
+['1065','kanan','yes'],
+['1066','you','no'],
+['1066','you','yes']
 ];
 
