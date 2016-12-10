@@ -83,7 +83,9 @@ var riko_ar =
 ['1041','riko','no'],
 ['1041','riko','yes'],
 ['1063','riko','no'],
-['1063','riko','yes']
+['1063','riko','yes'],
+['1068','riko','no'],
+['1068','riko','yes']
 ];
 
 var ruby_ar =
@@ -181,7 +183,9 @@ var dia_ar =
 ['1030','dia','no'],
 ['1030','dia','yes'],
 ['1050','dia','no'],
-['1050','dia','yes']
+['1050','dia','yes'],
+['1069','dia','no'],
+['1069','dia','yes']
 ];
 var mari_ar =   
 [

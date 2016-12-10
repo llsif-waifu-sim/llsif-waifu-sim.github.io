@@ -316,6 +316,58 @@ function seasonSpeech()
 	refreshBubble();
 }
 
+
+
+
+
+function eventSpeech()
+{
+	var today;
+	today = new Date();
+	var curr_year = today.getFullYear();
+	var curr_month = today.getMonth() + 1;
+
+
+	var audioPath = "audio/";
+	var waifuName = globalWaifu + "/";
+	var file = 'holiday/';
+	var n;
+
+
+	// setFullYear(Year, month, day)
+	if(curr_month >= 3 &&  curr_month <= 5){
+		// Between 3/1 and 5/31
+		n = 0;
+	} else if(curr_month >= 6  &&  curr_month <= 8){
+		// Between 6/1 and 8/31
+		n = 1;
+	} else if(curr_month >= 9 && curr_month <= 11){
+		// 9/1 to 11/30
+		n = 2;
+	} else if( curr_month >= 12 || curr_month <= 2){
+		// 12/1/(year) to 2/29/(year + 1)
+		n = 3;
+	}
+
+	var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+	globalAudio = new Audio(superString);
+	globalAudio.volume = voiceVolume;
+	globalAudio.play();
+		
+
+	var pathString = "".concat(audioPath, waifuName, file);
+	changeSpeechText(pathString, n);
+	refreshBubble();
+}
+
+
+
+
+
+
+
+
+
 function timeSpeech()
 {
 	var today;
