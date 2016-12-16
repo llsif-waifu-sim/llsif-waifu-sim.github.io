@@ -1523,6 +1523,14 @@ var id_log =
 ['1072','nozomi','no'],
 ['1072','nozomi','yes'],
 ['1073','maki','no'],
-['1073','maki','yes']
+['1073','maki','yes'],
+['1075','dia','no'],
+['1075','dia','yes'],
+['1076','ruby','no'],
+['1076','ruby','yes'],
+['1077','yoshiko','no'],
+['1077','yoshiko','yes'],
+['1078','hanamaru','no'],
+['1078','hanamaru','yes']
 ];
 
