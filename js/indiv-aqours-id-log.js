@@ -55,7 +55,8 @@ var you_ar =
 ['1051','you','no'],
 ['1051','you','yes'],
 ['1066','you','no'],
-['1066','you','yes']
+['1066','you','yes'],
+['1082','you','yes']
 ];
 
 var riko_ar =
