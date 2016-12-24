@@ -311,6 +311,255 @@ function seasonSpeech()
 	refreshBubble();
 }
 
+
+function marineDayCheck()
+{
+	// Check if current girl has a marineDay quote
+	if(globalWaifu == 'umi' || globalWaifu == 'honoka' || globalWaifu == 'kotori'){
+		return true;
+	}
+	return false;
+}
+
+function searchEventIndex(f, n)
+{
+	var i;
+	for(i = 0; i < event_id_log.length; i++)
+	{
+		if(event_id_log[i][0] == f.toString())
+		{
+			// Return index + number (secondary Index of that event)
+			if(f > 2 && !marineDayCheck())
+			{
+				// To prevent marineDay from interfering with non-marine day characters
+				return i + n - 2;
+			}
+
+			return i + n;
+		}
+	}
+}
+
+function eventSpeechSound(f,maxNum){
+	var audioPath = "audio/";
+	var waifuName = globalWaifu + "/";
+	var file = 'holiday/';
+	var dash = "-";
+
+	// Random number generator
+	maxNum = maxNum + 1;
+	var n = Math.floor(Math.random() * maxNum);
+
+	// Get index
+	var txtIndex = searchEventIndex(f,n);
+
+	// Get sound
+	var superString = "".concat(audioPath, waifuName, file, f, dash, n, ".mp3");
+	globalAudio = new Audio(superString);
+	globalAudio.volume = voiceVolume;
+	globalAudio.play();
+		
+	// Add text
+	var pathString = "".concat(audioPath, waifuName, file);
+	changeSpeechText(pathString, txtIndex);
+	refreshBubble();
+}
+
+
+
+function eventSpeech()
+{
+	var today;
+	today = new Date();
+	var curr_year = today.getFullYear();
+	var curr_month = today.getMonth() + 1;
+	var curr_day = today.getDate();
+	var n = 1;
+
+
+
+
+	if(curr_month == 3 ){
+
+		if(curr_day == 3)
+		{
+			// Doll's Day
+			var f = 15;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 14){
+			// White Day
+			var f = 16;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 15){
+			// Umi's birthday
+			var f = 17;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 31){
+			// Pre Final concert
+			var f = 18;
+			n = 0;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+
+
+	} else if(curr_month == 4){
+
+		if(curr_day == 1)
+		{
+			// Final concert
+			var f = 19;
+			n = 0;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 19){
+			// Maki's birthday
+			var f = 20;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} 
+
+	} else if(curr_month == 5){
+
+		if(curr_day == 5){
+			// Children's day
+			var f = 21;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+
+	}else if(curr_month == 6){
+
+		if(curr_day == 9){
+			// Nozomi's birthday
+			var f = 0;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+
+	} else if(curr_month == 7){
+		if(curr_day == 7){
+			// Star Festival
+			var f = 1;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 18 && marineDayCheck()){
+			// Marine Day
+			var f = 2;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 22){
+			// Nico's birthday
+			var f = 3;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+		
+
+	}else if(curr_month == 9){
+		if(curr_day == 12){
+			// Kotori's Birthday
+			var f = 4;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 15){
+			// Mid-Autumn Festival
+			var f = 5;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+
+	} else if(curr_month == 10){
+		if(curr_day == 21){
+			// Eli's birthday
+			var f = 6;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 31){
+			// Halloween
+			var f = 7;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+
+	} else if(curr_month == 11){
+		if(curr_day == 1){
+			// Rin's birthday
+			var f = 8;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+		
+	} else if( curr_month == 12){
+		if(curr_day == 25){
+			// Christmas
+			var f = 9;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 31){
+			// New Year's Eve
+			var f = 10;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+		
+	} else if( curr_month == 1){
+		if(curr_day == 1){
+			// New Year's Day
+			var f = 11;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 17){
+			// Hanayo's birthday
+			var f = 12;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+		
+	} else if( curr_month == 2){
+		if(curr_day == 3){
+			// Setsubun
+			var f = 13;
+			eventSpeechSound(f,n);
+			return 0;
+
+		} else if(curr_day == 14){
+			// Valentine's day
+			var f = 14;
+			eventSpeechSound(f,n);
+			return 0;
+
+		}
+	}
+	return -1;
+	
+}
+
+
+
 function timeSpeech()
 {
 	var today;
@@ -1060,24 +1309,54 @@ function changeWaifu(){
 
 		if(mode == 0){
 			// Home button RNG
-			var maxNum = 17;
+			var maxNum = 18;
 			n = Math.floor(Math.random() * maxNum);
 			file = "home/";
-
-
+		
 			// Activate month speech
 			if(n == maxNum - 1){
 				seasonSpeech();
 				return;
 			}
 
+			if(n == maxNum - 2){
+
+				// Activating event speech
+
+				if(!isAqours(globalWaifu)){
+					var result = eventSpeech();
+
+					if(result == 0){
+						// If today's a certain day
+						return;
+					} else {
+						// Return back to normal then if not a certain day
+
+						maxNum = 15;
+						n = Math.floor(Math.random() * maxNum);
+
+						// Activate month speech
+						if(n == maxNum - 1){
+							
+							seasonSpeech();
+							return;
+						}
+					}
+
+
+
+
+				}
+			}
 
 			// Activate special quote
-			if(n >= maxNum - 3){
+			if(n >= maxNum - 4){
+				
 				var errorCheck = -1;
 				var errorCheck = specialQuoteSpeech();
 				if(errorCheck == 0)
 				{
+
 					// If card had a quote, then we are done
 					return;
 				}
@@ -1087,6 +1366,7 @@ function changeWaifu(){
 
 				// Activate month speech
 				if(n == maxNum - 1){
+					
 					seasonSpeech();
 					return;
 				}

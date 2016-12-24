@@ -382,6 +382,8 @@ function eventSpeech()
 	var n = 1;
 
 
+
+
 	if(curr_month == 3 ){
 
 		if(curr_day == 3)
@@ -1261,8 +1263,7 @@ function changeWaifu(name, id){
 		}
 
 
-			
-
+	
 		var n = 0;
 
 		if(mode == 0){
