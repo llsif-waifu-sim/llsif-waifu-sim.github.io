@@ -382,8 +382,6 @@ function eventSpeech()
 	var n = 1;
 
 
-
-	// setFullYear(Year, month, day)
 	if(curr_month == 3 ){
 
 		if(curr_day == 3)
