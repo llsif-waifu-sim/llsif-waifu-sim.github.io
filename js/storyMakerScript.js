@@ -528,6 +528,33 @@ function addText(ctx, txt, mainTxt)
 
 }
 
+function uploadImageImgur()
+{
+	try {
+	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+	} catch(e) {
+	    var img = document.getElementById('story-canvas').toDataURL().split(',')[1];
+	}
+
+	$.ajax({
+	    url: 'https://api.imgur.com/3/image',
+	    type: 'post',
+	    headers: {
+	        Authorization: 'Client-ID c2be6e0eb80a4fe'
+	    },
+	    data: {
+	        image: img
+	    },
+	    dataType: 'json',
+	    success: function(response) {
+	        if(response.success) {
+	        	alert(response.data.link);
+	            //window.location = response.data.link;
+	        }
+	    }
+	});
+}
+
 
 function printStoryCanvas(){
 
@@ -576,6 +603,9 @@ function printStoryCanvas(){
 
 	// Speaker text
 	ctx.fillText(speakerTxt, 78, 465);	
+
+
+	uploadImageImgur();
 
 }
 // Loading functions

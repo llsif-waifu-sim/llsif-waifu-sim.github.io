@@ -30,10 +30,39 @@
 	<script src="js/mainStorySpriteAr.js"></script>
 	<script src="js/mainStorySpriteIndividualAr.js"></script>	
 
+
+
+
 </head>
 
 <body>
+	<!-- Testing stuff xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+	<script src='js/gifshot.js'></script>
 
+	<script>
+
+		gifshot.createGIF({
+		    images: [
+		        'http://i.imgur.com/2OO33vX.jpg',
+		        'http://i.imgur.com/qOwVaSN.png',
+		        'http://i.imgur.com/Vo5mFZJ.gif',
+		        'http://i.imgur.com/hrhGE6h.jpg'
+		    ],
+		    'interval': 1,
+		}, function (obj) {
+			
+		    if (!obj.error) {
+		        var image = obj.image, animatedImage = document.createElement('img');
+		        animatedImage.src = image;
+		        alert(animatedImage);
+		        document.body.appendChild(animatedImage);
+		    }
+		});
+
+	</script>
+
+
+	<!-- Testing stuff xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <br><br>
 <center>
 	<div id="container">
