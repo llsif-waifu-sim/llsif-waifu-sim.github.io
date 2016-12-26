@@ -736,7 +736,9 @@ var umi_ar =
 ['1023','umi','no'],
 ['1023','umi','yes'],
 ['1081','umi','no'],
-['1081','umi','yes']
+['1081','umi','yes'],
+['1085','umi','no'],
+['1085','umi','yes']
 ];
 var kotori_ar = 
 [
@@ -1327,7 +1329,9 @@ var nico_ar =
 ['1010','nico','yes'],
 ['1024','nico','no'],
 ['1024','nico','yes'],
-['1055','nico','yes']
+['1055','nico','yes'],
+['1084','nico','no'],
+['1084','nico','yes']
 ];
 
 

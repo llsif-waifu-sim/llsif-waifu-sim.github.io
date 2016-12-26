@@ -40,25 +40,26 @@
 	<script src='js/gifshot.js'></script>
 
 	<script>
-
+	
 		gifshot.createGIF({
 		    images: [
-		        'http://i.imgur.com/2OO33vX.jpg',
-		        'http://i.imgur.com/qOwVaSN.png',
-		        'http://i.imgur.com/Vo5mFZJ.gif',
-		        'http://i.imgur.com/hrhGE6h.jpg'
+		        'http://i.imgur.com/pahyPBy.jpg',
+		        'http://i.imgur.com/UytBZ5k.jpg',
+		        'http://i.imgur.com/dM1Z9OK.jpg'
 		    ],
-		    'interval': 1,
+		    'interval': 2,
+		    'gifWidth': 1000,
+		    'gifHeight': 600,
 		}, function (obj) {
 			
 		    if (!obj.error) {
 		        var image = obj.image, animatedImage = document.createElement('img');
 		        animatedImage.src = image;
-		        alert(animatedImage);
+		
 		        document.body.appendChild(animatedImage);
 		    }
 		});
-
+	
 	</script>
 
 
@@ -205,7 +206,7 @@
 
 <br><br><br>
 
-<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
+<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3; display:none;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
  <script src="js/storyMakerScript.js"></script>

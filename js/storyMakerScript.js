@@ -4,6 +4,8 @@ var ctx = c.getContext("2d");
 
 //var speechbubble = document.getElementById("speech-text");
 
+var urlAr = [];
+
 var maxWidth = 420;
 var remainder = maxWidth;
 var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
@@ -528,6 +530,22 @@ function addText(ctx, txt, mainTxt)
 
 }
 
+function constructGIF()
+{
+	gifshot.createGIF({
+		images: urlAr,
+		'interval': 1,
+	}, function (obj) {
+			
+		if (!obj.error) {
+		    var image = obj.image, animatedImage = document.createElement('img');
+		    animatedImage.src = image;
+		    document.body.appendChild(animatedImage);
+		}
+	});
+}
+
+
 function uploadImageImgur()
 {
 	try {
@@ -548,12 +566,19 @@ function uploadImageImgur()
 	    dataType: 'json',
 	    success: function(response) {
 	        if(response.success) {
-	        	alert(response.data.link);
+
+	        	urlAr.push(response.data.link);
+
+	        	alert(urlAr);
+	        	constructGIF();
+	        	alert('Done');
 	            //window.location = response.data.link;
 	        }
 	    }
 	});
 }
+
+
 
 
 function printStoryCanvas(){
