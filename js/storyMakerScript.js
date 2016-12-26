@@ -12,6 +12,9 @@ var letterWidth = ctx.measureText('W').width;  // gets the length of a single le
 var maxWidthChar = Math.floor(maxWidth/letterWidth);
 
 var mainTxt = "";
+var storyBackground = 0;
+var sceneNum = 1;
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -104,17 +107,112 @@ function getStoryWaifuAr(name)
 }
 
 
+function storeSceneCookie()
+{
+
+
+	setCookie("sceneMaker_wallpaper-".concat(sceneNum), storyBackground, cookieExpireDate);
+
+    setCookie("sceneMaker_idol_left-".concat(sceneNum), document.getElementById('waifuStoryOption1').value, cookieExpireDate);
+    setCookie("sceneMaker_costume_left-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption1').value, cookieExpireDate);
+    setCookie("sceneMaker_emotion_left-".concat(sceneNum), document.getElementById('waifuStoryMoodOption1').value, cookieExpireDate);
+
+    setCookie("sceneMaker_idol_center-".concat(sceneNum), document.getElementById('waifuStoryOption2').value, cookieExpireDate);
+    setCookie("sceneMaker_costume_center-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption2').value, cookieExpireDate);
+    setCookie("sceneMaker_emotion_center-".concat(sceneNum), document.getElementById('waifuStoryMoodOption2').value, cookieExpireDate);
+
+    setCookie("sceneMaker_idol_right-".concat(sceneNum), document.getElementById('waifuStoryOption3').value, cookieExpireDate);
+    setCookie("sceneMaker_costume_right-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption3').value, cookieExpireDate);
+    setCookie("sceneMaker_emotion_right-".concat(sceneNum), document.getElementById('waifuStoryMoodOption3').value, cookieExpireDate);
+
+
+
+    setCookie("sceneMaker_dialogue-".concat(sceneNum), document.getElementById("story-textfield").value, cookieExpireDate);
+    setCookie("sceneMaker_speakerName-".concat(sceneNum), document.getElementById("story-speaker-textfield").value, cookieExpireDate);
+
+    alert('Scene was saved successfully!');
+}
+
+function loadSceneCookie()
+{
+	var scrapePath = "./stories/images/";
+
+	
+	var wallCookie = getCookie("sceneMaker_wallpaper-1");
+	if(wallCookie != null && wallCookie != "" && !isNaN(wallCookie))
+	{
+		storyBackground = getCookie("sceneMaker_wallpaper-1");
+	}
+
+	var name = getCookie("sceneMaker_idol_left-1");
+
+	if(name!= null && name != "" && isNaN(name))
+	{
+
+		/*
+		var num1 = document.getElementById(costumePath).value;
+		var num2 = document.getElementById(moodPath).value;
+		*/
+		var num1 = getCookie("sceneMaker_costume_left-1");
+		var num2 = getCookie("sceneMaker_emotion_left-1");
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+	
+		document.getElementById("idol_img_left").src = path;
+	}
+
+
+
+
+
+	var name = getCookie("sceneMaker_idol_center-1");
+
+	if(name!= null && name != "" && isNaN(name))
+	{
+
+		var num1 = getCookie("sceneMaker_costume_center-1");
+		var num2 = getCookie("sceneMaker_emotion_center-1");
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+		
+		
+		document.getElementById("idol_img_center").src = path;
+	}
+
+
+
+
+	var name = getCookie("sceneMaker_idol_right-1");
+	if(name!= null && name != "" && isNaN(name))
+	{	/*
+		var num1 = document.getElementById(costumePath).value;
+		var num2 = document.getElementById(moodPath).value;
+		*/
+		var num1 = getCookie("sceneMaker_costume_right-1");
+		var num2 = getCookie("sceneMaker_emotion_right-1");
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+		document.getElementById("idol_img_right").src = path;
+	}
+
+
+	alert('Finished loading cookies')
+}
+
+
 function changeBackgroundStory()
 {	
-	if(background < maxNumBackground-1)
+	if(storyBackground < maxNumBackground-1)
 	{
-		background = background + 1;
+		storyBackground = storyBackground + 1;
 	}else {
-		background = 0;
+		storyBackground = 0;
 	}
-	storeBackgroundCookie(background);
 
-	var backpath = 'images/background/background' + background.toString() + '.png';
+	var backpath = 'images/background/background' + storyBackground.toString() + '.png';
 	
 	document.getElementById("homeScreenStory").src=backpath;
 	
@@ -123,16 +221,15 @@ function changeBackgroundStory()
 function changeBackgroundStoryBack()
 {
 
-	if(background <= 0)
+	if(storyBackground <= 0)
 	{
-		background = maxNumBackground-1;
+		storyBackground = maxNumBackground-1;
 		
 	}else {
-		background = background - 1;
+		storyBackground = background - 1;
 	}
-	storeBackgroundCookie(background);
 
-	var backpath = 'images/background/background' + background.toString() + '.png';
+	var backpath = 'images/background/background' + storyBackground.toString() + '.png';
 
 	document.getElementById("homeScreenStory").src=backpath;
 	
@@ -347,9 +444,7 @@ function searchIdStoryMain(type)
 	var num2 = document.getElementById(moodPath).value;
 
 
-	path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png"
-
-	
+	path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";	
 
 	if(type == 'center'){
 	    document.getElementById("idol_img_center").src=path;
@@ -530,6 +625,11 @@ function addText(ctx, txt, mainTxt)
 
 }
 
+function saveCurrentScene()
+{
+	storeSceneCookie();
+}
+
 function constructGIF()
 {
 	gifshot.createGIF({
@@ -580,7 +680,6 @@ function uploadImageImgur()
 
 
 
-
 function printStoryCanvas(){
 
 	var mainTxt = document.getElementById("story-textfield").value;
@@ -610,7 +709,7 @@ function printStoryCanvas(){
 
     ctx.globalAlpha = 0.7;
    
-   ctx.drawImage(speakerbox, 65, 430, speakerbox.width, speakerbox.height);
+    ctx.drawImage(speakerbox, 65, 430, speakerbox.width, speakerbox.height);
     ctx.drawImage(speechbox, 65, 490, speechbox.width, speechbox.height);
 
     ctx.globalAlpha = 1;
@@ -633,6 +732,10 @@ function printStoryCanvas(){
 	uploadImageImgur();
 
 }
+
+
+
+
 // Loading functions
 
 loadStoryOptions();
@@ -640,3 +743,5 @@ loadStoryOptions();
 loadStoryCostumeMoodOptions(1, 'umi');
 loadStoryCostumeMoodOptions(2, 'honoka');
 loadStoryCostumeMoodOptions(3, 'kotori');
+
+loadSceneCookie();
