@@ -29,7 +29,7 @@
 
 	<script src="js/mainStorySpriteAr.js"></script>
 	<script src="js/mainStorySpriteIndividualAr.js"></script>	
-
+	
 
 
 
@@ -59,7 +59,7 @@
 		        document.body.appendChild(animatedImage);
 		    }
 		});
-	
+		
 	</script>
 
 
@@ -101,15 +101,15 @@
 		<tr>
 			<td>
 				<input type="text" id="card_id-left" class="form-control" placeholder='Card ID Number (ex: 46)'>
-					<div class="radio">
+					<div class="radio" >
 					  <label>
-					    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-left" value="no" checked>
+					    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-no-left" value="no"  checked>
 					    	<font>Non-idolized</font>
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-left" value="yes">
+					    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-yes-left" value="yes">
 					    	<font>Idolized</font>
 					  </label>
 					</div>
@@ -120,13 +120,13 @@
 				<input type="text" id="card_id-center" class="form-control" placeholder='Card ID Number (ex: 46)'>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-center" value="no" checked>
+					    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-no-center" value="no" checked>
 					    	<font>Non-idolized</font>
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-center" value="yes">
+					    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-yes-center" value="yes">
 					    	<font>Idolized</font>
 					  </label>
 					</div>
@@ -137,13 +137,13 @@
 				<input type="text" id="card_id-right" class="form-control" placeholder='Card ID Number (ex: 46)'>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-right" value="no" checked>
+					    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-no-right" value="no" checked>
 					    	<font>Non-idolized</font>
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-right" value="yes">
+					    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-yes-right" value="yes">
 					    	<font>Idolized</font>
 					  </label>
 					</div>
@@ -161,19 +161,20 @@
  				<select id="waifuStoryOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 0);searchIdStoryMain('left')"></select>
  				<select id="waifuStoryCostumeOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 1);searchIdStoryMain('left')"></select>
  				<select id="waifuStoryMoodOption1" style="width:100%;" onchange="searchIdStoryMain('left')"></select>
-
+ 				<button style='width:100%' type="button" id="search_but-left" class="btn btn-primary" onclick="searchIdStoryMain('left')">Add</button>
  			</td>
  			<td>
  				<select id="waifuStoryOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 0);searchIdStoryMain('center')"></select>
  				<select id="waifuStoryCostumeOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 1);searchIdStoryMain('center')"></select>
  				<select id="waifuStoryMoodOption2" style="width:100%;" onchange="searchIdStoryMain('center')"></select>
-
+ 				<button style='width:100%' type="button" id="search_but-center" class="btn btn-primary" onclick="searchIdStoryMain('center')">Add</button>
 
  			</td>
  			<td>
  				<select id="waifuStoryOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 0);searchIdStoryMain('right')"></select>
  				<select id="waifuStoryCostumeOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 1);searchIdStoryMain('right')"></select>
  				<select id="waifuStoryMoodOption3" style="width:100%;" onchange="searchIdStoryMain('right')"></select>
+ 				<button style='width:100%' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStoryMain('right')">Add</button>
 
  			</td>
  		</tr>
@@ -188,6 +189,17 @@
  <div style="width:60%">
  	<input style='width:40%' type="text" id="story-speaker-textfield" class="form-control" placeholder='Who is speaking'>
  	
+ 	Who is speaking? :
+ 	<select id="story-speaker-select" onchange="speakerResize();">
+ 		<option value="left">Left Idol</option>
+		<option value="center" selected>Center Idol</option>
+		<option value="right">Right Idol</option>
+		<option value="???">???</option>
+		<option value="none">No One</option>
+ 	</select>
+
+
+
  </div>
  <br><br>
  <div style="width:60%">

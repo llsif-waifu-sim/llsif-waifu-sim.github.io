@@ -55,11 +55,14 @@
     clip: rect(72px,2000px,2000px,72px);
 
     max-height:770px;
+    /*max-height:870px;*/
+
     width: auto;
     height: auto;
 
     bottom: 0%;
     left: 20%;
+    /*left:15%;*/
  
     
 }
