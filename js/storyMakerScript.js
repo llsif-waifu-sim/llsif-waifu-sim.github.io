@@ -15,17 +15,21 @@ var mainTxt = "";
 var storyBackground = 0;
 var sceneNum = 1;
 
+var currentSpeaker = 'none';
 
 var storyMainSelect1 = 0;
 var storyMainSelectId1 = -1;
+var storyMainSelectName1 = "";
 var storyMainSelectIdolized1 = 0;
 
 var storyMainSelect2 = 0;
 var storyMainSelectId2 = -1;
+var storyMainSelectName2 = "";
 var storyMainSelectIdolized2 = 0;
 
 var storyMainSelect3 = 0;
 var storyMainSelectId3 = -1;
+var storyMainSelectName3 = "";
 var storyMainSelectIdolized3 = 0;
 
 function getStoryWaifuAr(name)
@@ -123,12 +127,16 @@ function getStoryWaifuAr(name)
 function storeSceneCookie()
 {
 	setCookie("sceneMaker_wallpaper-".concat(sceneNum), storyBackground, cookieExpireDate);
+	setCookie("sceneMaker_speechText-".concat(sceneNum), document.getElementById('edit_text_box').innerHTML, cookieExpireDate);
+
+
 
     setCookie("sceneMaker_idol_left-".concat(sceneNum), document.getElementById('waifuStoryOption1').value, cookieExpireDate);
     setCookie("sceneMaker_costume_left-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption1').value, cookieExpireDate);
     setCookie("sceneMaker_emotion_left-".concat(sceneNum), document.getElementById('waifuStoryMoodOption1').value, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_left-".concat(sceneNum), storyMainSelect1, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_id_left-".concat(sceneNum), storyMainSelectId1, cookieExpireDate);
+    setCookie("sceneMaker_storyMainIdolSelect_name_left-".concat(sceneNum), storyMainSelectName1, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_idolized_left-".concat(sceneNum),storyMainSelectIdolized1 , cookieExpireDate);
 
     setCookie("sceneMaker_idol_center-".concat(sceneNum), document.getElementById('waifuStoryOption2').value, cookieExpireDate);
@@ -136,6 +144,7 @@ function storeSceneCookie()
     setCookie("sceneMaker_emotion_center-".concat(sceneNum), document.getElementById('waifuStoryMoodOption2').value, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_center-".concat(sceneNum), storyMainSelect2, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_id_center-".concat(sceneNum), storyMainSelectId2, cookieExpireDate);
+    setCookie("sceneMaker_storyMainIdolSelect_name_center-".concat(sceneNum), storyMainSelectName2, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_idolized_center-".concat(sceneNum),storyMainSelectIdolized2 , cookieExpireDate);
 
     setCookie("sceneMaker_idol_right-".concat(sceneNum), document.getElementById('waifuStoryOption3').value, cookieExpireDate);
@@ -143,11 +152,11 @@ function storeSceneCookie()
     setCookie("sceneMaker_emotion_right-".concat(sceneNum), document.getElementById('waifuStoryMoodOption3').value, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_right-".concat(sceneNum), storyMainSelect3, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_id_right-".concat(sceneNum), storyMainSelectId3, cookieExpireDate);
+    setCookie("sceneMaker_storyMainIdolSelect_name_right-".concat(sceneNum), storyMainSelectName3, cookieExpireDate);
     setCookie("sceneMaker_storyMainIdolSelect_idolized_right-".concat(sceneNum),storyMainSelectIdolized3 , cookieExpireDate);
 
 
-    setCookie("sceneMaker_dialogue-".concat(sceneNum), document.getElementById("story-textfield").value, cookieExpireDate);
-    setCookie("sceneMaker_speakerName-".concat(sceneNum), document.getElementById("story-speaker-textfield").value, cookieExpireDate);
+    setCookie("sceneMaker_speaker-".concat(sceneNum), document.getElementById('story-speaker-select').value, cookieExpireDate);
 
     alert('Scene was saved successfully!');
 }
@@ -164,6 +173,13 @@ function loadSceneCookie()
 		document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';
 	}
 
+	var speaker = getCookie('sceneMaker_speaker-1');
+	document.getElementById('story-speaker-select').value = speaker;
+	document.getElementById('edit_text_box').innerHTML = getCookie("sceneMaker_speechText-1");
+	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
+
+
+	// Left idol
 	var name = getCookie("sceneMaker_idol_left-1");
 
 	if(name!= null && name != "")
@@ -181,12 +197,28 @@ function loadSceneCookie()
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
+		
+
+
+		// To load different modes based on cookies
 		if(selectMode == 0){
 			//normal mode
 			document.getElementById("idol_img_left").src = path;
+			// To assign name as speaker
+			if(speaker == 'left'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
+
 		} else if(selectMode == 1){
 			//main card mode
 			document.getElementById("card_id-left").value = getCookie("sceneMaker_storyMainIdolSelect_id_left-1");
+
+			if(speaker == 'left'){
+				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_left-1');
+			}
+			 
+
 			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_left-1');
 			if(idolized == 'no'){
 				document.getElementById('radio-idol-switch-no-left').checked = true;
@@ -202,6 +234,7 @@ function loadSceneCookie()
 	}
 
 
+	// Middle idol
 	var name = getCookie("sceneMaker_idol_center-1");
 
 	if(name!= null && name != "")
@@ -219,14 +252,27 @@ function loadSceneCookie()
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
+
 		
+		
+		// Select mode based on cookie
 		if(selectMode == 0){
 			//normal mode
 			document.getElementById("idol_img_center").src = path;
+			// To assign name as speaker
+			if(speaker == 'center'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
 		} else if(selectMode == 1){
 			//main card mode
 			document.getElementById("card_id-center").value = getCookie("sceneMaker_storyMainIdolSelect_id_center-1");
 			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_center-1');
+
+			if(speaker == 'center'){
+				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_center-1');
+			}
+
 			if(idolized == 'no'){
 				document.getElementById('radio-idol-switch-no-center').checked = true;
 
@@ -243,7 +289,7 @@ function loadSceneCookie()
 	}
 
 
-
+	// Right idol
 
 	var name = getCookie("sceneMaker_idol_right-1");
 	if(name!= null && name != "")
@@ -262,14 +308,29 @@ function loadSceneCookie()
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
+
+		// To assign name as speaker
 		
+
+		// Assign name based on cookie		
 		if(selectMode == 0){
 			//normal mode
 			document.getElementById("idol_img_right").src = path;
+
+			if(speaker == 'right'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
 		} else if(selectMode == 1){
 			//main card mode
 			document.getElementById("card_id-right").value = getCookie("sceneMaker_storyMainIdolSelect_id_right-1");
 			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_right-1');
+
+			if(speaker == 'right'){
+				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_right-1');
+			}
+
+
 			if(idolized == 'no'){
 				document.getElementById('radio-idol-switch-no-right').checked = true;
 			} else{
@@ -333,7 +394,7 @@ function setDisplay (target, str) {
 function addStoryAndSpeakerText()
 {
 	addStoryText();
-	addSpeakerText();
+	//addSpeakerText();
 }
 
 function addStoryText()
@@ -433,7 +494,8 @@ function purgeOptions()
 
 function speakerResize()
 {
-	idolSelect = document.getElementById('story-speaker-select').value;
+	var idolSelect = document.getElementById('story-speaker-select').value;
+	currentSpeaker = idolSelect;
 
 	if(idolSelect=='left'){
 		document.getElementById('idol_img_left').style.maxHeight = "810px";
@@ -446,8 +508,12 @@ function speakerResize()
 		document.getElementById('idol_img_right').style.maxHeight = "770px";
 		document.getElementById('idol_img_right').style.left = "50%";
 
-
-		document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption1').value;
+		if(storyMainSelect1 == 0){
+			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption1').value;
+		} else {
+			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName1);
+		}
+		
 
 	} else if(idolSelect == 'center'){
 		document.getElementById('idol_img_center').style.maxHeight = "810px";
@@ -459,7 +525,12 @@ function speakerResize()
 		document.getElementById('idol_img_right').style.maxHeight = "770px";
 		document.getElementById('idol_img_right').style.left = "50%";
 
-		document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption2').value;
+		
+		if(storyMainSelect2 == 0){
+			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption2').value;
+		} else {
+			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName2);
+		}
 
 	} else if(idolSelect == 'right'){
 		document.getElementById('idol_img_right').style.maxHeight = "810px";
@@ -472,7 +543,12 @@ function speakerResize()
 		document.getElementById('idol_img_center').style.maxHeight = "770px";
 		document.getElementById('idol_img_center').style.left = "20%";
 
-		document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption3').value;
+		
+		if(storyMainSelect3 == 0){
+			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption3').value;
+		} else {
+			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName3);
+		}
 	} else {
 
 		document.getElementById('idol_img_left').style.maxHeight = "770px";
@@ -572,6 +648,7 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 		}
 
 	}
+	speakerResize();
 }
 
 
@@ -600,6 +677,15 @@ function searchIdStoryMain(type)
 	var num1 = document.getElementById(costumePath).value;
 	var num2 = document.getElementById(moodPath).value;
 
+	// To determine speaker
+	if(currentSpeaker == 'left' && type == 'left'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	} else if(currentSpeaker == 'center' && type == 'center'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	} else if(currentSpeaker == 'right' && type == 'right'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	}	
+	
 
 	path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";	
 
@@ -620,6 +706,7 @@ function searchIdStory(type)
 {
 	var id;
 	var idolized;
+	var name = "";
 
 	if(type == 'center'){
 	    id = document.getElementById("card_id-center").value;
@@ -628,6 +715,9 @@ function searchIdStory(type)
 		// For storing cookie
 		storyMainSelect2 = 1;
 		storyMainSelectId2 = id;
+
+		name = searchNameById(id);
+		storyMainSelectName2 = name;
 
 	} else if(type == 'right'){
 	    id = document.getElementById("card_id-right").value;
@@ -638,6 +728,11 @@ function searchIdStory(type)
 		storyMainSelect3 = 1;
 		storyMainSelectId3 = id;
 
+		name = searchNameById(id);
+		storyMainSelectName3 = name;
+
+
+
 	} else if(type == 'left'){
 	    id = document.getElementById("card_id-left").value;
 		idolized = $('input[name="optionsRadios-left"]:checked').val();
@@ -647,11 +742,21 @@ function searchIdStory(type)
 		storyMainSelect1 = 1;
 		storyMainSelectId1 = id;
 
+		name = searchNameById(id);
+		storyMainSelectName1 = name;
+
 	} else {
 	    alert('We encountered an error here');
 	}
 
-	
+	// To update speaker text
+	if(currentSpeaker == 'left' && type == 'left'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	} else if(currentSpeaker == 'center' && type == 'center'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	} else if(currentSpeaker == 'right' && type == 'right'){
+		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
+	}
 	
 	//var idolized = 'no';
 
@@ -661,7 +766,7 @@ function searchIdStory(type)
 		return;
 	} 
 	
-	var name = searchNameById(id);
+	
 
 	
 
@@ -855,8 +960,8 @@ function uploadImageImgur()
 
 function printStoryCanvas(){
 
-	var mainTxt = document.getElementById("story-textfield").value;
-	var speakerTxt = document.getElementById("story-speaker-textfield").value;
+	var mainTxt = document.getElementById('edit_text_box').innerHTML;
+	var speakerTxt = document.getElementById('edit_speaker_box').innerHTML;
 
 	mainTxt = mainTxt.concat(" ");
 
@@ -875,10 +980,33 @@ function printStoryCanvas(){
 	c.height = img.height;
 
 
+	var imageWaifuLeftX = -150;
+	var imageWaifuLeftY = -70;
+
+	var imageWaifuCenterX = 220;
+	var imageWaifuCenterY = -70;
+	
+	var imageWaifuRightX = 580;
+	var imageWaifuRightY = -70;
+
+
+	var speaker = document.getElementById('story-speaker-select').value;
+	if(speaker == 'left')
+	{
+		imageWaifuLeftX = imageWaifuLeftX - 22;
+		imageWaifuLeftY = imageWaifuLeftY - 20;
+	} else if(speaker == 'center'){
+		imageWaifuCenterX = imageWaifuCenterX - 22;
+		imageWaifuCenterY = imageWaifuCenterY - 20;
+	} else if(speaker == 'right'){
+		imageWaifuRightX = imageWaifuRightX - 22;
+		imageWaifuRightY = imageWaifuRightY - 20;
+	}
+
     ctx.drawImage(img, 0, 0, img.width,img.height);    
-    ctx.drawImage(imgwaifuLeft, -150, -70, imgwaifuLeft.width, imgwaifuLeft.height);
-    ctx.drawImage(imgwaifuCenter, 220, -70, imgwaifuCenter.width, imgwaifuCenter.height);
-    ctx.drawImage(imgwaifuRight, 580, -70, imgwaifuRight.width, imgwaifuRight.height);
+    ctx.drawImage(imgwaifuLeft, imageWaifuLeftX, imageWaifuLeftY, imgwaifuLeft.width, imgwaifuLeft.height);
+    ctx.drawImage(imgwaifuCenter, imageWaifuCenterX, imageWaifuCenterY , imgwaifuCenter.width, imgwaifuCenter.height);
+    ctx.drawImage(imgwaifuRight, imageWaifuRightX, imageWaifuRightY, imgwaifuRight.width, imgwaifuRight.height);
 
     ctx.globalAlpha = 0.7;
    

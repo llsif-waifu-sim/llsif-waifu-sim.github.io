@@ -43,11 +43,12 @@
 	
 		gifshot.createGIF({
 		    images: [
-		        'http://i.imgur.com/pahyPBy.jpg',
-		        'http://i.imgur.com/UytBZ5k.jpg',
-		        'http://i.imgur.com/dM1Z9OK.jpg'
+		    	'http://i.imgur.com/Vnh6Pgg.jpg',
+		        'http://i.imgur.com/bmnKGwH.jpg',
+		        'http://i.imgur.com/SkaXjBr.jpg',
+		        'http://i.imgur.com/1M51q0W.jpg'
 		    ],
-		    'interval': 2,
+		    'interval': 3,
 		    'gifWidth': 1000,
 		    'gifHeight': 600,
 		}, function (obj) {
@@ -187,10 +188,8 @@
 <button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
 <br><br>
  <div style="width:60%">
- 	<input style='width:40%' type="text" id="story-speaker-textfield" class="form-control" placeholder='Who is speaking'>
- 	
  	Who is speaking? :
- 	<select id="story-speaker-select" onchange="speakerResize();">
+ 	<select id="story-speaker-select" style='width:40%;' onchange="speakerResize();">
  		<option value="left">Left Idol</option>
 		<option value="center" selected>Center Idol</option>
 		<option value="right">Right Idol</option>
