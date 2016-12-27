@@ -15,6 +15,12 @@ var mainTxt = "";
 var storyBackground = 0;
 var sceneNum = 1;
 
+
+var storyMainSelect1 = 0;
+var storyMainSelect2 = 0;
+var storyMainSelect3 = 0;
+
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -109,22 +115,22 @@ function getStoryWaifuAr(name)
 
 function storeSceneCookie()
 {
-
-
 	setCookie("sceneMaker_wallpaper-".concat(sceneNum), storyBackground, cookieExpireDate);
 
     setCookie("sceneMaker_idol_left-".concat(sceneNum), document.getElementById('waifuStoryOption1').value, cookieExpireDate);
     setCookie("sceneMaker_costume_left-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption1').value, cookieExpireDate);
     setCookie("sceneMaker_emotion_left-".concat(sceneNum), document.getElementById('waifuStoryMoodOption1').value, cookieExpireDate);
+    setCookie("sceneMaker_storyMainIdolSelect_left-".concat(sceneNum), storyMainSelect1, cookieExpireDate);
 
     setCookie("sceneMaker_idol_center-".concat(sceneNum), document.getElementById('waifuStoryOption2').value, cookieExpireDate);
     setCookie("sceneMaker_costume_center-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption2').value, cookieExpireDate);
     setCookie("sceneMaker_emotion_center-".concat(sceneNum), document.getElementById('waifuStoryMoodOption2').value, cookieExpireDate);
+    setCookie("sceneMaker_storyMainIdolSelect_center-".concat(sceneNum), storyMainSelect2, cookieExpireDate);
 
     setCookie("sceneMaker_idol_right-".concat(sceneNum), document.getElementById('waifuStoryOption3').value, cookieExpireDate);
     setCookie("sceneMaker_costume_right-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption3').value, cookieExpireDate);
     setCookie("sceneMaker_emotion_right-".concat(sceneNum), document.getElementById('waifuStoryMoodOption3').value, cookieExpireDate);
-
+    setCookie("sceneMaker_storyMainIdolSelect_right-".concat(sceneNum), storyMainSelect3, cookieExpireDate);
 
 
     setCookie("sceneMaker_dialogue-".concat(sceneNum), document.getElementById("story-textfield").value, cookieExpireDate);

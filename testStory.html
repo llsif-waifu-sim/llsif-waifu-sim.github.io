@@ -81,7 +81,7 @@
 	</div>
 
 
-<br><br><br>
+<br>
 
 	<table>
 		<tr>
@@ -93,12 +93,9 @@
 			</td>
 		</tr>
 	</table>
-<br><br>
-<button id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
-<button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
 
 
-<br><br>
+<br>
 <div id="normalIdolStorySearch" style="display:none;">
 	<table>
 		<tr>
@@ -161,25 +158,23 @@
  		<tr>
  			<td>
 
- 				<select id="waifuStoryOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 0)"></select>
- 				<select id="waifuStoryCostumeOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 1)"></select>
- 				<select id="waifuStoryMoodOption1" style="width:100%;"></select>
+ 				<select id="waifuStoryOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 0);searchIdStoryMain('left')"></select>
+ 				<select id="waifuStoryCostumeOption1" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(1, 1);searchIdStoryMain('left')"></select>
+ 				<select id="waifuStoryMoodOption1" style="width:100%;" onchange="searchIdStoryMain('left')"></select>
 
- 				<button style='width:100%' type="button" id="search_but-left" class="btn btn-primary" onclick="searchIdStoryMain('left')">Add</button>
  			</td>
  			<td>
- 				<select id="waifuStoryOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 0)"></select>
- 				<select id="waifuStoryCostumeOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 1)"></select>
- 				<select id="waifuStoryMoodOption2" style="width:100%;"></select>
+ 				<select id="waifuStoryOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 0);searchIdStoryMain('center')"></select>
+ 				<select id="waifuStoryCostumeOption2" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(2, 1);searchIdStoryMain('center')"></select>
+ 				<select id="waifuStoryMoodOption2" style="width:100%;" onchange="searchIdStoryMain('center')"></select>
 
- 				<button style='width:100%' type="button" id="search_but-center" class="btn btn-primary" onclick="searchIdStoryMain('center')">Add</button>
+
  			</td>
  			<td>
- 				<select id="waifuStoryOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 0)"></select>
- 				<select id="waifuStoryCostumeOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 1)"></select>
- 				<select id="waifuStoryMoodOption3" style="width:100%;"></select>
+ 				<select id="waifuStoryOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 0);searchIdStoryMain('right')"></select>
+ 				<select id="waifuStoryCostumeOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 1);searchIdStoryMain('right')"></select>
+ 				<select id="waifuStoryMoodOption3" style="width:100%;" onchange="searchIdStoryMain('right')"></select>
 
- 				<button style='width:100%' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStoryMain('right')">Add</button>
  			</td>
  		</tr>
  	</table> 	
@@ -187,6 +182,9 @@
  </div>
  
  <br><br>
+ <button id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
+<button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
+<br><br>
  <div style="width:60%">
  	<input style='width:40%' type="text" id="story-speaker-textfield" class="form-control" placeholder='Who is speaking'>
  	
