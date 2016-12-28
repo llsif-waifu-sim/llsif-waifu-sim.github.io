@@ -40,7 +40,7 @@
 	<script src='js/gifshot.js'></script>
 
 	<script>
-	
+		/*
 		gifshot.createGIF({
 		    images: [
 		    	'http://i.imgur.com/Vnh6Pgg.jpg',
@@ -60,13 +60,28 @@
 		        document.body.appendChild(animatedImage);
 		    }
 		});
-		
+		*/
 	</script>
 
 
 	<!-- Testing stuff xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-<br><br>
+
+
+
+
+
 <center>
+	<h2><b><div id="sceneNum_box">Frame 1</div></b></h2>
+
+	<select id="story-line-select-option" style='width:10%;' onchange="changeScene();">
+	 	<option value="1">Frame 1</option>
+	</select>
+	<button onclick='addNewScene();'>+</button>
+	<button onclick='removeLastScene();'>-</button>
+	<br>
+	<div id="sceneLoading_box"></div>
+	<br><br><br>
+
 	<div id="container">
 	    	<img id='homeScreenStory' src='images/background/background0.png'>
 	    	<img id="idol_img_left" src='stories/images/umi_01_01.png'>
