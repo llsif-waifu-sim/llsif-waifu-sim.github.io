@@ -122,43 +122,157 @@ function getStoryWaifuAr(name)
 	return newArray;
 }
 
+function getCertainCookieIndex(certainCookie)
+{
+	// To search for "|"th index of a certain cookie value
+
+	if(certainCookie == "alreadySaved"){
+		return 0;
+	} else if(certainCookie == "wallpaper"){
+		return 1;
+	} else if(certainCookie == "idol_left"){
+		return 2;
+	} else if(certainCookie == "costume_left"){
+		return 3;
+	} else if(certainCookie == "emotion_left"){
+		return 4;
+	} else if(certainCookie == "storyMain_left"){
+		return 5;
+	} else if(certainCookie == "storyMain_id_left"){
+		return 6;
+	}else if(certainCookie == "storyMain_name_left"){
+		return 7;
+	}else if(certainCookie == "storyMain_idolized_left"){
+		return 8;
+	}else if(certainCookie == "idol_center"){
+		return 9;
+	}else if(certainCookie == "costume_center"){
+		return 10;
+	}else if(certainCookie == "emotion_center"){
+		return 11;
+	}else if(certainCookie == "storyMain_center"){
+		return 12;
+	}else if(certainCookie == "storyMain_id_center"){
+		return 13;
+	}else if(certainCookie == "storyMain_name_center"){
+		return 14;
+	}else if(certainCookie == "storyMain_idolized_center"){
+		return 15;
+	}else if(certainCookie == "idol_right"){
+		return 16;
+	}else if(certainCookie == "costume_right"){
+		return 17;
+	}else if(certainCookie == "emotion_right"){
+		return 18;
+	}else if(certainCookie == "storyMain_right"){
+		return 19;
+	}else if(certainCookie == "storyMain_id_right"){
+		return 20;
+	}else if(certainCookie == "storyMain_name_right"){
+		return 21;
+	}else if(certainCookie == "storyMain_idolized_right"){
+		return 22;
+	}else if(certainCookie == "speaker"){
+		return 23;
+	}else if(certainCookie == "speech"){
+		return 24;
+	}
+
+	alert('Certain cookie index not found, this should not happen: '.concat(certainCookie));
+	return -1;
+}
+
+function searchCertainCookie(certainCookie)
+{
+	// Searches for a certain value of a cookie (automatically determines what frame you are at)
+	var cookieStr = getCookie("sceneMaker_frame-".concat(sceneNum));
+
+
+	if(certainCookie == "alreadySaved" && (cookieStr == "" || cookieStr == null))
+	{
+		// If this is a frame we are transfering and not yet saved
+		return "0";
+	}
+
+	var cookieIndex = getCertainCookieIndex(certainCookie);
+
+	var dashCounter = 0;
+	for(var i = 0; i < cookieStr.length; i++)
+	{
+		// Iterate until we encounter a dash
+		if(dashCounter == cookieIndex){
+			// Extract the string if we arrived at nth dash
+
+			var tempStr = "";
+		
+			while(true)
+			{
+				// Iterate through the entire string that we are going to extract
+				if(cookieStr.charAt(i) == '|' || i >= cookieStr.length){
+					// Return if we arrived at end of extracted string or is extracting dialouge text
+					return tempStr;
+				} 
+
+				// Append character to string to extract
+				tempStr = tempStr.concat(cookieStr.charAt(i));
+				i = i+1;
+			}
+			return tempStr;
+
+		} else if(cookieStr.charAt(i) == "|"){
+			dashCounter = dashCounter + 1;
+		}
+		
+	}
+
+	alert('Cookie not found, this should not happen (searchCertainCookie): '.concat(certainCookie));
+
+	return null;
+}
+
+function storeMaxNumOfSceneCookie()
+{
+	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
+}
+
 function storeSceneCookie(messageOff)
 {
+	var cookieStr = "";
+	storeMaxNumOfSceneCookie();
+
 	// Global cookie for all frames
-	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
+	cookieStr = cookieStr.concat("1","|"); //alreadySaved
+	cookieStr = cookieStr.concat(storyBackground,"|"); // wallpaper
+	
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption1').value, "|"); //idol_left
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption1').value,"|"); //costume_left
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption1').value,"|");//emotion_left
+	cookieStr = cookieStr.concat(storyMainSelect1,"|"); //storyMainIdolSelect_left
+	cookieStr = cookieStr.concat(storyMainSelectId1,"|"); //storyMainIdolSelect_id_left
+	cookieStr = cookieStr.concat(storyMainSelectName1,"|"); //storyMainIdolSelect_name_left
+	cookieStr = cookieStr.concat(storyMainSelectIdolized1,"|"); //storyMainIdolSelect_idolized_left
+	
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption2').value, "|"); //idol_center
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption2').value,"|"); //costume_center
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption2').value,"|");//emotion_center
+	cookieStr = cookieStr.concat(storyMainSelect2,"|"); //storyMainIdolSelect_center
+	cookieStr = cookieStr.concat(storyMainSelectId2,"|"); //storyMainIdolSelect_id_center
+	cookieStr = cookieStr.concat(storyMainSelectName2,"|"); //storyMainIdolSelect_name_center
+	cookieStr = cookieStr.concat(storyMainSelectIdolized2,"|"); //storyMainIdolSelect_idolized_center
 
-	// Dependendant on different frames
-	setCookie("sceneMaker_alreadySaved-".concat(sceneNum), 1, cookieExpireDate);
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption3').value, "|"); //idol_right
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption3').value,"|"); //costume_right
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption3').value,"|");//emotion_right
+	cookieStr = cookieStr.concat(storyMainSelect3,"|"); //storyMainIdolSelect_right
+	cookieStr = cookieStr.concat(storyMainSelectId3,"|"); //storyMainIdolSelect_id_right
+	cookieStr = cookieStr.concat(storyMainSelectName3,"|"); //storyMainIdolSelect_name_right
+	cookieStr = cookieStr.concat(storyMainSelectIdolized3,"|"); //storyMainIdolSelect_idolized_right
 
-	setCookie("sceneMaker_wallpaper-".concat(sceneNum), storyBackground, cookieExpireDate);
-	setCookie("sceneMaker_speechText-".concat(sceneNum), document.getElementById('edit_text_box').innerHTML, cookieExpireDate);
-
-    setCookie("sceneMaker_idol_left-".concat(sceneNum), document.getElementById('waifuStoryOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_left-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_left-".concat(sceneNum), document.getElementById('waifuStoryMoodOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_left-".concat(sceneNum), storyMainSelect1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_left-".concat(sceneNum), storyMainSelectId1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_left-".concat(sceneNum), storyMainSelectName1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_left-".concat(sceneNum),storyMainSelectIdolized1 , cookieExpireDate);
-
-    setCookie("sceneMaker_idol_center-".concat(sceneNum), document.getElementById('waifuStoryOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_center-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_center-".concat(sceneNum), document.getElementById('waifuStoryMoodOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_center-".concat(sceneNum), storyMainSelect2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_center-".concat(sceneNum), storyMainSelectId2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_center-".concat(sceneNum), storyMainSelectName2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_center-".concat(sceneNum),storyMainSelectIdolized2 , cookieExpireDate);
-
-    setCookie("sceneMaker_idol_right-".concat(sceneNum), document.getElementById('waifuStoryOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_right-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_right-".concat(sceneNum), document.getElementById('waifuStoryMoodOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_right-".concat(sceneNum), storyMainSelect3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_right-".concat(sceneNum), storyMainSelectId3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_right-".concat(sceneNum), storyMainSelectName3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_right-".concat(sceneNum),storyMainSelectIdolized3 , cookieExpireDate);
+	cookieStr = cookieStr.concat(document.getElementById('story-speaker-select').value ,"|"); //speaker
+	cookieStr = cookieStr.concat(document.getElementById('edit_text_box').innerHTML, "|"); //speechText
 
 
-    setCookie("sceneMaker_speaker-".concat(sceneNum), document.getElementById('story-speaker-select').value, cookieExpireDate);
+	setCookie("sceneMaker_frame-".concat(sceneNum), cookieStr, cookieExpireDate);
 
     if(messageOff != 'messageOff'){
     	alert('Scene was saved successfully!');
@@ -167,39 +281,44 @@ function storeSceneCookie(messageOff)
 }
 
 
-
 function transferSceneCookie()
 {
 
-	setCookie("sceneMaker_wallpaper-".concat(sceneNum), storyBackground, cookieExpireDate);
-	setCookie("sceneMaker_speechText-".concat(sceneNum), document.getElementById('edit_text_box').innerHTML, cookieExpireDate);
+	var cookieStr = "";
 
-    setCookie("sceneMaker_idol_left-".concat(sceneNum), document.getElementById('waifuStoryOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_left-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_left-".concat(sceneNum), document.getElementById('waifuStoryMoodOption1').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_left-".concat(sceneNum), storyMainSelect1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_left-".concat(sceneNum), storyMainSelectId1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_left-".concat(sceneNum), storyMainSelectName1, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_left-".concat(sceneNum),storyMainSelectIdolized1 , cookieExpireDate);
+	// Global cookie for all frames
+	cookieStr = cookieStr.concat("0","|"); //alreadySaved
+	cookieStr = cookieStr.concat(storyBackground,"|"); // wallpaper
+	
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption1').value, "|"); //idol_left
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption1').value,"|"); //costume_left
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption1').value,"|");//emotion_left
+	cookieStr = cookieStr.concat(storyMainSelect1,"|"); //storyMainIdolSelect_left
+	cookieStr = cookieStr.concat(storyMainSelectId1,"|"); //storyMainIdolSelect_id_left
+	cookieStr = cookieStr.concat(storyMainSelectName1,"|"); //storyMainIdolSelect_name_left
+	cookieStr = cookieStr.concat(storyMainSelectIdolized1,"|"); //storyMainIdolSelect_idolized_left
+	
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption2').value, "|"); //idol_center
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption2').value,"|"); //costume_center
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption2').value,"|");//emotion_center
+	cookieStr = cookieStr.concat(storyMainSelect2,"|"); //storyMainIdolSelect_center
+	cookieStr = cookieStr.concat(storyMainSelectId2,"|"); //storyMainIdolSelect_id_center
+	cookieStr = cookieStr.concat(storyMainSelectName2,"|"); //storyMainIdolSelect_name_center
+	cookieStr = cookieStr.concat(storyMainSelectIdolized2,"|"); //storyMainIdolSelect_idolized_center
 
-    setCookie("sceneMaker_idol_center-".concat(sceneNum), document.getElementById('waifuStoryOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_center-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_center-".concat(sceneNum), document.getElementById('waifuStoryMoodOption2').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_center-".concat(sceneNum), storyMainSelect2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_center-".concat(sceneNum), storyMainSelectId2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_center-".concat(sceneNum), storyMainSelectName2, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_center-".concat(sceneNum),storyMainSelectIdolized2 , cookieExpireDate);
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryOption3').value, "|"); //idol_right
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryCostumeOption3').value,"|"); //costume_right
+	cookieStr = cookieStr.concat(document.getElementById('waifuStoryMoodOption3').value,"|");//emotion_right
+	cookieStr = cookieStr.concat(storyMainSelect3,"|"); //storyMainIdolSelect_right
+	cookieStr = cookieStr.concat(storyMainSelectId3,"|"); //storyMainIdolSelect_id_right
+	cookieStr = cookieStr.concat(storyMainSelectName3,"|"); //storyMainIdolSelect_name_right
+	cookieStr = cookieStr.concat(storyMainSelectIdolized3,"|"); //storyMainIdolSelect_idolized_right
 
-    setCookie("sceneMaker_idol_right-".concat(sceneNum), document.getElementById('waifuStoryOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_costume_right-".concat(sceneNum), document.getElementById('waifuStoryCostumeOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_emotion_right-".concat(sceneNum), document.getElementById('waifuStoryMoodOption3').value, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_right-".concat(sceneNum), storyMainSelect3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_id_right-".concat(sceneNum), storyMainSelectId3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_name_right-".concat(sceneNum), storyMainSelectName3, cookieExpireDate);
-    setCookie("sceneMaker_storyMainIdolSelect_idolized_right-".concat(sceneNum),storyMainSelectIdolized3 , cookieExpireDate);
+	cookieStr = cookieStr.concat(document.getElementById('story-speaker-select').value ,"|"); //speaker
+	cookieStr = cookieStr.concat(document.getElementById('edit_text_box').innerHTML, "|"); //speechText
 
 
-    setCookie("sceneMaker_speaker-".concat(sceneNum), document.getElementById('story-speaker-select').value, cookieExpireDate);
+	setCookie("sceneMaker_frame-".concat(sceneNum), cookieStr, cookieExpireDate);
 
    
 }
@@ -211,18 +330,18 @@ function loadSceneCookie()
 	var scrapePath = "./stories/images/";
 
 	
-	var wallCookie = getCookie("sceneMaker_wallpaper-".concat(sceneNum));
+	var wallCookie = searchCertainCookie("wallpaper"); 
 
 	if(wallCookie != null && wallCookie != "" && !isNaN(wallCookie))
 	{
-		storyBackground = getCookie("sceneMaker_wallpaper-".concat(sceneNum));
+		storyBackground = wallCookie;
 
 		document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';
 	} else {
 		document.getElementById("homeScreenStory").src = 'images/background/background0.png';
 	}
 
-	var speaker = getCookie('sceneMaker_speaker-'.concat(sceneNum));
+	var speaker = searchCertainCookie("speaker");
 	if(speaker != null && speaker != ""){
 		document.getElementById('story-speaker-select').value = speaker;
 	} else {
@@ -230,24 +349,23 @@ function loadSceneCookie()
 		document.getElementById('story-speaker-select').value = speaker;
 	}
 
-	document.getElementById('edit_text_box').innerHTML = getCookie("sceneMaker_speechText-".concat(sceneNum));
+	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
 
 	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
 
 
 	// Left idol
-	var name = getCookie("sceneMaker_idol_left-".concat(sceneNum));
+	var name = searchCertainCookie("idol_left");
 
 
 	if(name!= null && name != "")
 	{
 
-		var num1 = getCookie("sceneMaker_costume_left-".concat(sceneNum));
+		var num1 = searchCertainCookie("costume_left");
+		var num2 = searchCertainCookie("emotion_left");
 
-		var num2 = getCookie("sceneMaker_emotion_left-".concat(sceneNum));
 
-
-		var selectMode = getCookie("sceneMaker_storyMainIdolSelect_left-".concat(sceneNum));
+		var selectMode = searchCertainCookie("storyMain_left");
 
 
 		document.getElementById('waifuStoryOption1').value = name;
@@ -273,16 +391,16 @@ function loadSceneCookie()
 
 		} else if(selectMode == 1){
 			//main card mode
-			document.getElementById("card_id-left").value = getCookie("sceneMaker_storyMainIdolSelect_id_left-".concat(sceneNum));
+			document.getElementById("card_id-left").value = searchCertainCookie("storyMain_id_left");
 
 
 			if(speaker == 'left'){
-				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_left-'.concat(sceneNum));
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_left");
 
 			}
 			 
 
-			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_left-'.concat(sceneNum));
+			var idolized = searchCertainCookie("storyMain_idolized_left");
 
 			if(idolized == 'no'){
 				document.getElementById('radio-idol-switch-no-left').checked = true;
@@ -301,17 +419,17 @@ function loadSceneCookie()
 
 
 	// Middle idol
-	var name = getCookie("sceneMaker_idol_center-".concat(sceneNum));
+	var name = searchCertainCookie("idol_center");
 
 
 	if(name!= null && name != "")
 	{
-		var num1 = getCookie("sceneMaker_costume_center-".concat(sceneNum));
+		var num1 = searchCertainCookie("costume_center");
 
-		var num2 = getCookie("sceneMaker_emotion_center-".concat(sceneNum));
+		var num2 = searchCertainCookie("emotion_center");
 
 
-		var selectMode = getCookie("sceneMaker_storyMainIdolSelect_center-".concat(sceneNum));
+		var selectMode = searchCertainCookie("storyMain_center");
 
 
 		document.getElementById('waifuStoryOption2').value = name;
@@ -336,13 +454,13 @@ function loadSceneCookie()
 
 		} else if(selectMode == 1){
 			//main card mode
-			document.getElementById("card_id-center").value = getCookie("sceneMaker_storyMainIdolSelect_id_center-".concat(sceneNum));
+			document.getElementById("card_id-center").value = searchCertainCookie("storyMain_id_center");
 
-			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_center-'.concat(sceneNum));
+			var idolized =  searchCertainCookie("storyMain_idolized_center");
 
 
 			if(speaker == 'center'){
-				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_center-'.concat(sceneNum));
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_center");
 
 			}
 
@@ -365,16 +483,16 @@ function loadSceneCookie()
 
 	// Right idol
 
-	var name = getCookie("sceneMaker_idol_right-".concat(sceneNum));
+	var name = searchCertainCookie("idol_right");
 
 	if(name!= null && name != "")
 	{	
-		var num1 = getCookie("sceneMaker_costume_right-".concat(sceneNum));
+		var num1 = searchCertainCookie("costume_right");
 
-		var num2 = getCookie("sceneMaker_emotion_right-".concat(sceneNum));
+		var num2 = searchCertainCookie("emotion_right");;
 
 
-		var selectMode = getCookie("sceneMaker_storyMainIdolSelect_right-".concat(sceneNum));
+		var selectMode = searchCertainCookie("storyMain_right");
 
 
 		document.getElementById('waifuStoryOption3').value = name;
@@ -401,13 +519,13 @@ function loadSceneCookie()
 
 		} else if(selectMode == 1){
 			//main card mode
-			document.getElementById("card_id-right").value = getCookie("sceneMaker_storyMainIdolSelect_id_right-".concat(sceneNum));
+			document.getElementById("card_id-right").value = searchCertainCookie("storyMain_id_right");
 
-			var idolized = getCookie('sceneMaker_storyMainIdolSelect_idolized_right-'.concat(sceneNum));
+			var idolized = searchCertainCookie("storyMain_idolized_right");
 
 
 			if(speaker == 'right'){
-				document.getElementById('edit_speaker_box').innerHTML = getCookie('sceneMaker_storyMainIdolSelect_name_right-'.concat(sceneNum));
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_right");
 
 			}
 
@@ -438,12 +556,10 @@ function changeScene()
 
 	// Check if the scene we are going to load already has a saved file
 	sceneNum = sceneNumToLoad;
-	var alreadySaved = getCookie('sceneMaker_alreadySaved-'.concat(parseInt(sceneNum)));
-	alert(alreadySaved);
-	alert('sceneMaker_alreadySaved-'.concat(sceneNum));
-	if(alreadySaved == null || alreadySaved == "")
-	{
+	var alreadySaved =  searchCertainCookie("alreadySaved");
 
+	if(alreadySaved == "0")
+	{
 		// if we find out nothing has been saved in that scene, we want to transfer prev scene to this scene
 		sceneNum = sceneNumToLeave;
 		loadSceneCookie();
@@ -457,10 +573,12 @@ function changeScene()
 		speakerResize();
 
 		
-	} else {
+	} else if(alreadySaved == "1"){
 		// load scene that was saved already
 
 		loadSceneCookie();
+	} else {
+		alert('Something went wrong when changing scene. This should not happen');
 	}
 	document.getElementById('sceneNum_box').innerHTML = "Frame ".concat(sceneNum);
 	document.getElementById('sceneLoading_box').innerHTML = "";
@@ -499,7 +617,7 @@ function loadTotalFrameList()
 
 	if(maxNumOfSceneCookie != null && maxNumOfSceneCookie!='')
 	{
-		maxNumOfScene = getCookie("sceneMaker_maxNumOfScene");
+		maxNumOfScene = maxNumOfSceneCookie;
 		for(var i=2; i - 1 < maxNumOfScene; i++)
 		{
 			var x = document.getElementById('story-line-select-option');
