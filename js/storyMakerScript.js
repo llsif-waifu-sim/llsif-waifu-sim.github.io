@@ -674,21 +674,19 @@ function setDisplay (target, str) {
   document.getElementById(target).style.display = str;
 }
 
-function addStoryAndSpeakerText()
-{
-	addStoryText();
-	//addSpeakerText();
-}
 
 function addStoryText()
 {
-	document.getElementById('edit_text_box').innerHTML = document.getElementById("story-textfield").value;
+	// Santize input, replace all "|" with empty character
+	var tempStr = document.getElementById("story-textfield").value;
+	tempStr = tempStr.replace(/\|/g,"");
+
+	// Display text
+	document.getElementById('edit_text_box').innerHTML = tempStr;
+	document.getElementById("story-textfield").value = tempStr;
 }
 
-function addSpeakerText()
-{
-	document.getElementById('edit_speaker_box').innerHTML = document.getElementById("story-speaker-textfield").value;
-}
+
 
 // FOR INITALIZATION ONLY
 function loadStoryOptions()
@@ -1316,7 +1314,11 @@ function printStoryCanvas(){
 	uploadImageImgur();
 
 }
-
+$(document).ready(function(){
+	 $("#story-textfield").on("change keyup paste", function(){
+	    addStoryText();
+	})
+});
 
 function sceneMakerInitalization()
 {

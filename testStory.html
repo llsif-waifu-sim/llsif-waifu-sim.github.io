@@ -80,7 +80,18 @@
 	<button onclick='removeLastScene();'>-</button>
 	<br>
 	<div id="sceneLoading_box"></div>
-	<br><br><br>
+	<br>
+	<table>
+		<tr style='width:400px'>
+			<td style='padding-right:20px;'>
+				<button style='width:240px;' type="button" class="btn btn-info" onclick="changeBackgroundStoryBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td style='padding-left:20px;'>
+				<button style='width:240px' type="button" class="btn btn-info" onclick="changeBackgroundStory()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+			</td>
+		</tr>
+	</table>
+	<br><br>
 
 	<div id="container">
 	    	<img id='homeScreenStory' src='images/background/background0.png'>
@@ -99,19 +110,7 @@
 
 <br>
 
-	<table>
-		<tr>
-			<td style='width:300'>
-				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundStoryBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
-			</td>
-			<td>
-				<button style='width:240' type="button" class="btn btn-info" onclick="changeBackgroundStory()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
-			</td>
-		</tr>
-	</table>
 
-
-<br>
 <div id="normalIdolStorySearch" style="display:none;">
 	<table>
 		<tr>
@@ -198,10 +197,9 @@
 
  </div>
  
- <br><br>
- <button id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
-<button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
-<br><br>
+
+<br>
+
  <div style="width:60%">
  	Who is speaking? :
  	<select id="story-speaker-select" style='width:40%;' onchange="speakerResize();">
@@ -215,13 +213,15 @@
 
 
  </div>
- <br><br>
+ <br>
  <div style="width:60%">
- 	<input type="text" id="story-textfield" class="form-control" placeholder='Enter dank meme text here'>
- 	<button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="addStoryAndSpeakerText();">Insert Text</button>
+ 	<input type="text" id="story-textfield" class="form-control" placeholder='Enter dialouge text here (max: 220 characters)' maxlength="220" >
+ 	<!--<button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="addStoryText();">Insert Text</button>-->
  	
  </div>
-
+ <br>
+ <button id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
+<button id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
  <br><br>
 
 
