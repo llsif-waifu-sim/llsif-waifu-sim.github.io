@@ -368,7 +368,6 @@ function loadSceneCookie(message)
 	// Left idol
 	var name = searchCertainCookie("idol_left");
 
-	alert(name);
 	if(name!= null && name != "")
 	{
 
