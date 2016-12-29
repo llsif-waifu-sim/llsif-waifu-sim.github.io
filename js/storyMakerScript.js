@@ -1517,7 +1517,7 @@ function convertAllSceneToGIF()
 		loadSceneCookieForUpload();
 	
 
-		alert('Testing');
+		alert(imgLoaders);
 
 		var p = 0;
 		while(p != 1){
