@@ -1543,6 +1543,9 @@ function convertAllSceneToGIF()
 	$.when.apply(null, imgLoaders).done(function() {
 		alert('Starting to construct GIF');
 		constructGIF();
+
+		sceneNum = prevSceneNum;
+		loadSceneCookie();
 	});
 	alert('Finishing constructing GIF');
 	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
