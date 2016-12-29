@@ -1289,7 +1289,7 @@ function convertAllSceneToGIF()
 		loadSceneCookie('printStoryCanvas');
 		loadSceneCookie('printStoryCanvas');
 
-		
+		alert('Testing');
 		uploadImageImgur();
 		//alert('leaving');
 		sceneNum = i + 1;
