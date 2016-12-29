@@ -1492,13 +1492,52 @@ function uploadImageURL()
 
 
 
+function buildUploadArray()
+{
+	var sceneUploadAR = [];
+
+	for(var i=1; i - 1 < maxNumOfScene;i++)
+	{
+		var alreadySaved = getCookie("sceneMaker_frame-".concat(sceneNum)).charAt(0);
+		if(alreadySaved == "0"){
+			sceneNum = i + 1;
+			continue;
+		}
+		sceneUploadAR.push(i);
+	}
+	return sceneUploadAR;
+
+}
+
 function convertAllSceneToGIF()
 {
 	var prevSceneNum = sceneNum;
 
 	document.getElementById('uploadInProcessDiv').style.display = "block";
-	sceneNum = 1;
 
+	var sceneUploadAR = buildUploadArray();
+
+	sceneUploadAR.forEach(function(sceneVar, i){
+		alert('Doing forEach scene: '.concat(sceneVar));
+
+		sceneNum = parseInt(sceneVar);
+
+		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
+		LoadImageForUpload(); // Load images
+
+		$.when.apply(null, imgLoaders).done(function() {
+			alert('Entering for sceneNum: '.concat(sceneNum));
+			// callback when everything was loaded
+			printStoryCanvas();
+			uploadImageURL();
+			//alert('Leaving');
+		});
+	});
+
+
+
+	/*
+	sceneNum = 1;
 	
 	// Upload all saved frames to Imgur
 	for(var i=1; i - 1 < maxNumOfScene;i++)
@@ -1522,7 +1561,6 @@ function convertAllSceneToGIF()
 		var p = 0;
 		$.when.apply(null, imgLoaders).done(function() {
 			p = 1;
-			alert(imgLoaders);
 			alert('Entering for sceneNum: '.concat(sceneNum));
 			// get scene number
 
@@ -1543,6 +1581,7 @@ function convertAllSceneToGIF()
 
 		sceneNum = i + 1;
 	}
+	*/
 	
 	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF. . .";
 	// construct GIF
