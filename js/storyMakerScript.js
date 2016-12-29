@@ -1422,7 +1422,7 @@ function printStoryCanvas(){
 	ctx.fillText(speakerTxt, 78, 465);
 	//uploadImageImgur();
 
-
+	/*
 	//////////////
 	var encoder = new GIFEncoder();
 	encoder.setRepeat(0);
@@ -1438,15 +1438,11 @@ function printStoryCanvas(){
 	encoder.addFrame(imgData , true);
 
 	encoder.finish();
-	/*
-  	var binary_gif = encoder.stream().getData(); //notice this is different from the as3gif package!
-  	var data_url = 'data:image/gif;base64,'+encode64(binary_gif);
 
-  	document.getElementById('imageGIF').src = data_url;
-  	*/
   	document.getElementById('imageGIF').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData())
 	alert(document.getElementById('imageGIF').src);
 	///////////
+	*/
 	alert('Loaded main stuff to canvas');
 }
 
