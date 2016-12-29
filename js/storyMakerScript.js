@@ -1527,8 +1527,9 @@ function convertAllSceneToGIF()
 			    printStoryCanvas();
 			    uploadImageURL();
 			    p = 1;
+			    alert('Leaving');
 			});
-			alert('Leaving');
+			
 		}
 
 		sceneNum = i + 1;
