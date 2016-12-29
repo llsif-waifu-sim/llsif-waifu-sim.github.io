@@ -1521,7 +1521,7 @@ function convertAllSceneToGIF()
 
 
 		$.when.apply(null, imgLoaders).done(function() {
-			alert('Entering for sceneNum: ', sceneNum);
+			alert('Entering for sceneNum: '.concat(sceneNum));
 			// callback when everything was loaded
 			printStoryCanvas();
 			uploadImageURL();
