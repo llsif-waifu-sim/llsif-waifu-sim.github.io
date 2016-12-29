@@ -566,13 +566,14 @@ function loadSceneCookie(message)
 	//alert('Finished loading cookies')
 }
 
-function loadSprite(src) {
+function loadSprite(src, element) {
     var deferred = $.Deferred();
     var sprite = new Image();
     sprite.onload = function() {
         deferred.resolve();
     };
     sprite.src = src;
+    element.src = src;
     return deferred.promise();
 }
 
@@ -588,92 +589,27 @@ function LoadImageForUpload()
 	if(wallCookie != null && wallCookie != "" && !isNaN(wallCookie))
 	{
 		storyBackground = wallCookie;
-
-		document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';
-		imgLoaders.push(loadSprite(document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';));
+		loadSprite('images/background/background' + storyBackground.toString() + '.png', document.getElementById("homeScreenStory"));
 	} else {
-		document.getElementById("homeScreenStory").src = 'images/background/background0.png';
-		imgLoaders.push(loadSprite('images/background/background0.png'));
+		loadSprite('images/background/background0.png', document.getElementById("homeScreenStory"));
 	}
-
-	var speaker = searchCertainCookie("speaker");
-	if(speaker != null && speaker != ""){
-		document.getElementById('story-speaker-select').value = speaker;
-	} else {
-		speaker = 'center';
-		document.getElementById('story-speaker-select').value = speaker;
-	}
-
-	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
-
-	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
-	//alert('Loaded text');
 
 
 	// Left idol
 	var name = searchCertainCookie("idol_left");
 
-
 	if(name!= null && name != "")
 	{
-
 		var num1 = searchCertainCookie("costume_left");
 		var num2 = searchCertainCookie("emotion_left");
 
-
-		var selectMode = searchCertainCookie("storyMain_left");
-
-
-		document.getElementById('waifuStoryOption1').value = name;
-		refreshStoryCostumeMoodOptions(1, 0);
-		document.getElementById('waifuStoryCostumeOption1').value = num1;
-		refreshStoryCostumeMoodOptions(1, 1);
-		document.getElementById('waifuStoryMoodOption1').value = num2;
-
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
-
-		
-
-
-		// To load different modes based on cookies
-		if(selectMode == 0){
-			//normal mode
-			document.getElementById("idol_img_left").src = path;
-			imgLoaders.push(loadSprite(path));
-
-			// To assign name as speaker
-			if(speaker == 'left'){
-				document.getElementById('edit_speaker_box').innerHTML = name;
-			}
-
-
-		} else if(selectMode == 1){
-			//main card mode
-			document.getElementById("card_id-left").value = searchCertainCookie("storyMain_id_left");
-
-
-			if(speaker == 'left'){
-				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_left");
-
-			}
-			 
-
-			var idolized = searchCertainCookie("storyMain_idolized_left");
-
-			if(idolized == 'no'){
-				document.getElementById('radio-idol-switch-no-left').checked = true;
-			} else{
-				document.getElementById('radio-idol-switch-yes-left').checked = true;
-			}
-			searchIdStory('left');
-			
-		}
-		//alert(name);
+		loadSprite(path, document.getElementById("idol_img_left"));
 				
 	} else {
 		//alert('no left');
 		loadStoryCostumeMoodOptions(1, 'umi');
-		document.getElementById("idol_img_left").src = 'stories/images/umi_01_01.png';
+		loadSprite('stories/images/umi_01_01.png', document.getElementById("idol_img_left"));
 
 	}
 
@@ -688,58 +624,13 @@ function LoadImageForUpload()
 
 		var num2 = searchCertainCookie("emotion_center");
 
-
-		var selectMode = searchCertainCookie("storyMain_center");
-
-
-		document.getElementById('waifuStoryOption2').value = name;
-		refreshStoryCostumeMoodOptions(2, 0);
-		document.getElementById('waifuStoryCostumeOption2').value = num1;
-		refreshStoryCostumeMoodOptions(2, 1);
-		document.getElementById('waifuStoryMoodOption2').value = num2;
-
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+		loadSprite(path, document.getElementById("idol_img_center"));
 
-
-		
-		
-		// Select mode based on cookie
-		if(selectMode == 0){
-			//normal mode
-			document.getElementById("idol_img_center").src = path;
-			imgLoaders.push(loadSprite(path));
-			// To assign name as speaker
-			if(speaker == 'center'){
-				document.getElementById('edit_speaker_box').innerHTML = name;
-			}
-
-		} else if(selectMode == 1){
-			//main card mode
-			document.getElementById("card_id-center").value = searchCertainCookie("storyMain_id_center");
-
-			var idolized =  searchCertainCookie("storyMain_idolized_center");
-
-
-			if(speaker == 'center'){
-				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_center");
-
-			}
-
-			if(idolized == 'no'){
-				document.getElementById('radio-idol-switch-no-center').checked = true;
-
-			} else{
-				document.getElementById('radio-idol-switch-yes-center').checked = true;
-
-			}
-			searchIdStory('center');
-			
-		}
-		//alert(name);
 	} else {
 		//alert('no center');
 		loadStoryCostumeMoodOptions(2, 'honoka');
-		document.getElementById("idol_img_center").src = 'stories/images/honoka_01_01.png';
+		loadSprite('stories/images/honoka_01_01.png', document.getElementById("idol_img_center"));
 	}
 
 
@@ -753,59 +644,13 @@ function LoadImageForUpload()
 
 		var num2 = searchCertainCookie("emotion_right");;
 
-
-		var selectMode = searchCertainCookie("storyMain_right");
-
-
-		document.getElementById('waifuStoryOption3').value = name;
-		refreshStoryCostumeMoodOptions(3, 0);
-		document.getElementById('waifuStoryCostumeOption3').value = num1;
-		refreshStoryCostumeMoodOptions(3, 1);
-		document.getElementById('waifuStoryMoodOption3').value = num2;
-
-
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+		loadSprite(path, document.getElementById("idol_img_right"));
 
-
-		// To assign name as speaker
-		
-
-		// Assign name based on cookie		
-		if(selectMode == 0){
-			//normal mode
-			document.getElementById("idol_img_right").src = path;
-			imgLoaders.push(loadSprite(path));
-
-			if(speaker == 'right'){
-				document.getElementById('edit_speaker_box').innerHTML = name;
-			}
-
-		} else if(selectMode == 1){
-			//main card mode
-			document.getElementById("card_id-right").value = searchCertainCookie("storyMain_id_right");
-
-			var idolized = searchCertainCookie("storyMain_idolized_right");
-
-
-			if(speaker == 'right'){
-				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_right");
-
-			}
-
-
-			if(idolized == 'no'){
-				document.getElementById('radio-idol-switch-no-right').checked = true;
-			} else{
-				document.getElementById('radio-idol-switch-yes-right').checked = true;
-			}
-			searchIdStory('right');
-			
-		}
-		//alert(name);
 	} else {
 		//alert('no right');
 		loadStoryCostumeMoodOptions(3, 'kotori');
-		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
+		loadSprite('stories/images/kotori_01_01.png', document.getElementById("idol_img_right"));
 	}
 
 
@@ -1519,37 +1364,22 @@ function convertAllSceneToGIF()
 
 	var sceneUploadAR = buildUploadArray();
 
-	
-	///
-	for(var i=1; i - 1 < maxNumOfScene;i++)
-	{
-	//	alert('Doing While scene: '.concat(i));
+	sceneUploadAR.forEach(function(sceneVar, i){
+		alert('Doing forEach scene: '.concat(sceneVar));
 
-		
-		sceneNum = i;
-		
+		sceneNum = parseInt(sceneVar);
+
+		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
 		LoadImageForUpload(); // Load images
 
 		$.when.apply(null, imgLoaders).done(function() {
 			alert('Entering for sceneNum: '.concat(sceneNum));
-
-
-			sceneUploadAR.forEach(function(sceneVar, i){
-				alert('Doing forEach scene: '.concat(sceneVar));
-
-				document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
-
-				sceneNum = parseInt(sceneVar);
-
-				loadSceneCookie();
-				printStoryCanvas();
-				uploadImageURL();
-				//alert('Leaving');
-			});
+			// callback when everything was loaded
+			printStoryCanvas();
+			uploadImageURL();
+			//alert('Leaving');
 		});
-	}
-	///
-	
+	});
 
 
 
@@ -1606,7 +1436,7 @@ function convertAllSceneToGIF()
 	$.when.apply(null, imgLoaders).done(function() {
 		alert('Starting to construct GIF');
 		constructGIF();
-	dd});
+	});
 	alert('Finishing constructing GIF');
 	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
 
@@ -1617,7 +1447,7 @@ function convertAllSceneToGIF()
 
 
 function printStoryCanvas(){
-	alert('Accessing canvas');
+	//alert('Accessing canvas');
 
 	var mainTxt = document.getElementById('edit_text_box').innerHTML;
 	var speakerTxt = document.getElementById('edit_speaker_box').innerHTML;
@@ -1690,7 +1520,7 @@ function printStoryCanvas(){
 	ctx.fillText(speakerTxt, 78, 465);
 
 
-	alert('Loaded main stuff to canvas');
+	//alert('Loaded main stuff to canvas');
 }
 
 
