@@ -1521,11 +1521,14 @@ function convertAllSceneToGIF()
 
 
 		$.when.apply(null, imgLoaders).done(function() {
+
 			alert('Entering');
+			loadSceneCookie();
 			// callback when everything was loaded
 			printStoryCanvas();
 			uploadImageURL();
-			p = 1;
+			
+			sceneNum = i + 1;
 			alert('Leaving');
 		});
 			
