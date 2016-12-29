@@ -1223,7 +1223,7 @@ function constructGIF()
 	
 	gifshot.createGIF({
 		images: urlAr,
-		'interval': 3,
+		'interval': document.getElementById('gifIntervalSelect').value,
 		'gifWidth': 1000,
 		'gifHeight': 600,
 	}, function (obj) {
@@ -1251,7 +1251,6 @@ function uploadImageURL()
 	    var img = document.getElementById('story-canvas').toDataURL();
 	}
 
-	urlAr.push(img);
 
 	if (typeof(Storage) !== "undefined") {
 		localStorage.setItem("storyMaker_imageURL-".concat(sceneNum), img);

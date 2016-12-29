@@ -195,10 +195,26 @@
 
  <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="storeSceneCookie();">Save scene</button>
  <br><br>
- <!--
-<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Upload image</button>
-<br>
--->
+<h2>GIF settings</h2>
+<table>
+	<tr>
+		<td>
+			GIF Interval (time to move to next frame):
+		</td>
+		<td style='padding:10px;'>
+			 <select id='gifIntervalSelect'>
+			 	<option value='1'>1 second</option>
+			 	<option value='2' selected>2 seconds</option>
+			 	<option value='3'>3 seconds</option>
+			 	<option value='4'>4 seconds</option>
+			 	<option value='5'>5 seconds</option>
+			 </select>
+		</td>
+	</tr>
+</table>
+
+
+<br><br>
 <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="convertAllSceneToGIF();">Construct GIF</button>
 <br><br>
  
