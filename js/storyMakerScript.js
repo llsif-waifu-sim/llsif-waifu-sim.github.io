@@ -590,8 +590,10 @@ function LoadImageForUpload()
 		storyBackground = wallCookie;
 
 		document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';
+		imgLoaders.push(loadSprite(document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';));
 	} else {
 		document.getElementById("homeScreenStory").src = 'images/background/background0.png';
+		imgLoaders.push(loadSprite('images/background/background0.png'));
 	}
 
 	var speaker = searchCertainCookie("speaker");
@@ -1517,22 +1519,37 @@ function convertAllSceneToGIF()
 
 	var sceneUploadAR = buildUploadArray();
 
-	sceneUploadAR.forEach(function(sceneVar, i){
-		alert('Doing forEach scene: '.concat(sceneVar));
+	
+	///
+	for(var i=1; i - 1 < maxNumOfScene;i++)
+	{
+	//	alert('Doing While scene: '.concat(i));
 
-		sceneNum = parseInt(sceneVar);
+		
 
-		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
+		
 		LoadImageForUpload(); // Load images
 
 		$.when.apply(null, imgLoaders).done(function() {
 			alert('Entering for sceneNum: '.concat(sceneNum));
-			// callback when everything was loaded
-			printStoryCanvas();
-			uploadImageURL();
-			//alert('Leaving');
+
+
+			sceneUploadAR.forEach(function(sceneVar, i){
+				alert('Doing forEach scene: '.concat(sceneVar));
+
+				document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
+
+				sceneNum = parseInt(sceneVar);
+
+				loadSceneCookie();
+				printStoryCanvas();
+				uploadImageURL();
+				//alert('Leaving');
+			});
 		});
-	});
+	}
+	///
+	
 
 
 
