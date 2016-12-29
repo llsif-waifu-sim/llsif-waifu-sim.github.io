@@ -1529,7 +1529,7 @@ function convertAllSceneToGIF()
 			alert('Leaving');
 		});
 			
-		}
+		
 
 		sceneNum = i + 1;
 	}
