@@ -1523,6 +1523,7 @@ function convertAllSceneToGIF()
 		while(p != 1){
 
 			$.when.apply(null, imgLoaders).done(function() {
+				alert('Entering');
 			    // callback when everything was loaded
 			    printStoryCanvas();
 			    uploadImageURL();
