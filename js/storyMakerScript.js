@@ -35,6 +35,9 @@ var storyMainSelectIdolized3 = 0;
 
 var imgLoaders = [];
 
+
+
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -285,6 +288,12 @@ function storeSceneCookie(messageOff)
 
 	setCookie("sceneMaker_frame-".concat(sceneNum), cookieStr, cookieExpireDate);
 
+	// Push image to GIF array
+	printStoryCanvas();
+	uploadImageURL();
+
+	///
+
     if(messageOff != 'messageOff'){
     	alert('Scene was saved successfully!');
     }
@@ -334,11 +343,21 @@ function transferSceneCookie()
    
 }
 
+function loadImageURLToStr()
+{
+	for(var i =1; i - 1 < maxNumOfScene; i++){
+		var cookieStr = localStorage.getItem("storyMaker_imageURL-".concat(i));
+		uploadUrlStrByIndex(i, cookieStr);
+	}
+
+	
+}
 
 
 function loadSceneCookie(message)
 {
 	//alert('Starting cookies');
+
 	var scrapePath = "./stories/images/";
 
 	
@@ -560,6 +579,10 @@ function loadSceneCookie(message)
 		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
 	}
 
+	////
+	//document.getElementById('imageGIF').src = localStorage.getItem("storyMaker_imageURL-".concat(sceneNum)); // remove later
+
+	////
 	if(message == 'printStoryCanvas'){
 		printStoryCanvas();
 	}
@@ -1348,124 +1371,64 @@ function constructGIF()
 }
 
 
+
 function uploadImageURL()
 {
 	try {
-	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9)
 	} catch(e) {
-	    var img = document.getElementById('story-canvas').toDataURL().split(',')[1];
+	    var img = document.getElementById('story-canvas').toDataURL();
 	}
 
-	urlAr.push(document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9));
+	urlAr.push(img);
 
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("storyMaker_imageURL-".concat(sceneNum), img);
+	} else {
+		alert('Sorry, your browser does not support storage. Try upgrading your browser.');
+		return;
+	}
+
+
+	//document.getElementById('imageGIF').src = img;
 }
 
 
 
-function buildUploadArray()
-{
-	var sceneUploadAR = [];
-
-	for(var i=1; i - 1 < maxNumOfScene;i++)
-	{
-		var alreadySaved = getCookie("sceneMaker_frame-".concat(sceneNum)).charAt(0);
-		if(alreadySaved == "0"){
-			sceneNum = i + 1;
-			continue;
-		}
-		sceneUploadAR.push(i);
-	}
-	return sceneUploadAR;
-
-}
 
 function convertAllSceneToGIF()
 {
-	var prevSceneNum = sceneNum;
-
 	document.getElementById('uploadInProcessDiv').style.display = "block";
+	document.getElementById("sceneLoadingBox").innerHTML = "Preparing frames for conversion. . .";
 
-	var sceneUploadAR = buildUploadArray();
-
-	sceneUploadAR.forEach(function(sceneVar, i){
-		alert('Doing forEach scene: '.concat(sceneVar));
-
-		sceneNum = parseInt(sceneVar);
-
-		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
-		LoadImageForUpload(); // Load images
-
-		$.when.apply(null, imgLoaders).done(function() {
-			alert('Entering for sceneNum: '.concat(sceneNum));
-			// callback when everything was loaded
-			printStoryCanvas();
-			uploadImageURL();
-			//alert('Leaving');
-		});
-	});
-
-
-
-	/*
-	sceneNum = 1;
-	
-	// Upload all saved frames to Imgur
-	for(var i=1; i - 1 < maxNumOfScene;i++)
+	var prevSceneNum = sceneNum;
+	// upload everything to urlAR
+	for(var i=1; i - 1 < maxNumOfScene; i++)
 	{
+		sceneNum = i;
+		var alreadySaved =  searchCertainCookie("alreadySaved");
 
-		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
-
-		// ignore if scene is not saved
-		var alreadySaved = getCookie("sceneMaker_frame-".concat(sceneNum)).charAt(0);
-		if(alreadySaved == "0"){
-			sceneNum = i + 1;
-			continue;
-		}
-
-		// iterate through all cookies if scene is saved
-		LoadImageForUpload();
-	
-
-		alert(imgLoaders);
-
-		var p = 0;
-		$.when.apply(null, imgLoaders).done(function() {
-			p = 1;
-			alert('Entering for sceneNum: '.concat(sceneNum));
-			// get scene number
-
-		
-			// callback when everything was loaded
-			printStoryCanvas();
-			uploadImageURL();
-			p = 1;
-			//alert('Leaving');
-		});
-
-		while(p!=1)
+		if(alreadySaved == "0")
 		{
-
+			// if frame is unsaved, ignore it
+			continue;
+		} else if(alreadySaved == "1"){
+			// frame was saved, push it to array to convert to GIF
+			urlAr.push(localStorage.getItem("storyMaker_imageURL-".concat(i)));
+			//alert(i);
+			//alert(localStorage.getItem("storyMaker_imageURL-".concat(i)));
+		} else {
+			// This should never happen
+			alert('We encountered a problem when converting all frames to GIF: '.concat('[',alreadySaved,']'));
 		}
-		
-		
-
-		sceneNum = i + 1;
 	}
-	*/
-	
-	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF. . .";
-	// construct GIF
-	alert('Waiting to construct GIF');
-	$.when.apply(null, imgLoaders).done(function() {
-		alert('Starting to construct GIF');
-		constructGIF();
-	});
-	alert('Finishing constructing GIF');
-	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
+	sceneNum = prevSceneNum;
 
-	// Revert back to normal state
-	//sceneNum = prevSceneNum;
-	//loadSceneCookie();
+
+	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF (This may take a while, please be patient). . .";
+	//alert('going to construct GIF');
+	constructGIF();
+	
 }
 
 
@@ -1482,7 +1445,7 @@ function printStoryCanvas(){
 	var ctx = c.getContext("2d");
 
 	var img = document.getElementById("homeScreenStory");
-	alert('wallpaper: '.concat(img.src));
+
 	var imgwaifuLeft = document.getElementById("idol_img_left");
 	var imgwaifuCenter = document.getElementById("idol_img_center");
 	var imgwaifuRight = document.getElementById("idol_img_right");
@@ -1560,6 +1523,7 @@ $(document).ready(function(){
 function sceneMakerInitalization()
 {
 	loadStoryOptions();
+	loadImageURLToStr();
 	loadSceneCookie();
 	speakerResize();
 	loadTotalFrameList();

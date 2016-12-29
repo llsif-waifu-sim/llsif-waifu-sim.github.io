@@ -232,8 +232,10 @@
 
  <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="storeSceneCookie();">Save scene</button>
  <br><br>
+ <!--
 <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Upload image</button>
 <br>
+-->
 <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="convertAllSceneToGIF();">Construct GIF</button>
 <br><br>
  
@@ -257,6 +259,7 @@
 <canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;display:none;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
+ <script src="js/storyLocalStorage.js"></script>
  <script src="js/storyMakerScript.js"></script>
 
 <center><div id='gifOutputDiv'></div></center>
