@@ -572,13 +572,15 @@ function loadSprite(src, element) {
     sprite.onload = function() {
         deferred.resolve();
     };
+    alert(src);
     sprite.src = src;
     element.src = src;
+
+    var wallCookie = searchCertainCookie("wallpaper"); 
 
 
 
     var speaker = searchCertainCookie("speaker");
-    var name = searchCertainCookie("idol_center");
 
 
     document.getElementById('waifuStoryOption1').value = searchCertainCookie("idol_left");
@@ -588,13 +590,12 @@ function loadSprite(src, element) {
 
 
 	document.getElementById('story-speaker-select').value = speaker;
-	document.getElementById('edit_speaker_box').innerHTML = name;
 	
 	speakerResize();
 
 	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
 
-
+	alert('Leaving');
     return deferred.promise();
 }
 
