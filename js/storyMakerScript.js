@@ -1239,6 +1239,9 @@ function uploadImageImgur()
 	    var img = document.getElementById('story-canvas').toDataURL().split(',')[1];
 	}
 
+	urlAr.push(document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9));
+	alert(urlAr);
+	/*
 	return $.ajax({
 	    url: 'https://api.imgur.com/3/image',
 	    type: 'post',
@@ -1264,43 +1267,9 @@ function uploadImageImgur()
 		    alert(xhr.responseText.error);
 		}
 	});
+	*/
 }
 
-
-function uploadImageImageshack()
-{
-	try {
-	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
-	} catch(e) {
-	    var img = document.getElementById('story-canvas').toDataURL().split(',')[1];
-	}
-
-	return $.ajax({
-	    url: 'https://post.imageshack.us/upload_api.php',
-	    type: 'post',
-	    headers: {
-	        Authorization: 'Client-ID c2be6e0eb80a4fe'
-	    },
-	    data: {
-	        image: img
-	    },
-	    dataType: 'json',
-	    async: false, 
-	    success: function(response) {
-	        if(response.success) {
-
-	        	urlAr.push(response.data.link);
-
-	        	//alert(urlAr);
-	            //window.location = response.data.link;
-	        }
-	    },
-	    error: function(xhr, status, error) {
-	    	alert('We encounterd an ajax error');
-		    alert(xhr.responseText.error);
-		}
-	});
-}
 
 
 
@@ -1422,27 +1391,7 @@ function printStoryCanvas(){
 	ctx.fillText(speakerTxt, 78, 465);
 	//uploadImageImgur();
 
-	/*
-	//////////////
-	var encoder = new GIFEncoder();
-	encoder.setRepeat(0);
-	encoder.setDelay(3000);
-	encoder.start();
 
-	encoder.setSize(c.width, c.height);
-
-	var imgData = ctx.getImageData(0, 0, c.width, c.height);
-
-	alert(imgData);
-	encoder.addFrame(imgData , true);
-	encoder.addFrame(imgData , true);
-
-	encoder.finish();
-
-  	document.getElementById('imageGIF').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData())
-	alert(document.getElementById('imageGIF').src);
-	///////////
-	*/
 	alert('Loaded main stuff to canvas');
 }
 
