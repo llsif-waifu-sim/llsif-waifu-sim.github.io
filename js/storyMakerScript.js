@@ -1499,7 +1499,6 @@ function convertAllSceneToGIF()
 	document.getElementById('uploadInProcessDiv').style.display = "block";
 	sceneNum = 1;
 
-	waitRecursion(sceneNum);
 	
 	// Upload all saved frames to Imgur
 	for(var i=1; i - 1 < maxNumOfScene;i++)
@@ -1520,16 +1519,26 @@ function convertAllSceneToGIF()
 
 		alert(imgLoaders);
 
-	
+		var p = 0;
 		$.when.apply(null, imgLoaders).done(function() {
+			p = 1;
+			alert('Entering for sceneNum: '.concat(sceneNum));
+			// get scene number
+
+		
 			// callback when everything was loaded
 			printStoryCanvas();
 			uploadImageURL();
-		
+			p = 1;
 			//alert('Leaving');
 		});
 
-	
+		while(p!=1)
+		{
+
+		}
+		
+		
 
 		sceneNum = i + 1;
 	}
