@@ -1464,8 +1464,8 @@ function convertAllSceneToGIF()
 	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
 
 	// Revert back to normal state
-	sceneNum = prevSceneNum;
-	loadSceneCookie();
+	//sceneNum = prevSceneNum;
+	//loadSceneCookie();
 }
 
 
@@ -1482,6 +1482,7 @@ function printStoryCanvas(){
 	var ctx = c.getContext("2d");
 
 	var img = document.getElementById("homeScreenStory");
+	alert('wallpaper: '.concat(img.src));
 	var imgwaifuLeft = document.getElementById("idol_img_left");
 	var imgwaifuCenter = document.getElementById("idol_img_center");
 	var imgwaifuRight = document.getElementById("idol_img_right");
