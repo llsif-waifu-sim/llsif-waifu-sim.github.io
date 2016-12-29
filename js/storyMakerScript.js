@@ -1519,7 +1519,6 @@ function convertAllSceneToGIF()
 
 		alert(imgLoaders);
 
-		var p = 0;
 
 		$.when.apply(null, imgLoaders).done(function() {
 			alert('Entering');
