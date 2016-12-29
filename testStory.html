@@ -225,9 +225,25 @@
  <br><br>
 
 
- <button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="storeSceneCookie();">Save scene</button>
- <br>
- <button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Print image</button>
+ <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="storeSceneCookie();">Save scene</button>
+ <br><br>
+<!--<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();uploadImageImgur();">Upload image</button>-->
+<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="convertAllSceneToGIF();">Construct GIF</button>
+<br><br>
+ 
+ <div id='uploadInProcessDiv' style='display:none;'>
+ 	<table>
+ 		<tr>
+ 			<td>
+ 				<img src="images/downloading.gif" style='height:30px;width:auto;'>
+ 			</td>
+ 			<td>
+ 				<div id="sceneLoadingBox">Preparing to upload . . .</div>
+ 			</td>
+ 		</tr>
+ 	</table>
+ 	
+ </div>
 
 
 <br><br><br>
@@ -237,11 +253,9 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
  <script src="js/storyMakerScript.js"></script>
 
-<!--
-<canvas id="myCanvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.</canvas>
-<script src="js/storyGenFunct.js"></script>
--->
+<center><div id='gifOutputDiv'></div></center>
+
+
 
 </body>
 </html>

@@ -194,6 +194,13 @@ function searchCertainCookie(certainCookie)
 		return "0";
 	}
 
+	if(cookieStr == "" || cookieStr == null)
+	{
+		// Cookie was not saved yet
+		return null;
+	}
+
+
 	var cookieIndex = getCertainCookieIndex(certainCookie);
 
 	var dashCounter = 0;
@@ -234,6 +241,8 @@ function storeMaxNumOfSceneCookie()
 {
 	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
 }
+
+
 
 function storeSceneCookie(messageOff)
 {
@@ -325,7 +334,7 @@ function transferSceneCookie()
 
 
 
-function loadSceneCookie()
+function loadSceneCookie(message)
 {
 	var scrapePath = "./stories/images/";
 
@@ -543,7 +552,9 @@ function loadSceneCookie()
 		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
 	}
 
-
+	if(message == 'printStoryCanvas'){
+		printStoryCanvas();
+	}
 	//alert('Finished loading cookies')
 }
 
@@ -568,6 +579,7 @@ function changeScene()
 
 		// Change some stuff so that it looks like the scene has changed
 		document.getElementById('edit_text_box').innerHTML = "";
+		document.getElementById("story-textfield").value = "";
 		var speaker = 'center';
 		document.getElementById('story-speaker-select').value = speaker;
 		speakerResize();
@@ -1191,17 +1203,25 @@ function saveCurrentScene()
 
 function constructGIF()
 {
+	
 	gifshot.createGIF({
 		images: urlAr,
-		'interval': 1,
+		'interval': 3,
+		'gifWidth': 1000,
+		'gifHeight': 600,
 	}, function (obj) {
 			
 		if (!obj.error) {
 		    var image = obj.image, animatedImage = document.createElement('img');
 		    animatedImage.src = image;
-		    document.body.appendChild(animatedImage);
+		    document.getElementById('gifOutputDiv').appendChild(animatedImage);
+
+		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
+		    alert('Done');
+		    document.getElementById('uploadInProcessDiv').style.display = "none";
 		}
 	});
+
 }
 
 
@@ -1213,7 +1233,7 @@ function uploadImageImgur()
 	    var img = document.getElementById('story-canvas').toDataURL().split(',')[1];
 	}
 
-	$.ajax({
+	return $.ajax({
 	    url: 'https://api.imgur.com/3/image',
 	    type: 'post',
 	    headers: {
@@ -1223,20 +1243,66 @@ function uploadImageImgur()
 	        image: img
 	    },
 	    dataType: 'json',
+	    async: false, 
 	    success: function(response) {
 	        if(response.success) {
 
 	        	urlAr.push(response.data.link);
 
-	        	alert(urlAr);
-	        	constructGIF();
-	        	alert('Done');
+	        	//alert(urlAr);
 	            //window.location = response.data.link;
 	        }
-	    }
+	    },
+	    error: function(xhr, status, error) {
+	    	alert('We encounterd an ajax error');
+		    alert(xhr.responseText);
+		}
 	});
 }
 
+
+
+function convertAllSceneToGIF()
+{
+	var prevSceneNum = sceneNum;
+
+	document.getElementById('uploadInProcessDiv').style.display = "block";
+	sceneNum = 1;
+
+	// Upload all saved frames to Imgur
+	for(var i=1; i - 1 < maxNumOfScene;i++)
+	{
+		//alert(document.getElementById('sceneLoadingBox'));
+		//alert(document.getElementById('sceneLoadingBox').innerHTML);
+		document.getElementById('sceneLoadingBox').innerHTML = "Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . .");
+		//alert("Uploading ".concat(sceneNum, " out of ", maxNumOfScene, " frames. . ."));
+		// ignore if scene is not saved
+		var alreadySaved = getCookie("sceneMaker_frame-".concat(sceneNum)).charAt(0);
+		if(alreadySaved == "0"){
+			sceneNum = i + 1;
+			continue;
+		}
+
+		// iterate through all cookies if scene is saved
+		loadSceneCookie('printStoryCanvas');
+
+		
+		uploadImageImgur();
+		//alert('leaving');
+		sceneNum = i + 1;
+	}
+
+	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF. . .";
+	// construct GIF
+	//alert('Starting to construct GIF');
+	constructGIF();
+	//alert('Finishing constructing GIF');
+	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
+
+	// Revert back to normal state
+	sceneNum = prevSceneNum;
+	loadSceneCookie();
+}
 
 
 function printStoryCanvas(){
@@ -1310,10 +1376,14 @@ function printStoryCanvas(){
 	// Speaker text
 	ctx.fillText(speakerTxt, 78, 465);	
 
-
-	uploadImageImgur();
+	//uploadImageImgur();
 
 }
+
+
+
+
+
 $(document).ready(function(){
 	 $("#story-textfield").on("change keyup paste", function(){
 	    addStoryText();
