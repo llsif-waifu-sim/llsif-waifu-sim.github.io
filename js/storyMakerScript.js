@@ -342,17 +342,6 @@ function transferSceneCookie()
    
 }
 
-function loadImageURLToStr()
-{
-	for(var i =1; i - 1 < maxNumOfScene; i++){
-		var cookieStr = localStorage.getItem("storyMaker_imageURL-".concat(i));
-		uploadUrlStrByIndex(i, cookieStr);
-	}
-
-	
-}
-
-
 function loadSceneCookie(message)
 {
 
@@ -1245,6 +1234,7 @@ function constructGIF()
 		    document.getElementById('gifOutputDiv').appendChild(animatedImage);
 		    document.getElementById('gifOutputDiv').style.display = "block";
 		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
+		    urlAr = [];
 		    document.getElementById('uploadInProcessDiv').style.display = "none";
 		}
 	});
@@ -1284,7 +1274,6 @@ function convertAllSceneToGIF()
 	$('#gifOutputDiv').empty();
 
 	document.getElementById("sceneLoadingBox").innerHTML = "Preparing frames for conversion. . .";
-	loadImageURLToStr();
 
 	var prevSceneNum = sceneNum;
 	// upload everything to urlAR
@@ -1408,7 +1397,6 @@ $(document).ready(function(){
 function sceneMakerInitalization()
 {
 	loadStoryOptions();
-	loadImageURLToStr();
 	loadSceneCookie();
 	speakerResize();
 	loadTotalFrameList();
