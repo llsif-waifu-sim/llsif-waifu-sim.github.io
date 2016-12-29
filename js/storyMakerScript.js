@@ -1521,14 +1521,10 @@ function convertAllSceneToGIF()
 
 
 		$.when.apply(null, imgLoaders).done(function() {
-
-			alert('Entering');
-			loadSceneCookie();
+			alert('Entering for sceneNum: ', sceneNum);
 			// callback when everything was loaded
 			printStoryCanvas();
 			uploadImageURL();
-			
-			sceneNum = i + 1;
 			alert('Leaving');
 		});
 			
@@ -1543,9 +1539,6 @@ function convertAllSceneToGIF()
 	$.when.apply(null, imgLoaders).done(function() {
 		alert('Starting to construct GIF');
 		constructGIF();
-
-		sceneNum = prevSceneNum;
-		loadSceneCookie();
 	});
 	alert('Finishing constructing GIF');
 	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
