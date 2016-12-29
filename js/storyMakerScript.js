@@ -1514,7 +1514,7 @@ function convertAllSceneToGIF()
 		}
 
 		// iterate through all cookies if scene is saved
-		loadSceneCookie('printStoryCanvas');
+		loadSceneCookieForUpload();
 	
 
 		alert('Testing');
