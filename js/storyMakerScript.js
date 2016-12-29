@@ -336,6 +336,7 @@ function transferSceneCookie()
 
 function loadSceneCookie(message)
 {
+	alert('Starting cookies');
 	var scrapePath = "./stories/images/";
 
 	
@@ -361,12 +362,13 @@ function loadSceneCookie(message)
 	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
 
 	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
+	alert('Loaded text');
 
 
 	// Left idol
 	var name = searchCertainCookie("idol_left");
 
-
+	alert(name);
 	if(name!= null && name != "")
 	{
 
@@ -417,8 +419,9 @@ function loadSceneCookie(message)
 				document.getElementById('radio-idol-switch-yes-left').checked = true;
 			}
 			searchIdStory('left');
-			alert(name);
+			
 		}
+		alert(name);
 				
 	} else {
 		alert('no left');
@@ -482,9 +485,9 @@ function loadSceneCookie(message)
 
 			}
 			searchIdStory('center');
-			alert(name);
+			
 		}
-		
+		alert(name);
 	} else {
 		alert('no center');
 		loadStoryCostumeMoodOptions(2, 'honoka');
@@ -547,9 +550,9 @@ function loadSceneCookie(message)
 				document.getElementById('radio-idol-switch-yes-right').checked = true;
 			}
 			searchIdStory('right');
-			alert(name);
+			
 		}
-		
+		alert(name);
 	} else {
 		alert('no right');
 		loadStoryCostumeMoodOptions(3, 'kotori');
@@ -1289,9 +1292,7 @@ function convertAllSceneToGIF()
 
 		// iterate through all cookies if scene is saved
 		loadSceneCookie('printStoryCanvas');
-		loadSceneCookie('printStoryCanvas');
-		loadSceneCookie('printStoryCanvas');
-		loadSceneCookie('printStoryCanvas');
+	
 
 		alert('Testing');
 		uploadImageImgur();
