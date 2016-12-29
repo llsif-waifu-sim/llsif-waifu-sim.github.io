@@ -1520,14 +1520,15 @@ function convertAllSceneToGIF()
 
 		alert('Testing');
 
-
-		$.when.apply(null, imgLoaders).done(function() {
-		    // callback when everything was loaded
-		    printStoryCanvas();
-		    uploadImageURL();
-		});
-		alert('Leaving');
-		
+		while(true){
+			$.when.apply(null, imgLoaders).done(function() {
+			    // callback when everything was loaded
+			    printStoryCanvas();
+			    uploadImageURL();
+			    break;
+			});
+			alert('Leaving');
+		}
 		//alert('leaving');
 		sceneNum = i + 1;
 	}
