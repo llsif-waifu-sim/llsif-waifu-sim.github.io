@@ -417,10 +417,11 @@ function loadSceneCookie(message)
 				document.getElementById('radio-idol-switch-yes-left').checked = true;
 			}
 			searchIdStory('left');
+			alert(name);
 		}
 				
 	} else {
-
+		alert('no left');
 		loadStoryCostumeMoodOptions(1, 'umi');
 		document.getElementById("idol_img_left").src = 'stories/images/umi_01_01.png';
 
@@ -481,10 +482,11 @@ function loadSceneCookie(message)
 
 			}
 			searchIdStory('center');
-
+			alert(name);
 		}
 		
 	} else {
+		alert('no center');
 		loadStoryCostumeMoodOptions(2, 'honoka');
 		document.getElementById("idol_img_center").src = 'stories/images/honoka_01_01.png';
 	}
@@ -545,9 +547,11 @@ function loadSceneCookie(message)
 				document.getElementById('radio-idol-switch-yes-right').checked = true;
 			}
 			searchIdStory('right');
+			alert(name);
 		}
 		
 	} else {
+		alert('no right');
 		loadStoryCostumeMoodOptions(3, 'kotori');
 		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
 	}
