@@ -577,7 +577,7 @@ function loadSprite(src) {
 }
 
 
-function loadSceneCookieForUpload()
+function LoadImageForUpload()
 {
 	//alert('Starting cookies');
 	var scrapePath = "./stories/images/";
@@ -1514,20 +1514,29 @@ function convertAllSceneToGIF()
 		}
 
 		// iterate through all cookies if scene is saved
-		loadSceneCookieForUpload();
+		LoadImageForUpload();
 	
 
-		alert(imgLoaders);
+		//alert(imgLoaders);
 
-
+		var p = 0;
 		$.when.apply(null, imgLoaders).done(function() {
 			alert('Entering for sceneNum: '.concat(sceneNum));
+			// get scene number
+
+			loadSceneCookie();
 			// callback when everything was loaded
 			printStoryCanvas();
 			uploadImageURL();
-			alert('Leaving');
+			p = 1;
+			//alert('Leaving');
 		});
-			
+
+		while(p!=1)
+		{
+
+		}
+		
 		
 
 		sceneNum = i + 1;
@@ -1536,10 +1545,10 @@ function convertAllSceneToGIF()
 	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF. . .";
 	// construct GIF
 	alert('Waiting to construct GIF');
-	$.when.apply(null, imgLoaders).done(function() {
+	//$.when.apply(null, imgLoaders).done(function() {
 		alert('Starting to construct GIF');
 		constructGIF();
-	});
+	//dd});
 	alert('Finishing constructing GIF');
 	document.getElementById("sceneLoadingBox").innerHTML = "Processing GIF. . .";
 
