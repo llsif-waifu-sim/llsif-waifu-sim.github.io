@@ -574,6 +574,27 @@ function loadSprite(src, element) {
     };
     sprite.src = src;
     element.src = src;
+
+
+
+    var speaker = searchCertainCookie("speaker");
+    var name = searchCertainCookie("idol_center");
+
+
+    document.getElementById('waifuStoryOption1').value = searchCertainCookie("idol_left");
+    document.getElementById('waifuStoryOption2').value = searchCertainCookie("idol_center");
+    document.getElementById('waifuStoryOption3').value = searchCertainCookie("idol_right");
+
+
+
+	document.getElementById('story-speaker-select').value = speaker;
+	document.getElementById('edit_speaker_box').innerHTML = name;
+	
+	speakerResize();
+
+	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
+
+
     return deferred.promise();
 }
 
