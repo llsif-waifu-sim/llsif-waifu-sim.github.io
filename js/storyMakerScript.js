@@ -33,7 +33,6 @@ var storyMainSelectId3 = -1;
 var storyMainSelectName3 = "";
 var storyMainSelectIdolized3 = 0;
 
-var imgLoaders = [];
 
 
 
@@ -356,7 +355,7 @@ function loadImageURLToStr()
 
 function loadSceneCookie(message)
 {
-	//alert('Starting cookies');
+
 
 	var scrapePath = "./stories/images/";
 
@@ -383,7 +382,7 @@ function loadSceneCookie(message)
 	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
 
 	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
-	//alert('Loaded text');
+
 
 
 	// Left idol
@@ -441,10 +440,10 @@ function loadSceneCookie(message)
 			searchIdStory('left');
 			
 		}
-		//alert(name);
+
 				
 	} else {
-		//alert('no left');
+
 		loadStoryCostumeMoodOptions(1, 'umi');
 		document.getElementById("idol_img_left").src = 'stories/images/umi_01_01.png';
 
@@ -507,9 +506,9 @@ function loadSceneCookie(message)
 			searchIdStory('center');
 			
 		}
-		//alert(name);
+
 	} else {
-		//alert('no center');
+
 		loadStoryCostumeMoodOptions(2, 'honoka');
 		document.getElementById("idol_img_center").src = 'stories/images/honoka_01_01.png';
 	}
@@ -572,135 +571,18 @@ function loadSceneCookie(message)
 			searchIdStory('right');
 			
 		}
-		//alert(name);
+
 	} else {
-		//alert('no right');
+	
 		loadStoryCostumeMoodOptions(3, 'kotori');
 		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
 	}
 
-	////
-	//document.getElementById('imageGIF').src = localStorage.getItem("storyMaker_imageURL-".concat(sceneNum)); // remove later
 
-	////
 	if(message == 'printStoryCanvas'){
 		printStoryCanvas();
 	}
 	//alert('Finished loading cookies')
-}
-
-function loadSprite(src, element) {
-    var deferred = $.Deferred();
-    var sprite = new Image();
-    sprite.onload = function() {
-        deferred.resolve();
-    };
-    alert('beginning: '.concat(src));
-    sprite.src = src;
-    element.src = src;
-    alert('result (end): '.concat(element.src));
-
-    var wallCookie = searchCertainCookie("wallpaper"); 
-
-
-
-    var speaker = searchCertainCookie("speaker");
-
-
-    document.getElementById('waifuStoryOption1').value = searchCertainCookie("idol_left");
-    document.getElementById('waifuStoryOption2').value = searchCertainCookie("idol_center");
-    document.getElementById('waifuStoryOption3').value = searchCertainCookie("idol_right");
-
-
-
-	document.getElementById('story-speaker-select').value = speaker;
-	
-	speakerResize();
-
-	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
-
-	alert('Leaving');
-    return deferred.promise();
-}
-
-
-function LoadImageForUpload()
-{
-	//alert('Starting cookies');
-	var scrapePath = "./stories/images/";
-
-	
-	var wallCookie = searchCertainCookie("wallpaper"); 
-
-	if(wallCookie != null && wallCookie != "" && !isNaN(wallCookie))
-	{
-		storyBackground = wallCookie;
-		loadSprite('images/background/background' + storyBackground.toString() + '.png', document.getElementById("homeScreenStory"));
-	} else {
-		loadSprite('images/background/background0.png', document.getElementById("homeScreenStory"));
-	}
-
-
-	// Left idol
-	var name = searchCertainCookie("idol_left");
-
-	if(name!= null && name != "")
-	{
-		var num1 = searchCertainCookie("costume_left");
-		var num2 = searchCertainCookie("emotion_left");
-
-		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
-		loadSprite(path, document.getElementById("idol_img_left"));
-				
-	} else {
-		//alert('no left');
-		loadStoryCostumeMoodOptions(1, 'umi');
-		loadSprite('stories/images/umi_01_01.png', document.getElementById("idol_img_left"));
-
-	}
-
-
-	// Middle idol
-	var name = searchCertainCookie("idol_center");
-
-
-	if(name!= null && name != "")
-	{
-		var num1 = searchCertainCookie("costume_center");
-
-		var num2 = searchCertainCookie("emotion_center");
-
-		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
-		loadSprite(path, document.getElementById("idol_img_center"));
-
-	} else {
-		//alert('no center');
-		loadStoryCostumeMoodOptions(2, 'honoka');
-		loadSprite('stories/images/honoka_01_01.png', document.getElementById("idol_img_center"));
-	}
-
-
-	// Right idol
-
-	var name = searchCertainCookie("idol_right");
-
-	if(name!= null && name != "")
-	{	
-		var num1 = searchCertainCookie("costume_right");
-
-		var num2 = searchCertainCookie("emotion_right");;
-
-		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
-		loadSprite(path, document.getElementById("idol_img_right"));
-
-	} else {
-		//alert('no right');
-		loadStoryCostumeMoodOptions(3, 'kotori');
-		loadSprite('stories/images/kotori_01_01.png', document.getElementById("idol_img_right"));
-	}
-
-
-
 }
 
 
@@ -1361,9 +1243,8 @@ function constructGIF()
 		    var image = obj.image, animatedImage = document.createElement('img');
 		    animatedImage.src = image;
 		    document.getElementById('gifOutputDiv').appendChild(animatedImage);
-
+		    document.getElementById('gifOutputDiv').style.display = "block";
 		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
-		    alert('Done');
 		    document.getElementById('uploadInProcessDiv').style.display = "none";
 		}
 	});
@@ -1399,7 +1280,11 @@ function uploadImageURL()
 function convertAllSceneToGIF()
 {
 	document.getElementById('uploadInProcessDiv').style.display = "block";
+	document.getElementById('gifOutputDiv').style.display = "none";
+	$('#gifOutputDiv').empty();
+
 	document.getElementById("sceneLoadingBox").innerHTML = "Preparing frames for conversion. . .";
+	loadImageURLToStr();
 
 	var prevSceneNum = sceneNum;
 	// upload everything to urlAR
@@ -1425,7 +1310,7 @@ function convertAllSceneToGIF()
 	sceneNum = prevSceneNum;
 
 
-	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF (This may take a while, please be patient). . .";
+	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF, please be patient. . .";
 	//alert('going to construct GIF');
 	constructGIF();
 	
