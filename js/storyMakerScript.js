@@ -572,9 +572,10 @@ function loadSprite(src, element) {
     sprite.onload = function() {
         deferred.resolve();
     };
-    alert(src);
+    alert('beginning: '.concat(src));
     sprite.src = src;
     element.src = src;
+    alert('result (end): '.concat(element.src));
 
     var wallCookie = searchCertainCookie("wallpaper"); 
 
