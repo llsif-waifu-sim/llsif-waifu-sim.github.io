@@ -1522,6 +1522,7 @@ function convertAllSceneToGIF()
 		var p = 0;
 		$.when.apply(null, imgLoaders).done(function() {
 			p = 1;
+			alert(imgLoaders);
 			alert('Entering for sceneNum: '.concat(sceneNum));
 			// get scene number
 
