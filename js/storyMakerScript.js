@@ -1526,7 +1526,7 @@ function convertAllSceneToGIF()
 	//	alert('Doing While scene: '.concat(i));
 
 		
-
+		sceneNum = i;
 		
 		LoadImageForUpload(); // Load images
 
