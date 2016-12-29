@@ -1268,6 +1268,7 @@ function uploadImageURL()
 
 function convertAllSceneToGIF()
 {
+	urlAr = [];
 	document.getElementById('uploadInProcessDiv').style.display = "block";
 	document.getElementById('gifOutputDiv').style.display = "none";
 	$('#gifOutputDiv').empty();
