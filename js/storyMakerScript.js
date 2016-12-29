@@ -1314,6 +1314,7 @@ function convertAllSceneToGIF()
 
 
 function printStoryCanvas(){
+	alert('Accessing canvas');
 
 	var mainTxt = document.getElementById('edit_text_box').innerHTML;
 	var speakerTxt = document.getElementById('edit_speaker_box').innerHTML;
@@ -1330,6 +1331,7 @@ function printStoryCanvas(){
 	var imgwaifuRight = document.getElementById("idol_img_right");
 	var speechbox = document.getElementById("temp_text_box_img");
 	var speakerbox = document.getElementById("story_speaker_img");
+
 
     c.width  = img.width; // in pixels
 	c.height = img.height;
@@ -1384,7 +1386,7 @@ function printStoryCanvas(){
 	// Speaker text
 	ctx.fillText(speakerTxt, 78, 465);
 	//uploadImageImgur();
-
+	alert('Loaded main stuff to canvas');
 }
 
 
