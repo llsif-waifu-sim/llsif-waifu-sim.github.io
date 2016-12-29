@@ -1285,6 +1285,9 @@ function convertAllSceneToGIF()
 
 		// iterate through all cookies if scene is saved
 		loadSceneCookie('printStoryCanvas');
+		loadSceneCookie('printStoryCanvas');
+		loadSceneCookie('printStoryCanvas');
+		loadSceneCookie('printStoryCanvas');
 
 		
 		uploadImageImgur();
@@ -1374,8 +1377,7 @@ function printStoryCanvas(){
 	addText(ctx, txt, mainTxt);
 
 	// Speaker text
-	ctx.fillText(speakerTxt, 78, 465);	
-
+	ctx.fillText(speakerTxt, 78, 465);
 	//uploadImageImgur();
 
 }
