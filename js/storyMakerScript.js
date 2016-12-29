@@ -33,6 +33,8 @@ var storyMainSelectId3 = -1;
 var storyMainSelectName3 = "";
 var storyMainSelectIdolized3 = 0;
 
+var imgLoaders = [];
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -563,6 +565,251 @@ function loadSceneCookie(message)
 	}
 	//alert('Finished loading cookies')
 }
+
+function loadSprite(src) {
+    var deferred = $.Deferred();
+    var sprite = new Image();
+    sprite.onload = function() {
+        deferred.resolve();
+    };
+    sprite.src = src;
+    return deferred.promise();
+}
+
+
+function loadSceneCookieForUpload()
+{
+	alert('Starting cookies');
+	var scrapePath = "./stories/images/";
+
+	
+	var wallCookie = searchCertainCookie("wallpaper"); 
+
+	if(wallCookie != null && wallCookie != "" && !isNaN(wallCookie))
+	{
+		storyBackground = wallCookie;
+
+		document.getElementById("homeScreenStory").src = 'images/background/background' + storyBackground.toString() + '.png';
+	} else {
+		document.getElementById("homeScreenStory").src = 'images/background/background0.png';
+	}
+
+	var speaker = searchCertainCookie("speaker");
+	if(speaker != null && speaker != ""){
+		document.getElementById('story-speaker-select').value = speaker;
+	} else {
+		speaker = 'center';
+		document.getElementById('story-speaker-select').value = speaker;
+	}
+
+	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
+
+	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
+	alert('Loaded text');
+
+
+	// Left idol
+	var name = searchCertainCookie("idol_left");
+
+
+	if(name!= null && name != "")
+	{
+
+		var num1 = searchCertainCookie("costume_left");
+		var num2 = searchCertainCookie("emotion_left");
+
+
+		var selectMode = searchCertainCookie("storyMain_left");
+
+
+		document.getElementById('waifuStoryOption1').value = name;
+		refreshStoryCostumeMoodOptions(1, 0);
+		document.getElementById('waifuStoryCostumeOption1').value = num1;
+		refreshStoryCostumeMoodOptions(1, 1);
+		document.getElementById('waifuStoryMoodOption1').value = num2;
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+		
+
+
+		// To load different modes based on cookies
+		if(selectMode == 0){
+			//normal mode
+			document.getElementById("idol_img_left").src = path;
+			imgLoaders.push(loadSprite(path));
+
+			// To assign name as speaker
+			if(speaker == 'left'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
+
+		} else if(selectMode == 1){
+			//main card mode
+			document.getElementById("card_id-left").value = searchCertainCookie("storyMain_id_left");
+
+
+			if(speaker == 'left'){
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_left");
+
+			}
+			 
+
+			var idolized = searchCertainCookie("storyMain_idolized_left");
+
+			if(idolized == 'no'){
+				document.getElementById('radio-idol-switch-no-left').checked = true;
+			} else{
+				document.getElementById('radio-idol-switch-yes-left').checked = true;
+			}
+			searchIdStory('left');
+			
+		}
+		alert(name);
+				
+	} else {
+		alert('no left');
+		loadStoryCostumeMoodOptions(1, 'umi');
+		document.getElementById("idol_img_left").src = 'stories/images/umi_01_01.png';
+
+	}
+
+
+	// Middle idol
+	var name = searchCertainCookie("idol_center");
+
+
+	if(name!= null && name != "")
+	{
+		var num1 = searchCertainCookie("costume_center");
+
+		var num2 = searchCertainCookie("emotion_center");
+
+
+		var selectMode = searchCertainCookie("storyMain_center");
+
+
+		document.getElementById('waifuStoryOption2').value = name;
+		refreshStoryCostumeMoodOptions(2, 0);
+		document.getElementById('waifuStoryCostumeOption2').value = num1;
+		refreshStoryCostumeMoodOptions(2, 1);
+		document.getElementById('waifuStoryMoodOption2').value = num2;
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+
+		
+		
+		// Select mode based on cookie
+		if(selectMode == 0){
+			//normal mode
+			document.getElementById("idol_img_center").src = path;
+			imgLoaders.push(loadSprite(path));
+			// To assign name as speaker
+			if(speaker == 'center'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
+		} else if(selectMode == 1){
+			//main card mode
+			document.getElementById("card_id-center").value = searchCertainCookie("storyMain_id_center");
+
+			var idolized =  searchCertainCookie("storyMain_idolized_center");
+
+
+			if(speaker == 'center'){
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_center");
+
+			}
+
+			if(idolized == 'no'){
+				document.getElementById('radio-idol-switch-no-center').checked = true;
+
+			} else{
+				document.getElementById('radio-idol-switch-yes-center').checked = true;
+
+			}
+			searchIdStory('center');
+			
+		}
+		alert(name);
+	} else {
+		alert('no center');
+		loadStoryCostumeMoodOptions(2, 'honoka');
+		document.getElementById("idol_img_center").src = 'stories/images/honoka_01_01.png';
+	}
+
+
+	// Right idol
+
+	var name = searchCertainCookie("idol_right");
+
+	if(name!= null && name != "")
+	{	
+		var num1 = searchCertainCookie("costume_right");
+
+		var num2 = searchCertainCookie("emotion_right");;
+
+
+		var selectMode = searchCertainCookie("storyMain_right");
+
+
+		document.getElementById('waifuStoryOption3').value = name;
+		refreshStoryCostumeMoodOptions(3, 0);
+		document.getElementById('waifuStoryCostumeOption3').value = num1;
+		refreshStoryCostumeMoodOptions(3, 1);
+		document.getElementById('waifuStoryMoodOption3').value = num2;
+
+
+		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
+
+
+		// To assign name as speaker
+		
+
+		// Assign name based on cookie		
+		if(selectMode == 0){
+			//normal mode
+			document.getElementById("idol_img_right").src = path;
+			imgLoaders.push(loadSprite(path));
+
+			if(speaker == 'right'){
+				document.getElementById('edit_speaker_box').innerHTML = name;
+			}
+
+		} else if(selectMode == 1){
+			//main card mode
+			document.getElementById("card_id-right").value = searchCertainCookie("storyMain_id_right");
+
+			var idolized = searchCertainCookie("storyMain_idolized_right");
+
+
+			if(speaker == 'right'){
+				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_right");
+
+			}
+
+
+			if(idolized == 'no'){
+				document.getElementById('radio-idol-switch-no-right').checked = true;
+			} else{
+				document.getElementById('radio-idol-switch-yes-right').checked = true;
+			}
+			searchIdStory('right');
+			
+		}
+		alert(name);
+	} else {
+		alert('no right');
+		loadStoryCostumeMoodOptions(3, 'kotori');
+		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
+	}
+
+
+
+}
+
 
 function changeScene()
 {
@@ -1231,7 +1478,7 @@ function constructGIF()
 }
 
 
-function uploadImageImgur()
+function uploadImageURL()
 {
 	try {
 	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
@@ -1240,34 +1487,7 @@ function uploadImageImgur()
 	}
 
 	urlAr.push(document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9));
-	alert(urlAr);
-	/*
-	return $.ajax({
-	    url: 'https://api.imgur.com/3/image',
-	    type: 'post',
-	    headers: {
-	        Authorization: 'Client-ID c2be6e0eb80a4fe'
-	    },
-	    data: {
-	        image: img
-	    },
-	    dataType: 'json',
-	    async: false, 
-	    success: function(response) {
-	        if(response.success) {
 
-	        	urlAr.push(response.data.link);
-
-	        	//alert(urlAr);
-	            //window.location = response.data.link;
-	        }
-	    },
-	    error: function(xhr, status, error) {
-	    	alert('We encounterd an ajax error');
-		    alert(xhr.responseText.error);
-		}
-	});
-	*/
 }
 
 
@@ -1299,7 +1519,15 @@ function convertAllSceneToGIF()
 	
 
 		alert('Testing');
-		uploadImageImgur();
+
+
+		$.when.apply(null, imgLoaders).done(function() {
+		    // callback when everything was loaded
+		    printStoryCanvas();
+		    uploadImageURL();
+		});
+		alert('Leaving');
+		
 		//alert('leaving');
 		sceneNum = i + 1;
 	}
@@ -1389,7 +1617,6 @@ function printStoryCanvas(){
 
 	// Speaker text
 	ctx.fillText(speakerTxt, 78, 465);
-	//uploadImageImgur();
 
 
 	alert('Loaded main stuff to canvas');
