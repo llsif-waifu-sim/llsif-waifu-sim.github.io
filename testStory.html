@@ -37,7 +37,12 @@
 
 <body>
 	<!-- Testing stuff xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-	<script src='js/gifshot.js'></script>
+	<script src='js/gifshot.js'></script> <!-- gifshot -->
+
+	<script type="text/javascript" src="js/LZWEncoder.js"></script>
+	<script type="text/javascript" src="js/NeuQuant.js"></script>
+	<script type="text/javascript" src="js/GIFEncoder.js"></script>
+	<script type="text/javascript" src="js/b64.js"></script>
 
 	<script>
 		/*
@@ -227,7 +232,8 @@
 
  <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="storeSceneCookie();">Save scene</button>
  <br><br>
-<!--<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();uploadImageImgur();">Upload image</button>-->
+<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="printStoryCanvas();">Upload image</button>
+<br>
 <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="convertAllSceneToGIF();">Construct GIF</button>
 <br><br>
  
@@ -247,8 +253,8 @@
 
 
 <br><br><br>
-
-<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
+<img id="imageGIF">
+<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;display:none;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
  <script src="js/storyMakerScript.js"></script>
