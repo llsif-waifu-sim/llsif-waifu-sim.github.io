@@ -567,6 +567,15 @@ function loadSceneCookie(message)
 		document.getElementById("idol_img_right").src = 'stories/images/kotori_01_01.png';
 	}
 
+	$('#waifuStoryCostumeOption1').selectpicker('refresh');
+	$('#waifuStoryMoodOption1').selectpicker('refresh');
+
+	$('#waifuStoryCostumeOption2').selectpicker('refresh');
+	$('#waifuStoryMoodOption2').selectpicker('refresh');
+
+	$('#waifuStoryCostumeOption3').selectpicker('refresh');
+	$('#waifuStoryMoodOption3').selectpicker('refresh');
+
 
 	if(message == 'printStoryCanvas'){
 		printStoryCanvas();
