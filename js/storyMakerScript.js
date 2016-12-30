@@ -1604,25 +1604,25 @@ function printStoryCanvas(){
 
 
 	var imageWaifuLeftX = -150;
-	var imageWaifuLeftY = -77;
+	var imageWaifuLeftY = -70;
 
 	var imageWaifuCenterX = 220;
-	var imageWaifuCenterY = -77;
+	var imageWaifuCenterY = -70;
 	
 	var imageWaifuRightX = 580;
-	var imageWaifuRightY = -77;
+	var imageWaifuRightY = -70;
 
 
 
 
 	var emotionLeftX = 115;
-	var emotionLeftY = 70;
+	var emotionLeftY = 77;
 
 	var emotionCenterX = 470;
-	var emotionCenterY = 70;
+	var emotionCenterY = 77;
 	
 	var emotionRightX = 825;
-	var emotionRightY = 70;
+	var emotionRightY = 77;
 
 
 	var speaker = document.getElementById('story-speaker-select').value;
