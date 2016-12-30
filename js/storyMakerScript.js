@@ -622,8 +622,10 @@ function addNewScene()
 	option.value = maxNumOfScene;
 
 	x.add(option);
+	
 
 	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
+	$('#story-line-select-option').selectpicker('refresh');
 
 	alert('New frame added');
 
@@ -633,8 +635,12 @@ function removeLastScene()
 {
 	$("#story-line-select-option option[value='".concat(maxNumOfScene ,"']")).remove();
 
+
 	maxNumOfScene = parseInt(maxNumOfScene) - 1;
 	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
+	$('#story-line-select-option').selectpicker('refresh');
+	
+	
 	
 	alert('Frame '.concat(parseInt(maxNumOfScene) + 1, ' has been removed'));
 
@@ -958,6 +964,15 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 		}
 
 	}
+	//var tmp1 = '#waifuStoryCostumeOption'.concat(optionNum);
+	//var tmp2 = '#waifuStoryMoodOption'.concat(optionNum);
+
+
+
+	//alert(tmp1);
+	//$(tmp1).selectpicker('refresh');
+	//$(tmp2).selectpicker('refresh');
+
 	speakerResize();
 }
 
