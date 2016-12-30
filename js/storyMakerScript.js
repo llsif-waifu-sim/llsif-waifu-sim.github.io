@@ -126,6 +126,24 @@ function getStoryWaifuAr(name)
 	return newArray;
 }
 
+function storyRefreshAllSelects(){
+
+	$('#waifuStoryOption1').selectpicker('refresh');
+	$('#waifuStoryCostumeOption1').selectpicker('refresh');
+	$('#waifuStoryMoodOption1').selectpicker('refresh');
+
+	$('#waifuStoryOption2').selectpicker('refresh');
+	$('#waifuStoryCostumeOption2').selectpicker('refresh');
+	$('#waifuStoryMoodOption2').selectpicker('refresh');
+
+	$('#waifuStoryOption3').selectpicker('refresh');
+	$('#waifuStoryCostumeOption3').selectpicker('refresh');
+	$('#waifuStoryMoodOption3').selectpicker('refresh');
+
+	$('#story-line-select-option').selectpicker('refresh');
+	$('#story-speaker-select').selectpicker('refresh');
+}
+
 function getCertainCookieIndex(certainCookie)
 {
 	// To search for "|"th index of a certain cookie value
@@ -568,20 +586,7 @@ function loadSceneCookie(message)
 	}
 
 
-
-	$('#waifuStoryOption1').selectpicker('refresh');
-	$('#waifuStoryCostumeOption1').selectpicker('refresh');
-	$('#waifuStoryMoodOption1').selectpicker('refresh');
-
-	$('#waifuStoryOption2').selectpicker('refresh');
-	$('#waifuStoryCostumeOption2').selectpicker('refresh');
-	$('#waifuStoryMoodOption2').selectpicker('refresh');
-
-	$('#waifuStoryOption3').selectpicker('refresh');
-	$('#waifuStoryCostumeOption3').selectpicker('refresh');
-	$('#waifuStoryMoodOption3').selectpicker('refresh');
-
-	$('#story-line-select-option').selectpicker('refresh');
+	storyRefreshAllSelects();
 
 
 	if(message == 'printStoryCanvas'){
