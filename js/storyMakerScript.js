@@ -35,7 +35,9 @@ var storyMainSelectName3 = "";
 var storyMainSelectIdolized3 = 0;
 
 
-
+// [[1,[img1,img2]],[2,[img1,img2,img3]],[3,[]], etc ]
+var subImageAr = [];
+var tempSubAr = [];
 
 
 function getStoryWaifuAr(name)
@@ -142,6 +144,15 @@ function saveSubTextImages()
 {
 	// Function to create sub text images
 	var entireText = document.getElementById('edit_text_box').innerHTML;
+
+	tempSubAr = [];
+
+	// If we encounter no text, then we skip making subimages
+	if(entireText == '' || entireText.length < 4)
+	{
+		return;	
+	} 
+
 	var numSubImages = 3 				// number of sub text images
 	var numToDivide = numSubImages + 1; // amount of frames for text
 
@@ -149,8 +160,13 @@ function saveSubTextImages()
 
 	var lengthCounter = subStrLength;
 
+	
+	// Push the scene number to the temp array
+	tempSubAr.push(parseInt(sceneNum));
+
 	for(var i=1; i - 1 < numSubImages; i++)
 	{
+		
 		document.getElementById('edit_text_box').innerHTML = entireText.substring(0,lengthCounter);
 		lengthCounter = lengthCounter + subStrLength; // Increase length of substring
 
@@ -158,10 +174,13 @@ function saveSubTextImages()
 		uploadSubImageURL(i); // save subImage
 
 	}
-	
+
+	// push temp array to main subImage array
+	subImageAr.push(tempSubAr);
 
 	// revert back to original text
 	document.getElementById('edit_text_box').innerHTML = entireText;
+	tempSubAr = [];
 }
 
 function storyRefreshAllSelects(){
@@ -500,7 +519,7 @@ function storeSceneCookie(messageOff)
 	uploadImageURL();
 
 	// save sub text images
-	//saveSubTextImages();
+	saveSubTextImages();
 
 
 
@@ -1586,17 +1605,12 @@ function uploadSubImageURL(subValue)
 	    var img = document.getElementById('story-canvas').toDataURL();
 	}
 
-
-	if (typeof(Storage) !== "undefined") {
-		localStorage.setItem("storyMaker_imageURL-".concat(sceneNum, '-', subValue), img);
-	} else {
-		alert('Sorry, your browser does not support local storage :( Try upgrading your browser.');
-		return;
-	}
+	
+	tempSubAr.push(img);
 
 
-	document.getElementById('imageGIF').src = img;
-	alert('sample');
+	//document.getElementById('imageGIF').src = img;
+	//alert('sample');
 }
 
 
