@@ -500,7 +500,7 @@ function storeSceneCookie(messageOff)
 	uploadImageURL();
 
 	// save sub text images
-	saveSubTextImages();
+	//saveSubTextImages();
 
 
 
