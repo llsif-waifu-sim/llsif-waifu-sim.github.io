@@ -1630,13 +1630,62 @@ function printStoryCanvas(){
 	{
 		imageWaifuLeftX = imageWaifuLeftX - 22;
 		imageWaifuLeftY = imageWaifuLeftY - 20;
+
 	} else if(speaker == 'center'){
 		imageWaifuCenterX = imageWaifuCenterX - 22;
 		imageWaifuCenterY = imageWaifuCenterY - 20;
+
+		
+
 	} else if(speaker == 'right'){
 		imageWaifuRightX = imageWaifuRightX - 22;
 		imageWaifuRightY = imageWaifuRightY - 20;
+
+
+	
 	}
+
+
+	// Check if speaker emotion should be animated
+	var emotion = document.getElementById('waifuStoryEbubbleOption1').value;
+	if(emotion == 0 || emotion == 1){
+		 // surprised or happy
+		imageWaifuLeftY = imageWaifuLeftY - 10;
+	}else if(emotion == 3){
+		// worried
+		imageWaifuLeftY = imageWaifuLeftY + 30;
+	} else if(emotion == 5){
+		// angry
+		imageWaifuLeftY = imageWaifuLeftY + 10;
+	}
+
+	// Check if speaker emotion should be animated
+	emotion = document.getElementById('waifuStoryEbubbleOption2').value;
+	if(emotion == 0 || emotion == 1){
+		 // surprised or happy
+		imageWaifuCenterY = imageWaifuCenterY - 10;
+	}else if(emotion == 3){
+		// worried
+		imageWaifuCenterY = imageWaifuCenterY + 30;
+	}else if(emotion == 5){
+		// angry
+		imageWaifuCenterY = imageWaifuCenterY + 10;
+	}
+
+	// Check if speaker emotion should be animated
+	emotion = document.getElementById('waifuStoryEbubbleOption3').value
+	if(emotion == 0 || emotion == 1){
+		 // surprised or happy
+		imageWaifuRightY = imageWaifuRightY - 10;
+	}else if(emotion == 3){
+		// worried
+		imageWaifuRightY = imageWaifuRightY + 30;
+	}else if(emotion == 0 || emotion == 1 || emotion == 5){
+		// =angry
+		imageWaifuRightY = imageWaifuRightY + 10;
+	}
+
+
 
     ctx.drawImage(img, 0, 0, img.width,img.height);    
     ctx.drawImage(imgwaifuLeft, imageWaifuLeftX, imageWaifuLeftY, imgwaifuLeft.width, imgwaifuLeft.height);
