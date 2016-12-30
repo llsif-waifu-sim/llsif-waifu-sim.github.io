@@ -986,10 +986,10 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 		}
 
 	}
-	var tmp1 = "#waifuStoryCostumeOption".concat(optionNum);
-	var tmp2 = "#waifuStoryMoodOption".concat(optionNum);
-	$(tmp1).selectpicker('refresh');
-	$(tmp2).selectpicker('refresh');
+
+
+	$("#waifuStoryCostumeOption".concat(optionNum)).selectpicker('refresh');
+	$("#waifuStoryMoodOption".concat(optionNum)).selectpicker('refresh');
 
 	speakerResize();
 }
@@ -1259,6 +1259,9 @@ function constructGIF()
 		'interval': document.getElementById('gifIntervalSelect').value,
 		'gifWidth': 1000,
 		'gifHeight': 600,
+		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator (llsif-waifu-sim.github.io)',
+		'fontSize': '10px',
+		'textBaseline': 'top'
 	}, function (obj) {
 			
 		if (!obj.error) {
