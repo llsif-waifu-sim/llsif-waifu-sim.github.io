@@ -1259,7 +1259,7 @@ function constructGIF()
 		'interval': document.getElementById('gifIntervalSelect').value,
 		'gifWidth': 1000,
 		'gifHeight': 600,
-		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator (llsif-waifu-sim.github.io)',
+		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
 		'fontSize': '10px',
 		'textBaseline': 'top'
 	}, function (obj) {
