@@ -44,8 +44,8 @@
 	<select id="story-line-select-option" style='width:10%;' onchange="changeScene();">
 	 	<option value="1">Frame 1</option>
 	</select>
-	<button onclick='addNewScene();'>+</button>
-	<button onclick='removeLastScene();'>-</button>
+	<button onclick='addNewScene();' class="btn btn-success" type="button">+</button>
+	<button onclick='removeLastScene();' class="btn btn-danger" type="button">-</button>
 	<br>
 	<div id="sceneLoading_box"></div>
 	<br>
@@ -170,7 +170,7 @@
 
  <div style="width:60%">
  	Who is speaking? :
- 	<select id="story-speaker-select" style='width:40%;' onchange="speakerResize();">
+ 	<select class="selectpicker" data-style="btn-default" id="story-speaker-select" style='width:40%;' onchange="speakerResize();">
  		<option value="left">Left Idol</option>
 		<option value="center" selected>Center Idol</option>
 		<option value="right">Right Idol</option>
@@ -202,13 +202,19 @@
 			GIF Interval (time to move to next frame):
 		</td>
 		<td style='padding:10px;'>
-			 <select id='gifIntervalSelect'>
+			 <select class="selectpicker" data-style="btn-default" id='gifIntervalSelect'>
+			 	<option value='0.5'>0.5 seconds</option>
 			 	<option value='1'>1 second</option>
+			 	<option value='1.5'>1.5 seconds</option>
 			 	<option value='2' selected>2 seconds</option>
+			 	<option value='2.5'>2.5 seconds</option>
 			 	<option value='3'>3 seconds</option>
+			 	<option value='3.5'>3.5 seconds</option>
 			 	<option value='4'>4 seconds</option>
+			 	<option value='4.5'>4.5 seconds</option>
 			 	<option value='5'>5 seconds</option>
 			 </select>
+
 		</td>
 	</tr>
 </table>
@@ -240,7 +246,7 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
 
  <script src="js/storyMakerScript.js"></script>
-
+<script type="text/javascript" src="js/bootstrap-select.js"></script>
 <center><div id='gifOutputDiv'></div></center>
 
 
