@@ -15,6 +15,7 @@ var mainTxt = "";
 var storyBackground = 0;
 var sceneNum = 1;
 var maxNumOfScene = 1;
+var maxLimitNumScene = 15;
 
 var currentSpeaker = 'none';
 
@@ -124,6 +125,43 @@ function getStoryWaifuAr(name)
 	} 
 
 	return newArray;
+}
+
+function chosenFPStoRealFPS(chosenInterval)
+{
+	// Calculate total amount of time for speech
+	var overallTimeForSpeech = chosenInterval*0.25;
+
+	// Caclulate interval rate of entire GIF 
+	var overallInterval = overallTimeForSpeech*0.25; 
+
+	return overallInterval;
+}
+
+function saveSubTextImages()
+{
+	// Function to create sub text images
+	var entireText = document.getElementById('edit_text_box').innerHTML;
+	var numSubImages = 3 				// number of sub text images
+	var numToDivide = numSubImages + 1; // amount of frames for text
+
+	var subStrLength = entireText.length/numToDivide;
+
+	var lengthCounter = subStrLength;
+
+	for(var i=1; i - 1 < numSubImages; i++)
+	{
+		document.getElementById('edit_text_box').innerHTML = entireText.substring(0,lengthCounter);
+		lengthCounter = lengthCounter + subStrLength; // Increase length of substring
+
+		printStoryCanvas(); // only changing text, so we don't have to wait for images to load
+		uploadSubImageURL(i); // save subImage
+
+	}
+	
+
+	// revert back to original text
+	document.getElementById('edit_text_box').innerHTML = entireText;
 }
 
 function storyRefreshAllSelects(){
@@ -457,9 +495,12 @@ function storeSceneCookie(messageOff)
 
 	setCookie("sceneMaker_frame-".concat(sceneNum), cookieStr, cookieExpireDate);
 
-
+	// save main image
 	printStoryCanvas();
 	uploadImageURL();
+
+	// save sub text images
+	saveSubTextImages();
 
 
 
@@ -833,6 +874,12 @@ function changeScene()
 
 function addNewScene()
 {
+	if (parseInt(maxNumOfScene) + 1 > maxLimitNumScene){
+		alert('Sorry, only 15 frames per GIF is allowed :(');
+		return;
+	}
+
+
 	maxNumOfScene = parseInt(maxNumOfScene) + 1;
 	var x = document.getElementById('story-line-select-option');
 	var option = document.createElement("option");
@@ -1530,6 +1577,27 @@ function uploadImageURL()
 	//document.getElementById('imageGIF').src = img;
 }
 
+
+function uploadSubImageURL(subValue)
+{
+	try {
+	    var img = document.getElementById('story-canvas').toDataURL('image/jpeg', 0.9)
+	} catch(e) {
+	    var img = document.getElementById('story-canvas').toDataURL();
+	}
+
+
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("storyMaker_imageURL-".concat(sceneNum, '-', subValue), img);
+	} else {
+		alert('Sorry, your browser does not support local storage :( Try upgrading your browser.');
+		return;
+	}
+
+
+	document.getElementById('imageGIF').src = img;
+	alert('sample');
+}
 
 
 
