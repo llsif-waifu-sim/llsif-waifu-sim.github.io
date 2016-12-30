@@ -104,4 +104,53 @@
 
 
 
+#emotion_img_left{
+    position: absolute;
 
+
+    max-height:80px;
+    /*max-height:870px;*/
+
+    width: auto;
+    height: auto;
+
+    top: 9%;
+    left: 10%;
+    /*left:15%;*/
+ 
+    
+}
+
+#emotion_img_center{
+    position: absolute;
+
+
+    max-height:80px;
+    /*max-height:870px;*/
+
+    width: auto;
+    height: auto;
+
+    top: 9%;
+    left: 42%;
+    /*left:15%;*/
+ 
+    
+}
+
+#emotion_img_right{
+    position: absolute;
+
+
+    max-height:80px;
+    /*max-height:870px;*/
+
+    width: auto;
+    height: auto;
+
+    top: 9%;
+    right: 21%;
+    /*left:15%;*/
+ 
+    
+}

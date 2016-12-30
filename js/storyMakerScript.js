@@ -905,6 +905,38 @@ function speakerResize()
 	}
 }
 
+function changeEmotionBubble(position)
+{
+	var num = -1;
+	if(position == 'left'){
+		num = document.getElementById('waifuStoryEbubbleOption1').value;
+
+
+		document.getElementById('emotion_img_left').src = 'images/emotion/'.concat(num,'.png');
+		
+
+		
+	} else if(position == 'center'){
+		num = document.getElementById('waifuStoryEbubbleOption2').value;
+		
+
+
+		document.getElementById('emotion_img_center').src = 'images/emotion/'.concat(num,'.png');
+	
+
+	}else if(position == 'right'){
+		num = document.getElementById('waifuStoryEbubbleOption3').value;
+		document.getElementById('emotion_img_right').src = 'images/emotion/'.concat(num,'.png');
+
+	
+		document.getElementById('emotion_img_right').src = 'images/emotion/'.concat(num,'.png');
+	
+
+	} else {
+		alert('Something went wrong while changing emotion bubbles');
+	}
+}
+
 function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 {
 	var newArray = [];
@@ -1359,6 +1391,11 @@ function printStoryCanvas(){
 	var imgwaifuLeft = document.getElementById("idol_img_left");
 	var imgwaifuCenter = document.getElementById("idol_img_center");
 	var imgwaifuRight = document.getElementById("idol_img_right");
+
+	var emotionLeft = document.getElementById("emotion_img_left");
+	var emotionCenter = document.getElementById("emotion_img_center");
+	var emotionRight =  document.getElementById("emotion_img_right");
+
 	var speechbox = document.getElementById("temp_text_box_img");
 	var speakerbox = document.getElementById("story_speaker_img");
 
@@ -1368,13 +1405,25 @@ function printStoryCanvas(){
 
 
 	var imageWaifuLeftX = -150;
-	var imageWaifuLeftY = -70;
+	var imageWaifuLeftY = -77;
 
 	var imageWaifuCenterX = 220;
-	var imageWaifuCenterY = -70;
+	var imageWaifuCenterY = -77;
 	
 	var imageWaifuRightX = 580;
-	var imageWaifuRightY = -70;
+	var imageWaifuRightY = -77;
+
+
+
+
+	var emotionLeftX = 115;
+	var emotionLeftY = 70;
+
+	var emotionCenterX = 470;
+	var emotionCenterY = 70;
+	
+	var emotionRightX = 825;
+	var emotionRightY = 70;
 
 
 	var speaker = document.getElementById('story-speaker-select').value;
@@ -1395,10 +1444,18 @@ function printStoryCanvas(){
     ctx.drawImage(imgwaifuCenter, imageWaifuCenterX, imageWaifuCenterY , imgwaifuCenter.width, imgwaifuCenter.height);
     ctx.drawImage(imgwaifuRight, imageWaifuRightX, imageWaifuRightY, imgwaifuRight.width, imgwaifuRight.height);
 
+    
+
     ctx.globalAlpha = 0.7;
    
     ctx.drawImage(speakerbox, 65, 430, speakerbox.width, speakerbox.height);
     ctx.drawImage(speechbox, 65, 490, speechbox.width, speechbox.height);
+
+    ctx.globalAlpha = 0.8;
+
+    ctx.drawImage(emotionLeft, emotionLeftX, emotionLeftY, emotionLeft.width, emotionLeft.height);
+    ctx.drawImage(emotionCenter, emotionCenterX, emotionCenterY, emotionCenter.width, emotionCenter.height);
+    ctx.drawImage(emotionRight, emotionRightX, emotionRightY, emotionRight.width, emotionRight.height);
 
     ctx.globalAlpha = 1;
 

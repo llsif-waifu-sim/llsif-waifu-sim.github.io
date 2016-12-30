@@ -66,6 +66,10 @@
 	    	<img id="idol_img_left" src='stories/images/umi_01_01.png'>
 	    	<img id="idol_img_center" src='stories/images/honoka_01_01.png'>
 	    	<img id="idol_img_right" src='stories/images/kotori_01_01.png'>
+
+	    	<img id="emotion_img_left" src='images/emotion/-1.png' style='opacity: 0.8;'>
+	    	<img id="emotion_img_center" src='images/emotion/-1.png' style='opacity: 0.8;'>
+	    	<img id="emotion_img_right" src='images/emotion/-1.png' style='opacity: 0.8;'>
 	    	
 	    	<div id="entire_story_text_box">
 	    		<img id="story_speaker_img" src="images/pink-textbox.png">
@@ -144,6 +148,14 @@
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryOption1" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(1, 0);searchIdStoryMain('left');"></select><br>
  				<select class="selectpicker" data-style="btn-default"  id="waifuStoryCostumeOption1" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(1, 1);searchIdStoryMain('left');"></select><br>
  				<select class="selectpicker" data-style="btn-default"  id="waifuStoryMoodOption1" style="width:400px;" onchange="searchIdStoryMain('left');"></select><br>
+ 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption1" style="width:400px;" onchange="changeEmotionBubble('left');">
+ 					<option value='-1' selected>Nothing</option>
+ 					<option value='0'>Surprised</option>
+ 					<option value='1'>Happy</option>
+ 					<option value='2'>Love</option>
+ 					<option value='3'>Worried</option>
+ 					<option value='4'>Question</option>
+ 				</select><br>
 
  				<button style='width:220px;' type="button" id="search_but-left" class="btn btn-primary" onclick="searchIdStoryMain('left')">Add</button>
  			</td>
@@ -155,6 +167,14 @@
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryCostumeOption2" style="width:100%;padding:10px;" onchange="refreshStoryCostumeMoodOptions(2, 1);searchIdStoryMain('center');"></select>
  			
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryMoodOption2" style="width:100%;padding:10px;" onchange="searchIdStoryMain('center')"></select>
+ 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption2" style="width:400px;" onchange="changeEmotionBubble('center');">
+ 					<option value='-1' selected>Nothing</option>
+ 					<option value='0'>Surprised</option>
+ 					<option value='1'>Happy</option>
+ 					<option value='2'>Love</option>
+ 					<option value='3'>Worried</option>
+ 					<option value='4'>Question</option>
+ 				</select><br>
  					
  				<button style='width:220px;' type="button" id="search_but-center" class="btn btn-primary" onclick="searchIdStoryMain('center')">Add</button>
  					
@@ -168,6 +188,14 @@
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 0);searchIdStoryMain('right');$('#waifuStoryCostumeOption3').selectpicker('refresh');"></select>
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryCostumeOption3" style="width:100%;" onchange="refreshStoryCostumeMoodOptions(3, 1);searchIdStoryMain('right');"></select>
  				<select class="selectpicker" data-style="btn-default" id="waifuStoryMoodOption3" style="width:100%;" onchange="searchIdStoryMain('right')"></select>
+ 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption3" style="width:400px;" onchange="changeEmotionBubble('right');">
+ 					<option value='-1' selected>Nothing</option>
+ 					<option value='0'>Surprised</option>
+ 					<option value='1'>Happy</option>
+ 					<option value='2'>Love</option>
+ 					<option value='3'>Worried</option>
+ 					<option value='4'>Question</option>
+ 				</select><br>
  				<button style='width:220px;' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStoryMain('right')">Add</button>
 
  			</td>
@@ -252,7 +280,7 @@
 
 <br><br><br>
 <img id="imageGIF">
-<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;display:none;">
+<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 </center>
 <script type="text/javascript" src="js/bootstrap-select.js"></script>
