@@ -1054,6 +1054,33 @@ function deleteAllStoryCookiesAndLocalStorage()
 	maxNumOfScene = 1;
 
 
+
+	mainTxt = "";
+	storyBackground = 0;
+	sceneNum = 1;
+	maxLimitNumScene = 15;
+
+	currentSpeaker = 'none';
+
+	storyMainSelect1 = 0;
+	storyMainSelectId1 = -1;
+	storyMainSelectName1 = "";
+	storyMainSelectIdolized1 = 0;
+
+	storyMainSelect2 = 0;
+	storyMainSelectId2 = -1;
+	storyMainSelectName2 = "";
+	storyMainSelectIdolized2 = 0;
+
+	storyMainSelect3 = 0;
+	storyMainSelectId3 = -1;
+	storyMainSelectName3 = "";
+	storyMainSelectIdolized3 = 0;
+
+
+
+
+
 	// Delete all cookies that start with "sceneMaker_"
 	for (var i = 0; i < cookieNames.length; i++) {
 	    if (/^sceneMaker_/.test(cookieNames[i])) {
@@ -1070,9 +1097,14 @@ function deleteAllStoryCookiesAndLocalStorage()
            }
        });
 
-      sceneMakerInitalization();
+    document.getElementById('emotion_img_left').src =  'images/emotion/-1.png';
+    document.getElementById('emotion_img_center').src =  'images/emotion/-1.png';
+    document.getElementById('emotion_img_right').src =  'images/emotion/-1.png';
 
-      $('#story-line-select-option').selectpicker('refresh');
+
+     sceneMakerInitalization();
+
+     storyRefreshAllSelects();
 }
 
 function addNewScene()
@@ -1229,6 +1261,7 @@ function loadStoryOptions()
 		option.text = 'Nobody';
 		x.add(option);
 
+
 	}
 
 
@@ -1237,6 +1270,18 @@ function loadStoryOptions()
 	document.getElementById('waifuStoryOption1').selectedIndex = 2;
 	document.getElementById('waifuStoryOption2').selectedIndex = 0;
 	document.getElementById('waifuStoryOption3').selectedIndex = 1;
+
+	document.getElementById('waifuStoryCostumeOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryCostumeOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryCostumeOption3').selectedIndex = 0;
+
+	document.getElementById('waifuStoryMoodOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryMoodOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryMoodOption3').selectedIndex = 0;
+
+	document.getElementById('waifuStoryEbubbleOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryEbubbleOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryEbubbleOption3').selectedIndex = 0;
 
 
 	
