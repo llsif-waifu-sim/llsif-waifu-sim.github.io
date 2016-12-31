@@ -40,8 +40,7 @@ var subImageAr = [];
 var tempSubAr = [];
 
 
-var intervalDivisor = 0.25;
-
+var intervalDivisor = 0.33333;
 
 function getStoryWaifuAr(name)
 {
@@ -187,13 +186,34 @@ function pushSubImageToURLAR(chosenSceneNumber)
 	//alert('return');
 }
 
+function changeSmoothnessLevel()
+{
+
+	var num = parseInt(document.getElementById('smoothnessTextSelect').value);
+
+	if(num == 2)
+	{
+		intervalDivisor = 0.5;
+	} else if(num == 3){
+		intervalDivisor = 0.333333;
+	} else if(num == 4){
+		intervalDivisor = 0.25;
+	} else if(num == 5){
+		intervalDivisor = 0.2;
+	} else {
+		alert('There was an error when changing smoothness level. This should not happen.');
+	}
+}
+
+
+
 function cacluateLengthOfAllFrames(chosenInterval)
 {
 	// Calculate total amount of time for speech
 	var overallTimeForSpeech = chosenInterval*intervalDivisor;
 
 	// Caclulate interval rate of entire GIF 
-	var overallInterval = overallTimeForSpeech*intervalDivisor
+	var overallInterval = overallTimeForSpeech*intervalDivisor;
 ; 
 
 
@@ -1759,6 +1779,10 @@ function convertAllSceneToGIFRollingText()
 	var mainFrameRepeatNum = cacluateNumOfFramesForMain(document.getElementById('gifIntervalSelect').value);
 	var allFrameRepeatNum = cacluateLengthOfAllFrames(document.getElementById('gifIntervalSelect').value);
 
+	// Set intervalDivisor variable
+	changeSmoothnessLevel();
+
+
 	subImageAr.sort(multiSortFunction);
 
 	// upload everything to urlAR
@@ -1975,6 +1999,7 @@ function sceneMakerInitalization()
 	loadSceneCookie();
 	speakerResize();
 	loadTotalFrameList();
+
 }
 
 // Loading functions
