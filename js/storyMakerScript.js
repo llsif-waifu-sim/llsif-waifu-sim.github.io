@@ -1002,6 +1002,48 @@ function changeScene()
 	storyRefreshAllSelects();
 }
 
+function deleteAllStoryCookiesAndLocalStorage()
+{
+	
+	var cookieNames = document.cookie.split(/=[^;]*(?:;\s*|$)/);
+
+	var tmpCountDown = maxNumOfScene;
+	for(var i=0; i + 1< maxNumOfScene; i++){
+		$("#story-line-select-option option[value='".concat(tmpCountDown ,"']")).remove();
+		tmpCountDown = tmpCountDown - 1;
+	}
+
+	document.getElementById('sceneNum_box').innerHTML = "Frame 1";
+
+	// reset global variables
+	subImageAr = [];
+	tempSubAr = [];
+
+	sceneNum = 1;
+	maxNumOfScene = 1;
+
+
+	// Delete all cookies that start with "sceneMaker_"
+	for (var i = 0; i < cookieNames.length; i++) {
+	    if (/^sceneMaker_/.test(cookieNames[i])) {
+	        document.cookie = cookieNames[i] + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT;'
+	    }
+	}
+
+
+	// Clear local storage that starts with 'storyMaker_imageURL-'
+	Object.keys(localStorage)
+      .forEach(function(key){
+           if (/^storyMaker_imageURL-/.test(key)) {
+               localStorage.removeItem(key);
+           }
+       });
+
+      sceneMakerInitalization();
+
+      $('#story-line-select-option').selectpicker('refresh');
+}
+
 function addNewScene()
 {
 	if (parseInt(maxNumOfScene) + 1 > maxLimitNumScene){
@@ -1028,16 +1070,32 @@ function addNewScene()
 
 function removeLastScene()
 {
+	if(maxNumOfScene == 1){
+		alert("You can't delete the first scene");
+		return;
+	}
+
 	$("#story-line-select-option option[value='".concat(maxNumOfScene ,"']")).remove();
+
+
+	deleteCookie("sceneMaker_frame-".concat(maxNumOfScene));
 
 
 	maxNumOfScene = parseInt(maxNumOfScene) - 1;
 	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
 	$('#story-line-select-option').selectpicker('refresh');
 	
-	
-	
+
 	alert('Frame '.concat(parseInt(maxNumOfScene) + 1, ' has been removed'));
+
+	if(maxNumOfScene + 1 == sceneNum)
+	{
+		sceneNum = 1;
+		loadSceneCookie();
+		speakerResize();
+	}
+
+	
 
 }
 

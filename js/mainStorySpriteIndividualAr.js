@@ -48,8 +48,7 @@ var honokaStoryAr = [
 ['honoka','15','03'],
 ['honoka','15','04'],
 ['honoka','16','01'],
-['honoka','16','02'],
-['honoka','16','04']
+['honoka','16','02']
 ];
 
 var umiStoryAr = [
