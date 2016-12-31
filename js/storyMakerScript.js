@@ -135,6 +135,7 @@ function getStoryWaifuAr(name)
 function checkRollingTextRequirements()
 {
 	if(document.getElementById('radio-rollingText-switch-yes').checked){
+		// chose rolling text
 		if(subImageAr.length == 0)
 		{
 			// User is continuing a project
@@ -142,7 +143,16 @@ function checkRollingTextRequirements()
 			alert("We noticed you are continuing a project, but haven't saved any frames. \n\n In order to enable rolling text, please resave every single frame and try again");
 			document.getElementById('radio-rollingText-switch-no').checked = true;
 			return;
+		} else {
+			// Requirements were properly met
+			$("#smoothnessTextSelect").selectpicker('show');
+			document.getElementById('smoothnessLabelHide').style.display = "block";
+
 		}
+	} else {
+		// chose no rolling text
+		$("#smoothnessTextSelect").selectpicker('hide');
+		document.getElementById('smoothnessLabelHide').style.display = "none";
 	}
 
 	return;
@@ -987,6 +997,8 @@ function loadSceneCookie(message)
 	storyRefreshAllSelects();
 	emotionAnimationManage();
 
+	
+
 	if(message == 'printStoryCanvas'){
 		printStoryCanvas();
 	}
@@ -1785,7 +1797,6 @@ function searchIdStory(type)
 	    {
 	        //file not exists
 	        alert('Idolized / Non-idolized version of card not found. Trying filling out the alternate option bubble.');
-			commandSelect(0);
 			return;
 	    },
 	    success: function()
@@ -1803,23 +1814,7 @@ function searchIdStory(type)
 	        }
 	        
 
-			nameAssign(name);
-
-			globalIndex = searchIndexById(id, idolized);
-
-			if (globalAudio!=null){
-				globalAudio.pause();
-			}
-
-			var index = parseInt(searchIndexById(id, idolized));
-			storeCookie(index);
-
-			setTimeout(function() {
-				commandSelect(0);
-			}, 500, true)
-			  }
-
-
+	        }
 
 		});
 
@@ -2276,6 +2271,8 @@ function sceneMakerInitalization()
 {
 	loadStoryOptions();
 	loadSceneCookie();
+	$("#smoothnessTextSelect").selectpicker('hide');
+	document.getElementById('smoothnessLabelHide').style.display = "none";
 	speakerResize();
 	loadTotalFrameList();
 

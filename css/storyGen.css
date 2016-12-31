@@ -158,7 +158,13 @@
 #startNewStoryGIFBut{
     width:240px; 
     right:10px; 
-    float:right; 
-    margin:10px; 
-    padding:10px;
+    top:70px; 
+    position:absolute;
+}
+
+
+#whatIsThisGIFGenBut{
+    left:10px; 
+    top:70px; 
+    position:absolute;
 }
