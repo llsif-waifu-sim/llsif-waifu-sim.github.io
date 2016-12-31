@@ -184,6 +184,34 @@ function pushSubImageToURLAR(chosenSceneNumber)
 	//alert('return');
 }
 
+function cacluateLengthOfAllFrames(chosenInterval)
+{
+	// Calculate total amount of time for speech
+	var overallTimeForSpeech = chosenInterval*0.25;
+
+	// Caclulate interval rate of entire GIF 
+	var overallInterval = overallTimeForSpeech*0.25; 
+
+
+	// calculate number of frames needed
+	return (chosenInterval/overallInterval);
+}
+
+function cacluateNumOfFramesForMain(chosenInterval)
+{
+	// Calculate total amount of time for speech
+	var overallTimeForSpeech = chosenInterval*0.25;
+
+	// Caclulate interval rate of entire GIF 
+	var overallInterval = overallTimeForSpeech*0.25; 
+
+	// Calculate total time for main idle frames
+	var timeForMain = chosenInterval - overallTimeForSpeech;
+
+	// calculate number of frames needed
+	return (timeForMain/overallInterval);
+}
+
 function chosenFPStoRealFPS(chosenInterval)
 {
 	// Calculate total amount of time for speech
@@ -1720,7 +1748,8 @@ function convertAllSceneToGIFRollingText()
 
 	var prevSceneNum = sceneNum;
 
-	var mainFrameRepeatNum = 4;
+	var mainFrameRepeatNum = cacluateNumOfFramesForMain(document.getElementById('gifIntervalSelect').value);
+	var allFrameRepeatNum = cacluateLengthOfAllFrames(document.getElementById('gifIntervalSelect').value);
 
 	subImageAr.sort(multiSortFunction);
 
@@ -1743,7 +1772,8 @@ function convertAllSceneToGIFRollingText()
 			var maxCount = mainFrameRepeatNum;
 
 			if(tmpResult == -1){
-				maxCount = maxCount + 4;
+				// Since we ignored subimages (speech), we are adding as many frames as the entire chosen interval
+				maxCount = allFrameRepeatNum;
 			}
 
 			// then we push main image
