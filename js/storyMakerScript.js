@@ -138,6 +138,26 @@ function multiSortFunction(a, b) {
     }
 }
 
+function addToSubImageArray(tempSubAr)
+{
+	// search if tempArray already exists
+	for(var i = 1; i - 1< subImageAr.length; i++)
+	{
+		if(tempSubAr[0] == subImageAr[i-1][0])
+		{
+			// This means the subarray existed before and need to replace it
+			subImageAr[i-1] = tempSubAr;
+			return;
+		}
+	}
+
+	// This means subarray does not exist and we can just push
+
+	subImageAr.push(tempSubAr);
+}
+
+
+	
 
 function pushSubImageToURLAR(chosenSceneNumber)
 {
@@ -156,10 +176,11 @@ function pushSubImageToURLAR(chosenSceneNumber)
 			}
 			//alert('Pushing: '.concat(chosenSceneNumber));
 			//alert('returning equal '.concat('chosenScene ',chosenSceneNumber, '  subAR: ', subImageAr[i][0]));
-			return;
+			return 0;
 
 		} 
 	}
+	return -1;
 	//alert('return');
 }
 
@@ -210,7 +231,7 @@ function saveSubTextImages()
 	}
 
 	// push temp array to main subImage array
-	subImageAr.push(tempSubAr);
+	addToSubImageArray(tempSubAr);
 
 	// revert back to original text
 	document.getElementById('edit_text_box').innerHTML = entireText;
@@ -1717,10 +1738,16 @@ function convertAllSceneToGIFRollingText()
 			// frame was saved, push it to array to convert to GIF
 
 			// first, we must load subimages
-			pushSubImageToURLAR(i);
+			var tmpResult = pushSubImageToURLAR(i);
+
+			var maxCount = mainFrameRepeatNum;
+
+			if(tmpResult == -1){
+				maxCount = maxCount + 4;
+			}
 
 			// then we push main image
-			for(var j=0; j < mainFrameRepeatNum; j++){
+			for(var j=0; j < maxCount; j++){
 				urlAr.push(localStorage.getItem("storyMaker_imageURL-".concat(i)));
 			}
 			
