@@ -40,6 +40,9 @@ var subImageAr = [];
 var tempSubAr = [];
 
 
+var intervalDivisor = 0.25;
+
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -187,10 +190,11 @@ function pushSubImageToURLAR(chosenSceneNumber)
 function cacluateLengthOfAllFrames(chosenInterval)
 {
 	// Calculate total amount of time for speech
-	var overallTimeForSpeech = chosenInterval*0.25;
+	var overallTimeForSpeech = chosenInterval*intervalDivisor;
 
 	// Caclulate interval rate of entire GIF 
-	var overallInterval = overallTimeForSpeech*0.25; 
+	var overallInterval = overallTimeForSpeech*intervalDivisor
+; 
 
 
 	// calculate number of frames needed
@@ -200,10 +204,12 @@ function cacluateLengthOfAllFrames(chosenInterval)
 function cacluateNumOfFramesForMain(chosenInterval)
 {
 	// Calculate total amount of time for speech
-	var overallTimeForSpeech = chosenInterval*0.25;
+	var overallTimeForSpeech = chosenInterval*intervalDivisor
+;
 
 	// Caclulate interval rate of entire GIF 
-	var overallInterval = overallTimeForSpeech*0.25; 
+	var overallInterval = overallTimeForSpeech*intervalDivisor
+; 
 
 	// Calculate total time for main idle frames
 	var timeForMain = chosenInterval - overallTimeForSpeech;
@@ -215,10 +221,12 @@ function cacluateNumOfFramesForMain(chosenInterval)
 function chosenFPStoRealFPS(chosenInterval)
 {
 	// Calculate total amount of time for speech
-	var overallTimeForSpeech = chosenInterval*0.25;
+	var overallTimeForSpeech = chosenInterval*intervalDivisor
+;
 
 	// Caclulate interval rate of entire GIF 
-	var overallInterval = overallTimeForSpeech*0.25; 
+	var overallInterval = overallTimeForSpeech*intervalDivisor
+; 
 
 	return overallInterval;
 }
