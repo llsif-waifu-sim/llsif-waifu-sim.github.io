@@ -129,24 +129,38 @@ function getStoryWaifuAr(name)
 	return newArray;
 }
 
+function multiSortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
+
+
 function pushSubImageToURLAR(chosenSceneNumber)
 {
-	for(var i=1; i-1 < subImageAr.length; i++)
+	//alert(chosenSceneNumber);
+	for(var i=0; i < subImageAr.length; i++)
 	{
-		if(chosenSceneNum == parseInt(subImageAr[i][0]))
+		//alert(i);
+		if(chosenSceneNumber == parseInt(subImageAr[i][0]))
 		{
 			// if we found the array, we will then push its subimages
-			for(var j=1; j < subImageAR[i].length;j++)
+			for(var j=1; j < subImageAr[i].length;j++)
 			{
-				urlAr.push(subImageAR[i][j]);
+
+				urlAr.push(subImageAr[i][j]);
+				
 			}
+			//alert('Pushing: '.concat(chosenSceneNumber));
+			//alert('returning equal '.concat('chosenScene ',chosenSceneNumber, '  subAR: ', subImageAr[i][0]));
 			return;
 
-		} else if (chosenNum > parseInt(subImageAr[i][0])){
-			// the number we are looking for is non-existant
-			return;
-		}
+		} 
 	}
+	//alert('return');
 }
 
 function chosenFPStoRealFPS(chosenInterval)
@@ -1686,6 +1700,8 @@ function convertAllSceneToGIFRollingText()
 	var prevSceneNum = sceneNum;
 
 	var mainFrameRepeatNum = 4;
+
+	subImageAr.sort(multiSortFunction);
 
 	// upload everything to urlAR
 	for(var i=1; i - 1 < maxNumOfScene; i++)
