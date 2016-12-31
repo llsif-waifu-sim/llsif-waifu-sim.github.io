@@ -129,6 +129,26 @@ function getStoryWaifuAr(name)
 	return newArray;
 }
 
+function pushSubImageToURLAR(chosenSceneNumber)
+{
+	for(var i=1; i-1 < subImageAr.length; i++)
+	{
+		if(chosenSceneNum == parseInt(subImageAr[i][0]))
+		{
+			// if we found the array, we will then push its subimages
+			for(var j=1; j < subImageAR[i].length;j++)
+			{
+				urlAr.push(subImageAR[i][j]);
+			}
+			return;
+
+		} else if (chosenNum > parseInt(subImageAr[i][0])){
+			// the number we are looking for is non-existant
+			return;
+		}
+	}
+}
+
 function chosenFPStoRealFPS(chosenInterval)
 {
 	// Calculate total amount of time for speech
@@ -1549,11 +1569,10 @@ function saveCurrentScene()
 }
 
 function constructGIF()
-{
-	
+{	
 	gifshot.createGIF({
 		images: urlAr,
-		'interval': document.getElementById('gifIntervalSelect').value,
+		'interval': chosenFPStoRealFPS(document.getElementById('gifIntervalSelect').value),
 		'gifWidth': 1000,
 		'gifHeight': 600,
 		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
@@ -1651,8 +1670,65 @@ function convertAllSceneToGIF()
 	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF, please be patient. . .";
 	//alert('going to construct GIF');
 	constructGIF();
-	
 }
+
+
+
+function convertAllSceneToGIFRollingText()
+{
+	urlAr = [];
+	document.getElementById('uploadInProcessDiv').style.display = "block";
+	document.getElementById('gifOutputDiv').style.display = "none";
+	$('#gifOutputDiv').empty();
+
+	document.getElementById("sceneLoadingBox").innerHTML = "Preparing frames for conversion. . .";
+
+	var prevSceneNum = sceneNum;
+
+	var mainFrameRepeatNum = 4;
+
+	// upload everything to urlAR
+	for(var i=1; i - 1 < maxNumOfScene; i++)
+	{
+		sceneNum = i;
+		var alreadySaved =  searchCertainCookie("alreadySaved");
+
+		if(alreadySaved == "0")
+		{
+			// if frame is unsaved, ignore it
+			continue;
+		} else if(alreadySaved == "1"){
+			// frame was saved, push it to array to convert to GIF
+
+			// first, we must load subimages
+			pushSubImageToURLAR(i);
+
+			// then we push main image
+			for(var j=0; j < mainFrameRepeatNum; j++){
+				urlAr.push(localStorage.getItem("storyMaker_imageURL-".concat(i)));
+			}
+			
+
+
+
+
+			//alert(i);
+			//alert(localStorage.getItem("storyMaker_imageURL-".concat(i)));
+		} else {
+			// This should never happen
+			alert('We encountered a problem when converting all frames to GIF: '.concat('[',alreadySaved,']'));
+		}
+	}
+	sceneNum = prevSceneNum;
+
+
+	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF, please be patient. . .";
+	//alert('going to construct GIF');
+	constructGIF();
+}
+
+
+
 
 
 function printStoryCanvas(){
