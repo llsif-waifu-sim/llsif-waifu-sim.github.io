@@ -41,6 +41,7 @@ var tempSubAr = [];
 
 
 var intervalDivisor = 0.33333;
+var intervalForGIF = 0;
 
 function getStoryWaifuAr(name)
 {
@@ -129,6 +130,22 @@ function getStoryWaifuAr(name)
 	} 
 
 	return newArray;
+}
+
+function checkRollingTextRequirements()
+{
+	if(document.getElementById('radio-rollingText-switch-yes').checked){
+		if(subImageAr.length == 0)
+		{
+			// User is continuing a project
+
+			alert("We noticed you are continuing a project, but haven't saved any frames. \n\n In order to enable rolling text, please resave every single frame and try again");
+			document.getElementById('radio-rollingText-switch-no').checked = true;
+			return;
+		}
+	}
+
+	return;
 }
 
 function multiSortFunction(a, b) {
@@ -1914,7 +1931,7 @@ function constructGIF()
 {	
 	gifshot.createGIF({
 		images: urlAr,
-		'interval': chosenFPStoRealFPS(document.getElementById('gifIntervalSelect').value),
+		'interval': intervalForGIF,
 		'gifWidth': 1000,
 		'gifHeight': 600,
 		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
@@ -2076,12 +2093,22 @@ function convertAllSceneToGIFRollingText()
 	sceneNum = prevSceneNum;
 
 
-	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF, please be patient. . .";
+	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF. This may take a while, please be patient. . .";
 	//alert('going to construct GIF');
 	constructGIF();
 }
 
-
+function startGIFCreation()
+{
+	if(document.getElementById('radio-rollingText-switch-yes').checked){
+		// If rolling text is selected
+		convertAllSceneToGIFRollingText();
+		intervalForGIF = chosenFPStoRealFPS(document.getElementById('gifIntervalSelect').value);
+	} else {
+		convertAllSceneToGIF();
+		intervalForGIF = document.getElementById('gifIntervalSelect').value;
+	}
+}
 
 
 

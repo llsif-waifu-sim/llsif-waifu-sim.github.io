@@ -247,7 +247,7 @@
  <br><br>
 
 
- <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="saveCurrentScene();">Save scene</button>
+ <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="saveCurrentScene();">Save frame</button>
  <br><br>
 <h2>GIF settings</h2>
 <table>
@@ -271,29 +271,51 @@
 
 		</td>
 	</tr>
-</table>
-<br>
-<table>
+
 	<tr>
 		<td>
 			Smoothness Quality:
 		</td>
 		<td style='padding:10px;'>
 			 <select class="selectpicker" data-style="btn-default" id='smoothnessTextSelect'>
-			 	<option value='2'>Level 2</option>
-			 	<option value='3' selected>Level 3</option>
-			 	<option value='4'>Level 4</option>
-			 	<option value='5'>Level 5</option>
+			 	<option value='2'>Level 1</option>
+			 	<option value='3' selected>Level 2</option>
+			 	<option value='4'>Level 3</option>
+			 	<option value='5'>Level 4</option>
 			 </select>
 
 		</td>
 	</tr>
+
+	
+	<tr>
+		<td  style='width:400px;'>
+			Enable Rolling Text in GIF:
+		</td>
+		
+		<td style='width:200px;'>
+			No Rolling Text: 
+			<input type="radio" name="rollingTextRadio" id="radio-rollingText-switch-no" value="no" checked>
+		</td>
+		<td style='width:200px;'>
+			With rolling text:
+			<input type="radio" name="rollingTextRadio" id="radio-rollingText-switch-yes" value="yes" onclick='checkRollingTextRequirements();'>
+		
+		</td>
+
+	</tr>
+
 </table>
-
-
+<br><br><br>
+<b>NOTE (only for those continuing a GIF project): </b><br>
+To enable rolling text throughout the entire GIF, you must resave every single frame of this session before in order for "Rolling Text" to work properly.
 <br><br>
-<!--<button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="convertAllSceneToGIF();">Construct GIF</button>-->
-<button style='width:70%' type="button" id="convertGIF_but" class="btn btn-primary" onclick="convertAllSceneToGIFRollingText();">Construct GIF</button>
+However, if you are making this entire GIF in one sitting, then you can safely ignore this message and fill out the "With Rolling Text" option.
+
+
+
+<br><br><br><br>
+<button style='width:70%' type="button" id="convertGIF_but" class="btn btn-primary" onclick="startGIFCreation();">Construct GIF</button>
 <br><br>
  
  <div id='uploadInProcessDiv' style='display:none;'>
