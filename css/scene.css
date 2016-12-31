@@ -61,6 +61,12 @@
     
 }
 
+#storyGIFMaker_but{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
 #home_but{
     position: absolute;
     bottom: -1%;

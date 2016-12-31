@@ -2102,11 +2102,11 @@ function startGIFCreation()
 {
 	if(document.getElementById('radio-rollingText-switch-yes').checked){
 		// If rolling text is selected
-		convertAllSceneToGIFRollingText();
 		intervalForGIF = chosenFPStoRealFPS(document.getElementById('gifIntervalSelect').value);
+		convertAllSceneToGIFRollingText();
 	} else {
-		convertAllSceneToGIF();
 		intervalForGIF = document.getElementById('gifIntervalSelect').value;
+		convertAllSceneToGIF();
 	}
 }
 
