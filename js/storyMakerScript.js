@@ -733,6 +733,7 @@ function loadSceneCookie(message)
 	}
 
 	var speaker = searchCertainCookie("speaker");
+
 	if(speaker != null && speaker != ""){
 		document.getElementById('story-speaker-select').value = speaker;
 	} else {
@@ -740,11 +741,17 @@ function loadSceneCookie(message)
 		document.getElementById('story-speaker-select').value = speaker;
 	}
 
+
+
+
 	document.getElementById('edit_text_box').innerHTML = searchCertainCookie("speech");
 
 	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
 
-
+	if(searchCertainCookie("speech") == 'nobody'){
+		document.getElementById('edit_text_box').innerHTML = '';
+		document.getElementById("story-textfield").value = 'Nobody';
+	}
 
 	// Left idol
 	var name = searchCertainCookie("idol_left");
@@ -771,7 +778,11 @@ function loadSceneCookie(message)
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
-		
+
+		if(name.toLowerCase() == 'nobody'){
+			path = 'images/blank.png';
+
+		}
 
 
 		// To load different modes based on cookies
@@ -805,6 +816,9 @@ function loadSceneCookie(message)
 			searchIdStory('left');
 			
 		}
+
+
+
 
 				
 	} else {
@@ -840,7 +854,9 @@ function loadSceneCookie(message)
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 	
-
+		if(name.toLowerCase() == 'nobody'){
+			path = 'images/blank.png';
+		}
 		
 		
 		// Select mode based on cookie
@@ -907,6 +923,9 @@ function loadSceneCookie(message)
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
 
+		if(name.toLowerCase() == 'nobody'){
+			path = 'images/blank.png';
+		}
 		// To assign name as speaker
 		
 
@@ -1202,12 +1221,18 @@ function loadStoryOptions()
 		    option.text = capitalizeFirstLetter(mainStoryWaifuSelectionAR[j]);
 
 
-
-
 		    x.add(option);
 		}
 
+		var x = document.getElementById(path);
+		var option = document.createElement("option");
+		option.text = 'Nobody';
+		x.add(option);
+
 	}
+
+
+
 
 	document.getElementById('waifuStoryOption1').selectedIndex = 2;
 	document.getElementById('waifuStoryOption2').selectedIndex = 0;
@@ -1290,8 +1315,14 @@ function speakerResize()
 
 		if(storyMainSelect1 == 0){
 			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption1').value;
+
+
 		} else {
 			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName1);
+		}
+
+		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 		
 
@@ -1308,8 +1339,13 @@ function speakerResize()
 		
 		if(storyMainSelect2 == 0){
 			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption2').value;
+
 		} else {
 			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName2);
+		}
+
+		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 
 	} else if(idolSelect == 'right'){
@@ -1326,8 +1362,15 @@ function speakerResize()
 		
 		if(storyMainSelect3 == 0){
 			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption3').value;
+
+
 		} else {
 			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName3);
+		}
+
+
+		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 	} else {
 
@@ -1383,12 +1426,18 @@ function changeEmotionBubble(position)
 
 function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 {
+
+	
+
 	var newArray = [];
 
 	var waifuOptionPath = "waifuStoryOption" + optionNum;
 
 	var waifuOption = document.getElementById(waifuOptionPath);
-	
+		
+
+
+
 	var name = waifuOption.options[waifuOption.selectedIndex].text.toLowerCase();
 	var costumeStr = 'select[id=waifuStoryCostumeOption' + optionNum + ']';
 	var moodStr = 'select[id=waifuStoryMoodOption' + optionNum + ']';
@@ -1397,8 +1446,11 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	var moodSelectedInt = $(moodStr).val();
 
 
+	if(name != 'nobody'){
 
-	newArray = getStoryWaifuAr(name);
+		newArray = getStoryWaifuAr(name);
+	}
+	
 
 
 	var scrapePath = "./stories/images/";
@@ -1415,12 +1467,32 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	var hashCostume = "#" + costumePath;
 	var hashMood = "#" + moodPath;
 
+
+
 	if(changeNum == 0){
 		$(hashCostume).find('option').remove();
 		$(hashMood).find('option').remove();
 	} else if(changeNum == 1){
 		$(hashMood).find('option').remove();
 	}
+
+
+	if(name == 'nobody'){
+		// If we select nobody, then we hide the other select boxes
+		$("#waifuStoryCostumeOption".concat(optionNum)).selectpicker('refresh');
+		$("#waifuStoryMoodOption".concat(optionNum)).selectpicker('refresh');
+		
+		$("#waifuStoryCostumeOption".concat(optionNum)).selectpicker('hide');
+		$("#waifuStoryMoodOption".concat(optionNum)).selectpicker('hide');
+
+		return;
+	} else {
+		// In case nobody was chosen before, have the select boxes reappear and refresh
+		$("#waifuStoryCostumeOption".concat(optionNum)).selectpicker('show');
+		$("#waifuStoryMoodOption".concat(optionNum)).selectpicker('show');
+	}
+
+
 	
 	// If statement for cookie variables
 	if(optionNum == 1){
@@ -1473,7 +1545,9 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 
 function searchIdStoryMain(type)
 {
+	// For non story characters
 	var scrapePath = "./stories/images/";
+
 
 	var optionInt;
 	if(type == 'center'){
@@ -1495,6 +1569,39 @@ function searchIdStoryMain(type)
 	var name = document.getElementById(namePath).value;
 	var num1 = document.getElementById(costumePath).value;
 	var num2 = document.getElementById(moodPath).value;
+
+
+	if(name == 'Nobody'){
+		path = 'images/blank.png';
+
+		var speaker = document.getElementById('story-speaker-select').value;
+		if(type == 'center'){
+			document.getElementById("idol_img_center").src=path;
+
+			if(speaker == 'center'){
+				document.getElementById('idol_img_center').src ='images/blank.png';
+			}
+
+		} else if(type == 'right'){
+			document.getElementById("idol_img_right").src=path;
+
+			if(speaker == 'right'){
+				document.getElementById('idol_img_right').src ='images/blank.png';
+			}
+
+		}else if(type == 'left'){
+			document.getElementById("idol_img_left").src=path;
+
+			if(speaker == 'left'){
+				document.getElementById('idol_img_left').src ='images/blank.png';
+			}
+		}
+		
+		speakerResize();
+
+		return;
+	}
+
 
 	// To determine speaker
 	if(currentSpeaker == 'left' && type == 'left'){
