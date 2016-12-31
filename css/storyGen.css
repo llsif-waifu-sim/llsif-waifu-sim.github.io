@@ -154,3 +154,11 @@
  
     
 }
+
+#startNewStoryGIFBut{
+    width:240px; 
+    right:10px; 
+    float:right; 
+    margin:10px; 
+    padding:10px;
+}

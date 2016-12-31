@@ -40,26 +40,35 @@
 
 <center>
 	<h2><b><div id="sceneNum_box">Frame 1</div></b></h2>
-
-	<select  class="selectpicker" data-style="btn-default" id="story-line-select-option" style='width:10%;' onchange="changeScene();">
-	 	<option value="1">Frame 1</option>
-	</select>
-	<button onclick='addNewScene();' class="btn btn-success" type="button">+</button>
-	<button onclick='removeLastScene();' class="btn btn-danger" type="button">-</button>
-	<br>
+</center>
+	
 	<div id="sceneLoading_box"></div>
+
+<div style='width:100%;height:50px;'>
+	<button id='startNewStoryGIFBut' type="button" class="btn btn-primary">Start New GIF</button>
 	<br>
-	<table>
+</div>
+
+	<br>
+<center>
+	<table style='clear: left;'>
 		<tr style='width:400px'>
 			<td style='padding-right:20px;'>
 				<button style='width:240px;' type="button" class="btn btn-info" onclick="changeBackgroundStoryBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+			</td>
+			<td>
+				<select  class="selectpicker" data-style="btn-default" id="story-line-select-option" style='width:10%;' onchange="changeScene();">
+				 	<option value="1">Frame 1</option>
+				</select>
+				<button onclick='addNewScene();' class="btn btn-success" type="button">+</button>
+				<button onclick='removeLastScene();' class="btn btn-danger" type="button">-</button>
 			</td>
 			<td style='padding-left:20px;'>
 				<button style='width:240px' type="button" class="btn btn-info" onclick="changeBackgroundStory()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
 			</td>
 		</tr>
 	</table>
-	<button style='width:240px' type="button" class="btn btn-primary" onclick="deleteAllStoryCookiesAndLocalStorage();">Start New GIF</button>
+	
 
 
 	<br><br>

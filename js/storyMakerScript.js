@@ -1002,6 +1002,18 @@ function changeScene()
 	storyRefreshAllSelects();
 }
 
+document
+    .getElementById("startNewStoryGIFBut")
+    .addEventListener("click", function( e ){ //e => event
+        if( ! confirm("Starting a new GIF will delete all data that you have saved. Do you want to continue to make a new GIF?") ){
+            e.preventDefault(); // ! => don't want to do this
+        } else {
+            //want to do this! => maybe do something about it?
+            deleteAllStoryCookiesAndLocalStorage();
+        }
+  });
+
+
 function deleteAllStoryCookiesAndLocalStorage()
 {
 	
