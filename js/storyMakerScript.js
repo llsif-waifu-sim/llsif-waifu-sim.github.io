@@ -1136,13 +1136,11 @@ function changeBackgroundStory()
 {	
 	if(storyBackground < maxNumBackground-1)
 	{
-		storyBackground = storyBackground + 1;
+		storyBackground = parseInt(storyBackground) + 1;
 	}else {
 		storyBackground = 0;
 	}
-
 	var backpath = 'images/background/background' + storyBackground.toString() + '.png';
-	
 	document.getElementById("homeScreenStory").src=backpath;
 	
 }
@@ -1152,10 +1150,10 @@ function changeBackgroundStoryBack()
 
 	if(storyBackground <= 0)
 	{
-		storyBackground = maxNumBackground-1;
+		storyBackground = parseInt(maxNumBackground)-1;
 		
 	}else {
-		storyBackground = storyBackground - 1;
+		storyBackground = parseInt(storyBackground) - 1;
 	}
 
 	var backpath = 'images/background/background' + storyBackground.toString() + '.png';
