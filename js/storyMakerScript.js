@@ -1904,7 +1904,10 @@ function addText(ctx, txt, mainTxt)
 
 function saveCurrentScene()
 {
+	document.getElementById('insertStoryText_but').disabled = true;
 	storeSceneCookie();
+	document.getElementById('insertStoryText_but').disabled = false;
+
 }
 
 function constructGIF()
@@ -1927,7 +1930,7 @@ function constructGIF()
 		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
 		    urlAr = [];
 		    document.getElementById('uploadInProcessDiv').style.display = "none";
-		    $('#insertStoryText_but').prop('disabled', false);
+		    document.getElementById('convertGIF_but').disabled = false;
 		}
 	});
 
@@ -1976,7 +1979,7 @@ function uploadSubImageURL(subValue)
 
 function convertAllSceneToGIF()
 {
-	$('#insertStoryText_but').prop('disabled', true);
+	document.getElementById('convertGIF_but').disabled = true;
 	urlAr = [];
 	document.getElementById('uploadInProcessDiv').style.display = "block";
 	document.getElementById('gifOutputDiv').style.display = "none";
@@ -2017,7 +2020,7 @@ function convertAllSceneToGIF()
 
 function convertAllSceneToGIFRollingText()
 {
-	$('insertStoryText_but').prop('disabled', true);
+	document.getElementById('convertGIF_but').disabled = true;
 
 	urlAr = [];
 	document.getElementById('uploadInProcessDiv').style.display = "block";
