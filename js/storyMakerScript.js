@@ -1619,9 +1619,10 @@ function addText(ctx, txt, mainTxt)
 
 		var rowPosition = 530;
 		var incrementRowVal = 35; // Increment 
-
+		alert('entering text while loop');
 		while(true)
 		{
+
 			if(txt.length <= 0)
 			{
 				break;
@@ -1637,13 +1638,18 @@ function addText(ctx, txt, mainTxt)
 
 		    var splitArray = remainderTxt.split(" ");
 
-		    
+		    alert(splitArray);
 		    var temp = reconstruct(splitArray, last);
+		    alert('output: '.concat('[',temp,']'));
 
 		    ctx.fillText(temp, 68, rowPosition);	
 		    rowPosition = rowPosition + incrementRowVal;
 
 		    txt = txt.substring(temp.length, txt.length);
+
+		    if(temp == '' || temp == null){
+		    	break;
+		    }
 
 		}
 
