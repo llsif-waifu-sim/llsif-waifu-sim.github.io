@@ -6,7 +6,7 @@ var ctx = c.getContext("2d");
 
 var urlAr = [];
 
-var maxWidth = 420;
+var maxWidth = 400;
 var remainder = maxWidth;
 var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
 var maxWidthChar = Math.floor(maxWidth/letterWidth);
@@ -172,7 +172,6 @@ function pushSubImageToURLAR(chosenSceneNumber)
 			// if we found the array, we will then push its subimages
 			for(var j=1; j < subImageAr[i].length;j++)
 			{
-
 				urlAr.push(subImageAr[i][j]);
 				
 			}
@@ -279,6 +278,7 @@ function saveSubTextImages()
 	{
 		
 		document.getElementById('edit_text_box').innerHTML = entireText.substring(0,lengthCounter);
+		//alert(i.toString().concat(entireText.substring(0,lengthCounter)));
 		lengthCounter = lengthCounter + subStrLength; // Increase length of substring
 
 		printStoryCanvas(); // only changing text, so we don't have to wait for images to load
@@ -1772,12 +1772,31 @@ function reconstruct(arr, last)
 
 	if(!last)
 	{
+		//alert('popping:');
+		//alert(arr);
 		arr.pop();	
+		
+		//alert(arr);
 	}
-	
+	//alert(arr.length);
+	//alert('peek: '.concat(arr[arr.length-1].toString()));
+
+	// To get rid of empty charaacters
+	while(true){
+		if(arr.length == 0){
+			break;
+		}
+		if(arr[arr.length-1].toString() == ''){
+			arr.pop();
+		} else {
+			break;
+		}
+	}
 	for(var value = ""; value = arr.pop();)
 	{
-		sentence = (" ".concat(value)).concat(sentence);	
+		//alert('value: '.concat('[',value,']'));
+		sentence = (" ".concat(value)).concat(sentence);
+		//alert('forloop sentence: '.concat(sentence));	
 	}
 
 	return sentence;
@@ -1791,8 +1810,9 @@ function addText(ctx, txt, mainTxt)
 	if(ctx.measureText(txt).width >= maxWidth)
 	{
 		// That means the text width is zero   
-
-		var rowPosition = 530;
+		//alert('first'.concat(txt));
+		var rowPosition = 540;
+		var xPostion = 105;
 		var incrementRowVal = 35; // Increment 
 
 		while(true)
@@ -1810,14 +1830,14 @@ function addText(ctx, txt, mainTxt)
 		    } 
 
 			var remainderTxt = txt.substring(0, maxWidthChar*2);
-
+			//alert('remainderTxt: '.concat(remainderTxt));
 		    var splitArray = remainderTxt.split(" ");
 
 
 		    var temp = reconstruct(splitArray, last);
+		    //alert('temp: '.concat(temp));
 
-
-		    ctx.fillText(temp, 68, rowPosition);	
+		    ctx.fillText(temp, 97, rowPosition);	
 		    rowPosition = rowPosition + incrementRowVal;
 
 		    txt = txt.substring(temp.length, txt.length);
@@ -1830,7 +1850,9 @@ function addText(ctx, txt, mainTxt)
 
 
 	} else {
+		//alert('second'.concat(txt));
 		ctx.fillText(txt, 105, 540);	
+
 	}
 
 }
@@ -1860,6 +1882,7 @@ function constructGIF()
 		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
 		    urlAr = [];
 		    document.getElementById('uploadInProcessDiv').style.display = "none";
+		    $('#insertStoryText_but').prop('disabled', false);
 		}
 	});
 
@@ -1908,6 +1931,7 @@ function uploadSubImageURL(subValue)
 
 function convertAllSceneToGIF()
 {
+	$('#insertStoryText_but').prop('disabled', true);
 	urlAr = [];
 	document.getElementById('uploadInProcessDiv').style.display = "block";
 	document.getElementById('gifOutputDiv').style.display = "none";
@@ -1939,7 +1963,7 @@ function convertAllSceneToGIF()
 	sceneNum = prevSceneNum;
 
 
-	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF, please be patient. . .";
+	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF, please be patient. . .";
 	//alert('going to construct GIF');
 	constructGIF();
 }
@@ -1948,6 +1972,8 @@ function convertAllSceneToGIF()
 
 function convertAllSceneToGIFRollingText()
 {
+	$('insertStoryText_but').prop('disabled', true);
+
 	urlAr = [];
 	document.getElementById('uploadInProcessDiv').style.display = "block";
 	document.getElementById('gifOutputDiv').style.display = "none";
@@ -1983,7 +2009,6 @@ function convertAllSceneToGIFRollingText()
 			var tmpResult = pushSubImageToURLAR(i);
 
 			var maxCount = mainFrameRepeatNum;
-
 			if(tmpResult == -1){
 				// Since we ignored subimages (speech), we are adding as many frames as the entire chosen interval
 				maxCount = allFrameRepeatNum;
@@ -2003,7 +2028,7 @@ function convertAllSceneToGIFRollingText()
 	sceneNum = prevSceneNum;
 
 
-	document.getElementById("sceneLoadingBox").innerHTML = "Preparing to construct GIF, please be patient. . .";
+	document.getElementById("sceneLoadingBox").innerHTML = "Constructing GIF, please be patient. . .";
 	//alert('going to construct GIF');
 	constructGIF();
 }
@@ -2153,13 +2178,11 @@ function printStoryCanvas(){
 	//var mainTxt = "I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list."
 	//var mainTxt = "Derp";
 	var txt = mainTxt;
-
-
 	addText(ctx, txt, mainTxt);
 
 	// Speaker text
 	ctx.fillText(speakerTxt, 78, 465);
-
+	//alert('here');
 
 	//alert('Loaded main stuff to canvas');
 }
