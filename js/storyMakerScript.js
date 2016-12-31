@@ -1782,11 +1782,6 @@ function convertAllSceneToGIFRollingText()
 			}
 			
 
-
-
-
-			//alert(i);
-			//alert(localStorage.getItem("storyMaker_imageURL-".concat(i)));
 		} else {
 			// This should never happen
 			alert('We encountered a problem when converting all frames to GIF: '.concat('[',alreadySaved,']'));
