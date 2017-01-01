@@ -1161,6 +1161,24 @@ function deleteAllStoryCookiesAndLocalStorage()
 	speakerResize();
 	loadTotalFrameList();
 
+
+	document.getElementById('waifuStoryOption1').selectedIndex = 2;
+	document.getElementById('waifuStoryOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryOption3').selectedIndex = 1;
+
+	document.getElementById('waifuStoryCostumeOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryCostumeOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryCostumeOption3').selectedIndex = 0;
+
+	document.getElementById('waifuStoryMoodOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryMoodOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryMoodOption3').selectedIndex = 0;
+
+	document.getElementById('waifuStoryEbubbleOption1').selectedIndex = 0;
+	document.getElementById('waifuStoryEbubbleOption2').selectedIndex = 0;
+	document.getElementById('waifuStoryEbubbleOption3').selectedIndex = 0;
+	
+
      storyRefreshAllSelects();
 }
 
