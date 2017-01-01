@@ -638,7 +638,9 @@ function timeSpeech()
 
 }
 
-
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
 
 window.onload = function() {
 	backgroundAudio=document.getElementById("origin-music-player");
