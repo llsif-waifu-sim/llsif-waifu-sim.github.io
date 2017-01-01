@@ -1131,7 +1131,12 @@ function deleteAllStoryCookiesAndLocalStorage()
     document.getElementById('emotion_img_right').src =  'images/emotion/-1.png';
 
 
-     sceneMakerInitalization();
+    
+	loadSceneCookie();
+	$("#smoothnessTextSelect").selectpicker('hide');
+	document.getElementById('smoothnessLabelHide').style.display = "none";
+	speakerResize();
+	loadTotalFrameList();
 
      storyRefreshAllSelects();
 }
@@ -2275,6 +2280,7 @@ function sceneMakerInitalization()
 	document.getElementById('smoothnessLabelHide').style.display = "none";
 	speakerResize();
 	loadTotalFrameList();
+
 
 }
 
