@@ -1932,8 +1932,8 @@ function constructGIF()
 	gifshot.createGIF({
 		images: urlAr,
 		'interval': intervalForGIF,
-		'gifWidth': 1000,
-		'gifHeight': 600,
+		'gifWidth': 500,
+		'gifHeight': 300,
 		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
 		'fontSize': '10px',
 		'textBaseline': 'top'
