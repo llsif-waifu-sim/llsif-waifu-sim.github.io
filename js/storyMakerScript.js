@@ -1158,26 +1158,27 @@ function deleteAllStoryCookiesAndLocalStorage()
 	loadSceneCookie();
 	$("#smoothnessTextSelect").selectpicker('hide');
 	document.getElementById('smoothnessLabelHide').style.display = "none";
+	
+
+	$('#waifuStoryOption1 option')[2].selected = true;
+	$('#waifuStoryOption2 option')[0].selected = true;
+	$('#waifuStoryOption3 option')[1].selected = true;
+
+	$('#waifuStoryCostumeOption1 option')[0].selected = true;
+	$('#waifuStoryCostumeOption2 option')[0].selected = true;
+	$('#waifuStoryCostumeOption3 option')[0].selected = true;
+
+	$('#waifuStoryMoodOption1 option')[0].selected = true;
+	$('#waifuStoryMoodOption2 option')[0].selected = true;
+	$('#waifuStoryMoodOption3 option')[0].selected = true;
+
+	$('#waifuStoryEbubbleOption1 option')[0].selected = true;
+	$('#waifuStoryEbubbleOption2 option')[0].selected = true;
+	$('#waifuStoryEbubbleOption3 option')[0].selected = true;
+
+
 	speakerResize();
 	loadTotalFrameList();
-
-
-	document.getElementById('waifuStoryOption1').selectedIndex = 2;
-	document.getElementById('waifuStoryOption2').selectedIndex = 0;
-	document.getElementById('waifuStoryOption3').selectedIndex = 1;
-
-	document.getElementById('waifuStoryCostumeOption1').selectedIndex = 0;
-	document.getElementById('waifuStoryCostumeOption2').selectedIndex = 0;
-	document.getElementById('waifuStoryCostumeOption3').selectedIndex = 0;
-
-	document.getElementById('waifuStoryMoodOption1').selectedIndex = 0;
-	document.getElementById('waifuStoryMoodOption2').selectedIndex = 0;
-	document.getElementById('waifuStoryMoodOption3').selectedIndex = 0;
-
-	document.getElementById('waifuStoryEbubbleOption1').selectedIndex = 0;
-	document.getElementById('waifuStoryEbubbleOption2').selectedIndex = 0;
-	document.getElementById('waifuStoryEbubbleOption3').selectedIndex = 0;
-	
 
      storyRefreshAllSelects();
 }
