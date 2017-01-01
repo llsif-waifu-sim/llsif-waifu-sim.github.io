@@ -222,7 +222,7 @@ var rinStoryAr = [
 ['rin','08','01'],
 ['rin','08','02'],
 ['rin','08','03'],
-['rin','08','04'],['maki','16','04'],
+['rin','08','04'],
 ['rin','09','01'],
 ['rin','09','02'],
 ['rin','09','03'],
@@ -235,7 +235,8 @@ var rinStoryAr = [
 ['rin','14','01'],
 ['rin','14','02'],
 ['rin','16','01'],
-['rin','16','02']
+['rin','16','02'],
+['maki','16','04']
 ];
 
 var makiStoryAr = [
@@ -619,6 +620,138 @@ var kananStoryAr = [
 
 
 
+
+
+var alpacafStoryAr = [
+['apalcaf','01','01']
+];
+var alpacamStoryAr = [
+['apalcam','01','01']
+];
+
+
+
+
+var tsubasaStoryAr= [
+['tsubasa','06','01'],
+['tsubasa','06','02'],
+['tsubasa','06','03'],
+['tsubasa','08','01'],
+['tsubasa','08','02'],
+['tsubasa','08','03']
+];
+
+var anjuStoryAr = [
+['anju','06','01'],
+['anju','06','02'],
+['anju','06','03'],
+['anju','08','01'],
+['anju','08','02'],
+['anju','08','03'],
+];
+
+var erenaStoryAr = [
+['erena','06','01'],
+['erena','06','03'],
+['erena','08','01'],
+['erena','08','02'],
+['erena','08','03'],
+['erena','08','04']
+];
+
+
+
+
+
+var cocoaStoryAr = [
+['cocoa','05','01'],
+['cocoa','05','02'],
+['cocoa','05','03'],
+['cocoa','05','04'],
+['cocoa','11','01'],
+['cocoa','11','02'],
+['cocoa','11','03']
+];
+
+var cocoroStoryAr = [
+['cocoro','05','01'],
+['cocoro','05','02'],
+['cocoro','05','03'],
+['cocoro','05','04'],
+['cocoro','11','01'],
+['cocoro','11','02']
+];
+
+var cotaroStoryAr = [
+['cotaro','05','01'],
+['cotaro','05','02'],
+['cotaro','05','03'],
+['ccotaro','05','04'],
+['cotaro','11','01'],
+['cotaro','11','02']
+];
+
+var arisaStoryAr = [
+['arisa','01','01'],
+['arisa','01','02'],
+['arisa','01','03'],
+['arisa','01','04'],
+['arisa','06','01'],
+['arisa','06','02'],
+['arisa','06','03'],
+['arisa','06','04']
+];
+
+var yukihoStoryAr = [
+['yukiho','01','01'],
+['yukiho','01','03'],
+['yukiho','01','04'],
+['yukiho','01','05'],
+['yukiho','06','01'],
+['yukiho','06','03'],
+['yukiho','06','04'],
+['yukiho','06','05'],
+['yukiho','07','01'],
+['yukiho','07','03'],
+['yukiho','07','04'],
+['yukiho','12','01'],
+['yukiho','12','03'],
+['yukiho','12','04'],
+['yukiho','13','01'],
+['yukiho','13','03'],
+['yukiho','13','04'],
+['yukiho','13','05']
+];
+
+var fumikoStoryAr = [
+['fumiko','01','01'],
+['fumiko','01','02'],
+['fumiko','01','03'],
+['fumiko','01','04']
+];
+
+var mikaStoryAr = [
+['mika','01','01'],
+['mika','01','02'],
+['mika','01','03'],
+['mika','01','04']
+];
+
+var hidekoStoryAr = [
+['hideko','01','01'],
+['hideko','01','02'],
+['hideko','01','03'],
+['hideko','01','04']
+];
+
+var honokaMomStoryAr = [
+['honokasmom','05','01'],
+['honokasmom','05','02'],
+['honokasmom','05','05']
+];
+
+
+
 var mainStoryWaifuSelectionAR = [
 'honoka',
 'kotori',
@@ -639,5 +772,25 @@ var mainStoryWaifuSelectionAR = [
 'yoshiko',
 'dia',
 'mari',
-'kanan'
+'kanan',
+
+'tsubasa',
+'anju',
+'erena',
+
+'cocoa',
+'cocoro',
+'cotaro',
+
+'arisa',
+'yukiho',
+
+'fumiko',
+'hideko',
+'mika',
+
+"honoka's mom",
+
+'white alpaca',
+'brown alpaca'
 ];

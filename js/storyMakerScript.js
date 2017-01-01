@@ -127,6 +127,76 @@ function getStoryWaifuAr(name)
 	
 
 
+	} else if(name== 'tsubasa'){
+		for (var i = 0; i < tsubasaStoryAr.length; i++){
+		    newArray[i] = tsubasaStoryAr[i].slice();
+		}
+	} else if(name== 'anju'){
+		for (var i = 0; i < anjuStoryAr.length; i++){
+		    newArray[i] = anjuStoryAr[i].slice();
+		}
+	} else if(name== 'erena'){
+		for (var i = 0; i < erenaStoryAr.length; i++){
+		    newArray[i] = erenaStoryAr[i].slice();
+		}
+	
+	} else if(name== 'arisa'){
+		for (var i = 0; i < arisaStoryAr.length; i++){
+		    newArray[i] = arisaStoryAr[i].slice();
+		}
+	} else if(name== 'yukiho'){
+		for (var i = 0; i < yukihoStoryAr.length; i++){
+		    newArray[i] = yukihoStoryAr[i].slice();
+		}
+	
+
+
+	} else if(name== 'cocoa'){
+		for (var i = 0; i < cocoaStoryAr.length; i++){
+		    newArray[i] = cocoaStoryAr[i].slice();
+		}
+	} else if(name== 'cocoro'){
+		for (var i = 0; i < cocoroStoryAr.length; i++){
+		    newArray[i] = cocoroStoryAr[i].slice();
+		}
+	} else if(name== 'cotaro'){
+		for (var i = 0; i < cotaroStoryAr.length; i++){
+		    newArray[i] = cotaroStoryAr[i].slice();
+		}
+
+
+
+	} else if(name== 'fumiko'){
+		for (var i = 0; i < fumikoStoryAr.length; i++){
+		    newArray[i] = fumikoStoryAr[i].slice();
+		}
+	} else if(name== 'mika'){
+		for (var i = 0; i < mikaStoryAr.length; i++){
+		    newArray[i] = mikaStoryAr[i].slice();
+		}
+	} else if(name== 'hideko'){
+		for (var i = 0; i < hidekoStoryAr.length; i++){
+		    newArray[i] = hidekoStoryAr[i].slice();
+		}
+
+
+	} else if(name== "honoka's mom"){
+		for (var i = 0; i < honokaMomStoryAr.length; i++){
+		    newArray[i] = honokaMomStoryAr[i].slice();
+		}
+
+
+	} else if(name== 'white alpaca'){
+		for (var i = 0; i < alpacamStoryAr.length; i++){
+		    newArray[i] = alpacamStoryAr[i].slice();
+		}
+	} else if(name== 'brown alpaca'){
+		for (var i = 0; i < alpacafStoryAr.length; i++){
+		    newArray[i] = alpacafStoryAr[i].slice();
+		}
+
+
+
 	} else {
 		alert('getWaifuAr() has failed');
 		return null;
@@ -825,6 +895,14 @@ function loadSceneCookie(message)
 		document.getElementById('waifuStoryEbubbleOption1').value = emotion;
 
 		document.getElementById('emotion_img_left').src = 'images/emotion/'.concat(emotion,'.png');
+
+		if(name.toLowerCase() == "honoka's mom"){
+			name = 'honokasmom';
+		} else if(name.toLowerCase() == 'white alpaca'){
+			name = 'alpacam';
+		} else if(name.toLowerCase() == 'brown alpaca'){
+			name = 'alpacaf';
+	}
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
@@ -1733,6 +1811,14 @@ function searchIdStoryMain(type)
 		document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(name);
 	}	
 	
+	if(name.toLowerCase() == "honoka's mom"){
+		name = 'honokasmom';
+	} else if(name.toLowerCase() == 'white alpaca'){
+		name = 'alpacam';
+	} else if(name.toLowerCase() == 'brown alpaca'){
+		name = 'alpacaf';
+	}
+
 
 	path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";	
 
