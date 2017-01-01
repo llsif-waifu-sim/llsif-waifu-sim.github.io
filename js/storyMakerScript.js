@@ -43,6 +43,9 @@ var tempSubAr = [];
 var intervalDivisor = 0.33333;
 var intervalForGIF = 0;
 
+var gifWidth = 600;
+var gifHeight = 360;
+
 function getStoryWaifuAr(name)
 {
 	var newArray = [];
@@ -157,6 +160,26 @@ function checkRollingTextRequirements()
 
 	return;
 }
+
+function changeStoryGIFResolution(){
+	var selectedValue = document.getElementById('storyResolutionSelect').value;
+	if(selectedValue == 1){
+		gifWidth = 500; 
+		gifHeight = 300;
+	} else if(selectedValue == 2){
+		gifWidth = 600; 
+		gifHeight = 360;
+	} else if(selectedValue == 3){
+		gifWidth = 800; 
+		gifHeight = 480;
+	} else if(selectedValue == 4){
+		gifWidth = 1000; 
+		gifHeight = 600;
+	} else {
+		alert('Error while trying to determine resolution');
+	}
+}
+
 
 function multiSortFunction(a, b) {
     if (a[0] === b[0]) {
@@ -1932,8 +1955,8 @@ function constructGIF()
 	gifshot.createGIF({
 		images: urlAr,
 		'interval': intervalForGIF,
-		'gifWidth': 600,
-		'gifHeight': 360,
+		'gifWidth': gifWidth,
+		'gifHeight': gifHeight,
 		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
 		'fontSize': '10px',
 		'textBaseline': 'top'
@@ -2100,6 +2123,8 @@ function convertAllSceneToGIFRollingText()
 
 function startGIFCreation()
 {
+	changeStoryGIFResolution();
+
 	if(document.getElementById('radio-rollingText-switch-yes').checked){
 		// If rolling text is selected
 		intervalForGIF = chosenFPStoRealFPS(document.getElementById('gifIntervalSelect').value);
