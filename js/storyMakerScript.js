@@ -1933,7 +1933,7 @@ function constructGIF()
 		images: urlAr,
 		'interval': intervalForGIF,
 		'gifWidth': 800,
-		'gifHeight': 500,
+		'gifHeight': 480,
 		'text': 'Create your own Love Live GIF at Love Live Waifu Simulator ( llsif-waifu-sim.github.io )',
 		'fontSize': '10px',
 		'textBaseline': 'top'
