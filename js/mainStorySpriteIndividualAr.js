@@ -774,6 +774,8 @@ var mainStoryWaifuSelectionAR = [
 'mari',
 'kanan',
 
+'-------Nobody-------',
+
 'tsubasa',
 'anju',
 'erena',

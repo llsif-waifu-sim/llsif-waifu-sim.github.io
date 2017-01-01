@@ -194,6 +194,8 @@ function getStoryWaifuAr(name)
 		for (var i = 0; i < alpacafStoryAr.length; i++){
 		    newArray[i] = alpacafStoryAr[i].slice();
 		}
+	} else if(name == '-------Nobody-------'){
+		return;
 
 
 
@@ -868,7 +870,7 @@ function loadSceneCookie(message)
 
 	document.getElementById("story-textfield").value = document.getElementById('edit_text_box').innerHTML;
 
-	if(searchCertainCookie("speech") == 'nobody'){
+	if(searchCertainCookie("speech") == '-------nobody-------'){
 		document.getElementById('edit_text_box').innerHTML = '';
 		document.getElementById("story-textfield").value = 'Nobody';
 	}
@@ -887,6 +889,7 @@ function loadSceneCookie(message)
 
 
 		document.getElementById('waifuStoryOption1').value = name;
+
 		refreshStoryCostumeMoodOptions(1, 0);
 		document.getElementById('waifuStoryCostumeOption1').value = num1;
 		refreshStoryCostumeMoodOptions(1, 1);
@@ -907,7 +910,7 @@ function loadSceneCookie(message)
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
 
-		if(name.toLowerCase() == 'nobody'){
+		if(name.toLowerCase() == '-------nobody-------'){
 			path = 'images/blank.png';
 
 		}
@@ -919,7 +922,11 @@ function loadSceneCookie(message)
 			document.getElementById("idol_img_left").src = path;
 			// To assign name as speaker
 			if(speaker == 'left'){
+				if(name.toLowerCase() == '-------nobody-------'){
+					name = '';
+				}
 				document.getElementById('edit_speaker_box').innerHTML = name;
+				
 			}
 
 
@@ -957,6 +964,7 @@ function loadSceneCookie(message)
 	}
 
 
+
 	// Middle idol
 	var name = searchCertainCookie("idol_center");
 
@@ -982,7 +990,7 @@ function loadSceneCookie(message)
 
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 	
-		if(name.toLowerCase() == 'nobody'){
+		if(name.toLowerCase() == '-------nobody-------'){
 			path = 'images/blank.png';
 		}
 		
@@ -993,7 +1001,11 @@ function loadSceneCookie(message)
 			document.getElementById("idol_img_center").src = path;
 			// To assign name as speaker
 			if(speaker == 'center'){
+				if(name.toLowerCase() == '-------nobody-------'){
+					name = '';
+				}
 				document.getElementById('edit_speaker_box').innerHTML = name;
+				
 			}
 
 		} else if(selectMode == 1){
@@ -1005,7 +1017,9 @@ function loadSceneCookie(message)
 
 			if(speaker == 'center'){
 				document.getElementById('edit_speaker_box').innerHTML = searchCertainCookie("storyMain_name_center");
-
+				if(name.toLowerCase() == '-------nobody-------'){
+					name = '';
+				}
 			}
 
 			if(idolized == 'no'){
@@ -1051,7 +1065,7 @@ function loadSceneCookie(message)
 		var path = scrapePath + name.toLowerCase() + "_" + num1 + "_" + num2 + ".png";
 
 
-		if(name.toLowerCase() == 'nobody'){
+		if(name.toLowerCase() == '-------nobody-------'){
 			path = 'images/blank.png';
 		}
 		// To assign name as speaker
@@ -1063,6 +1077,9 @@ function loadSceneCookie(message)
 			document.getElementById("idol_img_right").src = path;
 
 			if(speaker == 'right'){
+				if(name.toLowerCase() == '-------nobody-------'){
+					name = '';
+				}
 				document.getElementById('edit_speaker_box').innerHTML = name;
 			}
 
@@ -1255,6 +1272,17 @@ function deleteAllStoryCookiesAndLocalStorage()
 	$('#waifuStoryEbubbleOption3 option')[0].selected = true;
 
 
+
+
+
+	$("#waifuStoryCostumeOption1").selectpicker('show');
+	$("#waifuStoryMoodOption1").selectpicker('show');
+	$("#waifuStoryCostumeOption2").selectpicker('show');
+	$("#waifuStoryMoodOption2").selectpicker('show');
+	$("#waifuStoryCostumeOption3").selectpicker('show');
+	$("#waifuStoryMoodOption3").selectpicker('show');
+
+
 	speakerResize();
 	loadTotalFrameList();
 
@@ -1402,18 +1430,18 @@ function loadStoryOptions()
 		    
 		for(var j=0; j < mainStoryWaifuSelectionAR.length; j++)
 		{
+
 		   	var x = document.getElementById(path);
 		    var option = document.createElement("option");
 		    option.text = capitalizeFirstLetter(mainStoryWaifuSelectionAR[j]);
+		    if(mainStoryWaifuSelectionAR[j].toLowerCase() == '-------nobody-------'){
+		    	option.text == '-------Nobody-------';
+		    }
 
 
 		    x.add(option);
 		}
 
-		var x = document.getElementById(path);
-		var option = document.createElement("option");
-		option.text = 'Nobody';
-		x.add(option);
 
 
 	}
@@ -1512,6 +1540,7 @@ function speakerResize()
 		document.getElementById('idol_img_right').style.maxHeight = "770px";
 		document.getElementById('idol_img_right').style.left = "50%";
 
+
 		if(storyMainSelect1 == 0){
 			document.getElementById('edit_speaker_box').innerHTML = document.getElementById('waifuStoryOption1').value;
 
@@ -1520,7 +1549,8 @@ function speakerResize()
 			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName1);
 		}
 
-		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+
+		if(document.getElementById('edit_speaker_box').innerHTML.toLowerCase() == '-------nobody-------'){
 			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 		
@@ -1543,7 +1573,7 @@ function speakerResize()
 			document.getElementById('edit_speaker_box').innerHTML = capitalizeFirstLetter(storyMainSelectName2);
 		}
 
-		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+		if(document.getElementById('edit_speaker_box').innerHTML.toLowerCase() == '-------nobody-------'){
 			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 
@@ -1568,7 +1598,7 @@ function speakerResize()
 		}
 
 
-		if(document.getElementById('edit_speaker_box').innerHTML == 'Nobody'){
+		if(document.getElementById('edit_speaker_box').innerHTML.toLowerCase() == '-------nobody-------'){
 			document.getElementById('edit_speaker_box').innerHTML = "";
 		}
 	} else {
@@ -1635,8 +1665,6 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	var waifuOption = document.getElementById(waifuOptionPath);
 		
 
-
-
 	var name = waifuOption.options[waifuOption.selectedIndex].text.toLowerCase();
 	var costumeStr = 'select[id=waifuStoryCostumeOption' + optionNum + ']';
 	var moodStr = 'select[id=waifuStoryMoodOption' + optionNum + ']';
@@ -1645,7 +1673,7 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	var moodSelectedInt = $(moodStr).val();
 
 
-	if(name != 'nobody'){
+	if(name != '-------nobody-------'){
 
 		newArray = getStoryWaifuAr(name);
 	}
@@ -1676,7 +1704,7 @@ function refreshStoryCostumeMoodOptions(optionNum, changeNum)
 	}
 
 
-	if(name == 'nobody'){
+	if(name == '-------nobody-------'){
 		// If we select nobody, then we hide the other select boxes
 		$("#waifuStoryCostumeOption".concat(optionNum)).selectpicker('refresh');
 		$("#waifuStoryMoodOption".concat(optionNum)).selectpicker('refresh');
@@ -1770,7 +1798,7 @@ function searchIdStoryMain(type)
 	var num2 = document.getElementById(moodPath).value;
 
 
-	if(name == 'Nobody'){
+	if(name == '-------Nobody-------'){
 		path = 'images/blank.png';
 
 		var speaker = document.getElementById('story-speaker-select').value;
