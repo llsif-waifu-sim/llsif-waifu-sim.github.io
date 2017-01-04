@@ -280,6 +280,25 @@ function addToSubImageArray(tempSubAr)
 	subImageAr.push(tempSubAr);
 }
 
+function removeToSubImageArray(chosenIndex)
+{
+	// search if tempArray already exists
+	for(var i = 1; i - 1< subImageAr.length; i++)
+	{
+		if(chosenIndex == subImageAr[i-1][0])
+		{
+			// This means the subarray existed before and need to replace it
+			subImageAr[i-1] = tempSubAr;
+
+			return;
+		}
+	}
+
+	// This means subarray does not exist and we can just push
+
+	subImageAr.push(tempSubAr);
+}
+
 
 	
 
@@ -1313,6 +1332,8 @@ function addNewScene()
 
 }
 
+
+
 function removeLastScene()
 {
 	if(maxNumOfScene == 1){
@@ -1330,6 +1351,8 @@ function removeLastScene()
 	setCookie("sceneMaker_maxNumOfScene", maxNumOfScene, cookieExpireDate);
 	$('#story-line-select-option').selectpicker('refresh');
 	
+
+
 
 	alert('Frame '.concat(parseInt(maxNumOfScene) + 1, ' has been removed'));
 
