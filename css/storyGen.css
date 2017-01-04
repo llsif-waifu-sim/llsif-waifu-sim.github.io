@@ -3,6 +3,13 @@
     height:700px;
 }
 
+@font-face {
+    font-family: 'MotoyaLMaru'; 
+    src: url('fonts/MotoyaLMaru.ttf'); 
+}
+
+
+
 #container{
     position: relative;
     width: 1140px;
@@ -18,8 +25,7 @@
 
 #edit_speaker_box{
     position:absolute;
-    max-width:100%;
-
+    width:300px;
     bottom:32%;
     left: 7%;
 }
@@ -32,8 +38,7 @@
     bottom: 1%;
     left: 5%;
 
-    opacity: 0.7;
-    filter: alpha(opacity=70);
+
 }
 
 #story_speaker_img{
@@ -44,8 +49,6 @@
     bottom: 31%;
     left: 5%;
 
-    opacity: 0.7;
-    filter: alpha(opacity=70);
 }
 
 #idol_img_center{

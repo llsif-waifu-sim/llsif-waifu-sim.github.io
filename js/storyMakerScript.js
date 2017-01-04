@@ -236,17 +236,17 @@ function checkRollingTextRequirements()
 function changeStoryGIFResolution(){
 	var selectedValue = document.getElementById('storyResolutionSelect').value;
 	if(selectedValue == 1){
-		gifWidth = 500; 
-		gifHeight = 300;
+		gifWidth = 480; 
+		gifHeight = 320;
 	} else if(selectedValue == 2){
 		gifWidth = 600; 
-		gifHeight = 360;
+		gifHeight = 400;
 	} else if(selectedValue == 3){
-		gifWidth = 800; 
-		gifHeight = 480;
+		gifWidth = 870; 
+		gifHeight = 520;
 	} else if(selectedValue == 4){
-		gifWidth = 1000; 
-		gifHeight = 600;
+		gifWidth = 960; 
+		gifHeight = 640;
 	} else {
 		alert('Error while trying to determine resolution');
 	}
