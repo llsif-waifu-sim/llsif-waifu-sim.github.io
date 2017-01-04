@@ -280,6 +280,13 @@ function addToSubImageArray(tempSubAr)
 	subImageAr.push(tempSubAr);
 }
 
+function deleteRow(arr, row) {
+   arr = arr.slice(0); // make copy
+   arr.splice(row - 1, 1);
+   return arr;
+}
+
+
 function removeToSubImageArray(chosenIndex)
 {
 	// search if tempArray already exists
@@ -287,16 +294,13 @@ function removeToSubImageArray(chosenIndex)
 	{
 		if(chosenIndex == subImageAr[i-1][0])
 		{
-			// This means the subarray existed before and need to replace it
-			subImageAr[i-1] = tempSubAr;
+			// This means the subarray existed and we need to delete it
+			subImageAr = deleteRow(subImageAr, i);
 
 			return;
 		}
 	}
 
-	// This means subarray does not exist and we can just push
-
-	subImageAr.push(tempSubAr);
 }
 
 
@@ -1345,6 +1349,8 @@ function removeLastScene()
 
 
 	deleteCookie("sceneMaker_frame-".concat(maxNumOfScene));
+
+	removeToSubImageArray(parseInt(maxNumOfScene));
 
 
 	maxNumOfScene = parseInt(maxNumOfScene) - 1;
