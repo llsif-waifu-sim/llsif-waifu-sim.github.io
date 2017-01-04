@@ -6,7 +6,7 @@ var ctx = c.getContext("2d");
 
 var urlAr = [];
 
-var maxWidth = 400;
+var maxWidth = 340;
 var remainder = maxWidth;
 var letterWidth = ctx.measureText('W').width;  // gets the length of a single letter
 var maxWidthChar = Math.floor(maxWidth/letterWidth);
@@ -2059,7 +2059,7 @@ function addText(ctx, txt, mainTxt)
 		// That means the text width is zero   
 		//alert('first'.concat(txt));
 		var rowPosition = 540;
-		var xPostion = 105;
+		var xPostion = 125;
 		var incrementRowVal = 35; // Increment 
 
 		while(true)
@@ -2084,7 +2084,7 @@ function addText(ctx, txt, mainTxt)
 		    var temp = reconstruct(splitArray, last);
 		    //alert('temp: '.concat(temp));
 
-		    ctx.fillText(temp, 97, rowPosition);	
+		    ctx.fillText(temp, 117, rowPosition);	
 		    rowPosition = rowPosition + incrementRowVal;
 
 		    txt = txt.substring(temp.length, txt.length);
@@ -2098,7 +2098,7 @@ function addText(ctx, txt, mainTxt)
 
 	} else {
 		//alert('second'.concat(txt));
-		ctx.fillText(txt, 105, 540);	
+		ctx.fillText(txt, 125, 540);	
 
 	}
 
@@ -2431,7 +2431,7 @@ function printStoryCanvas(){
     ctx.globalAlpha = 1;
 
     // Preparing to write text
-    ctx.font = "30px Arial";
+    ctx.font = "30px MotoyaLMaru";
 
 
 	//var mainTxt = "I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list."

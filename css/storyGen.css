@@ -22,8 +22,11 @@
     top:74%;
     left: 10%;
 
-
+    font-family: 'MotoyaLMaru';
+    letter-spacing: -2px;
+    font-weight: 3;
     text-align:left;
+
 }
 
 #edit_speaker_box{
@@ -31,6 +34,9 @@
     width:300px;
     bottom:32%;
     left: 7%;
+    font-family: 'MotoyaLMaru';
+    letter-spacing: -2px;
+    font-weight: 3;
 }
 
 #temp_text_box_img{
