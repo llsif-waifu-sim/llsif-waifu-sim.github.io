@@ -2418,10 +2418,7 @@ function printStoryCanvas(){
     ctx.drawImage(imgwaifuCenter, imageWaifuCenterX, imageWaifuCenterY , imgwaifuCenter.width, imgwaifuCenter.height);
     ctx.drawImage(imgwaifuRight, imageWaifuRightX, imageWaifuRightY, imgwaifuRight.width, imgwaifuRight.height);
 
-    
-
-    ctx.globalAlpha = 0.7;
-   
+      
     ctx.drawImage(speakerbox, 65, 430, speakerbox.width, speakerbox.height);
     ctx.drawImage(speechbox, 65, 490, speechbox.width, speechbox.height);
 
@@ -2442,8 +2439,23 @@ function printStoryCanvas(){
 	var txt = mainTxt;
 	addText(ctx, txt, mainTxt);
 
+
+	var speakerTextPosition = 180
+	if(speakerTxt.length <= 5){
+		speakerTextPosition = 205;
+
+	} else if(speakerTxt.length <= 8){
+		speakerTextPosition = 180;
+
+	} else if(speakerTxt.length <= 10){
+		speakerTextPosition = 220;
+
+	} else {
+		speakerTextPosition = 130;
+	}
+
 	// Speaker text
-	ctx.fillText(speakerTxt, 78, 465);
+	ctx.fillText(speakerTxt, speakerTextPosition, 465);
 	//alert('here');
 
 	//alert('Loaded main stuff to canvas');
