@@ -185,7 +185,9 @@ var yoshiko_ar =
 ['1077','yoshiko','no'],
 ['1077','yoshiko','yes'],
 ['1092','yoshiko','no'],
-['1092','yoshiko','yes']
+['1092','yoshiko','yes'],
+['1102','yoshiko','no'],
+['1102','yoshiko','yes']
 ];
 var dia_ar = 
 [
@@ -245,7 +247,9 @@ var mari_ar =
 ['1094','mari','no'],
 ['1094','mari','yes'],
 ['1099','mari','no'],
-['1099','mari','yes']
+['1099','mari','yes'],
+['1103','mari','no'],
+['1103','mari','yes']
 ];
 
 var kanan_ar =  
