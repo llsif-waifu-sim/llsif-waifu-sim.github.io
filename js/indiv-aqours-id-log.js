@@ -96,7 +96,9 @@ var riko_ar =
 ['1068','riko','no'],
 ['1068','riko','yes'],
 ['1088','riko','no'],
-['1088','riko','yes']
+['1088','riko','yes'],
+['1109','riko','no'],
+['1109','riko','yes']
 ];
 
 var ruby_ar =
@@ -128,7 +130,9 @@ var ruby_ar =
 ['1076','ruby','no'],
 ['1076','ruby','yes'],
 ['1095','ruby','no'],
-['1095','ruby','yes']
+['1095','ruby','yes'],
+['1110','ruby','no'],
+['1110','ruby','yes']
 ];
 
 var hanamaru_ar =
@@ -187,7 +191,9 @@ var yoshiko_ar =
 ['1092','yoshiko','no'],
 ['1092','yoshiko','yes'],
 ['1102','yoshiko','no'],
-['1102','yoshiko','yes']
+['1102','yoshiko','yes'],
+['1108','yoshiko','no'],
+['1108','yoshiko','yes']
 ];
 var dia_ar = 
 [
@@ -277,5 +283,7 @@ var kanan_ar =
 ['1065','kanan','no'],
 ['1065','kanan','yes'],
 ['1089','kanan','no'],
-['1089','kanan','yes']
+['1089','kanan','yes'],
+['1107','kanan','no'],
+['1107','kanan','yes']
 ];
