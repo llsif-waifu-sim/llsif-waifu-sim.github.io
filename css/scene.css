@@ -75,6 +75,12 @@
 #storyGIFMaker_but{
     position: absolute;
     top: 2%;
+    right: 11%;
+}
+
+#cardPic_but{
+    position: absolute;
+    top: 2%;
     right: 2%;
 }
 

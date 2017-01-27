@@ -1,7 +1,7 @@
 import json
 import urllib
 import urllib2
-
+from idolName import idol2path
 
 def getIdolURL(name):
     if name == 'hanamaru':
@@ -49,7 +49,8 @@ def getIdolURL(name):
         exit()
 
 
-group = ['hanayo','maki','rin','honoka','umi','kotori','eli','nozomi','nico']
+
+group = ['hanayo','maki','rin','honoka','umi','kotori','eli','nozomi','nico','chika','you','riko','hanamaru','ruby','yoshiko','kanan','mari','dia']
 
 txt_str = "../js/indiv-muse-id-log.js"
 text_file = open(txt_str, "w")
@@ -79,9 +80,32 @@ for name in group:
         for x in range (0,10):    
             x_id = data['results'][x]['id']
             x_str = str(x_id)
+
+	    name = data['results'][x]['idol']['name']
+
             img_url = data['results'][x]['transparent_image']
             img_url_idol = data['results'][x]['transparent_idolized_image']
 
+
+	    img_url_card = data['results'][x]['card_image']
+	    img_url_card_idol = data['results'][x]['card_idolized_image']
+
+
+	    if (img_url_card != None or img_url_card_idol != None) and idol2path(name) != 'none':
+	        # For non-transparent card images
+		print x_str
+		path_to_save = "../../distribution/llsif-waifu-card-pics/scraped-images/" + idol2path(name) +"/" + x_str + ".png"
+		path_to_save_id = "../../distribution/llsif-waifu-card-pics/scraped-images/" + idol2path(name) +"/" + x_str + "_id.png"
+		
+		if img_url_card != None:
+			urllib.urlretrieve(img_url_card, path_to_save)
+
+
+		if img_url_card_idol != None:
+			urllib.urlretrieve(img_url_card_idol, path_to_save_id)
+
+
+	    '''
             if img_url != None:
                 # [(id),(name)]
 
@@ -107,7 +131,7 @@ for name in group:
         
                 text_file.write(text_to_save)
                 print text_to_prnt
-
+	    '''
             maxIter = maxIter - 1
 
             if maxIter == 0:

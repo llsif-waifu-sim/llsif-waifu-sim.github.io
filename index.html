@@ -144,6 +144,7 @@
     	<img id="story_but" data-toggle="modal" data-target="#storyModal" src='images/buttons/story-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' onclick="storyVideoShow()">
     	
     	<button id="storyGIFMaker_but" type="button" class="btn btn-primary" data-toggle="modal" data-target="#StoryGIFMakerModal">Story Mode GIF Generator</button>
+    	<button id="cardPic_but" type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardPicModal">View Card</button>
     	
 
     	<img id="member_but" src='images/buttons/member-button.png' onmouseover='hoverInBut(this.id)' onmouseout='hoverOutBut(this.id)' data-toggle="modal" data-target="#memberModal" onclick="memberClick()">
@@ -976,6 +977,30 @@
 
 
 
+	   <div class="modal fade" id="cardPicModal" role="dialog">
+	    <div class="modal-dialog" style='width: 500px; height:600px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">View Card</h4>
+	        </div>
+	        <div class="modal-body">
+	        
+
+	        
+	        <img id='cardPicImg' src='https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/honoka/28.png' style='width:427px;height:600px;'></img>
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
 
 
 
@@ -1023,6 +1048,11 @@
 			        	<tr>
 			        		<p>
 			        			- New song, G Senjou no Cinderella, has been added to Aqours Others!
+			        		</p>
+			        	</tr>
+			        	<tr>
+			        		<p>
+			        			- Added the ability to view your waifus in card form! Now you can admire the beautiful artwork on your dream SSRs or URs! Click on the "View Card" button in order view your waifu in card form.
 			        		</p>
 			        	</tr>
 			        	<tr>

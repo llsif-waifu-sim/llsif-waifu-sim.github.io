@@ -182,9 +182,11 @@ function forgetWaifuLoad(index)
     var path;
 
     var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
+	var cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/"
 
 	if(isOthers(name)){
 		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
+		cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/z-others/"
 	} 
 
 	
@@ -192,14 +194,20 @@ function forgetWaifuLoad(index)
 	if(idolized == 'yes')
 	{
 		path = scrapePath + name + "/" + id + "_id.png";
+		cardPicPath = cardPicPath + name + "/" + id + "_id.png";
 		document.querySelector("input[value='yes']").checked = true;
 	}else{
 		path = scrapePath + name +  "/" + id + ".png";
+		cardPicPath = cardPicPath + name +  "/" + id + ".png";
 		document.querySelector("input[value='no']").checked = true;
 	}
 
+
+
+
     //file exists
     document.getElementById("idol_img").src=path;
+    document.getElementById("cardPicImg").src = cardPicPath;
 
     nameAssign(name);
     document.getElementById("card_id").value = id;
@@ -940,18 +948,24 @@ function getRandomWaifu()
 	globalIndex = i;
 
 	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
+	var cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/"
+
 	if(isOthers(name)){
 		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
+		cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/z-others/"
 	} 
+
 
 	
 	// If talking about Muse & Aqours
 	if(idolized == 'yes')
 	{
 		path = scrapePath + name + "/" + id + "_id.png";
+		cardPicPath = cardPicPath + name + "/" + id + "_id.png";
 		document.querySelector("input[value='yes']").checked = true;
 	}else{
 		path = scrapePath + name +  "/" + id + ".png";
+		cardPicPath = cardPicPath + name +  "/" + id + ".png";
 		document.querySelector("input[value='no']").checked = true;
 	}
 
@@ -962,6 +976,7 @@ function getRandomWaifu()
 
     //file exists
 	document.getElementById("idol_img").src=path;
+	document.getElementById("cardPicImg").src = cardPicPath;
 
 	nameAssign(name);
 
@@ -1011,18 +1026,24 @@ function getRandomCard()
 	globalIndex = i;
 
 	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
+	var cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/"
+
 	if(isOthers(name)){
 		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
+		cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/z-others/"
 	} 
+
 
 	
 	// If talking about Muse & Aqours
 	if(idolized == 'yes')
 	{
 		path = scrapePath + name + "/" + id + "_id.png";
+		cardPicPath = cardPicPath + name + "/" + id + "_id.png";
 		document.querySelector("input[value='yes']").checked = true;
 	}else{
 		path = scrapePath + name +  "/" + id + ".png";
+		cardPicPath = cardPicPath + name +  "/" + id + ".png";
 		document.querySelector("input[value='no']").checked = true;
 	}
 
@@ -1030,6 +1051,7 @@ function getRandomCard()
 
     //file exists
 	document.getElementById("idol_img").src=path;
+	document.getElementById("cardPicImg").src = cardPicPath;
 
 	nameAssign(name);
 
@@ -1160,9 +1182,11 @@ function searchId()
 	var path;
 
 	var scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/";
-	
+	var cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/"
+
 	if(isOthers(name)){
 		scrapePath = "https://llsif-waifu-sim.github.io/llsif-waifu-girl-images/scraped-images/z-others/"
+		cardPicPath = "https://llsif-waifu-sim.github.io/llsif-waifu-card-pics/scraped-images/z-others/"
 	} 
 
 	
@@ -1170,8 +1194,10 @@ function searchId()
 	if(idolized == 'yes')
 	{
 		path = scrapePath + name + "/" + id + "_id.png";
+		cardPicPath = cardPicPath + name + "/" + id + "_id.png";
 	}else{
 		path = scrapePath + name +  "/" + id + ".png";
+		cardPicPath = cardPicPath + name +  "/" + id + ".png";
 	}
 
 	
@@ -1190,6 +1216,8 @@ function searchId()
 	    {
 	        //file exists
 	        document.getElementById("idol_img").src=path;
+
+	        document.getElementById("cardPicImg").src = cardPicPath;
 
 			nameAssign(name);
 
