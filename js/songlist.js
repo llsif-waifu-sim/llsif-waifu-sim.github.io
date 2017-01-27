@@ -172,7 +172,8 @@ var aqours_others_ar =
 ['Pops heart de Odorun damon!',5],
 ['Sora mo Kokoro mo Hareru kara',5],
 ['Waku-Waku-Week!',5],
-['Daydream Warrior',5]
+['Daydream Warrior',5],
+['G Senjou no Cinderella',5]
 ];
 
 var idol_others_ar = 
