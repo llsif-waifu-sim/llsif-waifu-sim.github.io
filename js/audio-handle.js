@@ -913,9 +913,12 @@ function cardRNG()
 	var temp_ar = getWaifuAr(globalWaifu);
 
 	var maxNum = temp_ar.length;
+
+
 	var n = Math.floor(Math.random() * maxNum);
 	
 	var temp_index = n;
+
 	var temp_id = temp_ar[temp_index][0];
 	var temp_idolized = temp_ar[temp_index][2];
 
