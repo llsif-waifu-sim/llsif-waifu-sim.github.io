@@ -596,7 +596,9 @@ var honoka_ar =
 ['1060','honoka','no'],
 ['1060','honoka','yes'],
 ['1080','honoka','no'],
-['1080','honoka','yes']
+['1080','honoka','yes'],
+['1114','honoka','no'],
+['1114','honoka','yes']
 ];
 var umi_ar = 
 [
@@ -891,7 +893,9 @@ var kotori_ar =
 ['1045','kotori','no'],
 ['1045','kotori','yes'],
 ['1057','kotori','no'],
-['1057','kotori','yes']
+['1057','kotori','yes'],
+['1115','kotori','no'],
+['1115','kotori','yes']
 ];
 var eli_ar = 
 [
