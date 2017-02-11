@@ -114,6 +114,23 @@ for x in range (980,991+1):
         text_to_prnt =  "['" + x_str + "','" + allidol2path(name) +"','yes'],"
         text_file.write(text_to_save)
         print text_to_prnt
+
+
+    if (img_url_card != None or img_url_card_idol != None) and idol2path(name) != 'none':
+	# For non-transparent card images
+	print x_str
+	path_to_save = "../../distribution/llsif-waifu-card-pics/scraped-images/" + idol2path(name) +"/" + x_str + ".png"
+	path_to_save_id = "../../distribution/llsif-waifu-card-pics/scraped-images/" + idol2path(name) +"/" + x_str + "_id.png"
+
+	if img_url_card != None:
+	    urllib.urlretrieve(img_url_card, path_to_save)
+
+
+	if img_url_card_idol != None:
+	    urllib.urlretrieve(img_url_card_idol, path_to_save_id)
+
+
+
         
 text_file.write('];\n')
 print '];'
