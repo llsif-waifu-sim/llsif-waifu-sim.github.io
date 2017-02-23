@@ -9,6 +9,10 @@ from PIL import Image
 import requests
 from io import BytesIO
 
+begin = 1132
+last = 1135
+
+
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol):
 
     # Define paths to save images in
@@ -49,9 +53,6 @@ def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol):
 text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
-
-begin = 1127
-last = 1132
 
 # The ending value should be the last id value + 1
 for x in range (begin,last+1):
