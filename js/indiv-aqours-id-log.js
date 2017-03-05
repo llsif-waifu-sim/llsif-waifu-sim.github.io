@@ -108,7 +108,9 @@ var riko_ar =
 ['1109','riko','no'],
 ['1109','riko','yes'],
 ['1117','riko','no'],
-['1117','riko','yes']
+['1117','riko','yes'],
+['1146','riko','no'],
+['1146','riko','yes']
 ];
 
 var ruby_ar =
@@ -144,7 +146,9 @@ var ruby_ar =
 ['1110','ruby','no'],
 ['1110','ruby','yes'],
 ['1130','ruby','no'],
-['1130','ruby','yes']
+['1130','ruby','yes'],
+['1147','ruby','no'],
+['1147','ruby','yes']
 ];
 
 var hanamaru_ar =

@@ -1638,6 +1638,10 @@ var id_log =
 ['1143','hanamaru','no'],
 ['1143','hanamaru','yes'],
 ['1144','kanan','no'],
-['1144','kanan','yes']
+['1144','kanan','yes'],
+['1146','riko','no'],
+['1146','riko','yes'],
+['1147','ruby','no'],
+['1147','ruby','yes']
 ];
 
