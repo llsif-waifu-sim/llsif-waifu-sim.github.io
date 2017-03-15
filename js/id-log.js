@@ -1646,6 +1646,14 @@ var id_log =
 ['1148','honoka','no'],
 ['1148','honoka','yes'],
 ['1149','nico','no'],
-['1149','nico','yes']
+['1149','nico','yes'],
+['1151','riko','no'],
+['1151','riko','yes'],
+['1152','yoshiko','no'],
+['1152','yoshiko','yes'],
+['1153','ruby','no'],
+['1153','ruby','yes'],
+['1154','dia','no'],
+['1154','dia','yes']
 ];
 
