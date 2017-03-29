@@ -152,7 +152,8 @@ var aqours_together =
 ['MIRAI TICKET',3],
 ['Omoi yo Hitotsu ni Nare',3],
 ['Jingle Bells ga Tomaranai',3],
-['Seinaru Hi no Inori',3]
+['Seinaru Hi no Inori',3],
+['Taiyou o Oikakero!',3]
 ];
 
 var aqours_subgroup_ar = 
@@ -162,7 +163,10 @@ var aqours_subgroup_ar =
 ['Genki Zenkai DAY! DAY! DAY!',4],
 ['Yozora wa Nandemo Shitteru no?',4],
 ['Tokimeki Bunruigaku',4],
-['Torikoriko PLEASE',4]
+['Torikoriko PLEASE',4],
+['P.S. no Mukougawa',4],
+['Guilty Eyes Fever',4],
+['LONELY TUNING',4]
 ];
 
 var aqours_others_ar = 

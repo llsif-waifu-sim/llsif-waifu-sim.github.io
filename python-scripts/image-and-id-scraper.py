@@ -10,7 +10,7 @@ import requests
 from io import BytesIO
 
 begin = 1154
-last = 1157
+last = 1159
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol):
@@ -53,7 +53,7 @@ def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol):
 text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
-
+'''
 # The ending value should be the last id value + 1
 for x in range (begin,last+1):
     x_str = str(x)
@@ -72,12 +72,12 @@ for x in range (begin,last+1):
     if img_url != None and idol2path(name) != 'none':
         #print str(x) + ': ' + name
         
-        '''
+        
         # Testing in foreign country, this stops working for some reason
-        urllib.urlretrieve(img_url, path_to_save)
-        urllib.urlretrieve(img_url_idol, path_to_save_id)
+        #urllib.urlretrieve(img_url, path_to_save)
+        #urllib.urlretrieve(img_url_idol, path_to_save_id)
         #########
-        '''
+        
         ## Substitution
         PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol)
         
@@ -94,7 +94,7 @@ for x in range (begin,last+1):
         text_file.write(text_to_save)
         print text_to_prnt
 
-    
+'''    
 
 
 text_file.write('];\n')
