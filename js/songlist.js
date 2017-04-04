@@ -153,7 +153,9 @@ var aqours_together =
 ['Omoi yo Hitotsu ni Nare',3],
 ['Jingle Bells ga Tomaranai',3],
 ['Seinaru Hi no Inori',3],
-['Taiyou o Oikakero!',3]
+['Taiyou o Oikakero!',3],
+['HAPPY PARTY TRAIN',3],
+['SKY JOURNEY',3]
 ];
 
 var aqours_subgroup_ar = 
