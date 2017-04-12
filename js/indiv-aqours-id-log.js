@@ -264,7 +264,9 @@ var dia_ar =
 ['1119','dia','no'],
 ['1119','dia','yes'],
 ['1154','dia','no'],
-['1154','dia','yes']
+['1154','dia','yes'],
+['1168','dia','no'],
+['1168','dia','yes']
 ];
 var mari_ar =   
 [
@@ -301,7 +303,9 @@ var mari_ar =
 ['1142','mari','no'],
 ['1142','mari','yes'],
 ['1162','mari','no'],
-['1162','mari','yes']
+['1162','mari','yes'],
+['1169','mari','no'],
+['1169','mari','yes']
 ];
 
 var kanan_ar =  
