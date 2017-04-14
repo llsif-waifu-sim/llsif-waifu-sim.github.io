@@ -155,7 +155,8 @@ var aqours_together =
 ['Seinaru Hi no Inori',3],
 ['Taiyou o Oikakero!',3],
 ['HAPPY PARTY TRAIN',3],
-['SKY JOURNEY',3]
+['SKY JOURNEY',3],
+['Shoujo Ijou no Koi ga Shitai',3]
 ];
 
 var aqours_subgroup_ar = 
