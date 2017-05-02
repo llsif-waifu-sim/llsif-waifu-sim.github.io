@@ -1223,7 +1223,9 @@ var nozomi_ar =
 ['1072','nozomi','no'],
 ['1072','nozomi','yes'],
 ['1137','nozomi','no'],
-['1137','nozomi','yes']
+['1137','nozomi','yes'],
+['1182','nozomi','no'],
+['1182','nozomi','yes']
 ];
 var nico_ar = 
 [
@@ -1375,7 +1377,9 @@ var nico_ar =
 ['1084','nico','no'],
 ['1084','nico','yes'],
 ['1135','nico','no'],
-['1135','nico','yes']
+['1135','nico','yes'],
+['1181','nico','no'],
+['1181','nico','yes']
 ];
 
 
