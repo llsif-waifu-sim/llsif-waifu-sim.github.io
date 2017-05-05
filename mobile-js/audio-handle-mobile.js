@@ -423,6 +423,7 @@ function eventSpeech()
 		} else if(curr_day == 19){
 			// Maki's birthday
 			var f = 20;
+			n = 0;
 			eventSpeechSound(f,n);
 			return 0;
 
@@ -433,6 +434,7 @@ function eventSpeech()
 		if(curr_day == 5){
 			// Children's day
 			var f = 21;
+			n = 0;
 			eventSpeechSound(f,n);
 			return 0;
 
@@ -557,6 +559,7 @@ function eventSpeech()
 	return -1;
 	
 }
+
 
 
 

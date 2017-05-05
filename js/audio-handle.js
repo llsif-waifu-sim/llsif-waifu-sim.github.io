@@ -347,7 +347,6 @@ function searchEventIndex(f, n)
 				// To prevent marineDay from interfering with non-marine day characters
 				return i + n - 2;
 			}
-
 			return i + n;
 		}
 	}
@@ -371,7 +370,7 @@ function eventSpeechSound(f,maxNum){
 	globalAudio = new Audio(superString);
 	globalAudio.volume = voiceVolume;
 	globalAudio.play();
-		
+	
 	// Add text
 	var pathString = "".concat(audioPath, waifuName, file);
 	changeSpeechText(pathString, txtIndex);
@@ -436,6 +435,7 @@ function eventSpeech()
 		} else if(curr_day == 19){
 			// Maki's birthday
 			var f = 20;
+			n = 0;
 			eventSpeechSound(f,n);
 			return 0;
 
@@ -446,6 +446,7 @@ function eventSpeech()
 		if(curr_day == 5){
 			// Children's day
 			var f = 21;
+			n = 0;
 			eventSpeechSound(f,n);
 			return 0;
 
@@ -922,7 +923,6 @@ function cardRNG()
 	var temp_id = temp_ar[temp_index][0];
 	var temp_idolized = temp_ar[temp_index][2];
 
-	//alert(temp_id);
 
 	// Get the index from the main id_log array
 	return searchIndexById(temp_id, temp_idolized);
@@ -1004,7 +1004,7 @@ function getRandomWaifu()
 
 function getRandomCard()
 {
-	//alert('getRandomCard');
+
 	var neg = forgetWaifuRNG(30);
 
 	if(neg == 0){
@@ -1022,8 +1022,6 @@ function getRandomCard()
 	var name = id_log[i][1];
 	var idolized = id_log[i][2];
 
-	//alert(id);
-	
 	var path;
 
 	globalIndex = i;
@@ -1255,8 +1253,6 @@ function changeWaifu(name, id){
 	globalIndex = indexFun;
 
 	nameAssign(name);
-	//alert(indexFun);
-	//alert(id_log[indexFun][0]);
 	document.getElementById("card_id").value = id;
 
 	if (globalAudio!=null){
@@ -1291,9 +1287,7 @@ function changeWaifu(name, id){
 		{
 			mode = 4;
 		}
-
-
-	
+		
 		var n = 0;
 
 		if(mode == 0){
@@ -1687,7 +1681,6 @@ function changeWaifu(name, id){
 
 
 	function changeSpeechText (path, n) {
-		
 		var pathString;
 		if(language == 'english'){
 			pathString = "".concat("./", path, "speech-en.txt");
