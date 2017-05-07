@@ -204,7 +204,9 @@ var hanamaru_ar =
 ['1143','hanamaru','no'],
 ['1143','hanamaru','yes'],
 ['1177','hanamaru','no'],
-['1177','hanamaru','yes']
+['1177','hanamaru','yes'],
+['1191','hanamaru','no'],
+['1191','hanamaru','yes']
 ];
 var yoshiko_ar = 
 [
@@ -361,5 +363,7 @@ var kanan_ar =
 ['1164','kanan','no'],
 ['1164','kanan','yes'],
 ['1187','kanan','no'],
-['1187','kanan','yes']
+['1187','kanan','yes'],
+['1190','kanan','no'],
+['1190','kanan','yes']
 ];
