@@ -1712,6 +1712,18 @@ var id_log =
 ['1190','kanan','no'],
 ['1190','kanan','yes'],
 ['1191','hanamaru','no'],
-['1191','hanamaru','yes']
+['1191','hanamaru','yes'],
+['1192','rin','no'],
+['1192','rin','yes'],
+['1193','kotori','no'],
+['1193','kotori','yes'],
+['1195','yoshiko','no'],
+['1195','yoshiko','yes'],
+['1196','hanamaru','no'],
+['1196','hanamaru','yes'],
+['1197','chika','no'],
+['1197','chika','yes'],
+['1198','mari','no'],
+['1198','mari','yes']
 ];
 
