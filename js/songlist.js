@@ -169,7 +169,9 @@ var aqours_subgroup_ar =
 ['Torikoriko PLEASE',4],
 ['P.S. no Mukougawa',4],
 ['Guilty Eyes Fever',4],
-['LONELY TUNING',4]
+['LONELY TUNING',4],
+['Kaigandoori de Matteru yo',4],
+['Kinmirai Happy End',4]
 ];
 
 var aqours_others_ar = 
