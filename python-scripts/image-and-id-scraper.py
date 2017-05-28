@@ -9,8 +9,8 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-begin = 1198
-last = 1201
+begin = 1201
+last = 1203
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol):
