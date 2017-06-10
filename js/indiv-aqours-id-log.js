@@ -82,7 +82,9 @@ var you_ar =
 ['1175','you','no'],
 ['1175','you','yes'],
 ['1185','you','no'],
-['1185','you','yes']
+['1185','you','yes'],
+['1211','you','no'],
+['1211','you','yes']
 ];
 
 var riko_ar =
@@ -255,7 +257,9 @@ var yoshiko_ar =
 ['1165','yoshiko','no'],
 ['1165','yoshiko','yes'],
 ['1195','yoshiko','no'],
-['1195','yoshiko','yes']
+['1195','yoshiko','yes'],
+['1212','yoshiko','no'],
+['1212','yoshiko','yes']
 ];
 var dia_ar = 
 [
