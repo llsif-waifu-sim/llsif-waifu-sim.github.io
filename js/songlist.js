@@ -171,7 +171,9 @@ var aqours_subgroup_ar =
 ['Guilty Eyes Fever',4],
 ['LONELY TUNING',4],
 ['Kaigandoori de Matteru yo',4],
-['Kinmirai Happy End',4]
+['Kinmirai Happy End',4],
+['INNOCENT BIRD',4],
+['GALAXY HidE and SeeK',4]
 ];
 
 var aqours_others_ar = 
