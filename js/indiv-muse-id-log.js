@@ -464,7 +464,9 @@ var rin_ar =
 ['1180','rin','no'],
 ['1180','rin','yes'],
 ['1192','rin','no'],
-['1192','rin','yes']
+['1192','rin','yes'],
+['1214','rin','no'],
+['1214','rin','yes']
 ];
 var honoka_ar = 
 [
@@ -622,7 +624,9 @@ var honoka_ar =
 ['1179','honoka','no'],
 ['1179','honoka','yes'],
 ['1203','honoka','no'],
-['1203','honoka','yes']
+['1203','honoka','yes'],
+['1215','honoka','no'],
+['1215','honoka','yes']
 ];
 var umi_ar = 
 [
@@ -1084,7 +1088,9 @@ var eli_ar =
 ['1200','eli','no'],
 ['1200','eli','yes'],
 ['1202','eli','no'],
-['1202','eli','yes']
+['1202','eli','yes'],
+['1213','eli','no'],
+['1213','eli','yes']
 ];
 var nozomi_ar = 
 [

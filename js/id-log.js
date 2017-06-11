@@ -1746,6 +1746,12 @@ var id_log =
 ['1211','you','no'],
 ['1211','you','yes'],
 ['1212','yoshiko','no'],
-['1212','yoshiko','yes']
+['1212','yoshiko','yes'],
+['1213','eli','no'],
+['1213','eli','yes'],
+['1214','rin','no'],
+['1214','rin','yes'],
+['1215','honoka','no'],
+['1215','honoka','yes']
 ];
 
