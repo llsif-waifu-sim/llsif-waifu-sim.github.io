@@ -1760,6 +1760,11 @@ var id_log =
 ['1219','ruby','no'],
 ['1219','ruby','yes'],
 ['1220','you','no'],
-['1220','you','yes']
+['1220','you','yes'],
+['1222','nozomi','no'],
+['1222','nozomi','yes'],
+['1223','nico','no'],
+['1223','nico','yes'],
+['1224','yoshiko','yes']
 ];
 

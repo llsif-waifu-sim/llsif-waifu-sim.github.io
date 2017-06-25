@@ -265,7 +265,8 @@ var yoshiko_ar =
 ['1212','yoshiko','no'],
 ['1212','yoshiko','yes'],
 ['1218','yoshiko','no'],
-['1218','yoshiko','yes']
+['1218','yoshiko','yes'],
+['1224','yoshiko','yes']
 ];
 var dia_ar = 
 [
