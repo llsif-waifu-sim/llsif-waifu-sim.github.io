@@ -9,8 +9,8 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-begin = 1223
-last = 1224
+begin = 1224
+last = 1232
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
@@ -95,9 +95,10 @@ for x in range (begin,last+1):
     #urllib.urlretrieve(img_url, path_to_save)
     #urllib.urlretrieve(img_url_idol, path_to_save_id)
     #########
-        
+
     ## Substitution
-    PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
+    if idol2path(name) != 'none':
+        PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
         
     
     if img_url != None and idol2path(name) != 'none':

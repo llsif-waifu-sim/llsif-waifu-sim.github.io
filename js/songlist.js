@@ -175,7 +175,8 @@ var aqours_subgroup_ar =
 ['INNOCENT BIRD',4],
 ['GALAXY HidE and SeeK',4],
 ['Kowareyasuki',4],
-['Shadow gate to love',4]
+['Shadow gate to love',4],
+['Landing action Yeah!!',4]
 ];
 
 var aqours_others_ar = 
