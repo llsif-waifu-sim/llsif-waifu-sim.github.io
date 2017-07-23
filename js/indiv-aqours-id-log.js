@@ -39,7 +39,13 @@ var chika_ar =
 ['1197','chika','no'],
 ['1197','chika','yes'],
 ['1209','chika','no'],
-['1209','chika','yes']
+['1209','chika','yes'],
+['1234','chika','no'],
+['1234','chika','yes'],
+['1239','chika','no'],
+['1239','chika','yes'],
+['1248','chika','no'],
+['1248','chika','yes']
 ];
 
 var you_ar = 
@@ -88,7 +94,9 @@ var you_ar =
 ['1220','you','no'],
 ['1220','you','yes'],
 ['1228','you','no'],
-['1228','you','yes']
+['1228','you','yes'],
+['1243','you','no'],
+['1243','you','yes']
 ];
 
 var riko_ar =
@@ -136,7 +144,9 @@ var riko_ar =
 ['1205','riko','no'],
 ['1205','riko','yes'],
 ['1231','riko','no'],
-['1231','riko','yes']
+['1231','riko','yes'],
+['1240','riko','no'],
+['1240','riko','yes']
 ];
 
 var ruby_ar =
@@ -182,7 +192,11 @@ var ruby_ar =
 ['1186','ruby','no'],
 ['1186','ruby','yes'],
 ['1219','ruby','no'],
-['1219','ruby','yes']
+['1219','ruby','yes'],
+['1247','ruby','no'],
+['1247','ruby','yes'],
+['1251','ruby','no'],
+['1251','ruby','yes']
 ];
 
 var hanamaru_ar =
@@ -228,7 +242,9 @@ var hanamaru_ar =
 ['1207','hanamaru','no'],
 ['1207','hanamaru','yes'],
 ['1229','hanamaru','no'],
-['1229','hanamaru','yes']
+['1229','hanamaru','yes'],
+['1245','hanamaru','no'],
+['1245','hanamaru','yes']
 ];
 var yoshiko_ar = 
 [
@@ -272,7 +288,11 @@ var yoshiko_ar =
 ['1212','yoshiko','yes'],
 ['1218','yoshiko','no'],
 ['1218','yoshiko','yes'],
-['1224','yoshiko','yes']
+['1224','yoshiko','yes'],
+['1244','yoshiko','no'],
+['1244','yoshiko','yes'],
+['1250','yoshiko','no'],
+['1250','yoshiko','yes']
 ];
 var dia_ar = 
 [
@@ -315,7 +335,11 @@ var dia_ar =
 ['1184','dia','no'],
 ['1184','dia','yes'],
 ['1206','dia','no'],
-['1206','dia','yes']
+['1206','dia','yes'],
+['1242','dia','no'],
+['1242','dia','yes'],
+['1249','dia','no'],
+['1249','dia','yes']
 ];
 var mari_ar =   
 [
@@ -362,7 +386,9 @@ var mari_ar =
 ['1208','mari','no'],
 ['1208','mari','yes'],
 ['1230','mari','no'],
-['1230','mari','yes']
+['1230','mari','yes'],
+['1246','mari','no'],
+['1246','mari','yes']
 ];
 
 var kanan_ar =  
@@ -408,5 +434,9 @@ var kanan_ar =
 ['1217','kanan','no'],
 ['1217','kanan','yes'],
 ['1232','kanan','no'],
-['1232','kanan','yes']
+['1232','kanan','yes'],
+['1235','kanan','no'],
+['1235','kanan','yes'],
+['1241','kanan','no'],
+['1241','kanan','yes']
 ];
