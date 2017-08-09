@@ -156,7 +156,12 @@ var aqours_together =
 ['Taiyou o Oikakero!',3],
 ['HAPPY PARTY TRAIN',3],
 ['SKY JOURNEY',3],
-['Shoujo Ijou no Koi ga Shitai',3]
+['Shoujo Ijou no Koi ga Shitai',3],
+['Landing action Yeah!!',3],
+['Natsu no Owari no Amaoto ga',3],
+['Natsu e no Tobira Never',3],
+['Manatsu wa Dare no Mono?',3],
+['Jimo Ai ♡ Mantan ☆ Summer Life',3]
 ];
 
 var aqours_subgroup_ar = 
@@ -175,8 +180,7 @@ var aqours_subgroup_ar =
 ['INNOCENT BIRD',4],
 ['GALAXY HidE and SeeK',4],
 ['Kowareyasuki',4],
-['Shadow gate to love',4],
-['Landing action Yeah!!',4]
+['Shadow gate to love',4]
 ];
 
 var aqours_others_ar = 
