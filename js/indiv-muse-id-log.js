@@ -476,7 +476,9 @@ var rin_ar =
 ['1214','rin','no'],
 ['1214','rin','yes'],
 ['1276','rin','no'],
-['1276','rin','yes']
+['1276','rin','yes'],
+['1289','rin','no'],
+['1289','rin','yes']
 ];
 var honoka_ar = 
 [
@@ -1432,7 +1434,9 @@ var nico_ar =
 ['1223','nico','no'],
 ['1223','nico','yes'],
 ['1226','nico','no'],
-['1226','nico','yes']
+['1226','nico','yes'],
+['1288','nico','no'],
+['1288','nico','yes']
 ];
 
 
