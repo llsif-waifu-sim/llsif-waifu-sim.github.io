@@ -316,7 +316,11 @@ var maki_ar =
 ['1171','maki','no'],
 ['1171','maki','yes'],
 ['1256','maki','no'],
-['1256','maki','yes']
+['1256','maki','yes'],
+['1297','maki','no'],
+['1297','maki','yes'],
+['1298','maki','no'],
+['1298','maki','yes']
 ];
 var rin_ar = 
 [
@@ -640,7 +644,9 @@ var honoka_ar =
 ['1215','honoka','no'],
 ['1215','honoka','yes'],
 ['1266','honoka','no'],
-['1266','honoka','yes']
+['1266','honoka','yes'],
+['1296','honoka','no'],
+['1296','honoka','yes']
 ];
 var umi_ar = 
 [
@@ -796,7 +802,11 @@ var umi_ar =
 ['1201','umi','no'],
 ['1201','umi','yes'],
 ['1225','umi','no'],
-['1225','umi','yes']
+['1225','umi','yes'],
+['1299','umi','no'],
+['1299','umi','yes'],
+['1323','umi','no'],
+['1323','umi','yes']
 ];
 var kotori_ar = 
 [
@@ -1116,7 +1126,9 @@ var eli_ar =
 ['1268','eli','no'],
 ['1268','eli','yes'],
 ['1275','eli','no'],
-['1275','eli','yes']
+['1275','eli','yes'],
+['1321','eli','no'],
+['1321','eli','yes']
 ];
 var nozomi_ar = 
 [
@@ -1436,7 +1448,9 @@ var nico_ar =
 ['1226','nico','no'],
 ['1226','nico','yes'],
 ['1288','nico','no'],
-['1288','nico','yes']
+['1288','nico','yes'],
+['1322','nico','no'],
+['1322','nico','yes']
 ];
 
 
