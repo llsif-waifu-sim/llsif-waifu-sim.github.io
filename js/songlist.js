@@ -162,7 +162,8 @@ var aqours_together =
 ['Natsu e no Tobira Never',3],
 ['Manatsu wa Dare no Mono?',3],
 ['Jimo Ai ♡ Mantan ☆ Summer Life',3],
-['Mirai no Bokura Wa Shitteru yo',3]
+['Mirai no Bokura Wa Shitteru yo',3],
+['Kimi no Hitomi o Meguru Bouken',3]
 ];
 
 var aqours_subgroup_ar = 
