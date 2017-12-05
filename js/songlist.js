@@ -165,7 +165,9 @@ var aqours_together =
 ['Mirai no Bokura Wa Shitteru yo',3],
 ['Kimi no Hitomi o Meguru Bouken',3],
 ['Yuuki wa doko ni? Kimi no Mune ni!',3],
-['"MY LIST" to you!',3]
+['"MY LIST" to you!',3],
+['MIRACLE WAVE',3],
+['MY Mai☆TONIGHT',3]
 ];
 
 var aqours_subgroup_ar = 

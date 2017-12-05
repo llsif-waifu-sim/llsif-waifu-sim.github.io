@@ -9,10 +9,10 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-begin = 1119
+begin = 1369
 last = 1369
 
-'''
+
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
     # 0 = None for both non-idol & idolized
     # 1 = Only non-idolized exist
@@ -122,7 +122,7 @@ for x in range (begin,last+1):
 
 text_file.write('];\n')
 print '];'
-'''
+
 extractQuote(begin,last)
 
 text_file.close()      
