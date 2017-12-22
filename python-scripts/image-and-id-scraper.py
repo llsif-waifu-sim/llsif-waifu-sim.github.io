@@ -10,7 +10,7 @@ import requests
 from io import BytesIO
 
 begin = 1369
-last = 1369
+last = 1403
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
