@@ -198,14 +198,17 @@ var aqours_others_ar =
 ['Waku-Waku-Week!',5],
 ['Daydream Warrior',5],
 ['G Senjou no Cinderella',5],
-['Thrilling - One Way', 5]
+['Thrilling - One Way', 5],
+['Awaken the power',5]
 ];
 
 var idol_others_ar = 
 [
 ['Private Wars',6],
 ['Shocking Party',6],
-['SELF CONTROL!!', 6]
+['SELF CONTROL!!', 6],
+['CRASH MIND',6],
+['DROPOUT!?',6]
 ];
 
 
