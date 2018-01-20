@@ -60,7 +60,9 @@ var chika_ar =
 ['1365','chika','no'],
 ['1365','chika','yes'],
 ['1387','chika','no'],
-['1387','chika','yes']
+['1387','chika','yes'],
+['1424','chika','no'],
+['1424','chika','yes']
 ];
 
 var you_ar = 
@@ -128,7 +130,11 @@ var you_ar =
 ['1383','you','no'],
 ['1383','you','yes'],
 ['1391','you','no'],
-['1391','you','yes']
+['1391','you','yes'],
+['1423','you','no'],
+['1423','you','yes'],
+['1427','you','no'],
+['1427','you','yes']
 ];
 
 var riko_ar =
@@ -197,7 +203,9 @@ var riko_ar =
 ['1388','riko','no'],
 ['1388','riko','yes'],
 ['1399','riko','no'],
-['1399','riko','yes']
+['1399','riko','yes'],
+['1407','riko','no'],
+['1407','riko','yes']
 ];
 
 var ruby_ar =
@@ -264,7 +272,11 @@ var ruby_ar =
 ['1369','ruby','no'],
 ['1369','ruby','yes'],
 ['1395','ruby','no'],
-['1395','ruby','yes']
+['1395','ruby','yes'],
+['1409','ruby','no'],
+['1409','ruby','yes'],
+['1428','ruby','no'],
+['1428','ruby','yes']
 ];
 
 var hanamaru_ar =
@@ -329,7 +341,9 @@ var hanamaru_ar =
 ['1393','hanamaru','no'],
 ['1393','hanamaru','yes'],
 ['1400','hanamaru','no'],
-['1400','hanamaru','yes']
+['1400','hanamaru','yes'],
+['1421','hanamaru','no'],
+['1421','hanamaru','yes']
 ];
 var yoshiko_ar = 
 [
@@ -394,7 +408,9 @@ var yoshiko_ar =
 ['1366','yoshiko','no'],
 ['1366','yoshiko','yes'],
 ['1392','yoshiko','no'],
-['1392','yoshiko','yes']
+['1392','yoshiko','yes'],
+['1408','yoshiko','no'],
+['1408','yoshiko','yes']
 ];
 var dia_ar = 
 [
@@ -456,7 +472,9 @@ var dia_ar =
 ['1382','dia','yes'],
 ['1390','dia','no'],
 ['1390','dia','yes'],
-['1402','dia','yes']
+['1402','dia','yes'],
+['1410','dia','no'],
+['1410','dia','yes']
 ];
 var mari_ar =   
 [
@@ -522,7 +540,9 @@ var mari_ar =
 ['1367','mari','yes'],
 ['1394','mari','no'],
 ['1394','mari','yes'],
-['1403','mari','yes']
+['1403','mari','yes'],
+['1422','mari','no'],
+['1422','mari','yes']
 ];
 
 var kanan_ar =  
@@ -586,5 +606,7 @@ var kanan_ar =
 ['1368','kanan','no'],
 ['1368','kanan','yes'],
 ['1389','kanan','no'],
-['1389','kanan','yes']
+['1389','kanan','yes'],
+['1411','kanan','no'],
+['1411','kanan','yes']
 ];
