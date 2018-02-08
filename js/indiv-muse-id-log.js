@@ -162,7 +162,10 @@ var hanayo_ar =
 ['1333','hanayo','yes'],
 ['1380','hanayo','no'],
 ['1380','hanayo','yes'],
-['1425','hanayo','yes']
+['1425','hanayo','yes'],
+['1448','hanayo','no'],
+['1448','hanayo','yes'],
+['1451','hanayo','yes']
 ];
 var maki_ar = 
 [
@@ -329,7 +332,8 @@ var maki_ar =
 ['1353','maki','no'],
 ['1353','maki','yes'],
 ['1379','maki','no'],
-['1379','maki','yes']
+['1379','maki','yes'],
+['1450','maki','yes']
 ];
 var rin_ar = 
 [
@@ -497,7 +501,8 @@ var rin_ar =
 ['1404','rin','no'],
 ['1404','rin','yes'],
 ['1414','rin','no'],
-['1414','rin','yes']
+['1414','rin','yes'],
+['1449','rin','yes']
 ];
 var honoka_ar = 
 [
@@ -831,7 +836,9 @@ var umi_ar =
 ['1323','umi','yes'],
 ['1330','umi','no'],
 ['1330','umi','yes'],
-['1417','umi','yes']
+['1417','umi','yes'],
+['1429','umi','no'],
+['1429','umi','yes']
 ];
 var kotori_ar = 
 [
@@ -1333,7 +1340,11 @@ var nozomi_ar =
 ['1332','nozomi','yes'],
 ['1361','nozomi','no'],
 ['1361','nozomi','yes'],
-['1374','nozomi','yes']
+['1374','nozomi','yes'],
+['1430','nozomi','no'],
+['1430','nozomi','yes'],
+['1447','nozomi','no'],
+['1447','nozomi','yes']
 
 ];
 var nico_ar = 
