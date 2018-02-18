@@ -201,7 +201,8 @@ var aqours_others_ar =
 ['Thrilling - One Way', 5],
 ['Awaken the power',5],
 ['WATER BLUE NEW WORLD',5],
-['WONDERFUL STORIES',5]
+['WONDERFUL STORIES',5],
+['Oyasuminasan!',5]
 ];
 
 var idol_others_ar = 
