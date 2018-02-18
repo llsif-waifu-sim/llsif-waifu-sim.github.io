@@ -138,7 +138,11 @@ var you_ar =
 ['1423','you','no'],
 ['1423','you','yes'],
 ['1427','you','no'],
-['1427','you','yes']
+['1427','you','yes'],
+['1436','you','no'],
+['1436','you','yes'],
+['1445','you','no'],
+['1445','you','yes']
 ];
 
 var riko_ar =
@@ -286,7 +290,9 @@ var ruby_ar =
 ['1428','ruby','no'],
 ['1428','ruby','yes'],
 ['1440','ruby','no'],
-['1440','ruby','yes']
+['1440','ruby','yes'],
+['1458','ruby','no'],
+['1458','ruby','yes']
 ];
 
 var hanamaru_ar =
@@ -355,7 +361,9 @@ var hanamaru_ar =
 ['1421','hanamaru','no'],
 ['1421','hanamaru','yes'],
 ['1438','hanamaru','no'],
-['1438','hanamaru','yes']
+['1438','hanamaru','yes'],
+['1456','hanamaru','no'],
+['1456','hanamaru','yes']
 ];
 var yoshiko_ar = 
 [
@@ -493,10 +501,8 @@ var dia_ar =
 ['1410','dia','yes'],
 ['1435','dia','no'],
 ['1435','dia','yes'],
-['1436','you','no'],
-['1436','you','yes'],
-['1445','you','no'],
-['1445','you','yes']
+['1459','dia','no'],
+['1459','dia','yes']
 ];
 var mari_ar =   
 [
@@ -566,7 +572,9 @@ var mari_ar =
 ['1422','mari','no'],
 ['1422','mari','yes'],
 ['1439','mari','no'],
-['1439','mari','yes']
+['1439','mari','yes'],
+['1457','mari','no'],
+['1457','mari','yes']
 ];
 
 var kanan_ar =  
