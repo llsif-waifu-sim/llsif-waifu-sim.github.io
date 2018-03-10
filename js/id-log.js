@@ -2161,6 +2161,10 @@ var id_log =
 ['1479','maki','no'],
 ['1479','maki','yes'],
 ['1480','hanayo','no'],
-['1480','hanayo','yes']
+['1480','hanayo','yes'],
+['1481','hanayo','no'],
+['1481','hanayo','yes'],
+['1482','nozomi','no'],
+['1482','nozomi','yes']
 ];
 
