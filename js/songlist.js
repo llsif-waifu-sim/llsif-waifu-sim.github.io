@@ -204,7 +204,9 @@ var aqours_others_ar =
 ['WONDERFUL STORIES',5],
 ['Oyasuminasan!',5],
 ['Pianoforte Monologue',5],
-['In this unstable world',5]
+['In this unstable world',5],
+['RED GEM',5],
+['WHITE LOVE FIRST',5]
 ];
 
 var idol_others_ar = 
