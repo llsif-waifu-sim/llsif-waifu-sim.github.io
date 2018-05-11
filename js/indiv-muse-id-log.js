@@ -170,7 +170,11 @@ var hanayo_ar =
 ['1480','hanayo','yes'],
 ['1481','hanayo','no'],
 ['1481','hanayo','yes'],
-['1523','hanayo','yes']
+['1523','hanayo','yes'],
+['1542','hanayo','no'],
+['1542','hanayo','yes'],
+['1573','hanayo','no'],
+['1573','hanayo','yes']
 ];
 var maki_ar = 
 [
@@ -345,7 +349,8 @@ var maki_ar =
 ['1479','maki','yes'],
 ['1506','maki','no'],
 ['1506','maki','yes'],
-['1521','maki','yes']
+['1521','maki','yes'],
+['1548','maki','yes']
 ];
 var rin_ar = 
 [
@@ -517,7 +522,9 @@ var rin_ar =
 ['1449','rin','yes'],
 ['1478','rin','no'],
 ['1478','rin','yes'],
-['1520','rin','yes']
+['1520','rin','yes'],
+['1578','rin','no'],
+['1578','rin','yes']
 ];
 var honoka_ar = 
 [
@@ -690,7 +697,9 @@ var honoka_ar =
 ['1413','honoka','yes'],
 ['1415','honoka','yes'],
 ['1464','honoka','no'],
-['1464','honoka','yes']
+['1464','honoka','yes'],
+['1577','honoka','no'],
+['1577','honoka','yes']
 ];
 var umi_ar = 
 [
@@ -1043,7 +1052,9 @@ var kotori_ar =
 ['1454','kotori','no'],
 ['1454','kotori','yes'],
 ['1476','kotori','no'],
-['1476','kotori','yes']
+['1476','kotori','yes'],
+['1557','kotori','no'],
+['1557','kotori','yes']
 ];
 var eli_ar = 
 [
@@ -1213,7 +1224,11 @@ var eli_ar =
 ['1405','eli','no'],
 ['1405','eli','yes'],
 ['1452','eli','no'],
-['1452','eli','yes']
+['1452','eli','yes'],
+['1540','eli','no'],
+['1540','eli','yes'],
+['1574','eli','no'],
+['1574','eli','yes']
 ];
 var nozomi_ar = 
 [
@@ -1384,7 +1399,11 @@ var nozomi_ar =
 ['1447','nozomi','yes'],
 ['1482','nozomi','no'],
 ['1482','nozomi','yes'],
-['1522','nozomi','yes']
+['1522','nozomi','yes'],
+['1541','nozomi','no'],
+['1541','nozomi','yes'],
+['1575','nozomi','no'],
+['1575','nozomi','yes']
 ];
 var nico_ar = 
 [
@@ -1555,7 +1574,9 @@ var nico_ar =
 ['1419','nico','no'],
 ['1419','nico','yes'],
 ['1463','nico','no'],
-['1463','nico','yes']
+['1463','nico','yes'],
+['1576','nico','no'],
+['1576','nico','yes']
 ];
 
 
