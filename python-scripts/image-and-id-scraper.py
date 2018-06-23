@@ -9,8 +9,8 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-begin = 1539
-last = 1578
+begin = 1578
+last = 1628
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
@@ -122,6 +122,7 @@ for x in range (begin,last+1):
 
 text_file.write('];\n')
 print '];'
+
 
 extractQuote(begin,last)
 

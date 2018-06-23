@@ -74,7 +74,7 @@ def extractQuote(begin,last):
         urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
         r = urllib.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
-
+        
 
         # Find the table containing all information
         body = soup.find('body')
@@ -84,14 +84,14 @@ def extractQuote(begin,last):
         
         tables = body.find_all('table', {'width': '100%'})
 
-
+        
         # Check if the card is a normal card
-        if len(tables) <= 1:
+        if len(tables) < 1:
             # This is a normal card, skip to next ID
             continue
+        
 
-
-        targetTable = tables[1]
+        targetTable = tables[0]
 
         
 
@@ -106,6 +106,8 @@ def extractQuote(begin,last):
         #elif len(rows) > 0:
             #print '[',cardID,']'
 
+        
+        
         count = 0
         for row in rows:
             cells = row.findChildren('td')
@@ -119,7 +121,6 @@ def extractQuote(begin,last):
                     # Helps us skip the first column
                     textCount = textCount + 1
                     continue
-
 
                 if value is None:
                     # If we encounter an mp3 file
