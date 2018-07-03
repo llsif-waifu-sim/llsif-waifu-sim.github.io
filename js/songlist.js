@@ -167,7 +167,8 @@ var aqours_together =
 ['Yuuki wa doko ni? Kimi no Mune ni!',3],
 ['"MY LIST" to you!',3],
 ['MIRACLE WAVE',3],
-['MY Mai☆TONIGHT',3]
+['MY Mai☆TONIGHT',3],
+['Kiseki Hikaru',3]
 ];
 
 var aqours_subgroup_ar = 
@@ -186,7 +187,10 @@ var aqours_subgroup_ar =
 ['INNOCENT BIRD',4],
 ['GALAXY HidE and SeeK',4],
 ['Kowareyasuki',4],
-['Shadow gate to love',4]
+['Shadow gate to love',4],
+['Guilty!? Farewell party',4],
+['Sakura Baibai',4],
+['Sotsugyou desu ne',4]
 ];
 
 var aqours_others_ar = 
