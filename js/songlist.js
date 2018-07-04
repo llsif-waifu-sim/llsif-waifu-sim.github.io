@@ -168,7 +168,8 @@ var aqours_together =
 ['"MY LIST" to you!',3],
 ['MIRACLE WAVE',3],
 ['MY Mai☆TONIGHT',3],
-['Kiseki Hikaru',3]
+['Kiseki Hikaru',3],
+['Hop・Step・Waai!',3]
 ];
 
 var aqours_subgroup_ar = 
