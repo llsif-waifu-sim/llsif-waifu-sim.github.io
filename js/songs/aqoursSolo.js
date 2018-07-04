@@ -15,6 +15,5 @@ var aqours_others_ar =
 ['Pianoforte Monologue',5],
 ['In this unstable world',5],
 ['RED GEM',5],
-['WHITE LOVE FIRST',5]
+['WHITE LOVE FIRST',5],
 ];
-

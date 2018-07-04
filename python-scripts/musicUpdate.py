@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import git
 
 
-debugMode = True
+debugMode = False
 gitActive = True
 
 rootURL = 'http://love-live.wikia.com'
@@ -101,7 +101,7 @@ def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
 
 def updateJSSongFile(title,typeValue):
 
-	
+		
 	if debugMode:
 		return
 	

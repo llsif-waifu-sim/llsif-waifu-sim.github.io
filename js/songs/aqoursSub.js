@@ -17,5 +17,5 @@ var aqours_subgroup_ar =
 ['Shadow gate to love',4],
 ['Guilty!? Farewell party',4],
 ['Sakura Baibai',4],
-['Sotsugyou desu ne',4]
+['Sotsugyou desu ne',4],
 ];
