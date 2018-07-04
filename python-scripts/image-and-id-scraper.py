@@ -3,7 +3,7 @@ import urllib
 import urllib2
 from specialQuoteScraper import extractQuote
 from idolName import idol2path
-from randomArrAssign import addToRandFile
+from randomArrAssign import addToRandFile, addToMainFile
 
 from PIL import Image
 import requests
@@ -109,6 +109,7 @@ for x in range (begin,last+1):
         text_file.write(text_to_save)
 	
 	addToRandFile(x_str,idol2path(name), text_to_save)
+	addToMainFile(x_str,idol2path(name), text_to_save)
 
         print text_to_prnt
         
@@ -119,6 +120,7 @@ for x in range (begin,last+1):
         text_file.write(text_to_save)
 
 	addToRandFile(x_str,idol2path(name), text_to_save)
+	addToMainFile(x_str,idol2path(name), text_to_save)
 
         print text_to_prnt
 
