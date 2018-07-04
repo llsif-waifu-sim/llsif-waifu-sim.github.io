@@ -10,6 +10,10 @@ from bs4 import BeautifulSoup
 
 import git
 
+
+debugMode = True
+gitActive = True
+
 rootURL = 'http://love-live.wikia.com'
 aqoursURL = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 aqoursURLSec = 'http://love-live.wikia.com/wiki/Category:Discography:Aqours'
@@ -26,6 +30,8 @@ oggRootRep = '../../distribution/llsif-waifu-songs-ogg/'
 mp3RootPath = '../../distribution/llsif-waifu-songs-mp3/songs-mp3/'
 mp3RootRep = '../../distribution/llsif-waifu-songs-mp3/'
 
+newSongList = []
+problemList = []
 
 
 def gitCommit(rootRep,passStr,strGit):
@@ -68,7 +74,84 @@ def songVisited(title):
 				return True 
 	return False
 
+def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
+	global newSongList
+
+	fileNum = getNewFileSongName(oggRootPath, aqoursExtension)
+	numFilePath = str(fileNum) + '.ogg'
+	newSongList.append([title,groupAssign])
+	
+	if debugMode:
+		return
+
+	songSavePathOgg = oggRootPath + aqoursExtension + '/' + str(fileNum) + '.ogg'
+	songSavePathMp3 = mp3RootPath + aqoursExtension + '/' + str(fileNum) + '.mp3'
+	#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
+	#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
+	urllib.urlretrieve(songURL, songSavePathOgg)
+	urllib.urlretrieve(songURL, songSavePathMp3)
+
+	response = requests.get(imgURL)
+	img = Image.open(BytesIO(response.content))
+	#img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
+	img.save(rootAlbumCover + '/' + aqoursExtension + '/' + str(fileNum)+ '.jpg')
+	img.close()
+
+	return
+
+def updateJSSongFile(title,typeValue):
+
+	
+	if debugMode:
+		return
+	
+	titleCmp = ''.join([i for i in title if i.isalpha()])
+
+	tmpFile = None
+	tmpFileIn = None
+
+	path = None
+	if typeValue == 3:
+		# Aqours together
+		path = '../js/songs/aqoursTogether.js'
+
+	elif typeValue == 4:
+		# Aqours sub-unit
+		path = '../js/songs/aqoursSub.js'
+	elif typeValue == 5:
+		# Aqours others
+		path = '../js/songs/aqoursSolo.js'
+	elif typeValue == 6:
+		# Other units
+		path ='../js/songs/otherIdols.js'
+	else:
+		print 'Incorrect value for updateJSSongFile: ', typeValue
+		exit()
+
+
+	# Going to replace ending mark with files we will add
+	with open(path,'r') as tmpFile:
+		fileData = tmpFile.read()
+
+	endMark = '];\n'
+	usestr = "['" + title +"',"+str(typeValue)+"],\n" 
+	fileData = fileData.replace(endMark,usestr)
+
+	with open(path,'w') as wTmpFile:
+		wTmpFile.write(fileData)
+
+	# Adding the ending mark
+	with open(path,'a') as appendFile:
+		appendFile.write(endMark)
+	
+	
+
+	return 
+
 def songScraping(urlRead):
+	global newSongList
+	global problemList
+
 	aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together','other-idols']
 
 	subGroupList = ['cyaron','kiss','azalea']
@@ -85,10 +168,6 @@ def songScraping(urlRead):
 	sys.setdefaultencoding('utf-8')
 
 	recFile = open(recordURL,"a")
-
-	newSongList = []
-	problemList = []
-
 
 
 	os.system('mkdir ' + tmpDir)
@@ -128,86 +207,27 @@ def songScraping(urlRead):
 			# Aqours all together
 			groupAssign = 'Aqours Together'
 			print groupAssign
-			fileNum = getNewFileSongName(oggRootPath, aqoursSongExtension[2])
-			numFilePath = str(fileNum) + '.ogg'
-			newSongList.append([title,groupAssign])
-
-			songSavePathOgg = oggRootPath + aqoursSongExtension[2] + '/' + str(fileNum) + '.ogg'
-			songSavePathMp3 = mp3RootPath + aqoursSongExtension[2] + '/' + str(fileNum) + '.mp3'
-
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
-			urllib.urlretrieve(songURL, songSavePathOgg)
-			urllib.urlretrieve(songURL, songSavePathMp3)
-
-			response = requests.get(imgURL)
-			img = Image.open(BytesIO(response.content))
-			#img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
-			img.save(rootAlbumCover + '/' + aqoursSongExtension[2] + '/' + str(fileNum)+ '.jpg')
-			img.close()
+			saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[2])
+			updateJSSongFile(title,3)
 
 		elif authorInfo in subGroupList:
 			groupAssign = 'Aqours Sub-Group'
 			print groupAssign
-			fileNum = getNewFileSongName(oggRootPath, aqoursSongExtension[1])
-			numFilePath = str(fileNum) + '.ogg'
-			newSongList.append([title,groupAssign])
-
-			songSavePathOgg = oggRootPath + aqoursSongExtension[1] + '/' + str(fileNum) + '.ogg'
-			songSavePathMp3 = mp3RootPath + aqoursSongExtension[1] + '/' + str(fileNum) + '.mp3'
-
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
-			urllib.urlretrieve(songURL, songSavePathOgg)
-			urllib.urlretrieve(songURL, songSavePathMp3)
-
-			response = requests.get(imgURL)
-			img = Image.open(BytesIO(response.content))
-			#img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
-			img.save(rootAlbumCover + '/' + aqoursSongExtension[1] + '/' + str(fileNum)+ '.jpg')
-			img.close()
-
+			saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[1])
+			updateJSSongFile(title,4)
 
 		elif authorInfo in soloList:
 			groupAssign = 'Aqours Individual'
 			print groupAssign
-			fileNum = getNewFileSongName(oggRootPath, aqoursSongExtension[0])
-			numFilePath = str(fileNum) + '.ogg'
-			newSongList.append([title,groupAssign])
-
-			songSavePathOgg = oggRootPath + aqoursSongExtension[0] + '/' + str(fileNum) + '.ogg'
-			songSavePathMp3 = mp3RootPath + aqoursSongExtension[0] + '/' + str(fileNum) + '.mp3'
-
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
-			urllib.urlretrieve(songURL, songSavePathOgg)
-			urllib.urlretrieve(songURL, songSavePathMp3)
-
-			response = requests.get(imgURL)
-			img = Image.open(BytesIO(response.content))
-			#img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
-			img.save(rootAlbumCover + '/' + aqoursSongExtension[0] + '/' + str(fileNum)+ '.jpg')
-			img.close()
+			saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[0])
+			updateJSSongFile(title,5)
 		else:
-			print 'Other idols'
-			fileNum = getNewFileSongName(oggRootPath, aqoursSongExtension[3])
-			numFilePath = str(fileNum) + '.ogg'
-			newSongList.append([title,groupAssign])
+			groupAssign = 'Other Idols'
+			print groupAssign
+			saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[3])
+			updateJSSongFile(title,6)
 
-			songSavePathOgg = oggRootPath + aqoursSongExtension[3] + '/' + str(fileNum) + '.ogg'
-			songSavePathMp3 = mp3RootPath + aqoursSongExtension[3] + '/' + str(fileNum) + '.mp3'
-
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
-			#urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
-			urllib.urlretrieve(songURL, songSavePathOgg)
-			urllib.urlretrieve(songURL, songSavePathMp3)
-
-			response = requests.get(imgURL)
-			img = Image.open(BytesIO(response.content))
-			#img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
-			img.save(rootAlbumCover + '/' + aqoursSongExtension[3] + '/' + str(fileNum)+ '.jpg')
-			img.close()
-
+		
 
 	recFile.close()
 	os.system('rm -rf ' + tmpDir)
@@ -251,7 +271,7 @@ def songScraping(urlRead):
 		strGit = 'Adding songs '
 		i = 0
 		for songs in newSongList:
-			if i >= len(newSongList) - 2:
+			if i >= len(newSongList) - 1:
 				outStr = "'"+ songs[0] + "'" 
 			else:
 				outStr = "'"+ songs[0] + "', "
@@ -289,8 +309,10 @@ def songScraping(urlRead):
 		# Preform git operations
 		print 'git commit: ',strGit
 
-		gitCommit(oggRootRep,'OGG', strGit)
-		gitCommit(mp3RootRep,'MP3', strGit)
+
+		if gitActive:
+			gitCommit(oggRootRep,'OGG', strGit)
+			gitCommit(mp3RootRep,'MP3', strGit)
 
 	else:
 		print 'No new songs found'
@@ -306,6 +328,10 @@ def songScraping(urlRead):
 			print '\n\n\n'
 
 def main():
+
+	newSongList = []
+	problemList = []
+
 	songScraping(aqoursURL)
 	songScraping(aqoursURLSec)
 
