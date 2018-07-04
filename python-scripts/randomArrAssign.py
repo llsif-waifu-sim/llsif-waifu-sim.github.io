@@ -1,16 +1,20 @@
+import os
 
 def existInRandFile(filePath,textSave):
 	# Checks to see if an entry exists in the Rand array or not
-	titleCmp = ''.join([i for i in textSave if i.isalpha()])
+	titleCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
 
 	cmpFile = open(filePath,"r")
 
 	# Only check the last few entries of Randarray
-	lastFew = len(cmpFile) - 5
+	cmpFileLen = sum(1 for line in cmpFile)
+	lastFew = cmpFileLen - 5
 
-	for line in cmpFile[lastFew:]:
-		lineCmp = ''.join([i for i in line if i.alpha()])
 
+
+	#for line in cmpFile[lastFew:]:
+	for line in os.popen('tail -n 6 ' + filePath).readlines():
+		lineCmp = ''.join([i for i in line if i.isalpha() or i.isdigit()])
 		if titleCmp == lineCmp:
 			return True
 	
@@ -30,7 +34,7 @@ def addToRandFile(idNum,name,text_to_save):
 		fileData = rdTmpFile.read()
 
 	endMark = '];\n'
-	fileData = fileData.replace()
+	fileData = fileData.replace(endMark,text_to_save)
 
 	with open(filePath,'w') as wTmpFile:
 		wTmpFile.write(fileData)
