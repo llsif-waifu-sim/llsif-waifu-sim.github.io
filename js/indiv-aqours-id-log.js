@@ -608,7 +608,6 @@ var dia_ar =
 ['1612','dia','no'],
 ['1612','dia','yes'],
 ['1623','dia','yes']
-
 ];
 var mari_ar =   
 [
