@@ -20,8 +20,6 @@ def addToMainFile(idNum, name, text_to_save):
 	if existInRandFile(filePath,text_to_save):
 		return
 
-	if existInRandFile(filePath,text_to_save):
-		return
 
 	with open(filePath) as rdTmpFile:
 		fileData = rdTmpFile.read()

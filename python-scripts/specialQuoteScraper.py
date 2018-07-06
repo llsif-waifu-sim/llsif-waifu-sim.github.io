@@ -1,11 +1,57 @@
 from bs4 import BeautifulSoup
 import urllib
+import os
 import idolName
 
 
 # Note, DO NOT START AT AT 28, START AT 55
-# The rare cards below 55 will just give you inital selection of the game quotes
+# The rare cards below 55 will just give you inital selection of the game quote
 
+def existInQuoteFile(filePath,textSave):
+	# Checks to see if an entry exists in the Rand array or not
+	textSaveCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
+
+	# Only check the first few entries
+	for line in os.popen('tail -n 25 ' + filePath).readlines():
+		lineCmp = ''.join([i for i in line if i.isalpha() or i.isdigit()])
+ 		
+		if textSaveCmp == lineCmp:
+			return True		
+
+	return False
+
+def writeQuoteFile(textSave, batchNum):
+	# NOTE: we should add entry by batches
+	print 'Main count: ', batchNum
+
+	# Adds entry to quote id array
+	filePath = '../js/quote-id-list.js'
+
+	# Skip if the entry is already in the file
+	if existInQuoteFile(filePath, textSave):
+		return
+	
+	# Otherwise, add the entry
+	with open(filePath) as rdTmpFile:
+		fileData = rdTmpFile.read()
+
+	endMark = '];\n'
+	fileData = fileData.replace(endMark,textSave+'\n')
+
+	with open(filePath,'w') as wTmpFile:
+		wTmpFile.write(fileData)
+
+    # Adding batches of 
+	with open(filePath,'a') as appendFile:
+		# Insert a for loop here to write the quote batches
+		for i in range(0,batchNum-1):
+			appendFile.write(textSave+'\n')
+
+    # Adding the ending mark
+	with open(filePath,'a') as appendFile:
+		appendFile.write(endMark)
+
+	return
 
 
 def addUntransformed(targets):
@@ -109,6 +155,10 @@ def extractQuote(begin,last):
         
         
         count = 0
+
+	# I think we can set the counter here
+	batchCounter = 0
+
         for row in rows:
             cells = row.findChildren('td')
 
@@ -144,6 +194,8 @@ def extractQuote(begin,last):
                     print cardID, ','
                     textCount = textCount + 1
 
+		batchCounter = batchCounter + 1
+	writeQuoteFile(str(cardID)+',', int(batchCounter/2))
 
     quote_speech_file.close()
     id_index_file.close() 
