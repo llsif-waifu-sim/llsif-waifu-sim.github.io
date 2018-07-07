@@ -7,6 +7,38 @@ import idolName
 # Note, DO NOT START AT AT 28, START AT 55
 # The rare cards below 55 will just give you inital selection of the game quote
 
+def writeTextQuoteFile():
+	# Write Japanese quotes to text file
+	
+	quSlFilePath = '../special-quotes/quote-speech-slave.txt'
+	destFilePath = '../special-quotes/speech.txt'
+	destEnFilePath = '../special-quotes/speech-en.txt'
+
+	# First, we read speechtxt and copy last line
+	
+	refLine = ''
+
+	for line in os.popen('tail -n 1 ' + destFilePath).readlines():
+		refLine = line
+
+
+	# We take that line, find it in quote-speech-slave.txt, and append the rest to speech.txt
+	appendMode = False
+	for copyLine in open(quSlFilePath,'r'):
+		if appendMode:
+			# Open speech.txt and append the text to that
+			with open(destFilePath,'a') as speechFile:
+				speechFile.write(copyLine)
+			
+			with open(destEnFilePath,'a') as speechFile:
+				speechFile.write(copyLine)
+
+		elif copyLine == refLine:
+			# Then we start appending 
+			appendMode = True
+	return
+
+
 def existInQuoteFile(filePath,textSave):
 	# Checks to see if an entry exists in the Rand array or not
 	textSaveCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
@@ -22,7 +54,7 @@ def existInQuoteFile(filePath,textSave):
 
 def writeQuoteFile(textSave, batchNum):
 	# NOTE: we should add entry by batches
-	print 'Main count: ', batchNum
+	#print 'Main count: ', batchNum
 
 	# Adds entry to quote id array
 	filePath = '../js/quote-id-list.js'
@@ -198,10 +230,6 @@ def extractQuote(begin,last):
 	writeQuoteFile(str(cardID)+',', int(batchCounter/2))
 
     quote_speech_file.close()
-    id_index_file.close() 
+    id_index_file.close()
 
-
-
-
-
-
+    writeTextQuoteFile()

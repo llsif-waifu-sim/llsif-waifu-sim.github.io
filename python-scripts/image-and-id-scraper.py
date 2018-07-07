@@ -8,9 +8,45 @@ from randomArrAssign import addToRandFile, addToMainFile
 from PIL import Image
 import requests
 from io import BytesIO
+import git
 
-begin = 1628
-last = 1631
+cardPicDir = '../../distribution/llsif-waifu-card-pics/'
+girlImageDir = '../../distribution/llsif-waifu-girl-images/'
+speQuoteDir = '../../distribution/llsif-waifu-special-quotes/'
+
+refNumPath = './text/beginRef.txt'
+
+begin = 0
+last = 0
+
+for line in open(refNumPath,'r'):
+	begin = int(line)
+
+
+def gitCommit(rootRep,passStr,strGit):
+        print '\n\n\n'
+        repo = git.Repo(rootRep)
+        print repo.git.status()
+        print 'Adding files. . .'
+        print repo.git.add('.')
+
+        print 'Commiting. . .'
+        # Allows if ahead by one commit 
+        try:
+                print repo.git.commit(m=strGit)
+        except:
+                repo.git.reset('--soft','origin/master')
+                repo.git.push('-f','origin')
+                repo.git.add('.')
+                print repo.git.commit(m=strGit)
+
+        print repo.git.status()
+
+	print 'Pushing. . .'
+        # Asks us again if we get username or password incorrect
+
+        print repo.git.push()
+        print '\n\n\n =============== '+ passStr +' push was successful!  =============== \n\n\n'
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
@@ -66,11 +102,30 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 
+x = begin
+
 # The ending value should be the last id value + 1
-for x in range (begin,last+1):
+#for x in range (begin,last+1):
+while True:
     x_str = str(x)
     temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
-    data = json.load(urllib2.urlopen(temp_str))
+
+    try:
+    	data = json.load(urllib2.urlopen(temp_str))
+	x = x + 1
+    except:
+	# If we get here, that means the page does not exist
+	# We terminate our search and record the final number that is valid
+
+	# Write to a file to record the last valid number
+	refFilePath = open('./text/beginRef.txt','w')	
+	last = x - 1
+	writeNum = str(last)
+	refFilePath.write(writeNum)
+	refFilePath.close()
+
+	break
+
     name = data['idol']['name']
     
     img_url = data['transparent_image']
@@ -134,4 +189,16 @@ print '];'
 extractQuote(begin,last)
 
 text_file.close()      
+
+strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
+
+print '\n\n\n'
+print 'Git message: ', strGit
+print '\n\n\n'
+
+gitCommit(cardPicDir,'Card Images',strGit)
+gitCommit(girlImageDir,'Girl Images',strGit)
+gitCommit(speQuoteDir,'Audio Quotes',strGit)
+
+
     
