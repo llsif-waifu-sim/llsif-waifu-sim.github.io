@@ -186,19 +186,27 @@ text_file.write('];\n')
 print '];'
 
 
-extractQuote(begin,last)
 
-text_file.close()      
 
-strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
+# Checks to see if there were any updates before git pushing
+if begin != last:
+	extractQuote(begin,last)
 
-print '\n\n\n'
-print 'Git message: ', strGit
-print '\n\n\n'
+	text_file.close()    
 
-gitCommit(cardPicDir,'Card Images',strGit)
-gitCommit(girlImageDir,'Girl Images',strGit)
-gitCommit(speQuoteDir,'Audio Quotes',strGit)
+  
+	strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
 
+	print '\n\n\n'
+	print 'Git message: ', strGit
+	print '\n\n\n'
+
+	gitCommit(cardPicDir,'Card Images',strGit)
+	gitCommit(girlImageDir,'Girl Images',strGit)
+	gitCommit(speQuoteDir,'Audio Quotes',strGit)
+else:
+	print '\n\n\n'
+	print 'There are no current updates'
+	print '\n\n\n'
 
     
