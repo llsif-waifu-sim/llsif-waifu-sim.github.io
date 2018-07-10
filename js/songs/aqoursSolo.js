@@ -16,4 +16,8 @@ var aqours_others_ar =
 ['In this unstable world',5],
 ['RED GEM',5],
 ['WHITE LOVE FIRST',5],
+['One More Sunshine Story',5],
+["Beginner's Sailing",5],
+['New winding road',5],
+['Sakana ka Nanda ka?',5],
 ];
