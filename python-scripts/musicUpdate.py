@@ -157,8 +157,8 @@ def songScraping(urlRead):
 	subGroupList = ['cyaron','kiss','azalea']
 	soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara']
 
+	r = requests.get(urlRead).content
 
-	r = urllib.urlopen(urlRead).read()
 	soup = BeautifulSoup(r,'lxml')
 
 	divTar = soup.find("div",{"class":"category-gallery"})
@@ -180,20 +180,20 @@ def songScraping(urlRead):
 		print title
 		
 		# Now we are going to inspect the link of the song
-		rSong = urllib.urlopen(songPageURL).read()
+		#rSong = urllib.urlopen(songPageURL).read()
+		rSong = requests.get(songPageURL).content
 		rSoup = BeautifulSoup(rSong,'lxml')
 		imgURL = rSoup.find("meta",{"property":"og:image"})['content']
 
 		# Check to see if the song page has an audio file
 		try:
 			authorInfoPunc = rSoup.find("section",{"class":"pi-item pi-group pi-border-color"}).find("h2").getText().split(" ")[-1]
+			songURLSearch = rSoup.find("div",{"id":"ogg_player_1"}).find("div").find("button")['onclick'].split('"')
 		except:
 			print 'There was a problem retrieving the song: ' + title
 			problemList.append([title,songPageURL])
 			continue
-			
-		authorInfo = ''.join(c for c in authorInfoPunc if c not in string.punctuation).lower()
-		songURLSearch = rSoup.find("div",{"id":"ogg_player_1"}).find("div").find("button")['onclick'].split('"')
+		
 		songURL = filter(lambda x: 'http' in x,songURLSearch)[0]
 		
 		if not songVisited(title):
@@ -315,7 +315,7 @@ def songScraping(urlRead):
 			gitCommit(mp3RootRep,'MP3', strGit)
 
 	else:
-		print 'No new songs found'
+		print '\n\nNo new songs found\n\n'
 
 
 		if problemList:
@@ -325,6 +325,7 @@ def songScraping(urlRead):
 			for songs in problemList:
 				print '- ' + songs[0] + ' located at :'
 				print '    ' + songs[1]
+				print '\n\n'
 			print '\n\n\n'
 
 def main():
