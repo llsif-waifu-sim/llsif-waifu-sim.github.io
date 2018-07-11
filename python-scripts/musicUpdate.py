@@ -181,11 +181,11 @@ def scrapeSongFromFile():
 
 
 		#imgURL = rSoup.find("meta",{"property":"og:image"})['content']
-		imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
 		
 		
 		# Check to see if the song page has an audio file
 		try:
+			imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
 			authorInfoPunc = rSoup.find("section",{"class":"pi-item pi-group pi-border-color"}).find("h2").getText().split(" ")[-1]
 			authorInfo = ''.join(c for c in authorInfoPunc if c not in string.punctuation).lower()
 			songURLSearch = rSoup.find("div",{"id":"ogg_player_1"}).find("div").find("button")['onclick'].split('"')
@@ -366,10 +366,10 @@ def songScraping(urlRead):
 		rSong = requests.get(songPageURL).content
 		rSoup = BeautifulSoup(rSong,'lxml')
 		#imgURL = rSoup.find("meta",{"property":"og:image"})['content']
-		imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
 
 		# Check to see if the song page has an audio file
 		try:
+			imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
 			authorInfoPunc = rSoup.find("section",{"class":"pi-item pi-group pi-border-color"}).find("h2").getText().split(" ")[-1]
 			authorInfo = ''.join(c for c in authorInfoPunc if c not in string.punctuation).lower()
 			songURLSearch = rSoup.find("div",{"id":"ogg_player_1"}).find("div").find("button")['onclick'].split('"')
