@@ -518,11 +518,8 @@ def main():
 	problemList = []
 
 
-	'''
 	songScraping(aqoursURL)
 	songScraping(aqoursURLSec)
-	'''
-	scrapeSongFromFile()
 
 if __name__ == "__main__":
 	main()
