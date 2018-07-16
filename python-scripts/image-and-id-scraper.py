@@ -4,11 +4,23 @@ import urllib2
 from specialQuoteScraper import extractQuote
 from idolName import idol2path
 from randomArrAssign import addToRandFile, addToMainFile
+from facebookAuto import generateCharImg
 
 from PIL import Image
 import requests
 from io import BytesIO
 import git
+
+# Debugging
+'''
+debugMode = True
+gitActive = False
+'''
+# Normal
+
+debugMode = False
+gitActive = True
+
 
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'
@@ -162,10 +174,13 @@ while True:
         text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
         text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
         text_file.write(text_to_save)
-	
-	addToRandFile(x_str,idol2path(name), text_to_save)
-	addToMainFile(x_str,idol2path(name), text_to_save)
 
+	if not debugMode:	
+		addToRandFile(x_str,idol2path(name), text_to_save)
+		addToMainFile(x_str,idol2path(name), text_to_save)
+
+	generateCharImg(x_str, idol2path(name), False)
+	
         print text_to_prnt
         
     if img_url_idol != None and idol2path(name) != 'none':
@@ -174,8 +189,11 @@ while True:
         text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
         text_file.write(text_to_save)
 
-	addToRandFile(x_str,idol2path(name), text_to_save)
-	addToMainFile(x_str,idol2path(name), text_to_save)
+	if not debugMode:
+		addToRandFile(x_str,idol2path(name), text_to_save)
+		addToMainFile(x_str,idol2path(name), text_to_save)
+	
+	generateCharImg(x_str, idol2path(name), True)
 
         print text_to_prnt
 
@@ -201,9 +219,10 @@ if begin != last:
 	print 'Git message: ', strGit
 	print '\n\n\n'
 
-	gitCommit(cardPicDir,'Card Images',strGit)
-	gitCommit(girlImageDir,'Girl Images',strGit)
-	gitCommit(speQuoteDir,'Audio Quotes',strGit)
+	if gitActive:
+		gitCommit(cardPicDir,'Card Images',strGit)
+		gitCommit(girlImageDir,'Girl Images',strGit)
+		gitCommit(speQuoteDir,'Audio Quotes',strGit)
 else:
 	print '\n\n\n'
 	print 'There are no current updates'

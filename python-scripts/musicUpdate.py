@@ -349,11 +349,6 @@ def scrapeSongFromFile():
 
 def songScraping(urlRead):
 
-	aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together','other-idols']
-
-	subGroupList = ['cyaron','kiss','azalea']
-	soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara']
-
 	r = requests.get(urlRead).content
 
 	soup = BeautifulSoup(r,'lxml')

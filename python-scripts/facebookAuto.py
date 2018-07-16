@@ -2,19 +2,24 @@ import facebook
 import Image
 import os
 import random
-import fbToken
+from fbToken import token # This contains your key to make publications
+
+# fbToken usecase:
+# token = 'LONG STRING CONTAINING YOUR KEY'
 
 backgroundDirPath = "../images/background/"
+imgGenLoc = './tmp/'
+message = "Added idols up from id 1638 to 1642!"
 
 def postToFB(msg):
 	fb = facebook.GraphAPI(access_token=token)
 
-	msg = "Added idols up from id 1638 to 1642!"
-	imgPath = "img.jpg"
+	#imgPath = "img.jpg"
 
 
 	#fb.put_object(parent_object='me',connection_name='feed',message="Added idols up from id 1638 to 1642!")
-	graph.put_photo(image=open(imgPath, 'rb'),message=msg)
+	#graph.put_photo(image=open(imgPath, 'rb'),message=msg)
+	fb.put_photo(image=open(imgGenLoc, 'rb'),message=msg)
 
 def resizeImg(img,baseHeight):
 	hpercent = (baseHeight/float(img.size[1]))
@@ -34,6 +39,12 @@ def generateCharImg(x_str, name, idolized):
 		path_to_save = "../../distribution/llsif-waifu-girl-images/scraped-images/" + name +"/" + x_str + ".png"
 		constructImg(path_to_save, randomBackground(), x_str)
 
+def getImageList():	
+	resList = []
+	for picPath in os.listdir(imgGenLoc):
+		resList.append(imgGenLoc + picPath)
+	return resList
+
 
 def constructImg(characterPath, backgroundPath, idNum):
 	background = Image.open(backgroundPath)
@@ -46,4 +57,11 @@ def constructImg(characterPath, backgroundPath, idNum):
 	background.paste(foreground, (-85, -65), foreground)
 	background.save("tmp/result"+str(idNum)+".png")
 	#background.show()
+
+'''
+for path in getImageList():
+	print path
+'''
+
+postToFB(message)
 
