@@ -19,7 +19,23 @@ def postToFB(msg):
 
 	#fb.put_object(parent_object='me',connection_name='feed',message="Added idols up from id 1638 to 1642!")
 	#graph.put_photo(image=open(imgPath, 'rb'),message=msg)
-	fb.put_photo(image=open(imgGenLoc, 'rb'),message=msg)
+
+	#fb.put_photo(image=open(imgGenLoc, 'rb'),message=msg)
+
+	
+	imgs_id = []
+	for img in os.listdir(imgGenLoc):
+		photo = open(imgGenLoc+img, "rb")
+		imgs_id.append(fb.put_photo(photo, album_id='me/photos',published=False)['id'])
+		photo.close()
+
+	args=dict()
+	args["message"]=msg
+	for img_id in imgs_id:
+		key="attached_media["+str(imgs_id.index(img_id))+"]"
+		args[key]="{'media_fbid': '"+img_id+"'}"
+
+	fb.request(path='/me/feed', args=None, post_args=args, method='POST')
 
 def resizeImg(img,baseHeight):
 	hpercent = (baseHeight/float(img.size[1]))
