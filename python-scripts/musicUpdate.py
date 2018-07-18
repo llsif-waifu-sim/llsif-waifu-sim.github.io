@@ -15,14 +15,16 @@ import git
 # Editable parameters
 
 # Want to debug
+'''
 debugMode = True
 gitActive = False
+'''
 
 # Normal mode
-'''
+
 debugMode = False
 gitActive = True
-'''
+
 
 
 # Set info

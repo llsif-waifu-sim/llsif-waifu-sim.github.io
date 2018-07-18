@@ -10,6 +10,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 import git
+import os
 
 # Debugging
 
@@ -30,6 +31,8 @@ refNumPath = './text/beginRef.txt'
 
 begin = 0
 last = 0
+
+os.system('mkdir ./tmp/')
 
 for line in open(refNumPath,'r'):
 	begin = int(line)
@@ -226,7 +229,7 @@ if begin != last:
 		gitCommit(girlImageDir,'Girl Images',strGit)
 		gitCommit(speQuoteDir,'Audio Quotes',strGit)
 
-	fbMessage = strGit + "\n Come check it out!\n https://llsif-waifu-sim.github.io"
+	fbMessage = strGit + "\n\n Come check it out here!\n https://llsif-waifu-sim.github.io"
 
 	while True:
 		print 'Press [y] to upload to Facebook or [n]:'
@@ -236,6 +239,7 @@ if begin != last:
 			if res == 'y':
 				postToFB(fbMessage)
 				print '\n\n Uploaded images to Facebook \n\n'
+				os.system('rm -rf ./tmp')
 			
 			break
 
