@@ -88,4 +88,5 @@ var riko_ar =
 ['1621','riko','yes'],
 ['1631','riko','no'],
 ['1631','riko','yes'],
+['1647','riko','yes'],
 ];

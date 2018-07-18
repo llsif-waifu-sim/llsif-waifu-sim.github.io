@@ -2403,4 +2403,5 @@ var id_log =
 ['1645','mari','yes'],
 ['1646','chika','no'],
 ['1646','chika','yes'],
+['1647','riko','yes'],
 ];

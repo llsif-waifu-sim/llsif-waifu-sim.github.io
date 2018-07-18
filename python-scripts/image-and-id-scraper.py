@@ -4,7 +4,7 @@ import urllib2
 from specialQuoteScraper import extractQuote
 from idolName import idol2path
 from randomArrAssign import addToRandFile, addToMainFile
-from facebookAuto import generateCharImg
+from facebookAuto import generateCharImg, postToFB
 
 from PIL import Image
 import requests
@@ -12,15 +12,15 @@ from io import BytesIO
 import git
 
 # Debugging
-'''
+
 debugMode = True
 gitActive = False
-'''
-# Normal
 
+# Normal
+'''
 debugMode = False
 gitActive = True
-
+'''
 
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'
@@ -179,7 +179,7 @@ while True:
 		addToRandFile(x_str,idol2path(name), text_to_save)
 		addToMainFile(x_str,idol2path(name), text_to_save)
 
-	generateCharImg(x_str, idol2path(name), False)
+		generateCharImg(x_str, idol2path(name), False)
 	
         print text_to_prnt
         
@@ -193,7 +193,7 @@ while True:
 		addToRandFile(x_str,idol2path(name), text_to_save)
 		addToMainFile(x_str,idol2path(name), text_to_save)
 	
-	generateCharImg(x_str, idol2path(name), True)
+		generateCharImg(x_str, idol2path(name), True)
 
         print text_to_prnt
 
@@ -208,9 +208,11 @@ print '];'
 
 # Checks to see if there were any updates before git pushing
 if begin != last:
-	extractQuote(begin,last)
+	if not debugMode:
+		extractQuote(begin,last)
 
-	text_file.close()    
+	text_file.close()   
+ 
 
   
 	strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
@@ -223,6 +225,20 @@ if begin != last:
 		gitCommit(cardPicDir,'Card Images',strGit)
 		gitCommit(girlImageDir,'Girl Images',strGit)
 		gitCommit(speQuoteDir,'Audio Quotes',strGit)
+
+	fbMessage = strGit + "\n Come check it out!\n https://llsif-waifu-sim.github.io"
+
+	while True:
+		print 'Press [y] to upload to Facebook or [n]:'
+		res = raw_input().lower()
+	
+		if res == 'y' or res == 'n':
+			if res == 'y':
+				postToFB(fbMessage)
+				print '\n\n Uploaded images to Facebook \n\n'
+			
+			break
+
 else:
 	print '\n\n\n'
 	print 'There are no current updates'

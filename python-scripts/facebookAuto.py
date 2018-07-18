@@ -9,19 +9,11 @@ from fbToken import token # This contains your key to make publications
 
 backgroundDirPath = "../images/background/"
 imgGenLoc = './tmp/'
-message = "Added idols up from id 1638 to 1642!"
+
+backgroundForbid = [10,16,18,19,116]
 
 def postToFB(msg):
 	fb = facebook.GraphAPI(access_token=token)
-
-	#imgPath = "img.jpg"
-
-
-	#fb.put_object(parent_object='me',connection_name='feed',message="Added idols up from id 1638 to 1642!")
-	#graph.put_photo(image=open(imgPath, 'rb'),message=msg)
-
-	#fb.put_photo(image=open(imgGenLoc, 'rb'),message=msg)
-
 	
 	imgs_id = []
 	for img in os.listdir(imgGenLoc):
@@ -44,16 +36,22 @@ def resizeImg(img,baseHeight):
 	return img
 
 def randomBackground():
-	return backgroundDirPath + random.choice(os.listdir(backgroundDirPath))
+	mainList = os.listdir(backgroundDirPath)
+	for remVal in backgroundForbid:
+		mainList.remove('background'+str(remVal)+'.png')
+			
+	return backgroundDirPath + random.choice(mainList)
 
 def generateCharImg(x_str, name, idolized):
 
 	if idolized:
     		path_to_save_id = "../../distribution/llsif-waifu-girl-images/scraped-images/" + name +"/" + x_str + "_id.png"
-		constructImg(path_to_save_id, randomBackground(), x_str)
+    		savePath = "./tmp/result-" + x_str + "_id.png"
+		constructImg(path_to_save_id, randomBackground(), savePath)
 	else:
 		path_to_save = "../../distribution/llsif-waifu-girl-images/scraped-images/" + name +"/" + x_str + ".png"
-		constructImg(path_to_save, randomBackground(), x_str)
+    		savePath = "./tmp/result-" + x_str + ".png"
+		constructImg(path_to_save, randomBackground(), savePath)
 
 def getImageList():	
 	resList = []
@@ -62,7 +60,7 @@ def getImageList():
 	return resList
 
 
-def constructImg(characterPath, backgroundPath, idNum):
+def constructImg(characterPath, backgroundPath, savePath):
 	background = Image.open(backgroundPath)
 	foreground = Image.open(characterPath).convert("RGBA")
 
@@ -71,13 +69,13 @@ def constructImg(characterPath, backgroundPath, idNum):
 
 
 	background.paste(foreground, (-85, -65), foreground)
-	background.save("tmp/result"+str(idNum)+".png")
+	background.save(savePath)
 	#background.show()
 
-'''
-for path in getImageList():
-	print path
-'''
+def generateNewSet(begin, last):
+	# Check to see if id exist
 
-postToFB(message)
+	# If so, then generate character image
+	generateCharImg(x_str, name, idolized)
+
 
