@@ -1,5 +1,8 @@
 [
-['1646','chika','no'],
-['1646','chika','yes'],
 ['1647','riko','yes'],
+['1648','yoshiko','no'],
+['1648','yoshiko','yes'],
+['1649','hanamaru','no'],
+['1649','hanamaru','yes'],
+['1652','nico','yes'],
 ];
