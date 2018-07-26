@@ -13,15 +13,15 @@ import git
 import os
 
 # Debugging
-'''
+
 debugMode = True
 gitActive = False
-'''
-# Normal
 
+# Normal
+'''
 debugMode = False
 gitActive = True
-
+'''
 
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'

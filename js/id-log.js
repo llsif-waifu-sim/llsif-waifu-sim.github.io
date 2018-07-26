@@ -2421,4 +2421,8 @@ var id_log =
 ['1649','hanamaru','no'],
 ['1649','hanamaru','yes'],
 ['1652','nico','yes'],
+['1653','nozomi','no'],
+['1653','nozomi','yes'],
+['1654','kotori','no'],
+['1654','kotori','yes'],
 ];
