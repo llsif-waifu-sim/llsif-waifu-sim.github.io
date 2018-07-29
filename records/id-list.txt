@@ -1,6 +1,4 @@
 [
-['1653','nozomi','no'],
-['1653','nozomi','yes'],
 ['1654','kotori','no'],
 ['1654','kotori','yes'],
 ];

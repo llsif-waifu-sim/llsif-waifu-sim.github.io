@@ -33,4 +33,5 @@ var aqours_together =
 ['MY Mai☆TONIGHT',3],
 ['Kiseki Hikaru',3],
 ['Hop・Step・Waai!',3],
+['Koi ni Naritai AQUARIUM',3],
 ];
