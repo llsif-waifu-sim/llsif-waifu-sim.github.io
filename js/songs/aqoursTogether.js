@@ -34,4 +34,5 @@ var aqours_together =
 ['Kiseki Hikaru',3],
 ['Hop・Step・Waai!',3],
 ['Thank you, FRIENDS!!',3],
+['No.10',3],
 ];

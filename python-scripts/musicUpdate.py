@@ -390,9 +390,11 @@ def songScraping(urlRead):
 	uploadSong()
 
 def main():
-
+	
 	songScraping(aqoursURL)
 	songScraping(aqoursURLSec)
+	
+	#scrapeSongFromFile()
 
 if __name__ == "__main__":
 	main()
