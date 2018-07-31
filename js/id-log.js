@@ -2425,4 +2425,13 @@ var id_log =
 ['1653','nozomi','yes'],
 ['1654','kotori','no'],
 ['1654','kotori','yes'],
+['1655','kanan','no'],
+['1655','kanan','yes'],
+['1656','yoshiko','no'],
+['1656','yoshiko','yes'],
+['1657','chika','no'],
+['1657','chika','yes'],
+['1658','ruby','no'],
+['1658','ruby','yes'],
+['1659','chika','yes'],
 ];

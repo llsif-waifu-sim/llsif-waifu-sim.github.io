@@ -13,21 +13,31 @@ imgGenLoc = './tmp/'
 backgroundForbid = [10,16,18,19,116]
 
 def postToFB(msg):
-	fb = facebook.GraphAPI(access_token=token)
-	
-	imgs_id = []
-	for img in os.listdir(imgGenLoc):
-		photo = open(imgGenLoc+img, "rb")
-		imgs_id.append(fb.put_photo(photo, album_id='me/photos',published=False)['id'])
-		photo.close()
 
-	args=dict()
-	args["message"]=msg
-	for img_id in imgs_id:
-		key="attached_media["+str(imgs_id.index(img_id))+"]"
-		args[key]="{'media_fbid': '"+img_id+"'}"
+	while True:
+		try:	
+			fb = facebook.GraphAPI(access_token=token)
+			imgs_id = []
+			for img in os.listdir(imgGenLoc):
+				photo = open(imgGenLoc+img, "rb")
+				imgs_id.append(fb.put_photo(photo, album_id='me/photos',published=False)['id'])
+				photo.close()
 
-	fb.request(path='/me/feed', args=None, post_args=args, method='POST')
+			args=dict()
+			args["message"]=msg
+			for img_id in imgs_id:
+				key="attached_media["+str(imgs_id.index(img_id))+"]"
+				args[key]="{'media_fbid': '"+img_id+"'}"
+
+			fb.request(path='/me/feed', args=None, post_args=args, method='POST')
+			print 'Facebook content was successfully posted!'
+			return
+		except:
+			print 'Something went wrong while uploading to Facebook. Maybe your token has expired?'
+			print 'If so, try getting a new one here: https://developers.facebook.com/tools/explorer'
+			print 'Paste your new token here:'
+			token = raw_input()
+			print '\n\n Attempting to republish FB post. . .'		
 
 def resizeImg(img,baseHeight):
 	hpercent = (baseHeight/float(img.size[1]))
