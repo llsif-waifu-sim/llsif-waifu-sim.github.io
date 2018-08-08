@@ -1,11 +1,2 @@
 [
-['1666','chika','yes'],
-['1667','riko','yes'],
-['1668','kanan','yes'],
-['1669','dia','yes'],
-['1670','you','yes'],
-['1671','yoshiko','yes'],
-['1672','hanamaru','yes'],
-['1673','mari','yes'],
-['1674','ruby','yes'],
 ];
