@@ -12,6 +12,16 @@ localFile = './testLyrics.txt'
 
 siteTabList = ['rōmaji','kanji','english']
 
+def iterateSongList():
+	urlRead = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
+	r = requests.get(urlRead).content
+	soup = BeautifulSoup(r,'lxml')
+	contDiv = soup.find("div",{"class":"mw-content-ltr"})
+	for ulTag in contDiv.findAll("ul"):
+		for liTag in ulTag.findAll("li"):
+			print liTag.find("a")['title']
+			print liTag.find("a")['href']
+
 def scrapeLyrics(urlRead):
 	r = requests.get(urlRead).content
 	soup = BeautifulSoup(r,'lxml')
@@ -21,14 +31,19 @@ def scrapeLyrics(urlRead):
 		lyricInnerDiv = lyricTab.find("div")
 		if lyricInnerDiv and lyricTab['title'].lower().encode('utf8') in siteTabList:
 			print '-----------'
-			lyricType = lyricTab['title'].lower()
+			lyricType = lyricTab['title'].lower().encode('utf8')
 			text = lyricInnerDiv.getText()
 			print lyricType
 			print text
 
-			fd = open(lyricType.encode('utf8') + '.txt',"w")
+			if lyricType == 'rōmaji':
+				fd = open('romaji.txt',"w")
+			else:
+				fd = open(lyricType.encode('utf8') + '.txt',"w")
 			fd.write(text.encode('utf8'))
 			fd.close()
+
+
 
 			if lyricType == 'kanji':
 				transText = furiganaLineTrans(text)
@@ -61,5 +76,8 @@ def furiganaLineTrans(text):
 
 #print furiganaLineTrans(test)
 #scrapeLocalFile(localFile)
-t = "http://love-live.wikia.com/wiki/RED_GEM_WINK"
-scrapeLyrics(t)
+t = "http://love-live.wikia.com/wiki/Garasu_no_Hanazono"
+#scrapeLyrics(t)
+iterateSongList()
+
+

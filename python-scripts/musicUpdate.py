@@ -349,6 +349,45 @@ def scrapeSongFromFile():
 
 	uploadSong()
 
+def heavySongScraping(urlRead):
+	r = requests.get(urlRead).content
+        soup = BeautifulSoup(r,'lxml')
+        contDiv = soup.find("div",{"class":"mw-content-ltr"})
+
+	# Set encoding to write unicode
+        reload(sys)
+        sys.setdefaultencoding('utf-8')
+
+        recFile = open(recordURL,"a")
+
+
+        os.system('mkdir ' + tmpDir)
+
+        for ulTag in contDiv.findAll("ul"):
+                for liTag in ulTag.findAll("li"):
+			print '---------------'
+			songPageURL = rootURL + liTag.find("a")['href']
+			title = liTag.find("a")['title']
+
+			print title
+			
+			
+			# Now we are going to inspect the link of the song
+			#rSong = urllib.urlopen(songPageURL).read()
+			rSong = requests.get(songPageURL).content
+			rSoup = BeautifulSoup(rSong,'lxml')
+			#imgURL = rSoup.find("meta",{"property":"og:image"})['content']
+
+			prepareSong(title,songPageURL,rSoup,recFile)
+	recFile.close()
+	os.system('rm -rf ' + tmpDir)
+
+	print '\n\n\n'
+
+	uploadSong()
+
+
+
 def songScraping(urlRead):
 
 	r = requests.get(urlRead).content
@@ -391,8 +430,10 @@ def songScraping(urlRead):
 
 def main():
 	
-	songScraping(aqoursURL)
-	songScraping(aqoursURLSec)
+	heavySongScraping(aqoursURL)
+
+	#songScraping(aqoursURL)
+	#songScraping(aqoursURLSec)
 	
 	#scrapeSongFromFile()
 
