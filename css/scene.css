@@ -97,6 +97,12 @@
     right: 3%;
 }
 
+#lyricsManagerBut{
+    position: absolute;
+    top: 5%;
+    left: 3%;
+}
+
 #story_but{
     position: absolute;
     bottom: -1.5%;

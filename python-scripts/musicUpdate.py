@@ -7,6 +7,7 @@ import sys
 from PIL import Image
 from io import BytesIO
 from bs4 import BeautifulSoup
+from lyricScraper import scrapeLyrics
 
 import git
 
