@@ -2,7 +2,8 @@ var lyricsTypeList = ["kanji","furigana","romaji","english"]
 
 
 function assignLyrics(songName){
-
+  songName = songName.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s/g, '');
+  alert(songName);
   for(var i = 0; i < lyricsTypeList.length;i++){
       var lyricsType = lyricsTypeList[i];
       setLyrics(songName,lyricsType);
@@ -16,7 +17,6 @@ function setLyrics(songName,lyricsType) {
 
 
     var filePath = rootPath + lyricsType + "/" + songName + "-" + lyricsType + ".txt";
-
 
     rawFile.open("GET", filePath, true);
     rawFile.onreadystatechange = function() 
@@ -50,6 +50,5 @@ function changeVisibility(elementName, reverseElement,command){
   }
 }
 
-songName = "bokurawaimanonakade";
-assignLyrics(songName);
+assignLyrics("bokurawaimanonakade");
 

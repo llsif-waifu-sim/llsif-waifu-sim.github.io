@@ -17,9 +17,7 @@ kakasi = kakasi()
 
 siteTabList = ['rōmaji','kanji','english']
 
-def iterateSongList():
-	urlRead = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
-	#urlRead = 'http://love-live.wikia.com/wiki/Category:Μ%27s_Songs'
+def iterateSongList(urlRead='http://love-live.wikia.com/wiki/Category:Aqours_Songs'):
 	r = requests.get(urlRead).content
 	soup = BeautifulSoup(r,'lxml')
 	contDiv = soup.find("div",{"class":"mw-content-ltr"})
@@ -87,13 +85,15 @@ def furiganaLineTrans(text):
 		if segWord == result:
 			stitchStr += segWord
 		else:
-			useStr = segWord + '{' + result +'}'
+			useStr = segWord + '  { ' + result +' }  '
 			stitchStr += useStr
 
 	return stitchStr
 
-#print furiganaLineTrans(test)
-#scrapeLocalFile(localFile)
-iterateSongList()
+
+urlRead = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
+iterateSongList(urlRead)
+urlRead = 'http://love-live.wikia.com/wiki/Category:Μ%27s_Songs'
+iterateSongList(urlRead)
 
 
