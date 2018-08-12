@@ -96,4 +96,8 @@ iterateSongList(urlRead)
 urlRead = 'http://love-live.wikia.com/wiki/Category:Μ%27s_Songs'
 iterateSongList(urlRead)
 
+urlRead = "http://love-live.wikia.com/wiki/Category:A-RISE_Songs"
+iterateSongList(urlRead)
+urlRead = "http://love-live.wikia.com/wiki/Category:Saint_Snow_Songs"
+iterateSongList(urlRead)
 

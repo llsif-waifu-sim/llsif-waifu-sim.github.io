@@ -89,5 +89,5 @@ function changeVisibility(elementName, reverseElement,command){
 }
 
 //assignLyrics("bokurawaimanonakade");
-assignLyricsMobile("bokurawaimanonakade");
+assignLyricsMobile("bokuranolivekimitonolife");
 
