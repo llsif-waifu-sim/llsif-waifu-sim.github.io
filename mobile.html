@@ -6,7 +6,7 @@
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
+
 	<script src="mobile-js/redirect-mobile.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -429,7 +429,16 @@
 							    </select>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<a href="#lyricsPage"  id='lyricOpenBut' class="ui-btn ui-btn-inline ui-corner-all" style="background:#2ECCFA;border-color:#2ECCFA; width:65%"><font color='white' >Show Lyrics</font></a>
+							</td>
+							
+						</tr>
 					</table>
+
+
+
 
 	        	</center>
 
@@ -442,6 +451,52 @@
 
 </div>
 
+
+<!-- Lyrics page -->
+
+<div data-role="page" id="lyricsPage">
+  <div data-role="header">
+  	<center>
+    	<div id="lyricsTitleDiv">Bokura no LIVE Kimi to no LIFE</div>
+    </center>
+  </div>
+
+  <div role="main" class="ui-content">
+
+    <div data-role="tabs">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#fragment-1" class="ui-btn-active">Kanji</a></li>
+          <li><a href="#fragment-2">Furigana</a></li>
+          <li><a href="#fragment-3">Romaji</a></li>
+          <li><a href="#fragment-4">English</a></li>
+        </ul>
+      </div>
+      <div id="fragment-1">
+        <div id="lyrickanjiArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-2">
+
+        <div id="lyricfuriganaArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-3">
+        <div id="lyricromajiArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-4">
+        <div id="lyricenglishArea" style="text-align: center;"></div>
+      </div>
+    </div>
+	
+
+
+	<br>
+    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
+  </div>
+  <script src="js/lyricsManager.js"></script>
+</div>
+	
+
+	
 
 
 
