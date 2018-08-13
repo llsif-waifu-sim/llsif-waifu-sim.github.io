@@ -106,7 +106,13 @@
 #songSearchDiv{
     position: absolute;
     top: 5%;
-    left: 3%;
+    left:-12%;
+}
+
+#searchSongSubmit{
+    position: absolute;
+    top: 0%;
+    left:75%;
 }
 
 #story_but{

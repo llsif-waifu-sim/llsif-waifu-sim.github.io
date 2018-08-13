@@ -1,5 +1,6 @@
-function searchSong(query){
-  alert(query);
+function searchSong(){
+  var songSearch = document.getElementById("songSearchBar").value;
+  switchToSongByName(songSearch);
 }
 
 
