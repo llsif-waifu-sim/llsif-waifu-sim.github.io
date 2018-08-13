@@ -815,3 +815,63 @@ function getNextRandomSong(state)
 	}
 	return random_counter_ar[random_index];
 }
+
+
+function switchToSongByName(songName){
+
+
+	var folder = -1;
+	var chosenNum = -1;
+	for(var i=0; i < random_ar.length; i++){
+		if(songName == random_ar[i][0]){
+			folder = random_ar[i][1];
+			chosenNum = i;
+			break;
+		}
+	}
+
+	if(folder == -1 || chosenNum == -1){
+		return;
+	}
+
+
+
+	if(folder==0){
+		subPath = 'muse-together/';
+	} else if (folder==1){
+		subPath = 'muse-sub-group/';
+	} else if (folder==2){
+		subPath = 'muse-individual/';
+	} else if (folder==3){
+		subPath = 'aqours-together/';
+	} else if (folder==4){
+		subPath = 'aqours-sub-group/';
+	} else if (folder==5){
+		subPath = 'aqours-individual/';
+	} else if (folder==6){
+			subPath = 'other-idols/';
+	} else {
+		alert('Something bad happened in changeSongRandom()');
+		return;
+	}
+
+	
+
+	var randSongInt = calc_random_local_index(chosenNum, folder);
+	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
+
+
+	$(document).ready(function(){
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	});
+
+	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
+	assignLyrics(random_ar[chosenNum][0]);
+	document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
+	currSong = randSongInt;
+
+	stopClick();
+	playClick();
+}

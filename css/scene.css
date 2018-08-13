@@ -99,6 +99,12 @@
 
 #lyricsManagerBut{
     position: absolute;
+    top: 14%;
+    left: 3%;
+}
+
+#songSearchDiv{
+    position: absolute;
     top: 5%;
     left: 3%;
 }

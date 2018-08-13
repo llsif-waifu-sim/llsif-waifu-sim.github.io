@@ -37,12 +37,11 @@
 							</select>
 						</div>
 					
-						<!--
-						<div class="autocomplete" style="width:300px;">
-						    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+						
+					      <div id="songSearchDiv" class="autocomplete" style="width:300px;">
+						    <input id="songSearchBar" type="text" name="songSearchBar" placeholder="Type in song title">
 						  </div>
-						  <script src="js/autocomplete.js"></script>
-						-->
+						
 
 
 						<button id='lyricsManagerBut' type="button" class="btn btn-primary" onclick="changeVisibility('lyricsDisplay','playerDisplay','show');">View Lyrics</button>
@@ -50,9 +49,10 @@
 
 		        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
 		        		<script type="text/javascript" src="js/bootstrap-select.js"></script>
+		        		<script src="js/autocomplete.js"></script>
 		        	</div>
 
-	        	
+	        		
 
 	        		
 		        	<table>
@@ -93,7 +93,7 @@
        	
 	        	</div>
 	        	<div id="lyricsDisplay" style="visibility:hidden;display:none;">
-
+	        			<link href="css/autocomplete.css" rel="stylesheet">
 	        		
 		        		<div class="container">
 			        		<table style="width:100%">
