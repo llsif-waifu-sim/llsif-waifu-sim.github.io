@@ -1,0 +1,425 @@
+ <div class="modal fade" id="StoryGIFMakerModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1450px; height:1000px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Love Live Story Mode GIF Generator</h4>
+	        </div>
+	     
+
+	        <script src="js/mainStorySpriteAr.js"></script>
+			<script src="js/mainStorySpriteIndividualAr.js"></script>	
+
+	        <script src='js/gifshot.js'></script> 
+
+
+	        
+				<button id='whatIsThisGIFGenBut' type="button" class="btn btn-primary" data-toggle="modal" data-target="#whatIsThisGIFGenModal">What is this?</button>
+				<button id='startNewStoryGIFBut' type="button" class="btn btn-primary">Start New GIF</button>
+
+			<center>
+				<h2><b><div id="sceneNum_box">Frame 1</div></b></h2>
+			</center>
+				
+				<div id="sceneLoading_box"></div>
+				<br>
+			<center>
+				<table style='clear: left;'>
+					<tr style='width:400px'>
+						<td style='padding-right:20px;'>
+							<button style='width:240px;' type="button" class="btn btn-info" onclick="changeBackgroundStoryBack()"><span class="glyphicon glyphicon-chevron-left"></span> Change Wallpaper</button>
+						</td>
+						<td>
+							<select  class="selectpicker" data-style="btn-default" id="story-line-select-option" style='width:10%;' onchange="changeScene();">
+							 	<option value="1">Frame 1</option>
+							</select>
+							<button onclick='addNewScene();' class="btn btn-success" type="button">+</button>
+							<button onclick='removeLastScene();' class="btn btn-danger" type="button">-</button>
+						</td>
+						<td style='padding-left:20px;'>
+							<button style='width:240px' type="button" class="btn btn-info" onclick="changeBackgroundStory()">Change Wallpaper <span class="glyphicon glyphicon-chevron-right"></span></button>
+						</td>
+					</tr>
+				</table>
+				
+
+
+				<br><br>
+
+				<div id="container">
+				    	<img id='homeScreenStory' src='images/background/background0.png'>
+				    	<img id="idol_img_left" src='stories/images/umi_01_01.png'>
+				    	<img id="idol_img_center" src='stories/images/honoka_01_01.png'>
+				    	<img id="idol_img_right" src='stories/images/kotori_01_01.png'>
+
+				    	<img id="emotion_img_left" src='images/emotion/-1.png' style='opacity: 0.8;'>
+				    	<img id="emotion_img_center" src='images/emotion/-1.png' style='opacity: 0.8;'>
+				    	<img id="emotion_img_right" src='images/emotion/-1.png' style='opacity: 0.8;'>
+				    	
+				    	<div id="entire_story_text_box">
+				    		<img id="story_speaker_img" src="images/speaker-box.png" style='width:340px;'>
+				    		<h2><font style="color:white;"><div id="edit_speaker_box" ></div></font></h2>
+					    	<img id="temp_text_box_img" src="images/pink-textbox.png">
+					    	<h2><font style="color:white;"><div id="edit_text_box"></div></font></h2>
+					  
+						</div>
+				</div>
+
+
+			<br>
+
+
+			<div id="normalIdolStorySearch" style="display:none;">
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="card_id-left" class="form-control" placeholder='Card ID Number (ex: 46)'>
+								<div class="radio" >
+								  <label>
+								    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-no-left" value="no"  checked>
+								    	<font>Non-idolized</font>
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="optionsRadios-left" id="radio-idol-switch-yes-left" value="yes">
+								    	<font>Idolized</font>
+								  </label>
+								</div>
+							<button style='width:100%' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStory('left')">Retrieve</button>
+						</td>
+					
+						<td>
+							<input type="text" id="card_id-center" class="form-control" placeholder='Card ID Number (ex: 46)'>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-no-center" value="no" checked>
+								    	<font>Non-idolized</font>
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="optionsRadios-center" id="radio-idol-switch-yes-center" value="yes">
+								    	<font>Idolized</font>
+								  </label>
+								</div>
+							<button style='width:100%' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStory('center')">Retrieve</button>
+						</td>
+
+						<td>
+							<input type="text" id="card_id-right" class="form-control" placeholder='Card ID Number (ex: 46)'>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-no-right" value="no" checked>
+								    	<font>Non-idolized</font>
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="optionsRadios-right" id="radio-idol-switch-yes-right" value="yes">
+								    	<font>Idolized</font>
+								  </label>
+								</div>
+							<button style='width:100%' type="button"  id="search_but" class="btn btn-primary" onclick="searchIdStory('right')">Retrieve</button>
+						</td>
+					</tr>
+				</table>
+			 </div>     
+
+			 <div id="StoryIdolStorySearch">
+			 	<table>
+			 		<tr>
+			 			<td style='width:220px; padding:10px;'>
+
+			 				<select class="selectpicker " data-style="btn-default" data-size="10" id="waifuStoryOption1" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(1, 0);searchIdStoryMain('left');"></select><br>
+			 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryCostumeOption1" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(1, 1);searchIdStoryMain('left');"></select><br>
+			 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryMoodOption1" style="width:400px;" onchange="searchIdStoryMain('left');"></select><br>
+			 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption1" style="width:400px;" onchange="changeEmotionBubble('left');">
+			 					<option value='-1' selected>Nothing</option>
+			 					<option value='0'>Surprised</option>
+			 					<option value='1'>Happy</option>
+			 					<option value='2'>Love</option>
+			 					<option value='3'>Worried</option>
+			 					<option value='4'>Question</option>
+			 					<option value='5'>Annoyed</option>
+			 				</select><br>
+
+			 				<button style='width:220px;' type="button" id="search_but-left" class="btn btn-primary" onclick="searchIdStoryMain('left')">Add</button>
+			 			</td>
+			 			<td style='width:220px; padding:10px;'>
+			 		
+			 				<select class="selectpicker" data-style="btn-default" data-size="10" id="waifuStoryOption2" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(2, 0);searchIdStoryMain('center');"></select><br>
+			 			
+			 		
+			 				<select class="selectpicker" data-style="btn-default" id="waifuStoryCostumeOption2" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(2, 1);searchIdStoryMain('center');"></select><br>
+			 			
+			 				<select class="selectpicker" data-style="btn-default" id="waifuStoryMoodOption2" style="width:400px;" onchange="searchIdStoryMain('center')"></select><br>
+			 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption2" style="width:400px;" onchange="changeEmotionBubble('center');"><br>
+			 					<option value='-1' selected>Nothing</option>
+			 					<option value='0'>Surprised</option>
+			 					<option value='1'>Happy</option>
+			 					<option value='2'>Love</option>
+			 					<option value='3'>Worried</option>
+			 					<option value='4'>Question</option>
+			 					<option value='5'>Annoyed</option>
+			 				</select><br>
+			 					
+			 				<button style='width:220px;' type="button" id="search_but-center" class="btn btn-primary" onclick="searchIdStoryMain('center')">Add</button>
+			 					
+			 	
+			 				
+			 				
+			 				
+
+			 			</td>
+			 			<td style='width:220px; padding:10px;'>
+			 				<select class="selectpicker" data-style="btn-default" data-size="10" id="waifuStoryOption3" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(3, 0);searchIdStoryMain('right');$('#waifuStoryCostumeOption3').selectpicker('refresh');"></select><br>
+			 				<select class="selectpicker" data-style="btn-default" id="waifuStoryCostumeOption3" style="width:400px;" onchange="refreshStoryCostumeMoodOptions(3, 1);searchIdStoryMain('right');"></select><br>
+			 				<select class="selectpicker" data-style="btn-default" id="waifuStoryMoodOption3" style="width:400px;" onchange="searchIdStoryMain('right')"></select><br>
+			 				<select class="selectpicker" data-style="btn-default"  id="waifuStoryEbubbleOption3" style="width:400px;" onchange="changeEmotionBubble('right');">
+			 					<option value='-1' selected>Nothing</option>
+			 					<option value='0'>Surprised</option>
+			 					<option value='1'>Happy</option>
+			 					<option value='2'>Love</option>
+			 					<option value='3'>Worried</option>
+			 					<option value='4'>Question</option>
+			 					<option value='5'>Annoyed</option>
+			 				</select><br>
+			 				<button style='width:220px;' type="button" id="search_but" class="btn btn-primary" onclick="searchIdStoryMain('right')">Add</button>
+
+			 			</td>
+			 		</tr>
+			 	</table> 	
+
+			 </div>
+			 
+
+			<br>
+
+			 <div style="width:60%">
+			 	Who is speaking? :
+			 	<select class="selectpicker" data-style="btn-default" id="story-speaker-select" style='width:40%;' onchange="speakerResize();">
+			 		<option value="left">Left Idol</option>
+					<option value="center" selected>Center Idol</option>
+					<option value="right">Right Idol</option>
+					<option value="???">???</option>
+					<option value="none">No One</option>
+			 	</select>
+
+
+
+			 </div>
+			 <br>
+			 <div style="width:60%">
+			 	<input type="text" id="story-textfield" class="form-control" placeholder='Enter dialouge text here (max: 220 characters)' maxlength="220" >
+			 	<!--<button style='width:100%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="addStoryText();">Insert Text</button>-->
+			 	
+			 </div>
+			 <br>
+			 <button type="button" class="btn btn-warning"  id="clickMeId" onclick="hide('normalIdolStorySearch');show('StoryIdolStorySearch');">Main Story Waifus</button>
+			<button type="button" class="btn btn-warning"  id="clickMeId" onclick="hide('StoryIdolStorySearch');show('normalIdolStorySearch');">Card Waifus</button>
+			 <br><br>
+
+
+			 <button style='width:70%' type="button" id="insertStoryText_but" class="btn btn-primary" onclick="saveCurrentScene();">Save frame</button>
+			 <br><br>
+			<h2>GIF settings</h2>
+			<table>
+				<tr>
+					<td>
+						GIF Interval (time to move to next frame):
+					</td>
+					<td style='padding:10px;'>
+						 <select class="selectpicker" data-style="btn-default" id='gifIntervalSelect'>
+						 	<option value='0.5'>0.5 seconds</option>
+						 	<option value='1' selected>1 second</option>
+						 	<option value='1.5'>1.5 seconds</option>
+						 	<option value='2'>2 seconds</option>
+						 	<option value='2.5'>2.5 seconds</option>
+						 	<option value='3'>3 seconds</option>
+						 	<option value='3.5'>3.5 seconds</option>
+						 	<option value='4'>4 seconds</option>
+						 	<option value='4.5'>4.5 seconds</option>
+						 	<option value='5'>5 seconds</option>
+						 </select>
+
+					</td>
+				</tr>
+				<tr>
+					<td>
+						GIF resolution
+					</td>
+					<td>
+						<select class="selectpicker" data-style="btn-default" id='storyResolutionSelect'>
+							<option value='1'>480x320</option>
+							<option value='2' selected>600x400</option>
+							<option value='3'>780x520</option>
+							<option value='4'>960x640</option>
+						</select>
+					</td>
+					<td>
+						
+					</td>
+					
+				</tr>
+
+				<tr>
+					<td  style='width:400px;'>
+						Enable Rolling Text in GIF:
+					</td>
+					
+					<td style='width:200px;'>
+						No Rolling Text: 
+						<input type="radio" name="rollingTextRadio" id="radio-rollingText-switch-no" value="no" onclick='checkRollingTextRequirements();' checked>
+					</td>
+					<td style='width:200px;'>
+						With rolling text:
+						<input type="radio" name="rollingTextRadio" id="radio-rollingText-switch-yes" value="yes" onclick='checkRollingTextRequirements();'>
+					
+					</td>
+
+				</tr>
+
+				<tr>
+					<td>
+					<div id='smoothnessLabelHide' style='display:none;'>
+						Text Rolling Smoothness Quality:
+					</div>
+						
+					</td>
+					<td style='padding:10px;'>
+						 <select class="selectpicker" data-style="btn-default" id='smoothnessTextSelect'>
+						 	<option value='2'>Level 1</option>
+						 	<option value='3' selected>Level 2</option>
+						 	<option value='4'>Level 3</option>
+						 	<option value='5'>Level 4</option>
+						 </select>
+
+					</td>
+				</tr>
+
+			
+
+			</table>
+
+			<br><br><br>
+			<div style='padding:10px; width:70%;text-align:left;'>
+				<b>Disclaimer: This is a beta, so bugs are possible. Worst case worst, just refresh your browser and save every frame before constructing again or click on the "New GIF" button and start fresh again</b><br><br>
+				<u><b>NOTE (only for those continuing a GIF project): </b></u><br>
+				To enable rolling text throughout the entire GIF, you must resave every single frame of this session (as in go back to frame 1 RIGHT NOW and save every frame from 1 until the last in order) before filling out the "With Rolling Text" option if you are continuing to make a GIF from a save point.
+				<br><br>
+				However, if you are making this entire GIF in one sitting (not continuing from a save point), then you can safely ignore this message and fill out the "With Rolling Text" option.
+				<br><br><br>
+				<u><b>Recommended resolution and smoothness quality for Rolling Text:</b></u><br>
+				If you choose to not have rolling text, then any resolution or smoothness quality is fine. <br><br>
+				Otherwise, if you do use rolling text, you want to be sure to choose the right resolution and smoothness quality. Please be aware that generating GIFs with rolling text is more computationally intensive as it requires significantly more frames and should avoid giving your computer too much work.<br><br>
+				Therefore, it is recommended that you keep your GIF resolution low (600x400 for around 11 frames or 480x320 for up to 15 frames) and at smoothness level 2 for a GIF that has many frames. If you don't have that much frames, then increasing resolution is fine. Of course this can vary from computer to computer, so reduce resolution if you have difficulties constructing your GIF.
+				<br><br>
+				If there were any problems with generating the GIF (frames in wrong order, only some frames appear, etc), I recommend that you resave every single frame of this session (as in go back to frame 1 RIGHT NOW and save every frame from 1 until the last in order). If that doesn't work, then there probably was a problem with your browser cookies and you would just click on "New GIF" and restart making the GIF again (it shouldn't take that long to remake it).
+				<br><br><br>
+				<b><u>It's highly recommended that you do not switch to another tab while you wait for your GIF to construct)</u></b><br>
+				If you chose rolling text (not a problem for non-rolling text), then your tab will go through intensive computations on the client-side (can take up to a few minutes). Switching to another tab will cause your GIF construction to lose prority in the browser and your browser may even stop constructing your GIF, giving the illusion it is taking forever to construct. Therefore, it is recommended that you stay on this tab for up to a few minutes to make your GIF construction full prority to the browser.
+
+			</div>
+			<br><br><br><br>
+			<button style='width:70%' type="button" id="convertGIF_but" class="btn btn-primary" onclick="startGIFCreation();">Construct GIF</button>
+			<br><br>
+			 
+			 <div id='uploadInProcessDiv' style='display:none;'>
+			 	<table>
+			 		<tr>
+			 			<td>
+			 				<img src="images/downloading.gif" style='height:30px;width:auto;'>
+			 			</td>
+			 			<td>
+			 				<div id="sceneLoadingBox">Preparing to upload . . .</div>
+			 			</td>
+			 		</tr>
+			 	</table>
+			 	
+			 </div>
+
+
+			<br><br><br>
+			<img id="imageGIF">
+			<canvas id="story-canvas" width="1700" height="1550" style="border:1px solid #d3d3d3;display:none;">
+			Your browser does not support the HTML5 canvas tag.</canvas>
+			</center>
+			<script type="text/javascript" src="js/bootstrap-select.js"></script>
+			 <script src="js/storyMakerScript.js"></script>
+
+
+			<center><div id='gifOutputDiv'></div></center>
+
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
+
+
+
+
+
+	  <!-- New Modal -->
+
+	   <div class="modal fade" id="whatIsThisGIFGenModal" role="dialog">
+	    <div class="modal-dialog" style='width: 1200px; height:800px;'>
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">What is this?</h4>
+	        </div>
+	        <div class="modal-body">
+	        
+
+
+	        	Welcome to the Love Live Story Mode GIF Generator, where you can make your very own Love Live GIFs! 
+				<br><br>
+				Now you can either let your imagination and creativity run wild and create that great idea of a Love Live story, comic, manga, writing, etc that you had or use this GIF generator to create a new generation of dank Love Live memes.
+				<br><br>
+				<b>Sample GIFs made by this site:</b>
+				<br>
+				<table>
+					<tr style='padding:10px;'>
+						<td style='padding:10px;'>
+							<img src='gif/3.gif' width="480" height="288">
+						</td>
+						<td style='padding:10px;'>
+							<img src='gif/4.gif' width="480" height="288">
+						</td>
+					</tr>
+					<tr style='padding:10px;'>
+						<td style='padding:10px;'>
+							<img src='gif/5.gif' width="480" height="288">
+						</td>
+						<td style='padding:10px;'>
+							<img src='gif/6.gif' width="480" height="288">
+						</td>
+					</tr>
+				</table>
+			
+			
+				<br><br>
+				Have fun!
+				<br>
+
+
+
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	  </div>
