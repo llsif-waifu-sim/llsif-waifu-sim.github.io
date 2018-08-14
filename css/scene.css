@@ -109,6 +109,12 @@
     left:-12%;
 }
 
+#saveToPlaylistBut{
+    position: absolute;
+    bottom: 5%;
+    right:3%;
+}
+
 #searchSongSubmit{
     position: absolute;
     top: 0%;
