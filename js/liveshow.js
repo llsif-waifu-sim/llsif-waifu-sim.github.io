@@ -34,6 +34,7 @@ var playlist_index = 0;
 var firstRandom = false;
 var loop_mode = false;
 
+var removedSecList = [];
 
 
 var savedPlayList = [];
@@ -56,6 +57,52 @@ $('#background-music-player').on('ended', function() {
 	
 });
 
+function getSongSecInRandom(){
+	if(!document.getElementById("MuseTogetherCheckBox").checked){
+		removedSecList.push("MuseTogether");
+	} else {
+
+	}
+
+	if(!document.getElementById("MuseSubIdolCheckBox").checked){
+		removedSecList.push("MuseSubIdol");
+	} else {
+		
+	}
+
+	if(!document.getElementById("MuseOtherCheckBox").checked){
+		removedSecList.push("MuseOther");
+	} else {
+		
+	}
+
+	if(!document.getElementById("AqoursTogetherCheckBox").checked){
+		removedSecList.push("AqoursTogether");
+	} else {
+		
+	}
+
+	if(!document.getElementById("AqoursSubIdolCheckBox").checked){
+		removedSecList.push("AqoursSubIdol");
+	} else {
+		
+	}
+
+	if(!document.getElementById("AqoursOtherCheckBox").checked){
+		removedSecList.push("AqoursOther");
+	} else {
+		
+	}
+
+	if(!document.getElementById("OtherIdolCheckBox").checked){
+		removedSecList.push("Other");
+	} else {
+		
+	}
+	return;
+}
+
+
 function updatePlaylistBut(){
 
 	if(document.getElementById("songCategorySelect").value == "mySongList"){
@@ -63,15 +110,18 @@ function updatePlaylistBut(){
 		$("#saveToPlaylistBut").hide()
 
 	}else if(isSavedInPlayList(songlist_ar[currSong])){
-		// Adding to playlist
+		// Show that is is already added to playlist
 		$("#saveToPlaylistBut").show()
 		$("#saveToPlaylistBut").removeClass('btn-default').addClass('btn-danger');
 		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Liked</b></font>';
+
 	} else {
-		// Removing from playlist
+		// Show that it is not in playlist
+
 		$("#saveToPlaylistBut").show()
 		$("#saveToPlaylistBut").removeClass('btn-danger').addClass('btn-default');
 		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Like</b></font>';
+
 	}
 
 
@@ -271,8 +321,12 @@ function isSavedInPlayList(cmpAr){
 function saveToPlaylist(){
 
 	if(isSavedInPlayList(songlist_ar[currSong])){
-		// If we already saved in the list
-		savedPlayList = savedPlayList.filter(function(e) { return e !== songlist_ar[currSong] })
+		// If we already saved in the list, we remove it
+		if(savedPlayList[savedPlayList.length-1][0] == songlist_ar[currSong][0]){
+			savedPlayList.pop();
+
+		}
+		savedPlayList.filter(function(e) { return e !== songlist_ar[currSong] });
 
 	} else {
 		savedPlayList.push(songlist_ar[currSong]);
@@ -958,6 +1012,15 @@ function changeCategoryRandom()
 	
 }
 
+function local_index_recal(){
+	// Since we are removing several song sections from array, we have to re-add them into the result
+
+	// Get removed section's song total and add them back
+
+	return;
+}
+
+
 function calc_random_local_index(chosenNum, folder)
 {
 	// Calculate the value to subtract from random_ar.length
@@ -1002,15 +1065,18 @@ function calc_random_local_index(chosenNum, folder)
 
 
 function generate_random_ar(){
-	// Generate array that will store all songs of Love Live	
-	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
-	var temp1 = temp0.concat(muse_individual_ar);
-	var temp2 = temp1.concat(aqours_together);
-	var temp3 = temp2.concat(aqours_subgroup_ar);
-	var temp4 = temp3.concat(aqours_others_ar);
-	var temp5 = temp4.concat(idol_others_ar);
+	// Generate array that will store all songs of Love Live
+	temp0 = [];	
+	
+	temp0 = temp0.concat(muse_together_ar);
+	temp0 = temp0.concat(muse_subgroup_ar);
+	temp0 = temp0.concat(muse_individual_ar);
+	temp0 = temp0.concat(aqours_together);
+	temp0 = temp0.concat(aqours_subgroup_ar);
+	temp0 = temp0.concat(aqours_others_ar);
+	temp0 = temp0.concat(idol_others_ar);
 
-	return temp5;
+	return temp0;
 }
 
 function generateRandomSongArray()
