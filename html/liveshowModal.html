@@ -61,6 +61,11 @@
 
 						<button id="saveToPlaylistBut" type="button" class="btn btn-default" onclick="saveToPlaylist()"><span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Like</b></font></button>
 
+
+						<button id="liveshowSettingBut" type="button" class="btn btn-primary btn-lg" onclick="liveshowSettingButClick();"><span class="glyphicon glyphicon glyphicon-wrench"></button>
+
+
+
 		        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
 		        		<script type="text/javascript" src="js/bootstrap-select.js"></script>
 		        		<script src="js/autocomplete.js"></script>
@@ -101,60 +106,62 @@
 						</tr>
 
 	        		</table>     
-	        		<!--
-	        		<br><br>
-	        		<div class="container">
-	        		  Check the boxes of the song sections you want to be added into shuffle mode.
 
-	        		  <table>
-	        		  	<tr>
-	        		  		<td>
-	        		  		<div>
-	        		  			<div class="checkbox">
-							      <input type="checkbox" id="MuseTogetherCheckBox" checked value="">Muse Together
-							    </div>
-							    <div class="checkbox">
-							      <input type="checkbox" id="MuseSubIdolCheckBox" checked value="">Muse Sub-Idol
-							    </div>
-							    <div class="checkbox">
-							      <input type="checkbox" id="MuseOtherCheckBox" checked value="">Muse Other
-							    </div>
-							   </div>
-							    </div>
-	        		  		</td>
-	        		  	</tr>
-	        		  	<tr>
-	        		  		<td>
-	        		  			<div>
-	        		  			<div class="checkbox">
-							      <input type="checkbox" id="AqoursTogetherCheckBox" checked value="">Aqours Together
-							    </div>
-							     <div class="checkbox">
-							      <input type="checkbox" id="AqoursSubIdolCheckBox" checked value="">Aqours Sub-Idol
-							    </div>
-							     <div class="checkbox">
-							      <input type="checkbox" id="AqoursOtherCheckBox" checked value="">Aqours Other
-							    </div>
-							     </div>
-	        		  		</td>
-	        		  	</tr>
-	        		  	<tr>
-	        		  		<td>
-	        		  			<div>
-	        		  			 <div class="checkbox">
-							      <input type="checkbox" id="OtherIdolCheckBox" checked value="">Other Idols
-							    </div>
-							     </div>
-	        		  		</td>
-	        		  	</tr>
-	        		  </table>
+	        		<br><br>
+
+	        		<div id="liveshowSettingDiv" style="display:none;">
+	        			<center>
+		        		<div class="container">
+		        		  Check the boxes of the song sections you want to be added into shuffle mode.
+		        		  
+		        		  <table style="width:60%;">
+		        		  	<tr>
+		        		  		<td>
+		        		  		<div>
+		        		  			<div class="checkbox">
+								      <input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
+								    </div>
+								    <div class="checkbox">
+								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
+								    </div>
+								    <div class="checkbox">
+								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
+								    </div>
+								   </div>
+								    </div>
+		        		  		</td>
+		        		
+		        		  		<td>
+		        		  			<div>
+		        		  			<div class="checkbox">
+								      <input type="checkbox" id="AqoursTogetherCheckBox" onchange="getSongSecInRandom('AqoursTogetherCheckBox',3);" checked>Aqours Together
+								    </div>
+								     <div class="checkbox">
+								      <input type="checkbox" id="AqoursSubIdolCheckBox" onchange="getSongSecInRandom('AqoursSubIdolCheckBox',4);" checked>Aqours Sub-Idol
+								    </div>
+								     <div class="checkbox">
+								      <input type="checkbox" id="AqoursOtherCheckBox" onchange="getSongSecInRandom('AqoursOtherCheckBox',5);" checked>Aqours Other
+								    </div>
+								     </div>
+		        		  		</td>
+		        		 
+		        		  		<td>
+		        		  			<div>
+		        		  			 <div class="checkbox">
+								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
+								    </div>
+								     </div>
+		        		  		</td>
+		        		  	</tr>
+		        		  </table>
+						</div>
 					</div>
-					-->
+	        		</center>
 	        		
-	        		
-	        	</center>
+	        	
        	
 	        	</div>
+	        	</center>
 	        	<div id="lyricsDisplay" style="visibility:hidden;display:none;">
 	        			<link href="css/autocomplete.css" rel="stylesheet">
 	        		

@@ -8,6 +8,7 @@ var away = false;
 var timerRanOut = false;
 var enableOutsideVal = true;
 
+var removedSecList = [];
 
 
 function isAqours(waifu)
@@ -1820,6 +1821,11 @@ function changeLanguage(lang_num)
 		document.getElementById("eng_but").src="images/buttons/english-icon.png";
 	}
 	commandSelect(0);
+}
+
+function removeArrayFromArray(array, element) {
+	var myNewArray = array.filter(function(item){ return item[0] != element[0]})  
+	return myNewArray;
 }
 
 
