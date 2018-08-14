@@ -89,7 +89,7 @@ function getSongSecInRandom(selfId, numCmp){
 		alert('You must have at least one song section enabled for shuffle mode.');
 		return;		
 	}
-
+	
 
 
 	if(!checkbox.checked && numCmp == 0){
@@ -136,7 +136,7 @@ function getSongSecInRandom(selfId, numCmp){
 	} else if(numCmp == 6){
 		removedSecList = removeArrayFromArray(removedSecList,["Other",6])
 	}
-
+	random_ar = generate_random_ar();
 
 	return;
 }
