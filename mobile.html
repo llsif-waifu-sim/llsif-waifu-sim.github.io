@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	
 	<script src="mobile-js/redirect-mobile.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -448,6 +448,12 @@
 								</center>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<button id='settingsBut' class="ui-btn ui-btn-inline ui-corner-all" style="background:#2ECCFA;border-color:#2ECCFA; width:100%" onclick="liveshowSettingButClick();"><i class="fa fa-cog fa-inverse" aria-hidden="true" style="padding-right:10%"></i><font color='white' ><b>Settings</b></font></button>
+								</center>
+							</td>
+						</tr>
 					</table>
 				
 
@@ -457,19 +463,27 @@
 		        		<div class="container">
 		        		  Check the boxes of the song sections you want to be added into shuffle mode.
 		        		  
-		        		  <table style="width:60%;">
+		        		  <table style="width:100%;">
 		        		  	<tr>
 		        		  		<td>
 		        		  		<div>
-		        		  			<div class="checkbox">
+		        		  			<label>
 								     	<input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
-								    </div>
-								    <div class="checkbox">
+								     </label>
+								    </td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								    <label>
 								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
-								    </div>
-								    <div class="checkbox">
+								    </label>
+								</td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								    <label>
 								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
-								    </div>
+								    </label>
 								</div>
 								 
 		        		  		</td>
@@ -477,24 +491,31 @@
 		        			<tr>
 		        		  		<td>
 		        		  			<div>
-		        		  			<div class="checkbox">
+		        		  			<label>
 								      <input type="checkbox" id="AqoursTogetherCheckBox" onchange="getSongSecInRandom('AqoursTogetherCheckBox',3);" checked>Aqours Together
-								    </div>
-								     <div class="checkbox">
+								    </label>
+								</td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								     <label>
 								      <input type="checkbox" id="AqoursSubIdolCheckBox" onchange="getSongSecInRandom('AqoursSubIdolCheckBox',4);" checked>Aqours Sub-Idol
-								    </div>
-								     <div class="checkbox">
+								    </label>
+								   </td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								     <label>
 								      <input type="checkbox" id="AqoursOtherCheckBox" onchange="getSongSecInRandom('AqoursOtherCheckBox',5);" checked>Aqours Other
-								    </div>
-								     </div>
+								    </label>
 		        		  		</td>
 		        		 	</tr>
 		        			<tr>
 		        		  		<td>
 		
-		        		  			 <div class="checkbox">
+		        		  			 <label>
 								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
-								    </div>
+								    </label>
 						
 		        		  		</td>
 		        		  	</tr>
