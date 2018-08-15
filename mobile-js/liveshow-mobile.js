@@ -61,7 +61,7 @@ function displaySideBySideEnglish(){
 		$('#normalLyricDisplayDiv').show();
 		$('#sideEnglishLyricDisplayDiv').hide();
 	}
-	
+	assignLyricsMobile(songlist_ar[currSong][0]);
 }
 
 function loopPlay()
