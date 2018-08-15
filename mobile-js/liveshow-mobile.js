@@ -258,11 +258,11 @@ function changeSong()
 		
 
 
-		$(document).ready(function(){
-			$("#liveshowAlbum").hide();
-			document.getElementById("liveshowAlbum").src =  picPath;
-			$("#liveshowAlbum").fadeIn();
-		});
+		
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 		assignLyricsMobile(songlist_ar[currSong][0]);
@@ -661,7 +661,103 @@ function changeCategoryRandom()
 		
 	}
 	
+
 	
+}
+
+function switchToSongByName(songName){
+
+
+	var folder = -1;
+	var chosenNum = -1;
+	for(var i=0; i < random_ar_original.length; i++){
+		if(songName == random_ar_original[i][0]){
+			folder = random_ar_original[i][1];
+			chosenNum = i;
+			break;
+		}
+	}
+
+	if(folder == -1 || chosenNum == -1){
+		return;
+	}
+	random_category = folder;
+	changeCategoryRandom();
+
+	if(folder==0){
+		subPath = 'muse-together/';
+		songlist_ar = muse_together_ar;
+		currcategoryID = 0;
+		numOfSongs = numOfSongsMuseAll;
+
+	} else if (folder==1){
+		subPath = 'muse-sub-group/';
+		numOfSongs = numOfSongsMuseSub;
+		songlist_ar = muse_subgroup_ar;
+		currcategoryID = 1;
+
+	} else if (folder==2){
+		subPath = 'muse-individual/';
+		numOfSongs = numOfSongsMuseOther;
+		songlist_ar = muse_individual_ar;
+		currcategoryID = 2;
+
+	} else if (folder==3){
+		subPath = 'aqours-together/';
+		numOfSongs = numOfSongsAqoursTogether;
+		songlist_ar = aqours_together;
+		currcategoryID = 3;
+
+
+	} else if (folder==4){
+		subPath = 'aqours-sub-group/';
+		numOfSongs = numOfSongsAqoursSub;
+		songlist_ar = aqours_subgroup_ar;
+		currcategoryID = 4;
+
+
+	} else if (folder==5){
+		subPath = 'aqours-individual/';
+		numOfSongs = numOfSongsAqoursOthers;
+		songlist_ar = aqours_others_ar;
+
+		currcategoryID = 5;
+
+
+	} else if (folder==6){
+		subPath = 'other-idols/';
+		numOfSongs = numOfSongsIdolsOthers;
+		songlist_ar = idol_others_ar;
+		currcategoryID = 6;
+
+
+	} else {
+		alert('Something bad happened in switchToSongByName()');
+		return;
+	}
+
+	
+
+	var randSongInt = calc_random_local_index(chosenNum, folder);
+	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
+
+
+	$(document).ready(function(){
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	});
+
+	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
+	assignLyrics(random_ar[chosenNum][0]);
+	document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
+
+	currSong = randSongInt;
+
+	stopClick();
+	playClick();
+
+
 }
 
 function calc_random_local_index(chosenNum, folder)
