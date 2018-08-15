@@ -66,6 +66,7 @@ function displaySideBySideEnglish(){
 		$('#normalLyricDisplayDiv').show();
 		$('#sideEnglishLyricDisplayDiv').hide();
 	}
+	assignLyrics(songlist_ar[currSong][0]);
 	
 }
 
