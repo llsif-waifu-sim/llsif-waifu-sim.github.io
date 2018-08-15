@@ -6,9 +6,9 @@
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-
+	
 	<script src="mobile-js/redirect-mobile.js"></script>
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -367,7 +367,7 @@
 	        	<script src="js/songs/aqoursSub.js"></script>
 	        	<script src="js/songs/aqoursSolo.js"></script>
 	        	<script src="js/songs/otherIdols.js"></script>
-	        	
+	        	<script src="js/list/sideBySideENForbidList.js"></script>
 	    		<script src="js/songlist.js"></script>
 	        	<script src="mobile-js/liveshow-mobile.js"></script>
 
@@ -426,6 +426,7 @@
 								  <option value="4">Aqours Sub-Idols</option>
 								  <option value="5">Aqours Others</option>
 								  <option value="6">Other Idols</option>
+								  <option value="mySongList">My Playlist</option>
 							    </select>
 							</td>
 						</tr>
@@ -437,24 +438,19 @@
 							</td>
 							
 						</tr>
-						<!--
 						<tr>
 							<td>
 								<center>
-
-									<button id="saveToPlaylistBut" type="button" class="ui-btn ui-btn-inline ui-corner-all"onclick="saveToPlaylist()" style="width:100%"><i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b></button>
+									<button id="saveToPlaylistBut" type="button" class="ui-btn ui-btn-inline ui-corner-all" onclick="saveToPlaylist()" style="width:100%"><i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b></button>
 								</center>
 							</td>
 						</tr>
-						-->
 					</table>
 				
-						
-					
-					</div>
+
 					<div id="liveshowSettingDiv" style="display:none;">
 	        			<br><br>
-	        			<center>
+	        		
 		        		<div class="container">
 		        		  Check the boxes of the song sections you want to be added into shuffle mode.
 		        		  
@@ -463,7 +459,7 @@
 		        		  		<td>
 		        		  		<div>
 		        		  			<div class="checkbox">
-								      <input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
+								     	<input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
 								    </div>
 								    <div class="checkbox">
 								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
@@ -471,8 +467,8 @@
 								    <div class="checkbox">
 								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
 								    </div>
-								   </div>
-								    </div>
+								</div>
+								 
 		        		  		</td>
 		        			</tr>
 		        			<tr>
@@ -492,19 +488,17 @@
 		        		 	</tr>
 		        			<tr>
 		        		  		<td>
-		        		  			<div>
+		
 		        		  			 <div class="checkbox">
 								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
 								    </div>
-								     </div>
+						
 		        		  		</td>
 		        		  	</tr>
 		        		  </table>
 						</div>
 					</div>
-	        		</center>
-
-
+	        		
 
 
 	        	</center>
@@ -514,6 +508,7 @@
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
     </div>
+</div>
 
 
 </div>

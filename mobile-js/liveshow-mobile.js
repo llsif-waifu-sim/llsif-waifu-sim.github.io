@@ -22,7 +22,8 @@ var prevMusic = document.getElementById("background-music-player");
 var originMusic = document.getElementById("origin-music-player");
 
 var random_mode = false;
-var random_ar = generate_random_ar();    // contains an ordered list of song names
+var random_ar_original = generate_random_ar(); // contains an ordered list of song names
+var random_ar = random_ar_original;  
 var random_sorted_ar = generateSortedRandomArray(); // contains an ordered list of song indexes
 var random_counter_ar = generateRandomSongArray(); // contains a shuffled list of song indexes
 var random_category = 0;
@@ -163,20 +164,23 @@ function updatePlaylistBut(){
 
 	if(document.getElementById("songCategorySelect").value == "mySongList"){
 		// We are in My Playlist
-		$("#saveToPlaylistBut").hide()
+		$("#saveToPlaylistBut").hide();
 
 	}else if(isSavedInPlayList(songlist_ar[currSong])){
 		// Show that is is already added to playlist
-		$("#saveToPlaylistBut").show()
-		$("#saveToPlaylistBut").removeClass('btn-default').addClass('btn-danger');
-		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Liked</b></font>';
+		$("#saveToPlaylistBut").show();
+		document.getElementById("saveToPlaylistBut").style.background = "#FF0000"; // red
+		document.getElementById("saveToPlaylistBut").style.border = "#FF0000"; // red
+
+		document.getElementById("saveToPlaylistBut").innerHTML = '<i class="fa fa-heart fa fa-inverse" aria-hidden="true" style="padding-right:10%"></i><font color="white" ><b>Liked</b></font>';
 
 	} else {
 		// Show that it is not in playlist
 
-		$("#saveToPlaylistBut").show()
-		$("#saveToPlaylistBut").removeClass('btn-danger').addClass('btn-default');
-		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Like</b></font>';
+		$("#saveToPlaylistBut").show();
+		document.getElementById("saveToPlaylistBut").style.background = "#F5F5F5"; // silver
+		document.getElementById("saveToPlaylistBut").style.border = "#F5F5F5"; // silver
+		document.getElementById("saveToPlaylistBut").innerHTML = '<i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b>';
 
 	}
 
@@ -276,8 +280,7 @@ function switchToPlayListMode(){
 		// Nothing is saved
 		alert('There is nothing in your playlist. Try saving a few songs to your playlist first.');
 
-		$('select[id=songCategorySelect]').val(currcategoryID);
-		$('#songCategorySelect').selectpicker('refresh');
+		$('#songCategorySelect').val(random_category).selectmenu('refresh');
 
 		return;
 	}
@@ -506,9 +509,7 @@ function playClick()
 		
 		currplayingSong = currSong;
 
-		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
+	
 
 		document.getElementById("liveshowAlbum").src =  picPath;
 
@@ -573,6 +574,29 @@ function stopClick()
 
 function changeSong()
 {
+	if(document.getElementById("songCategorySelect").value == "mySongList"){
+		changeSongMyList('-');
+
+		if((currplayingSong == currSong) && musicPlaying  && (prevCategoryID == currcategoryID)){
+			// We came back to our original song and we have not changed categories
+			musicChanged = false;
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
+			displayingPlayBut = false;
+
+			currplayingSong = currSong;
+		} else if (!musicChanged &&  musicPlaying){
+			// We are switching songs
+			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
+			displayingPlayBut = true;
+			musicChanged = true;
+		}
+		updatePlaylistBut();
+
+		return;
+	}
+
 	if(!random_mode){
 		if(currSong >= numOfSongs - 1){
 			// Reached end
@@ -666,11 +690,35 @@ function changeSong()
 
 
 	}	
+	updatePlaylistBut();
 
 }
 
 function changeSongBack()
 {
+
+	if(document.getElementById("songCategorySelect").value == "mySongList"){
+		changeSongMyList('+');
+		updatePlaylistBut();
+
+		if(   ((currplayingSong == currSong) && musicPlaying)  && (prevCategoryID == currcategoryID)){
+			// We came back to our original song and music is playing
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
+			displayingPlayBut = false;
+			musicChanged = false;
+			firstRandom = true;
+			currplayingSong = currSong;
+		} else if (!musicChanged &&  musicPlaying){
+			// We are switching songs
+			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
+			displayingPlayBut = true;
+			musicChanged = true;
+			firstRandom = false;
+		}
+
+		return;
+	}
+
 
 	if(!random_mode){
 		if(currSong <= 0){
@@ -766,7 +814,7 @@ function changeSongBack()
 			firstRandom = false;
 		}
 	}
-
+	updatePlaylistBut();
 }
 
 function changeSongRandom(){
@@ -870,6 +918,15 @@ function changeCategory()
 		songlist_ar = idol_others_ar;
 
 		currcategoryID = 6;
+	}else if (categoryID == "mySongList"){
+		if(random_mode == true){
+			// So that we can traverse through My Playlist properly
+			randomSwitch();
+		}
+		switchToPlayListMode();
+		
+		
+		return;
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
@@ -892,6 +949,7 @@ function changeCategory()
 	assignLyrics(songlist_ar[currSong][0]);
 	document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 	document.getElementById("liveshowAlbum").src =  picPath;
+	updatePlaylistBut();
 
 	
 	if(musicPlaying && (prevCategoryID != currcategoryID) && !displayingPlayBut){
@@ -970,7 +1028,7 @@ function changeCategoryRandom()
 
 		currcategoryID = 6;
 	} else {
-		alert('Something went wrong in changeCategory()')
+		alert('Something went wrong in changeCategoryRandom()')
 	}
 
 
@@ -1227,3 +1285,12 @@ function getNextRandomSong(state)
 	}
 	return random_counter_ar[random_index];
 }
+
+function initalizeLiveShow(){
+	checkMyPlaylist();
+}
+
+
+initalizeLiveShow();
+
+

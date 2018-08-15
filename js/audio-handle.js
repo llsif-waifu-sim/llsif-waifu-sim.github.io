@@ -659,6 +659,7 @@ window.onload = function() {
 	checkBackgroundCookie();
 	checkBGMCookie();
 	checkVolumeCookie();
+	updatePlaylistBut();
 
 	backgroundAudio.volume= musicVolume;
 	backgroundAudio.play();

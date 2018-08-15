@@ -641,7 +641,10 @@ window.onload = function() {
 	checkWaifuVoiceEnableCookie();
 	checkLiveshowPlayerEnableCookie();
 	checkBGMCookie();
-	
+
+	$('#songCategorySelect').val(0).selectmenu('refresh');
+
+	updatePlaylistBut();
 
     var backgroundAudio=document.getElementById("origin-music-player");
 	backgroundAudio.volume= musicVolume;
