@@ -84,6 +84,64 @@ function checkBGMCookie() {
 }
 
 
+function checkRandomSongBoxCookie(){
+    var museTogetherIndex=getCookie("randSel-MU-Together");
+    var museSubIdolIndex = getCookie("randSel-MU-SubIdol");
+    var museOtherIndex = getCookie("randSel-MU-Other");
+
+    var aqoursTogetherIndex = getCookie("randSel-AQ-Together");
+    var aqoursSubIdolIndex = getCookie("randSel-AQ-SubIdol");
+    var aqoursOtherIndex = getCookie("randSel-AQ-Other");
+
+    var otherIdolIndex = getCookie("randSel-Other");
+
+
+    if(museTogetherIndex != null && museTogetherIndex != ""){
+        
+        document.getElementById("MuseTogetherCheckBox").checked = (museTogetherIndex == 'true');
+
+    }
+    if(museSubIdolIndex != null && museSubIdolIndex != ""){
+        
+        document.getElementById("MuseSubIdolCheckBox").checked = (museSubIdolIndex == 'true');
+    }
+    if(museOtherIndex != null && museOtherIndex != ""){
+        
+        document.getElementById("MuseOtherCheckBox").checked = (museOtherIndex == 'true');
+    }
+
+
+    if(aqoursTogetherIndex != null && aqoursTogetherIndex != ""){
+        
+        document.getElementById("AqoursTogetherCheckBox").checked = (aqoursTogetherIndex == 'true');
+    }
+    if(aqoursSubIdolIndex != null && aqoursSubIdolIndex != ""){
+        
+        document.getElementById("AqoursSubIdolCheckBox").checked = (aqoursSubIdolIndex == 'true');
+    }
+    if(aqoursOtherIndex!= null && aqoursOtherIndex != ""){
+        document.getElementById("AqoursOtherCheckBox").checked = (aqoursOtherIndex== 'true');
+    }
+
+    if(otherIdolIndex != null && otherIdolIndex != ""){
+        document.getElementById("OtherIdolCheckBox").checked = (otherIdolIndex== 'true');
+    }
+
+
+    getSongSecInRandom('MuseTogetherCheckBox',0);
+    getSongSecInRandom('MuseSubIdolCheckBox',1);
+    getSongSecInRandom('MuseOtherCheckBox',2);
+
+    getSongSecInRandom('AqoursTogetherCheckBox',3);
+    getSongSecInRandom('AqoursSubIdolCheckBox',4);
+    getSongSecInRandom('AqoursOtherCheckBox',5);
+
+    getSongSecInRandom('OtherIdolCheckBox',6);
+
+
+}
+
+
 
 function checkMyPlaylist(){
     var index=getCookie("my-playlist-songs");
@@ -222,11 +280,30 @@ function storeMyPlaylistCookie(index)
     setCookie("my-playlist-songs", index, cookieExpireDate);
 }
 
-
-function storeBackgroundCookie(index)
+function storeRandomSongBoxCookie()
 {
-	setCookie("background-index", index, cookieExpireDate);
+    var museTogetherIndex = document.getElementById("MuseTogetherCheckBox").checked;
+    var museSubIdolIndex = document.getElementById("MuseSubIdolCheckBox").checked;
+    var museOtherIndex = document.getElementById("MuseOtherCheckBox").checked;
+
+    var aqoursTogetherIndex = document.getElementById("AqoursTogetherCheckBox").checked;
+    var aqoursSubIdolIndex = document.getElementById("AqoursSubIdolCheckBox").checked;
+    var aqoursOtherIndex = document.getElementById("AqoursOtherCheckBox").checked;
+
+    var otherIdolIndex = document.getElementById("OtherIdolCheckBox").checked;
+    
+
+    setCookie("randSel-MU-Together", museTogetherIndex, cookieExpireDate);
+    setCookie("randSel-MU-SubIdol", museSubIdolIndex , cookieExpireDate);
+    setCookie("randSel-MU-Other", museOtherIndex, cookieExpireDate);
+
+    setCookie("randSel-AQ-Together", aqoursTogetherIndex, cookieExpireDate);
+    setCookie("randSel-AQ-SubIdol", aqoursSubIdolIndex, cookieExpireDate);
+    setCookie("randSel-AQ-Other", aqoursOtherIndex, cookieExpireDate);
+
+    setCookie("randSel-Other", otherIdolIndex, cookieExpireDate);
 }
+
 
 function storeVolumeMusicCookie(volume)
 {

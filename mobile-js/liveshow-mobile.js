@@ -1,5 +1,5 @@
 var numOfSongs = numOfSongsMuseAll;
-var subPath = 'muse-together/'
+var subPath = 'muse-together/';
 var songlist_ar = muse_together_ar;
 
 
@@ -28,9 +28,13 @@ var random_sorted_ar = generateSortedRandomArray(); // contains an ordered list 
 var random_counter_ar = generateRandomSongArray(); // contains a shuffled list of song indexes
 var random_category = 0;
 
-var random_index = 0
+var random_index = 0;
+
+var playlist_index = 0;
+
 var firstRandom = false;
 var loop_mode = false;
+
 
 var savedPlayList = [];
 
@@ -155,6 +159,9 @@ function getSongSecInRandom(selfId, numCmp){
 		removedSecList = removeArrayFromArray(removedSecList,["Other",6])
 	}
 	random_ar = generate_random_ar();
+
+
+	storeRandomSongBoxCookie();
 
 	return;
 }
@@ -426,6 +433,7 @@ function randomSwitch()
 	} else {
 		// Turn on radnom mode
 
+		random_ar = generate_random_ar();
 		random_counter_ar = generateRandomSongArray();
 		random_index = -1;
 		random_mode = true;
@@ -849,11 +857,11 @@ function changeSongRandom(){
 	var randSongInt = calc_random_local_index(chosenNum, folder);
 	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
 	
-	$(document).ready(function(){
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	});
+
+	$("#liveshowAlbum").hide();
+	document.getElementById("liveshowAlbum").src =  picPath;
+	$("#liveshowAlbum").fadeIn();
+	
 
 	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
 	assignLyricsMobile(random_ar[chosenNum][0]);
@@ -1145,6 +1153,42 @@ function switchToSongByName(songName){
 
 }
 
+function local_index_recal(num,folder){
+	// Since we are removing several song sections from array, we have to re-add them into the result
+
+	// We do not do this if we are at playlist
+	var categoryID = document.getElementById("songCategorySelect").value;
+	if(categoryID == "mySongList"){
+		return num;
+	}
+
+	// Get removed section's song total and add them back
+	for(var i=0;i < removedSecList.length; i++){
+		if(folder > removedSecList[i][1]){
+			var tarFold = removedSecList[i][1];
+			if(tarFold == 0){
+				num = num + numOfSongsMuseAll;
+			} else if(tarFold == 1){
+				num = num + numOfSongsMuseSub;
+			}else if(tarFold == 2){
+				num = num + numOfSongsMuseOther;
+			}else if(tarFold == 3){
+				num = num + numOfSongsAqoursTogether;
+			}else if(tarFold == 4){
+				num = num + numOfSongsAqoursSub;
+			}else if(tarFold == 5){
+				num = num + numOfSongsAqoursOthers;
+			}
+
+		}
+	}
+
+
+	return num;
+}
+
+
+
 function calc_random_local_index(chosenNum, folder)
 {
 	// Calculate the value to subtract from random_ar.length
@@ -1153,28 +1197,35 @@ function calc_random_local_index(chosenNum, folder)
 		return chosenNum;
 	} else if(folder == 1){
 		var num = chosenNum - numOfSongsMuseAll;
+		num = local_index_recal(num,folder);
 		return num;
  
 	} else if(folder == 2){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub;
+		num = local_index_recal(num,folder);
 		return num;
 
 	} else if(folder == 3){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther;
 
+		if (num > numOfSongsAqoursTogether)
+		{
+			return local_index_recal(num,folder) - numOfSongsAqoursTogether;
+		}
+		num = local_index_recal(num,folder);
 		return num;
 
 	} else if(folder == 4){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether;
-
+		num = local_index_recal(num,folder);
 		return num;
 	} else if(folder == 5){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub;
-
+		num = local_index_recal(num,folder);
 		return num;
 	} else if(folder == 6){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub - numOfSongsAqoursOthers;
-
+		num = local_index_recal(num,folder);
 		return num;
 	} else {
 		alert('Something went wrong in calc_random_local_index()');
@@ -1182,15 +1233,51 @@ function calc_random_local_index(chosenNum, folder)
 	}
 }
 
+
+function isInRemoveSecList(strCmp){
+
+	for(var i=0; i < removedSecList.length;i++){
+		if(removedSecList[i][0] == strCmp){
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function generate_random_ar(){
 	// Generate array that will store all songs of Love Live
-	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
-	var temp1 = temp0.concat(muse_individual_ar);
-	var temp2 = temp1.concat(aqours_together);
-	var temp3 = temp2.concat(aqours_subgroup_ar);
-	var temp4 = temp3.concat(aqours_others_ar);
+	temp0 = [];	
+	if(!isInRemoveSecList("MuseTogether")){
+		temp0 = temp0.concat(muse_together_ar);
+	}
+	if(!isInRemoveSecList("MuseSubIdol")){
+		temp0 = temp0.concat(muse_subgroup_ar);
+	}
+	
+	if(!isInRemoveSecList("MuseOther")){
+		temp0 = temp0.concat(muse_individual_ar);
+	}
+	
+	if(!isInRemoveSecList("AqoursTogether")){
+		temp0 = temp0.concat(aqours_together);
+	}
+	
+	if(!isInRemoveSecList("AqoursSubIdol")){
+		temp0 = temp0.concat(aqours_subgroup_ar);
+	}
+	
+	if(!isInRemoveSecList("AqoursOther")){
+		temp0 = temp0.concat(aqours_others_ar);
+	}
+	
+	if(!isInRemoveSecList("Other")){
+		temp0 = temp0.concat(idol_others_ar);
+	}
 
-	return temp4;
+
+	return temp0;
 }
 
 function generateRandomSongArray()

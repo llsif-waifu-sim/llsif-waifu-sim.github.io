@@ -609,11 +609,11 @@ function changeSong()
 		}
 
 		var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
-		$(document).ready(function(){
-			$("#liveshowAlbum").hide();
-			document.getElementById("liveshowAlbum").src =  picPath;
-			$("#liveshowAlbum").fadeIn();
-		});
+		
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+		
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];	
 		assignLyrics(songlist_ar[currSong][0]);
 		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
@@ -867,11 +867,11 @@ function changeSongRandom(){
 	
 	
 
-	$(document).ready(function(){
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	});
+	
+	$("#liveshowAlbum").hide();
+	document.getElementById("liveshowAlbum").src =  picPath;
+	$("#liveshowAlbum").fadeIn();
+	
 
 	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
 	assignLyrics(random_ar[chosenNum][0]);
@@ -1090,7 +1090,7 @@ function local_index_recal(num,folder){
 	if(categoryID == "mySongList"){
 		return num;
 	}
-
+	
 	// Get removed section's song total and add them back
 	for(var i=0;i < removedSecList.length; i++){
 		if(folder > removedSecList[i][1]){

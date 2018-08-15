@@ -10,6 +10,7 @@ var away = false;
 var timerRanOut = false;
 var orientationMode = 'portrait'
 
+var removedSecList = [];
 
 function getCurrentOrientation()
 {
@@ -640,6 +641,7 @@ window.onload = function() {
 	checkVolumeCookie();
 	checkWaifuVoiceEnableCookie();
 	checkLiveshowPlayerEnableCookie();
+	checkRandomSongBoxCookie();
 	checkBGMCookie();
 
 	$('#songCategorySelect').val(0).selectmenu('refresh');
