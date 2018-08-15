@@ -51,18 +51,343 @@ $('#background-music-player').on('ended', function() {
 });
 
 
+
+
 function displaySideBySideEnglish(){
 	if($('#sideEnglishLyricDisplayDiv:visible').length == 0){
 		// Showing Side by Side English display
 		$('#normalLyricDisplayDiv').hide();
 		$('#sideEnglishLyricDisplayDiv').show();
+		document.getElementById("showEnglishSideBySideBut").style.background = "#33cc33"; // green
 	} else {
 		// Removing Side by Side English display
 		$('#normalLyricDisplayDiv').show();
 		$('#sideEnglishLyricDisplayDiv').hide();
+		document.getElementById("showEnglishSideBySideBut").style.background = "#2ECCFA"; // blue
 	}
 	assignLyricsMobile(songlist_ar[currSong][0]);
 }
+
+
+function everySongSecUnchecked(){
+	var iterAr = ["MuseTogether","MuseSubIdol","MuseOther","AqoursTogether","AqoursSubIdol","AqoursOther","OtherIdol"];
+	for(var i = 0; i < iterAr.length; i++){
+		var checkbox = document.getElementById(iterAr[i] + "CheckBox");
+		if(checkbox.checked){
+			return false;
+		}
+
+	}
+	return true;
+}
+
+
+
+function liveshowSettingButClick(){
+	if($('#liveshowSettingDiv:visible').length == 0){
+		$("#liveshowSettingDiv").show();
+	
+	} else {
+		$("#liveshowSettingDiv").hide();
+	}
+	
+}
+
+function getSongSecInRandom(selfId, numCmp){
+
+	var checkbox = document.getElementById(selfId);
+
+	// Check if everything is unchecked first 
+	if(everySongSecUnchecked()){
+		// Everything unchecked 
+		checkbox.checked = true;
+		alert('You must have at least one song section enabled for shuffle mode.');
+		return;		
+	}
+	
+
+
+	if(!checkbox.checked && numCmp == 0){
+		removedSecList.push(["MuseTogether",0]);
+	} else if(numCmp == 0){
+
+		removedSecList = removeArrayFromArray(removedSecList,["MuseTogether",0]);
+	}
+
+	if(!checkbox.checked && numCmp == 1){
+		removedSecList.push(["MuseSubIdol",1]);
+	} else if(numCmp == 1){
+
+		removedSecList = removeArrayFromArray(removedSecList,["MuseSubIdol",1]);
+	}
+
+	if(!checkbox.checked && numCmp == 2){
+		removedSecList.push(["MuseOther",2]);
+	} else if(numCmp == 2){
+
+		removedSecList = removeArrayFromArray(removedSecList,["MuseOther",2]);
+	}
+
+	if(!checkbox.checked && numCmp == 3){
+		removedSecList.push(["AqoursTogether",3]);
+	} else if(numCmp == 3){
+		removedSecList = removeArrayFromArray(removedSecList,["AqoursTogether",3]);
+	}
+
+	if(!checkbox.checked && numCmp == 4){
+		removedSecList.push(["AqoursSubIdol",4]);
+	} else if(numCmp == 4){
+		removedSecList = removeArrayFromArray(removedSecList,["AqoursSubIdol",4]);
+	}
+
+	if(!checkbox.checked && numCmp == 5){
+		removedSecList.push(["AqoursOther",5]);
+	} else if(numCmp == 5){
+		removedSecList = removeArrayFromArray(removedSecList,["AqoursOther",5]);
+	}
+
+	if(!checkbox.checked && numCmp == 6){
+		removedSecList.push(["Other",6]);
+	} else if(numCmp == 6){
+		removedSecList = removeArrayFromArray(removedSecList,["Other",6])
+	}
+	random_ar = generate_random_ar();
+
+	return;
+}
+
+
+function updatePlaylistBut(){
+
+	if(document.getElementById("songCategorySelect").value == "mySongList"){
+		// We are in My Playlist
+		$("#saveToPlaylistBut").hide()
+
+	}else if(isSavedInPlayList(songlist_ar[currSong])){
+		// Show that is is already added to playlist
+		$("#saveToPlaylistBut").show()
+		$("#saveToPlaylistBut").removeClass('btn-default').addClass('btn-danger');
+		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Liked</b></font>';
+
+	} else {
+		// Show that it is not in playlist
+
+		$("#saveToPlaylistBut").show()
+		$("#saveToPlaylistBut").removeClass('btn-danger').addClass('btn-default');
+		document.getElementById("saveToPlaylistBut").innerHTML = '<span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Like</b></font>';
+
+	}
+
+
+}
+
+function getNextSongMyList(state){
+
+	if(state == '-'){
+		// we change song forward
+		if(playlist_index + 1 >= savedPlayList.length){
+			playlist_index = 0;
+		} else {
+			playlist_index = playlist_index + 1;
+		}
+		
+
+	} else if(state == '+'){
+		if(playlist_index == 0){
+			playlist_index = savedPlayList.length - 1;
+		} else {
+			playlist_index = playlist_index - 1;
+		}
+	}
+	//savedPlayList[playlist_index][0]
+	return playlist_index
+
+}
+
+function changeSongMyList(sign){
+	var myListIndex = getNextSongMyList(sign);
+
+	var chosenNum = -1;
+	var folder = -1;
+	for(var i=0; i < random_ar_original.length; i++){
+		if(savedPlayList[myListIndex][0] == random_ar_original[i][0]){
+			folder = random_ar_original[i][1];
+			chosenNum = i;
+			break;
+		}
+	}
+
+
+	if(chosenNum < 0 || folder < 0){
+		alert("Something went wrong. changeSongMyList() was not able to find anything");
+	}
+
+	random_category = folder;
+
+
+
+
+	if(folder==0){
+		subPath = 'muse-together/';
+	} else if (folder==1){
+		subPath = 'muse-sub-group/';
+	} else if (folder==2){
+		subPath = 'muse-individual/';
+	} else if (folder==3){
+		subPath = 'aqours-together/';
+	} else if (folder==4){
+		subPath = 'aqours-sub-group/';
+	} else if (folder==5){
+		subPath = 'aqours-individual/';
+	} else if (folder==6){
+			subPath = 'other-idols/';
+	} else {
+		alert('Something bad happened in changeSongMyList()');
+		return;
+	}
+	var myListSongInt = calc_random_local_index(chosenNum, folder);
+
+
+	var picPath = "".concat("./images/album-covers/",subPath, myListSongInt, ".jpg");
+	
+
+	$(document).ready(function(){
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	});
+
+	document.getElementById("song-title-tag").innerHTML =  savedPlayList[myListIndex][0];
+	assignLyrics(savedPlayList[myListIndex][0]);
+	document.getElementById("lyricsTitleDiv").innerHTML = savedPlayList[myListIndex][0];
+	currSong = myListSongInt;
+
+
+}
+
+
+
+function switchToPlayListMode(){
+
+
+	if(savedPlayList.length == 0){
+		// Nothing is saved
+		alert('There is nothing in your playlist. Try saving a few songs to your playlist first.');
+
+		$('select[id=songCategorySelect]').val(currcategoryID);
+		$('#songCategorySelect').selectpicker('refresh');
+
+		return;
+	}
+
+	songlist_ar = savedPlayList;
+
+	var folder = -1;
+	var chosenNum = -1;
+	for(var i=0; i < random_ar_original.length; i++){
+		if(songlist_ar[0][0] == random_ar_original[i][0]){
+			folder = random_ar_original[i][1];
+			chosenNum = i;
+			break;
+		}
+	}
+
+	random_category = folder;
+
+
+	if(folder==0){
+		subPath = 'muse-together/';
+		currcategoryID = 0;
+		numOfSongs = numOfSongsMuseAll;
+
+	} else if (folder==1){
+		subPath = 'muse-sub-group/';
+		numOfSongs = numOfSongsMuseSub;
+		currcategoryID = 1;
+
+	} else if (folder==2){
+		subPath = 'muse-individual/';
+		numOfSongs = numOfSongsMuseOther;
+		currcategoryID = 2;
+
+	} else if (folder==3){
+		subPath = 'aqours-together/';
+		numOfSongs = numOfSongsAqoursTogether;
+		currcategoryID = 3;
+
+
+	} else if (folder==4){
+		subPath = 'aqours-sub-group/';
+		numOfSongs = numOfSongsAqoursSub;
+		currcategoryID = 4;
+
+
+	} else if (folder==5){
+		subPath = 'aqours-individual/';
+		numOfSongs = numOfSongsAqoursOthers;
+
+		currcategoryID = 5;
+
+
+	} else if (folder==6){
+		subPath = 'other-idols/';
+		numOfSongs = numOfSongsIdolsOthers;
+		currcategoryID = 6;
+
+
+	} else {
+		alert('Something bad happened in switchToPlayListMode()');
+		return;
+	}
+
+	
+
+	var randSongInt = calc_random_local_index(chosenNum, folder);
+	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
+
+
+	$(document).ready(function(){
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	});
+
+	document.getElementById("song-title-tag").innerHTML =  songlist_ar[0][0];
+	assignLyrics(songlist_ar[0][0]);
+	document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[0][0];
+	updatePlaylistBut();
+
+	playlist_index = 0;
+	currSong = randSongInt;
+	$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
+
+}
+
+
+
+function isSavedInPlayList(cmpAr){
+	for(var i = 0; i < savedPlayList.length; i++){
+		if(savedPlayList[i][0] == cmpAr[0]){
+			return true;
+		}
+	}
+	return false
+}
+
+function saveToPlaylist(){
+
+	if(isSavedInPlayList(songlist_ar[currSong])){
+		// If we already saved in the list, we remove it
+		savedPlayList = removeArrayFromArray(savedPlayList, songlist_ar[currSong])
+
+	} else {
+		savedPlayList.push(songlist_ar[currSong]);
+	}
+
+	storeMyPlaylistCookie(savedPlayList);
+	updatePlaylistBut();
+}
+
 
 function loopPlay()
 {
