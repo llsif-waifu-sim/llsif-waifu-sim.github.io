@@ -17,7 +17,7 @@ function disableSideBySideENBut(songName){
 
 function combineEnglishLyrics(jpText, enText){
 
-
+  var enTextSplit = enText.split('\n');
   var jpTextSplit = jpText.split("\n");
   //var jpTextSplit = jpText != '' && jpText != ' ' ? jpText.split('\n') : [];
   var resText = "";
@@ -44,7 +44,7 @@ function combineEnglishLyrics(jpText, enText){
     if(cmpJpPunc == cmpEnPunc){
       //resText = resText + sentJP + "\n >>";
       enText = resText + sentJP + "\n";
-    } else {
+    } else if (sentEN){
       //resText = resText + sentJP + "\n--" + sentEN + "\n>>";
       resText = resText + sentJP + "\n" + sentEN + "\n";
     }

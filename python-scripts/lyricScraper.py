@@ -10,8 +10,8 @@ localFile = './testLyrics.txt'
 lyricRoot = "../../distribution/llsif-waifu-lyrics"
 rootURL = 'http://love-live.wikia.com'
 
-transDict = {'君':'きみ',
-	'見':'み'}
+transDict = {u'君':u'きみ',
+	u'見':u'み'}
 
 segmenter = tinysegmenter.TinySegmenter()
 kakasi = kakasi()
@@ -108,7 +108,7 @@ def furiganaLineTrans(text):
 	stitchStr = ''
 	for segWord in segmenter.tokenize(text):
 		result = ""
-		if segWord in transDict:
+		if transDict.has_key(segWord):
 			result = transDict[segWord]
 		else:
 			result = conv.do(segWord)
