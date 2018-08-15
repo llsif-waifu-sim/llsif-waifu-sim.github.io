@@ -61,13 +61,14 @@ function displaySideBySideEnglish(){
 		// Showing Side by Side English display
 		$('#normalLyricDisplayDiv').hide();
 		$('#sideEnglishLyricDisplayDiv').show();
+		document.getElementById("showEnglishSideBySideBut").style.background = "#33cc33"; // green
 	} else {
 		// Removing Side by Side English display
 		$('#normalLyricDisplayDiv').show();
 		$('#sideEnglishLyricDisplayDiv').hide();
+		document.getElementById("showEnglishSideBySideBut").style.background = "#2ECCFA"; // blue
 	}
-	assignLyrics(songlist_ar[currSong][0]);
-	
+	assignLyricsMobile(songlist_ar[currSong][0]);
 }
 
 function everySongSecUnchecked(){
