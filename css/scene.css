@@ -115,6 +115,12 @@
     right:3%;
 }
 
+#showEnglishSideBySideBut{
+    position: absolute;
+    top: 87px;
+    right:3%;
+}
+
 #liveshowSettingBut{
     position: absolute;
     bottom: 5%;

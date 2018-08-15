@@ -13,7 +13,7 @@
 	        	<script src="js/songs/aqoursSub.js"></script>
 	        	<script src="js/songs/aqoursSolo.js"></script>
 	        	<script src="js/songs/otherIdols.js"></script>
-
+	        	<script src="js/list/sideBySideENForbidList.js"></script>
 	        	<script src="js/lyricsManager.js"></script>
 	        	<script src="js/songlist.js"></script>
 	        	<script src="js/liveshow.js"></script>
@@ -165,12 +165,15 @@
 	        	</center>
 	        	<div id="lyricsDisplay" style="visibility:hidden;display:none;">
 	        			<link href="css/autocomplete.css" rel="stylesheet">
-	        		
+	        			
 		        		<div class="container">
-			        		<table style="width:100%">
+			        		<table style="width:100%;">
 			        			<tr>
 			        				<td style="margin-left:5px;">
 			        					<button id='lyricsManagerBut2' type="button" class="btn btn-primary" onclick="changeVisibility('lyricsDisplay','playerDisplay','hide');">Go back to player</button>
+			        				</td>
+			        				<td style="margin-right:5px;">
+			        					<button id="showEnglishSideBySideBut" type="button" class="btn btn-primary" onclick="displaySideBySideEnglish();">Display Side-By-Side English</button>
 			        				</td>
 			        			</tr>
 
@@ -179,9 +182,10 @@
 						  
 
 							  <center>
+							  <div id="normalLyricDisplayDiv">
 								  <ul class="nav nav-pills">
 								    <li class="active"><a href="#1a" data-toggle="tab">Kanji</a></li>
-								    <li><a href="#2a" data-toggle="tab">Furigana</a></li>
+								    <li><a href="#2a" data-toggle="tab"">Furigana</a></li>
 								    <li><a href="#3a" data-toggle="tab">Romaji</a></li>
 								    <li><a href="#4a" data-toggle="tab">English</a></li>
 								  </ul>
@@ -199,8 +203,40 @@
 									<div class="tab-pane" id="4a">
 										<div id="lyricenglishArea"></div>
 									</div>
+									<script src="js/list/sideBySideENForbidList.js"></script>
+									<script src="js/liveshow.js"></script>
 									<script src="js/lyricsManager.js"></script>
+									
 								</div>
+							</div>
+							<div id="sideEnglishLyricDisplayDiv" style="display:none;">
+								  <ul class="nav nav-pills">
+								    <li class="active"><a href="#1aE" data-toggle="tab">Kanji</a></li>
+								    <li><a href="#2aE" data-toggle="tab">Furigana</a></li>
+								    <li><a href="#3aE" data-toggle="tab">Romaji</a></li>
+								    <li><a href="#4aE" data-toggle="tab">English</a></li>
+								  </ul>
+
+								<div class="tab-content clearfix">
+									<div class="tab-pane active" id="1aE">
+										<div id="lyrickanjiAreaEnglish"></div>
+									</div>
+									<div class="tab-pane" id="2aE">
+										<div id="lyricfuriganaAreaEnglish"></div>
+									</div>
+								    	<div class="tab-pane" id="3aE">
+										<div id="lyricromajiAreaEnglish"></div>
+									</div>
+									<div class="tab-pane" id="4aE">
+										<div id="lyricenglishAreaEnglish"></div>
+									</div>
+									<script src="js/list/sideBySideENForbidList.js"></script>
+									<script src="js/liveshow.js"></script>
+									<script src="js/lyricsManager.js"></script>
+
+								</div>
+							</div>
+
 							</center>
 	
 					</div>

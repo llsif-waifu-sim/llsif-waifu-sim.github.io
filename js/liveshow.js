@@ -56,6 +56,19 @@ $('#background-music-player').on('ended', function() {
 	
 });
 
+function displaySideBySideEnglish(){
+	if($('#sideEnglishLyricDisplayDiv:visible').length == 0){
+		// Showing Side by Side English display
+		$('#normalLyricDisplayDiv').hide();
+		$('#sideEnglishLyricDisplayDiv').show();
+	} else {
+		// Removing Side by Side English display
+		$('#normalLyricDisplayDiv').show();
+		$('#sideEnglishLyricDisplayDiv').hide();
+	}
+	
+}
+
 function everySongSecUnchecked(){
 	var iterAr = ["MuseTogether","MuseSubIdol","MuseOther","AqoursTogether","AqoursSubIdol","AqoursOther","OtherIdol"];
 	for(var i = 0; i < iterAr.length; i++){
