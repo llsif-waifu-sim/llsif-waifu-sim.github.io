@@ -47,6 +47,8 @@ function combineEnglishLyrics(jpText, enText){
     } else if (sentEN){
       //resText = resText + sentJP + "\n--" + sentEN + "\n>>";
       resText = resText + sentJP + "\n" + sentEN + "\n";
+    } else {
+      resText = resText + sentJP + "\n"
     }
     
   }
