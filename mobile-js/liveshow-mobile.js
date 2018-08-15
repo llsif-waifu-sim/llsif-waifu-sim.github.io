@@ -31,6 +31,8 @@ var random_index = 0
 var firstRandom = false;
 var loop_mode = false;
 
+var savedPlayList = [];
+
 
 $('#background-music-player').on('ended', function() {
 
