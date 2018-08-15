@@ -50,6 +50,20 @@ $('#background-music-player').on('ended', function() {
 	
 });
 
+
+function displaySideBySideEnglish(){
+	if($('#sideEnglishLyricDisplayDiv:visible').length == 0){
+		// Showing Side by Side English display
+		$('#normalLyricDisplayDiv').hide();
+		$('#sideEnglishLyricDisplayDiv').show();
+	} else {
+		// Removing Side by Side English display
+		$('#normalLyricDisplayDiv').show();
+		$('#sideEnglishLyricDisplayDiv').hide();
+	}
+	
+}
+
 function loopPlay()
 {
 	//prevCategoryID = currcategoryID;

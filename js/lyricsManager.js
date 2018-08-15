@@ -55,14 +55,7 @@ function combineEnglishLyrics(jpText, enText){
   return resText;
 }
 
-function isElementInArray(array,element){
-  for(var i=0; i < array.length; i++){
-    if(element == array[i]){
-      return true;
-    }
-  }
-  return false;
-}
+
 
 function assignLyrics(songName){
   songName = songName.toLowerCase().replace(/[.,\/#!?'"・☆♡$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s/g, '');
@@ -102,7 +95,7 @@ function setLyrics(songName,lyricsType) {
           //enTextSplit = enText != '' ? enText.split('\n') : [];
         } else {
           var englishSideText = combineEnglishLyrics(allText, enText);
-
+          
           if(isElementInArray(forbiddenSideBySide,songName)){
             disableSideBySideENBut(songName);
           } else {
@@ -136,31 +129,49 @@ function assignLyricsMobile(songName){
 }
 
 function setLyricsMobile(songName,lyricsType){
-    var client;
+    var rawFile = new XMLHttpRequest();
+  var rootPath = "https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-lyrics/master/"
 
-
-    var rootPath = "https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-lyrics/master/"
     var filePath = rootPath + lyricsType + "/" + songName + "-" + lyricsType + ".txt";
 
-    if (window.XMLHttpRequest) {
-        // code for modern browsers
-        client = new XMLHttpRequest();
-    } else {
-        // code for IE6, IE5
-        client = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+    rawFile.open("GET", filePath, true);
+    rawFile.onreadystatechange = function() 
+    {
+      if (rawFile.readyState === 4) 
+      {
+        var allText = rawFile.responseText;
+        var elementStr = "lyric"+lyricsType+"Area"
 
-        client.onreadystatechange = function()
-        {
-            if( client.responseText != '' )
-            {
-                var elementStr = "lyric"+lyricsType+"Area"
 
-                document.getElementById(elementStr).innerHTML = client.responseText.replace(/\n/g, "<br />");
-            }
+
+        if(lyricsType == "english"){
+          enText = allText;
+          enTextSplit = enText.split('\n');
+
+          document.getElementById("lyricenglishAreaEnglish").innerHTML = enText.replace(/\n/g, "<br />");
+
+          //enTextSplit = enText != '' ? enText.split('\n') : [];
+        } else {
+          var englishSideText = combineEnglishLyrics(allText, enText);
+          
+          if(isElementInArray(forbiddenSideBySide,songName)){
+            disableSideBySideENBut(songName);
+          } else {
+            document.getElementById("showEnglishSideBySideBut").disabled = false;
+          }
+
+          var elementStrEnSide = "lyric"+lyricsType+"AreaEnglish"
+
+          document.getElementById(elementStrEnSide).innerHTML = englishSideText.replace(/\n/g, "<br />");
         }
-        client.open("GET", filePath, true);
-        client.send();
+        
+
+
+        document.getElementById(elementStr).innerHTML = allText.replace(/\n/g, "<br />");
+
+      }
+     }
+    rawFile.send();
 }
 
 function changeVisibility(elementName, reverseElement,command){

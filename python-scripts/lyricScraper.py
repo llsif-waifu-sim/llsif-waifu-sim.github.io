@@ -11,7 +11,8 @@ lyricRoot = "../../distribution/llsif-waifu-lyrics"
 rootURL = 'http://love-live.wikia.com'
 
 transDict = {u'君':u'きみ',
-	u'見':u'み'}
+	u'見':u'み',
+	u'色':u'いろ'}
 
 segmenter = tinysegmenter.TinySegmenter()
 kakasi = kakasi()

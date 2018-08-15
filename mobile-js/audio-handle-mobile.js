@@ -1769,3 +1769,17 @@ function changeLanguage()
 	}
 	commandSelect(0);
 }
+
+function removeArrayFromArray(array, element) {
+	var myNewArray = array.filter(function(item){ return item[0] != element[0]})  
+	return myNewArray;
+}
+
+function isElementInArray(array,element){
+  for(var i=0; i < array.length; i++){
+    if(element == array[i]){
+      return true;
+    }
+  }
+  return false;
+}
