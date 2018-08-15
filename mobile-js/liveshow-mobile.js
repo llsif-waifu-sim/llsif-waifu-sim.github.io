@@ -1129,7 +1129,8 @@ function switchToSongByName(songName){
 		return;
 	}
 
-	
+	var tmpList = removedSecList;
+	removedSecList = []
 
 	var randSongInt = calc_random_local_index(chosenNum, folder);
 	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
@@ -1141,15 +1142,17 @@ function switchToSongByName(songName){
 		$("#liveshowAlbum").fadeIn();
 	});
 
-	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-	assignLyrics(random_ar[chosenNum][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
+
+	document.getElementById("song-title-tag").innerHTML =  random_ar_original[chosenNum][0];
+	assignLyrics(random_ar_original[chosenNum][0]);
+	document.getElementById("lyricsTitleDiv").innerHTML = random_ar_original[chosenNum][0];
 
 	currSong = randSongInt;
 
 	stopClick();
 	playClick();
 
+	removedSecList = tmpList;
 
 }
 
@@ -1379,5 +1382,4 @@ function initalizeLiveShow(){
 
 
 initalizeLiveShow();
-
 

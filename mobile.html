@@ -7,8 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	
+	<!--
 	<script src="mobile-js/redirect-mobile.js"></script>
-
+	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -50,14 +51,15 @@
 
 	<script src="mobile-js/audio-handle-mobile.js"></script>
 	
-
+	<script src="js/list/sideBySideENForbidList.js"></script>
+	<script src="js/lyricsManager.js"></script>
+	<script src="mobile-js/liveshow-mobile.js"></script>
   	
   	
   	<script src="js/analytics.js"></script>
 
 
 
-  	<script>//alert('hello');</script>
 
 	<title>Love Live SIF Waifu Simulator</title>
 		<script>
@@ -178,6 +180,29 @@
 		</tr>
 	</table>
 	
+	<!--
+	<div id="songSearchDiv" class="autocomplete" style="width:500px;">
+		<table>
+			<tr>
+				<td >
+					<input id="songSearchBar" type="text" name="songSearchBar" placeholder="Type in song title">
+				</td>
+				<td>
+					<input id="searchSongSubmit" type="submit" value="Search" onclick="searchSong()">
+				</td>
+			</tr>
+		</table>
+						    
+	</div>
+	-->
+	<ul id="songSearchBar" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search song title..." >
+		<li><a href=""></a></li>
+	</ul>
+
+	<script src="mobile-js/liveshow-mobile.js"></script>
+	<script src="mobile-js/autocomplete-mobile.js"></script>
+
+
 	<a href='http://lovelivesifwaifusim.chatango.com/' style='text-decoration:none;'><button style='background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-comments ui-btn-icon-left"><font color='white' >Enter Chatroom</font></button></a>
 	
 	</br>
