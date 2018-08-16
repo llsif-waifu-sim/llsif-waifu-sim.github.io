@@ -1,3 +1,11 @@
+function searchSong(){
+  var songSearch = document.getElementById("songSearchBar").value;
+  switchToSongByName(songSearch);
+  assignLyrics(songSearch);
+  updatePlaylistBut();
+}
+
+
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -95,12 +103,21 @@ function autocomplete(inp, arr) {
       });
 }
 
+var input = document.getElementById("songSearchBar");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        var songSearch = document.getElementById("songSearchBar").value;
+        switchToSongByName(songSearch);
+        assignLyrics(songSearch);
+        updatePlaylistBut();
+    }
+});
 
 
-/*
-var countriesName = countries.map(function(tuple) {
+
+var songNameAR = random_ar.map(function(tuple) {
     return tuple[0];
 });
 
-autocomplete(document.getElementById("myInput"), countryName);
-*/
+autocomplete(document.getElementById("songSearchBar"), songNameAR);

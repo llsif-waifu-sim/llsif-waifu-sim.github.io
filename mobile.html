@@ -7,8 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	
+
 	<script src="mobile-js/redirect-mobile.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -50,14 +51,15 @@
 
 	<script src="mobile-js/audio-handle-mobile.js"></script>
 	
-
+	<script src="js/list/sideBySideENForbidList.js"></script>
+	<script src="js/lyricsManager.js"></script>
+	<script src="mobile-js/liveshow-mobile.js"></script>
   	
   	
   	<script src="js/analytics.js"></script>
 
 
 
-  	<script>//alert('hello');</script>
 
 	<title>Love Live SIF Waifu Simulator</title>
 		<script>
@@ -178,6 +180,29 @@
 		</tr>
 	</table>
 	
+	<!--
+	<div id="songSearchDiv" class="autocomplete" style="width:500px;">
+		<table>
+			<tr>
+				<td >
+					<input id="songSearchBar" type="text" name="songSearchBar" placeholder="Type in song title">
+				</td>
+				<td>
+					<input id="searchSongSubmit" type="submit" value="Search" onclick="searchSong()">
+				</td>
+			</tr>
+		</table>
+						    
+	</div>
+	-->
+	<ul id="songSearchBar" data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search song title..." >
+		<li><a href=""></a></li>
+	</ul>
+
+	<script src="mobile-js/liveshow-mobile.js"></script>
+	<script src="mobile-js/autocomplete-mobile.js"></script>
+
+
 	<a href='http://lovelivesifwaifusim.chatango.com/' style='text-decoration:none;'><button style='background:#2ECCFA;border-color:#2ECCFA;' type="button" class="ui-btn ui-icon-comments ui-btn-icon-left"><font color='white' >Enter Chatroom</font></button></a>
 	
 	</br>
@@ -367,7 +392,7 @@
 	        	<script src="js/songs/aqoursSub.js"></script>
 	        	<script src="js/songs/aqoursSolo.js"></script>
 	        	<script src="js/songs/otherIdols.js"></script>
-	        	
+	        	<script src="js/list/sideBySideENForbidList.js"></script>
 	    		<script src="js/songlist.js"></script>
 	        	<script src="mobile-js/liveshow-mobile.js"></script>
 
@@ -426,9 +451,13 @@
 								  <option value="4">Aqours Sub-Idols</option>
 								  <option value="5">Aqours Others</option>
 								  <option value="6">Other Idols</option>
+								  <option value="mySongList">My Playlist</option>
 							    </select>
 							</td>
 						</tr>
+					</table>
+					<br><br><br>
+					<table style="width:100%;">
 						<tr>
 							<td>
 								<center>
@@ -437,9 +466,88 @@
 							</td>
 							
 						</tr>
+						<tr>
+							<td>
+								<center>
+									<button id="saveToPlaylistBut" type="button" class="ui-btn ui-btn-inline ui-corner-all" onclick="saveToPlaylist()" style="width:100%"><i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b></button>
+								</center>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button id='settingsBut' class="ui-btn ui-btn-inline ui-corner-all" style="background:#2ECCFA;border-color:#2ECCFA; width:100%" onclick="liveshowSettingButClick();"><i class="fa fa-cog fa-inverse" aria-hidden="true" style="padding-right:10%"></i><font color='white' ><b>Settings</b></font></button>
+								</center>
+							</td>
+						</tr>
 					</table>
+				
 
-
+					<div id="liveshowSettingDiv" style="display: none;">
+	        			<br><br>
+	        		
+		        		<div class="container">
+		        		  Check the boxes of the song sections you want to be added into shuffle mode.
+		        		  
+		        		  <table style="width:100%;">
+		        		  	<tr>
+		        		  		<td>
+		        		  		<div>
+		        		  			<label>
+								     	<input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
+								     </label>
+								    </td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								    <label>
+								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
+								    </label>
+								</td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								    <label>
+								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
+								    </label>
+								</div>
+								 
+		        		  		</td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+		        		  			<div>
+		        		  			<label>
+								      <input type="checkbox" id="AqoursTogetherCheckBox" onchange="getSongSecInRandom('AqoursTogetherCheckBox',3);" checked>Aqours Together
+								    </label>
+								</td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								     <label>
+								      <input type="checkbox" id="AqoursSubIdolCheckBox" onchange="getSongSecInRandom('AqoursSubIdolCheckBox',4);" checked>Aqours Sub-Idol
+								    </label>
+								   </td>
+		        			</tr>
+		        			<tr>
+		        		  		<td>
+								     <label>
+								      <input type="checkbox" id="AqoursOtherCheckBox" onchange="getSongSecInRandom('AqoursOtherCheckBox',5);" checked>Aqours Other
+								    </label>
+		        		  		</td>
+		        		 	</tr>
+		        			<tr>
+		        		  		<td>
+		
+		        		  			 <label>
+								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
+								    </label>
+						
+		        		  		</td>
+		        		  	</tr>
+		        		  </table>
+						</div>
+					</div>
+	        		
 
 
 	        	</center>
@@ -449,6 +557,7 @@
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
     </div>
+</div>
 
 
 </div>
@@ -457,44 +566,91 @@
 <!-- Lyrics page -->
 
 <div data-role="page" id="lyricsPage">
+
+<script src="js/list/sideBySideENForbidList.js"></script>
+  <script src="js/lyricsManager.js"></script>
+
   <div data-role="header">
   	<center>
     	<div id="lyricsTitleDiv">Bokura no LIVE Kimi to no LIFE</div>
     </center>
   </div>
 
+
+<center>
+<table style="width:100%;">
+	<tr>
+		<td style="width:50%;">
+			<a href="#pageone" data-rel="close">
+				<button type="button" id="lyricsManagerBut2" class="ui-btn ui-btn-inline ui-corner-al" style="background:#2ECCFA;border-color:#2ECCFA; width:95%;"><font color='white' >Go back to player</font></button>
+			</a>
+		</td>
+		<td style="width:50%;">
+			<button type="button" id="showEnglishSideBySideBut" class="ui-btn ui-btn-inline ui-corner-al" style="background:#2ECCFA;border-color:#2ECCFA; width:95%;" onclick="displaySideBySideEnglish();"><font color='white' >Side-By-Side English</font></button>
+		</td>
+	</tr>
+
+</table>
+
+
+
+</center>
   <div role="main" class="ui-content">
+  <div id="normalLyricDisplayDiv">
+	    <div data-role="tabs">
+	      <div data-role="navbar">
+	        <ul>
+	          <li><a href="#fragment-1" class="ui-btn-active">Kanji</a></li>
+	          <li><a href="#fragment-2">Furigana</a></li>
+	          <li><a href="#fragment-3">Romaji</a></li>
+	          <li><a href="#fragment-4">English</a></li>
+	        </ul>
+	      </div>
+	      <div id="fragment-1">
+	        <div id="lyrickanjiArea" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-2">
 
-    <div data-role="tabs">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#fragment-1" class="ui-btn-active">Kanji</a></li>
-          <li><a href="#fragment-2">Furigana</a></li>
-          <li><a href="#fragment-3">Romaji</a></li>
-          <li><a href="#fragment-4">English</a></li>
-        </ul>
-      </div>
-      <div id="fragment-1">
-        <div id="lyrickanjiArea" style="text-align: center;"></div>
-      </div>
-      <div id="fragment-2">
+	        <div id="lyricfuriganaArea" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-3">
+	        <div id="lyricromajiArea" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-4">
+	        <div id="lyricenglishArea" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	    </div>
+	</div>
+    <div id="sideEnglishLyricDisplayDiv" style="display:none;">
+		<div data-role="tabs">
+	      <div data-role="navbar">
+	        <ul>
+	          <li><a href="#fragment-1EN" class="ui-btn-active">Kanji</a></li>
+	          <li><a href="#fragment-2EN">Furigana</a></li>
+	          <li><a href="#fragment-3EN">Romaji</a></li>
+	          <li><a href="#fragment-4EN">English</a></li>
+	        </ul>
+	      </div>
+	      <div id="fragment-1EN">
+	        <div id="lyrickanjiAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-2EN">
 
-        <div id="lyricfuriganaArea" style="text-align: center;"></div>
-      </div>
-      <div id="fragment-3">
-        <div id="lyricromajiArea" style="text-align: center;"></div>
-      </div>
-      <div id="fragment-4">
-        <div id="lyricenglishArea" style="text-align: center;"></div>
-      </div>
-    </div>
-	
-
+	        <div id="lyricfuriganaAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-3EN">
+	        <div id="lyricromajiAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	      <div id="fragment-4EN">
+	        <div id="lyricenglishAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
+	      </div>
+	    </div>
+	   </div>
 
 	<br>
     <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
   </div>
-  <script src="js/lyricsManager.js"></script>
+  
 </div>
 	
 
@@ -563,7 +719,7 @@
 				<li>Added idols up from id 1673 to 1677!</li>
 			</ul>
 
-			 <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline  ui-corner-all">Continue</a>
+			 <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline  ui-corner-all" onclick="playBackgroundMusic();">Continue</a>
 		
 	  </div>
 </div>
