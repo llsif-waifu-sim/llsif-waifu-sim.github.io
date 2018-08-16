@@ -2178,7 +2178,7 @@ $.ajax({
 	        	var currentdate = new Date().toLocaleString("en-US", {timeZone: "America/New_York"}).replace(/\//gi,"-"); 
 
 
-				firebaseRef.child(currentdate).set(response.data.link);
+				firebaseRef.child(currentdate).set({URL:response.data.link,Read:'N'});
 	        }
 	    },
 	    error: function(xhr, status, error) {
