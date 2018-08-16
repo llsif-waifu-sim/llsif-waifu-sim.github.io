@@ -1,5 +1,5 @@
 var numOfSongs = numOfSongsMuseAll;
-var subPath = 'muse-together/';
+var subPath = 'muse-together/'
 var songlist_ar = muse_together_ar;
 
 
@@ -22,21 +22,14 @@ var prevMusic = document.getElementById("background-music-player");
 var originMusic = document.getElementById("origin-music-player");
 
 var random_mode = false;
-var random_ar_original = generate_random_ar(); // contains an ordered list of song names
-var random_ar = random_ar_original;  
+var random_ar = generate_random_ar();    // contains an ordered list of song names
 var random_sorted_ar = generateSortedRandomArray(); // contains an ordered list of song indexes
 var random_counter_ar = generateRandomSongArray(); // contains a shuffled list of song indexes
 var random_category = 0;
 
-var random_index = 0;
-
-var playlist_index = 0;
-
+var random_index = 0
 var firstRandom = false;
 var loop_mode = false;
-
-
-var savedPlayList = [];
 
 
 $('#background-music-player').on('ended', function() {
@@ -56,350 +49,6 @@ $('#background-music-player').on('ended', function() {
 	}
 	
 });
-
-
-
-
-function displaySideBySideEnglish(){
-	if($('#sideEnglishLyricDisplayDiv:visible').length == 0){
-		// Showing Side by Side English display
-		$('#normalLyricDisplayDiv').hide();
-		$('#sideEnglishLyricDisplayDiv').show();
-		document.getElementById("showEnglishSideBySideBut").style.background = "#33cc33"; // green
-	} else {
-		// Removing Side by Side English display
-		$('#normalLyricDisplayDiv').show();
-		$('#sideEnglishLyricDisplayDiv').hide();
-		document.getElementById("showEnglishSideBySideBut").style.background = "#2ECCFA"; // blue
-	}
-	assignLyricsMobile(songlist_ar[currSong][0]);
-}
-
-
-function everySongSecUnchecked(){
-	var iterAr = ["MuseTogether","MuseSubIdol","MuseOther","AqoursTogether","AqoursSubIdol","AqoursOther","OtherIdol"];
-	for(var i = 0; i < iterAr.length; i++){
-		var checkbox = document.getElementById(iterAr[i] + "CheckBox");
-		if(checkbox.checked){
-			return false;
-		}
-
-	}
-	return true;
-}
-
-
-
-function liveshowSettingButClick(){
-	if($('#liveshowSettingDiv:visible').length == 0){
-		$("#liveshowSettingDiv").show();
-	
-	} else {
-		$("#liveshowSettingDiv").hide();
-	}
-	
-}
-
-function getSongSecInRandom(selfId, numCmp){
-
-	var checkbox = document.getElementById(selfId);
-
-	// Check if everything is unchecked first 
-	if(everySongSecUnchecked()){
-		// Everything unchecked 
-		checkbox.checked = true;
-		alert('You must have at least one song section enabled for shuffle mode.');
-		return;		
-	}
-	
-
-
-	if(!checkbox.checked && numCmp == 0){
-		removedSecList.push(["MuseTogether",0]);
-	} else if(numCmp == 0){
-
-		removedSecList = removeArrayFromArray(removedSecList,["MuseTogether",0]);
-	}
-
-	if(!checkbox.checked && numCmp == 1){
-		removedSecList.push(["MuseSubIdol",1]);
-	} else if(numCmp == 1){
-
-		removedSecList = removeArrayFromArray(removedSecList,["MuseSubIdol",1]);
-	}
-
-	if(!checkbox.checked && numCmp == 2){
-		removedSecList.push(["MuseOther",2]);
-	} else if(numCmp == 2){
-
-		removedSecList = removeArrayFromArray(removedSecList,["MuseOther",2]);
-	}
-
-	if(!checkbox.checked && numCmp == 3){
-		removedSecList.push(["AqoursTogether",3]);
-	} else if(numCmp == 3){
-		removedSecList = removeArrayFromArray(removedSecList,["AqoursTogether",3]);
-	}
-
-	if(!checkbox.checked && numCmp == 4){
-		removedSecList.push(["AqoursSubIdol",4]);
-	} else if(numCmp == 4){
-		removedSecList = removeArrayFromArray(removedSecList,["AqoursSubIdol",4]);
-	}
-
-	if(!checkbox.checked && numCmp == 5){
-		removedSecList.push(["AqoursOther",5]);
-	} else if(numCmp == 5){
-		removedSecList = removeArrayFromArray(removedSecList,["AqoursOther",5]);
-	}
-
-	if(!checkbox.checked && numCmp == 6){
-		removedSecList.push(["Other",6]);
-	} else if(numCmp == 6){
-		removedSecList = removeArrayFromArray(removedSecList,["Other",6])
-	}
-	random_ar = generate_random_ar();
-
-
-	storeRandomSongBoxCookie();
-
-	return;
-}
-
-
-function updatePlaylistBut(){
-
-	if(document.getElementById("songCategorySelect").value == "mySongList"){
-		// We are in My Playlist
-		$("#saveToPlaylistBut").hide();
-
-	}else if(isSavedInPlayList(songlist_ar[currSong])){
-		// Show that is is already added to playlist
-		$("#saveToPlaylistBut").show();
-		document.getElementById("saveToPlaylistBut").style.background = "#FF0000"; // red
-		document.getElementById("saveToPlaylistBut").style.border = "#FF0000"; // red
-
-		document.getElementById("saveToPlaylistBut").innerHTML = '<i class="fa fa-heart fa fa-inverse" aria-hidden="true" style="padding-right:10%"></i><font color="white" ><b>Liked</b></font>';
-
-	} else {
-		// Show that it is not in playlist
-
-		$("#saveToPlaylistBut").show();
-		document.getElementById("saveToPlaylistBut").style.background = "#F5F5F5"; // silver
-		document.getElementById("saveToPlaylistBut").style.border = "#F5F5F5"; // silver
-		document.getElementById("saveToPlaylistBut").innerHTML = '<i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b>';
-
-	}
-
-
-}
-
-function getNextSongMyList(state){
-
-	if(state == '-'){
-		// we change song forward
-		if(playlist_index + 1 >= savedPlayList.length){
-			playlist_index = 0;
-		} else {
-			playlist_index = playlist_index + 1;
-		}
-		
-
-	} else if(state == '+'){
-		if(playlist_index == 0){
-			playlist_index = savedPlayList.length - 1;
-		} else {
-			playlist_index = playlist_index - 1;
-		}
-	}
-	//savedPlayList[playlist_index][0]
-	return playlist_index
-
-}
-
-function changeSongMyList(sign){
-	var myListIndex = getNextSongMyList(sign);
-
-	var chosenNum = -1;
-	var folder = -1;
-	for(var i=0; i < random_ar_original.length; i++){
-		if(savedPlayList[myListIndex][0] == random_ar_original[i][0]){
-			folder = random_ar_original[i][1];
-			chosenNum = i;
-			break;
-		}
-	}
-
-
-	if(chosenNum < 0 || folder < 0){
-		alert("Something went wrong. changeSongMyList() was not able to find anything");
-	}
-
-	random_category = folder;
-
-
-
-
-	if(folder==0){
-		subPath = 'muse-together/';
-	} else if (folder==1){
-		subPath = 'muse-sub-group/';
-	} else if (folder==2){
-		subPath = 'muse-individual/';
-	} else if (folder==3){
-		subPath = 'aqours-together/';
-	} else if (folder==4){
-		subPath = 'aqours-sub-group/';
-	} else if (folder==5){
-		subPath = 'aqours-individual/';
-	} else if (folder==6){
-			subPath = 'other-idols/';
-	} else {
-		alert('Something bad happened in changeSongMyList()');
-		return;
-	}
-	var myListSongInt = calc_random_local_index(chosenNum, folder);
-
-
-	var picPath = "".concat("./images/album-covers/",subPath, myListSongInt, ".jpg");
-	
-
-	$(document).ready(function(){
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	});
-
-	document.getElementById("song-title-tag").innerHTML =  savedPlayList[myListIndex][0];
-	assignLyrics(savedPlayList[myListIndex][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = savedPlayList[myListIndex][0];
-	currSong = myListSongInt;
-
-
-}
-
-
-
-function switchToPlayListMode(){
-
-
-	if(savedPlayList.length == 0){
-		// Nothing is saved
-		alert('There is nothing in your playlist. Try saving a few songs to your playlist first.');
-
-		$('#songCategorySelect').val(random_category).selectmenu('refresh');
-
-		return;
-	}
-
-	songlist_ar = savedPlayList;
-
-	var folder = -1;
-	var chosenNum = -1;
-	for(var i=0; i < random_ar_original.length; i++){
-		if(songlist_ar[0][0] == random_ar_original[i][0]){
-			folder = random_ar_original[i][1];
-			chosenNum = i;
-			break;
-		}
-	}
-
-	random_category = folder;
-
-
-	if(folder==0){
-		subPath = 'muse-together/';
-		currcategoryID = 0;
-		numOfSongs = numOfSongsMuseAll;
-
-	} else if (folder==1){
-		subPath = 'muse-sub-group/';
-		numOfSongs = numOfSongsMuseSub;
-		currcategoryID = 1;
-
-	} else if (folder==2){
-		subPath = 'muse-individual/';
-		numOfSongs = numOfSongsMuseOther;
-		currcategoryID = 2;
-
-	} else if (folder==3){
-		subPath = 'aqours-together/';
-		numOfSongs = numOfSongsAqoursTogether;
-		currcategoryID = 3;
-
-
-	} else if (folder==4){
-		subPath = 'aqours-sub-group/';
-		numOfSongs = numOfSongsAqoursSub;
-		currcategoryID = 4;
-
-
-	} else if (folder==5){
-		subPath = 'aqours-individual/';
-		numOfSongs = numOfSongsAqoursOthers;
-
-		currcategoryID = 5;
-
-
-	} else if (folder==6){
-		subPath = 'other-idols/';
-		numOfSongs = numOfSongsIdolsOthers;
-		currcategoryID = 6;
-
-
-	} else {
-		alert('Something bad happened in switchToPlayListMode()');
-		return;
-	}
-
-	
-
-	var randSongInt = calc_random_local_index(chosenNum, folder);
-	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
-
-
-	$(document).ready(function(){
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	});
-
-	document.getElementById("song-title-tag").innerHTML =  songlist_ar[0][0];
-	assignLyrics(songlist_ar[0][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[0][0];
-	updatePlaylistBut();
-
-	playlist_index = 0;
-	currSong = randSongInt;
-	$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
-
-}
-
-
-
-function isSavedInPlayList(cmpAr){
-	for(var i = 0; i < savedPlayList.length; i++){
-		if(savedPlayList[i][0] == cmpAr[0]){
-			return true;
-		}
-	}
-	return false
-}
-
-function saveToPlaylist(){
-
-	if(isSavedInPlayList(songlist_ar[currSong])){
-		// If we already saved in the list, we remove it
-		savedPlayList = removeArrayFromArray(savedPlayList, songlist_ar[currSong])
-
-	} else {
-		savedPlayList.push(songlist_ar[currSong]);
-	}
-
-	storeMyPlaylistCookie(savedPlayList);
-	updatePlaylistBut();
-}
-
 
 function loopPlay()
 {
@@ -433,7 +82,6 @@ function randomSwitch()
 	} else {
 		// Turn on radnom mode
 
-		random_ar = generate_random_ar();
 		random_counter_ar = generateRandomSongArray();
 		random_index = -1;
 		random_mode = true;
@@ -517,8 +165,7 @@ function playClick()
 		
 		currplayingSong = currSong;
 
-	
-
+		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
 		document.getElementById("liveshowAlbum").src =  picPath;
 
 		oggMusic.src = songPath;
@@ -582,29 +229,6 @@ function stopClick()
 
 function changeSong()
 {
-	if(document.getElementById("songCategorySelect").value == "mySongList"){
-		changeSongMyList('-');
-
-		if((currplayingSong == currSong) && musicPlaying  && (prevCategoryID == currcategoryID)){
-			// We came back to our original song and we have not changed categories
-			musicChanged = false;
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
-			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
-			displayingPlayBut = false;
-
-			currplayingSong = currSong;
-		} else if (!musicChanged &&  musicPlaying){
-			// We are switching songs
-			//$('#liveshow-play-but').find('span').toggleClass('glyphicon-pause').toggleClass('glyphicon-play');
-			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
-			displayingPlayBut = true;
-			musicChanged = true;
-		}
-		updatePlaylistBut();
-
-		return;
-	}
-
 	if(!random_mode){
 		if(currSong >= numOfSongs - 1){
 			// Reached end
@@ -617,15 +241,13 @@ function changeSong()
 		
 
 
-		
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	
+		$(document).ready(function(){
+			$("#liveshowAlbum").hide();
+			document.getElementById("liveshowAlbum").src =  picPath;
+			$("#liveshowAlbum").fadeIn();
+		});
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 
 		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
 			// We came back to our original song and music is playing
@@ -676,8 +298,6 @@ function changeSong()
 		});
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-		assignLyricsMobile(random_ar[chosenNum][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 
 		currSong = randSongInt;
 
@@ -698,35 +318,11 @@ function changeSong()
 
 
 	}	
-	updatePlaylistBut();
 
 }
 
 function changeSongBack()
 {
-
-	if(document.getElementById("songCategorySelect").value == "mySongList"){
-		changeSongMyList('+');
-		updatePlaylistBut();
-
-		if(   ((currplayingSong == currSong) && musicPlaying)  && (prevCategoryID == currcategoryID)){
-			// We came back to our original song and music is playing
-			$('#liveshow-play-but').find('span').removeClass('glyphicon-play').addClass('glyphicon-pause');
-			displayingPlayBut = false;
-			musicChanged = false;
-			firstRandom = true;
-			currplayingSong = currSong;
-		} else if (!musicChanged &&  musicPlaying){
-			// We are switching songs
-			$('#liveshow-play-but').find('span').removeClass('glyphicon-pause').addClass('glyphicon-play');
-			displayingPlayBut = true;
-			musicChanged = true;
-			firstRandom = false;
-		}
-
-		return;
-	}
-
 
 	if(!random_mode){
 		if(currSong <= 0){
@@ -746,8 +342,6 @@ function changeSongBack()
 
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 
 		
 
@@ -800,8 +394,6 @@ function changeSongBack()
 		});
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-		assignLyricsMobile(random_ar[chosenNum][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 
 		currSong = randSongInt;
 
@@ -822,7 +414,7 @@ function changeSongBack()
 			firstRandom = false;
 		}
 	}
-	updatePlaylistBut();
+
 }
 
 function changeSongRandom(){
@@ -857,15 +449,13 @@ function changeSongRandom(){
 	var randSongInt = calc_random_local_index(chosenNum, folder);
 	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
 	
-
-	$("#liveshowAlbum").hide();
-	document.getElementById("liveshowAlbum").src =  picPath;
-	$("#liveshowAlbum").fadeIn();
-	
+	$(document).ready(function(){
+		$("#liveshowAlbum").hide();
+		document.getElementById("liveshowAlbum").src =  picPath;
+		$("#liveshowAlbum").fadeIn();
+	});
 
 	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-	assignLyricsMobile(random_ar[chosenNum][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 	currSong = randSongInt;
 
 }
@@ -926,15 +516,6 @@ function changeCategory()
 		songlist_ar = idol_others_ar;
 
 		currcategoryID = 6;
-	}else if (categoryID == "mySongList"){
-		if(random_mode == true){
-			// So that we can traverse through My Playlist properly
-			randomSwitch();
-		}
-		switchToPlayListMode();
-		
-		
-		return;
 	} else {
 		alert('Something went wrong in changeCategory()')
 	}
@@ -954,10 +535,7 @@ function changeCategory()
 	var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
 	
 	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-	assignLyrics(songlist_ar[currSong][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 	document.getElementById("liveshowAlbum").src =  picPath;
-	updatePlaylistBut();
 
 	
 	if(musicPlaying && (prevCategoryID != currcategoryID) && !displayingPlayBut){
@@ -1036,7 +614,7 @@ function changeCategoryRandom()
 
 		currcategoryID = 6;
 	} else {
-		alert('Something went wrong in changeCategoryRandom()')
+		alert('Something went wrong in changeCategory()')
 	}
 
 
@@ -1054,143 +632,8 @@ function changeCategoryRandom()
 		
 	}
 	
-
 	
 }
-
-function switchToSongByName(songName){
-
-
-	var folder = -1;
-	var chosenNum = -1;
-	for(var i=0; i < random_ar_original.length; i++){
-		if(songName == random_ar_original[i][0]){
-			folder = random_ar_original[i][1];
-			chosenNum = i;
-			break;
-		}
-	}
-
-	if(folder == -1 || chosenNum == -1){
-		return;
-	}
-	random_category = folder;
-	changeCategoryRandom();
-
-	if(folder==0){
-		subPath = 'muse-together/';
-		songlist_ar = muse_together_ar;
-		currcategoryID = 0;
-		numOfSongs = numOfSongsMuseAll;
-
-	} else if (folder==1){
-		subPath = 'muse-sub-group/';
-		numOfSongs = numOfSongsMuseSub;
-		songlist_ar = muse_subgroup_ar;
-		currcategoryID = 1;
-
-	} else if (folder==2){
-		subPath = 'muse-individual/';
-		numOfSongs = numOfSongsMuseOther;
-		songlist_ar = muse_individual_ar;
-		currcategoryID = 2;
-
-	} else if (folder==3){
-		subPath = 'aqours-together/';
-		numOfSongs = numOfSongsAqoursTogether;
-		songlist_ar = aqours_together;
-		currcategoryID = 3;
-
-
-	} else if (folder==4){
-		subPath = 'aqours-sub-group/';
-		numOfSongs = numOfSongsAqoursSub;
-		songlist_ar = aqours_subgroup_ar;
-		currcategoryID = 4;
-
-
-	} else if (folder==5){
-		subPath = 'aqours-individual/';
-		numOfSongs = numOfSongsAqoursOthers;
-		songlist_ar = aqours_others_ar;
-
-		currcategoryID = 5;
-
-
-	} else if (folder==6){
-		subPath = 'other-idols/';
-		numOfSongs = numOfSongsIdolsOthers;
-		songlist_ar = idol_others_ar;
-		currcategoryID = 6;
-
-
-	} else {
-		alert('Something bad happened in switchToSongByName()');
-		return;
-	}
-
-	var tmpList = removedSecList;
-	removedSecList = []
-
-	var randSongInt = calc_random_local_index(chosenNum, folder);
-	var picPath = "".concat("./images/album-covers/",subPath, randSongInt, ".jpg");
-
-
-	$(document).ready(function(){
-		$("#liveshowAlbum").hide();
-		document.getElementById("liveshowAlbum").src =  picPath;
-		$("#liveshowAlbum").fadeIn();
-	});
-
-
-	document.getElementById("song-title-tag").innerHTML =  random_ar_original[chosenNum][0];
-	assignLyrics(random_ar_original[chosenNum][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = random_ar_original[chosenNum][0];
-
-	currSong = randSongInt;
-
-	stopClick();
-	playClick();
-
-	removedSecList = tmpList;
-
-}
-
-function local_index_recal(num,folder){
-	// Since we are removing several song sections from array, we have to re-add them into the result
-
-	// We do not do this if we are at playlist
-	var categoryID = document.getElementById("songCategorySelect").value;
-	if(categoryID == "mySongList"){
-		return num;
-	}
-
-	// Get removed section's song total and add them back
-	for(var i=0;i < removedSecList.length; i++){
-		if(folder > removedSecList[i][1]){
-			var tarFold = removedSecList[i][1];
-			if(tarFold == 0){
-				num = num + numOfSongsMuseAll;
-			} else if(tarFold == 1){
-				num = num + numOfSongsMuseSub;
-			}else if(tarFold == 2){
-				num = num + numOfSongsMuseOther;
-			}else if(tarFold == 3){
-				num = num + numOfSongsAqoursTogether;
-			}else if(tarFold == 4){
-				num = num + numOfSongsAqoursSub;
-			}else if(tarFold == 5){
-				num = num + numOfSongsAqoursOthers;
-			}
-
-		}
-	}
-
-
-	return num;
-}
-
-
 
 function calc_random_local_index(chosenNum, folder)
 {
@@ -1200,35 +643,28 @@ function calc_random_local_index(chosenNum, folder)
 		return chosenNum;
 	} else if(folder == 1){
 		var num = chosenNum - numOfSongsMuseAll;
-		num = local_index_recal(num,folder);
 		return num;
  
 	} else if(folder == 2){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub;
-		num = local_index_recal(num,folder);
 		return num;
 
 	} else if(folder == 3){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther;
 
-		if (num > numOfSongsAqoursTogether)
-		{
-			return local_index_recal(num,folder) - numOfSongsAqoursTogether;
-		}
-		num = local_index_recal(num,folder);
 		return num;
 
 	} else if(folder == 4){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether;
-		num = local_index_recal(num,folder);
+
 		return num;
 	} else if(folder == 5){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub;
-		num = local_index_recal(num,folder);
+
 		return num;
 	} else if(folder == 6){
 		var num = chosenNum - numOfSongsMuseAll - numOfSongsMuseSub - numOfSongsMuseOther - numOfSongsAqoursTogether - numOfSongsAqoursSub - numOfSongsAqoursOthers;
-		num = local_index_recal(num,folder);
+
 		return num;
 	} else {
 		alert('Something went wrong in calc_random_local_index()');
@@ -1236,51 +672,15 @@ function calc_random_local_index(chosenNum, folder)
 	}
 }
 
-
-function isInRemoveSecList(strCmp){
-
-	for(var i=0; i < removedSecList.length;i++){
-		if(removedSecList[i][0] == strCmp){
-
-			return true;
-		}
-	}
-
-	return false;
-}
-
 function generate_random_ar(){
 	// Generate array that will store all songs of Love Live
-	temp0 = [];	
-	if(!isInRemoveSecList("MuseTogether")){
-		temp0 = temp0.concat(muse_together_ar);
-	}
-	if(!isInRemoveSecList("MuseSubIdol")){
-		temp0 = temp0.concat(muse_subgroup_ar);
-	}
-	
-	if(!isInRemoveSecList("MuseOther")){
-		temp0 = temp0.concat(muse_individual_ar);
-	}
-	
-	if(!isInRemoveSecList("AqoursTogether")){
-		temp0 = temp0.concat(aqours_together);
-	}
-	
-	if(!isInRemoveSecList("AqoursSubIdol")){
-		temp0 = temp0.concat(aqours_subgroup_ar);
-	}
-	
-	if(!isInRemoveSecList("AqoursOther")){
-		temp0 = temp0.concat(aqours_others_ar);
-	}
-	
-	if(!isInRemoveSecList("Other")){
-		temp0 = temp0.concat(idol_others_ar);
-	}
+	var temp0 = muse_together_ar.concat(muse_subgroup_ar);
+	var temp1 = temp0.concat(muse_individual_ar);
+	var temp2 = temp1.concat(aqours_together);
+	var temp3 = temp2.concat(aqours_subgroup_ar);
+	var temp4 = temp3.concat(aqours_others_ar);
 
-
-	return temp0;
+	return temp4;
 }
 
 function generateRandomSongArray()
@@ -1375,11 +775,3 @@ function getNextRandomSong(state)
 	}
 	return random_counter_ar[random_index];
 }
-
-function initalizeLiveShow(){
-	checkMyPlaylist();
-}
-
-
-initalizeLiveShow();
-

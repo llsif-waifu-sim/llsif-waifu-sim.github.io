@@ -2127,12 +2127,53 @@ function constructGIF()
 		if (!obj.error) {
 		    var image = obj.image, animatedImage = document.createElement('img');
 		    animatedImage.src = image;
+
+			//var imgUrl = image;
+			//uploadImageImgur(imgUrl);
+
+
 		    document.getElementById('gifOutputDiv').appendChild(animatedImage);
 		    document.getElementById('gifOutputDiv').style.display = "block";
 		    document.getElementById("sceneLoadingBox").innerHTML = "Finishing up. . .";
 		    urlAr = [];
 		    document.getElementById('uploadInProcessDiv').style.display = "none";
 		    document.getElementById('convertGIF_but').disabled = false;
+
+ //uploadImageImgur(image);
+
+		}
+	});
+
+}
+
+
+function uploadImageImgur(imgUrl)
+{
+
+	imgUrl = imgUrl.replace("data:image/gif;base64,","")
+
+$.ajax({
+	    url: 'https://api.imgur.com/3/image',
+	    type: 'post',
+	    headers: {
+	        Authorization: 'Client-ID 566721a01a10a6c'
+	    },
+	    data: {
+	        image: imgUrl,
+
+	    },
+	    dataType: 'json',
+	    async: false, 
+	    success: function(response) {
+	        if(response.success) {
+
+	  
+				firebaseRef.child(Math.ceil(Math.random()*10000000000000000)).set(response.data.link);
+	        }
+	    },
+	    error: function(xhr, status, error) {
+	    	alert('We encounterd an ajax error');
+		    alert(xhr.responseText);
 		}
 	});
 

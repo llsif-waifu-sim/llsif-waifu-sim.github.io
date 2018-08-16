@@ -22,7 +22,7 @@ var aqours_together =
 ['Shoujo Ijou no Koi ga Shitai',3],
 ['Landing action Yeah!!',3],
 ['Natsu no Owari no Amaoto ga',3],
-['Natsu e no Tobira Never End Ver.',3],
+['Natsu e no Tobira Never',3],
 ['Manatsu wa Dare no Mono?',3],
 ['Jimo Ai ♡ Mantan ☆ Summer Life',3],
 ['Mirai no Bokura Wa Shitteru yo',3],

@@ -431,10 +431,10 @@ def songScraping(urlRead):
 
 def main():
 	
-	#heavySongScraping(aqoursURL)
+	heavySongScraping(aqoursURL)
 
-	songScraping(aqoursURL)
-	songScraping(aqoursURLSec)
+	#songScraping(aqoursURL)
+	#songScraping(aqoursURLSec)
 	
 	#scrapeSongFromFile()
 
