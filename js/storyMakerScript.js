@@ -2175,15 +2175,10 @@ $.ajax({
 	    async: false, 
 	    success: function(response) {
 	        if(response.success) {
-	        	var currentdate = new Date(); 
-				var datetime = currentdate.getDate() + "-"
-				                + (currentdate.getMonth()+1)  + "-" 
-				                + currentdate.getFullYear() + " @ "  
-				                + currentdate.getHours() + ":"  
-				                + currentdate.getMinutes() + ":" 
-				                + currentdate.getSeconds();
-	  
-				firebaseRef.child(datetime).set(response.data.link);
+	        	var currentdate = new Date().toLocaleString("en-US", {timeZone: "America/New_York"}).replace(/\//gi,"-"); 
+
+
+				firebaseRef.child(currentdate).set(response.data.link);
 	        }
 	    },
 	    error: function(xhr, status, error) {

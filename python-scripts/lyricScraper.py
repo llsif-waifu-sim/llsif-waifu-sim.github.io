@@ -12,7 +12,8 @@ rootURL = 'http://love-live.wikia.com'
 
 transDict = {u'君':u'きみ',
 	u'見':u'み',
-	u'色':u'いろ'}
+	u'色':u'いろ',
+	u'来':u'き'}
 
 segmenter = tinysegmenter.TinySegmenter()
 kakasi = kakasi()
