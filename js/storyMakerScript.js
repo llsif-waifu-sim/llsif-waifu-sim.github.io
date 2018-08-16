@@ -2127,11 +2127,9 @@ function constructGIF()
 		if (!obj.error) {
 		    var image = obj.image, animatedImage = document.createElement('img');
 		    animatedImage.src = image;
-		    var clientId = "566721a01a10a6c"; // Your client Id
-var imgUrl = image;
-var albumId = 'OeC4jum'; // Your owned album id
 
-uploadImageImgur(imgUrl);
+			//var imgUrl = image;
+			//uploadImageImgur(imgUrl);
 
 
 		    document.getElementById('gifOutputDiv').appendChild(animatedImage);
