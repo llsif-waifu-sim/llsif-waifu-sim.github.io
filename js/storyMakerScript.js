@@ -2114,6 +2114,13 @@ function saveCurrentScene()
 
 function constructGIF()
 {	
+	if(urlAr == null || urlAr.length <= 0){
+		alert('You need to save at least one frame before generating the GIF');
+		urlAr = [];
+		document.getElementById('uploadInProcessDiv').style.display = "none";
+		document.getElementById('convertGIF_but').disabled = false;
+		return;
+	}
 	gifshot.createGIF({
 		images: urlAr,
 		'interval': intervalForGIF,
