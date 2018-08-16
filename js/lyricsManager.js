@@ -1,9 +1,8 @@
-var lyricsTypeList = ["kanji","furigana","romaji","english"]
+var lyricsTypeList = ["english","kanji","furigana","romaji"];   
 
 
 function assignLyrics(songName){
-  songName = songName.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s/g, '');
-  alert(songName);
+  songName = songName.toLowerCase().replace(/[.,\/#!?'"・☆♡$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s/g, '');
   for(var i = 0; i < lyricsTypeList.length;i++){
       var lyricsType = lyricsTypeList[i];
       setLyrics(songName,lyricsType);
@@ -25,7 +24,8 @@ function setLyrics(songName,lyricsType) {
       {
         var allText = rawFile.responseText;
         var elementStr = "lyric"+lyricsType+"Area"
-        document.getElementById(elementStr).innerHTML = allText.replace(/\n/g, "<br />");;
+
+        document.getElementById(elementStr).innerHTML = allText.replace(/\n/g, "<br />");
 
       }
      }
@@ -33,6 +33,44 @@ function setLyrics(songName,lyricsType) {
    
 }
 
+
+function assignLyricsMobile(songName){
+  songName = songName.toLowerCase().replace(/[.,\/#!?'"・☆♡$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s/g, '');
+  
+  for(var i = 0; i < lyricsTypeList.length;i++){
+      var lyricsType = lyricsTypeList[i];
+      setLyricsMobile(songName,lyricsType);
+
+  }
+}
+
+function setLyricsMobile(songName,lyricsType){
+    var client;
+
+
+    var rootPath = "https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-lyrics/master/"
+    var filePath = rootPath + lyricsType + "/" + songName + "-" + lyricsType + ".txt";
+
+    if (window.XMLHttpRequest) {
+        // code for modern browsers
+        client = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        client = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+        client.onreadystatechange = function()
+        {
+            if( client.responseText != '' )
+            {
+                var elementStr = "lyric"+lyricsType+"Area"
+
+                document.getElementById(elementStr).innerHTML = client.responseText.replace(/\n/g, "<br />");
+            }
+        }
+        client.open("GET", filePath, true);
+        client.send();
+}
 
 function changeVisibility(elementName, reverseElement,command){
   if(command == "show"){
@@ -50,5 +88,6 @@ function changeVisibility(elementName, reverseElement,command){
   }
 }
 
-assignLyrics("bokurawaimanonakade");
+assignLyrics("bokuranolivekimitonolife");
+assignLyricsMobile("bokuranolivekimitonolife");
 
