@@ -431,9 +431,9 @@ def songScraping(urlRead):
 
 def main():
 	
-	heavySongScraping(aqoursURL)
+	#heavySongScraping(aqoursURL)
 
-	#songScraping(aqoursURL)
+	songScraping(aqoursURL)
 	#songScraping(aqoursURLSec)
 	
 	#scrapeSongFromFile()
