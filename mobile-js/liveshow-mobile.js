@@ -166,9 +166,6 @@ function playClick()
 		currplayingSong = currSong;
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
-
 		document.getElementById("liveshowAlbum").src =  picPath;
 
 		oggMusic.src = songPath;
@@ -251,8 +248,6 @@ function changeSong()
 		});
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 
 		if(   ((currplayingSong == currSong) && musicPlaying && (prevCategoryID == currcategoryID)) ){
 			// We came back to our original song and music is playing
@@ -303,8 +298,6 @@ function changeSong()
 		});
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-		assignLyricsMobile(random_ar[chosenNum][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 
 		currSong = randSongInt;
 
@@ -349,8 +342,6 @@ function changeSongBack()
 
 
 		document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-		assignLyricsMobile(songlist_ar[currSong][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 
 		
 
@@ -403,8 +394,6 @@ function changeSongBack()
 		});
 
 		document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-		assignLyricsMobile(random_ar[chosenNum][0]);
-		document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 
 		currSong = randSongInt;
 
@@ -467,8 +456,6 @@ function changeSongRandom(){
 	});
 
 	document.getElementById("song-title-tag").innerHTML =  random_ar[chosenNum][0];
-	assignLyricsMobile(random_ar[chosenNum][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = random_ar[chosenNum][0];
 	currSong = randSongInt;
 
 }
@@ -548,8 +535,6 @@ function changeCategory()
 	var picPath = "".concat("./images/album-covers/",subPath, currSong, ".jpg");
 	
 	document.getElementById("song-title-tag").innerHTML =  songlist_ar[currSong][0];
-	assignLyrics(songlist_ar[currSong][0]);
-	document.getElementById("lyricsTitleDiv").innerHTML = songlist_ar[currSong][0];
 	document.getElementById("liveshowAlbum").src =  picPath;
 
 	

@@ -99,20 +99,8 @@
 
 #lyricsManagerBut{
     position: absolute;
-    top: 14%;
-    left: 3%;
-}
-
-#songSearchDiv{
-    position: absolute;
     top: 5%;
-    left:-12%;
-}
-
-#searchSongSubmit{
-    position: absolute;
-    top: 0%;
-    left:75%;
+    left: 3%;
 }
 
 #story_but{
