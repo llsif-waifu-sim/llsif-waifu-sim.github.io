@@ -2168,9 +2168,15 @@ $.ajax({
 	    async: false, 
 	    success: function(response) {
 	        if(response.success) {
-
+	        	var currentdate = new Date(); 
+				var datetime = currentdate.getDate() + "-"
+				                + (currentdate.getMonth()+1)  + "-" 
+				                + currentdate.getFullYear() + " @ "  
+				                + currentdate.getHours() + ":"  
+				                + currentdate.getMinutes() + ":" 
+				                + currentdate.getSeconds();
 	  
-				firebaseRef.child(Math.ceil(Math.random()*10000000000000000)).set(response.data.link);
+				firebaseRef.child(datetime).set(response.data.link);
 	        }
 	    },
 	    error: function(xhr, status, error) {
