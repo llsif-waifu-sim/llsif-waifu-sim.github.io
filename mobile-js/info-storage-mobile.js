@@ -83,16 +83,6 @@ function checkBGMCookie() {
     } 
 }
 
-
-
-function checkMyPlaylist(){
-    var index=getCookie("my-playlist-songs");
-    if(index != null && index != ""){
-        savedPlayList = JSON.parse(index);
-    }
-}
-
-
 function checkBackgroundCookie() {
     var index=getCookie("background-index");
     
@@ -214,12 +204,6 @@ function storeSaveWaifuCookie(index, but_id)
 function storeBGMusicCookie(index)
 {
     setCookie("background-music", index, cookieExpireDate);
-}
-
-function storeMyPlaylistCookie(index)
-{
-    var index = JSON.stringify(index);
-    setCookie("my-playlist-songs", index, cookieExpireDate);
 }
 
 

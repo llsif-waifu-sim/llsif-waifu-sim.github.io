@@ -109,24 +109,6 @@
     left:-12%;
 }
 
-#saveToPlaylistBut{
-    position: absolute;
-    bottom: 5%;
-    right:3%;
-}
-
-#showEnglishSideBySideBut{
-    position: absolute;
-    top: 87px;
-    right:3%;
-}
-
-#liveshowSettingBut{
-    position: absolute;
-    bottom: 5%;
-    left:3%;
-}
-
 #searchSongSubmit{
     position: absolute;
     top: 0%;

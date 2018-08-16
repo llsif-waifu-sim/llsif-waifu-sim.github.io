@@ -6,9 +6,9 @@
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-
+	
 	<script src="mobile-js/redirect-mobile.js"></script>
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -437,72 +437,7 @@
 							</td>
 							
 						</tr>
-						<!--
-						<tr>
-							<td>
-								<center>
-
-									<button id="saveToPlaylistBut" type="button" class="ui-btn ui-btn-inline ui-corner-all"onclick="saveToPlaylist()" style="width:100%"><i class="fa fa-heart fa" aria-hidden="true" style="padding-right:10%"></i><b>Like</b></button>
-								</center>
-							</td>
-						</tr>
-						-->
 					</table>
-				
-						
-					
-					</div>
-					<div id="liveshowSettingDiv" style="display:none;">
-	        			<br><br>
-	        			<center>
-		        		<div class="container">
-		        		  Check the boxes of the song sections you want to be added into shuffle mode.
-		        		  
-		        		  <table style="width:60%;">
-		        		  	<tr>
-		        		  		<td>
-		        		  		<div>
-		        		  			<div class="checkbox">
-								      <input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
-								    </div>
-								    <div class="checkbox">
-								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
-								    </div>
-								    <div class="checkbox">
-								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
-								    </div>
-								   </div>
-								    </div>
-		        		  		</td>
-		        			</tr>
-		        			<tr>
-		        		  		<td>
-		        		  			<div>
-		        		  			<div class="checkbox">
-								      <input type="checkbox" id="AqoursTogetherCheckBox" onchange="getSongSecInRandom('AqoursTogetherCheckBox',3);" checked>Aqours Together
-								    </div>
-								     <div class="checkbox">
-								      <input type="checkbox" id="AqoursSubIdolCheckBox" onchange="getSongSecInRandom('AqoursSubIdolCheckBox',4);" checked>Aqours Sub-Idol
-								    </div>
-								     <div class="checkbox">
-								      <input type="checkbox" id="AqoursOtherCheckBox" onchange="getSongSecInRandom('AqoursOtherCheckBox',5);" checked>Aqours Other
-								    </div>
-								     </div>
-		        		  		</td>
-		        		 	</tr>
-		        			<tr>
-		        		  		<td>
-		        		  			<div>
-		        		  			 <div class="checkbox">
-								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
-								    </div>
-								     </div>
-		        		  		</td>
-		        		  	</tr>
-		        		  </table>
-						</div>
-					</div>
-	        		</center>
 
 
 
@@ -522,91 +457,44 @@
 <!-- Lyrics page -->
 
 <div data-role="page" id="lyricsPage">
-
-<script src="js/list/sideBySideENForbidList.js"></script>
-  <script src="js/lyricsManager.js"></script>
-
   <div data-role="header">
   	<center>
     	<div id="lyricsTitleDiv">Bokura no LIVE Kimi to no LIFE</div>
     </center>
   </div>
 
-
-<center>
-<table style="width:100%;">
-	<tr>
-		<td style="width:50%;">
-			<a href="#pageone" data-rel="close">
-				<button type="button" id="lyricsManagerBut2" class="ui-btn ui-btn-inline ui-corner-al" style="background:#2ECCFA;border-color:#2ECCFA; width:95%;"><font color='white' >Go back to player</font></button>
-			</a>
-		</td>
-		<td style="width:50%;">
-			<button type="button" id="showEnglishSideBySideBut" class="ui-btn ui-btn-inline ui-corner-al" style="background:#2ECCFA;border-color:#2ECCFA; width:95%;" onclick="displaySideBySideEnglish();"><font color='white' >Side-By-Side English</font></button>
-		</td>
-	</tr>
-
-</table>
-
-
-
-</center>
   <div role="main" class="ui-content">
-  <div id="normalLyricDisplayDiv">
-	    <div data-role="tabs">
-	      <div data-role="navbar">
-	        <ul>
-	          <li><a href="#fragment-1" class="ui-btn-active">Kanji</a></li>
-	          <li><a href="#fragment-2">Furigana</a></li>
-	          <li><a href="#fragment-3">Romaji</a></li>
-	          <li><a href="#fragment-4">English</a></li>
-	        </ul>
-	      </div>
-	      <div id="fragment-1">
-	        <div id="lyrickanjiArea" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-2">
 
-	        <div id="lyricfuriganaArea" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-3">
-	        <div id="lyricromajiArea" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-4">
-	        <div id="lyricenglishArea" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	    </div>
-	</div>
-    <div id="sideEnglishLyricDisplayDiv" style="display:none;">
-		<div data-role="tabs">
-	      <div data-role="navbar">
-	        <ul>
-	          <li><a href="#fragment-1EN" class="ui-btn-active">Kanji</a></li>
-	          <li><a href="#fragment-2EN">Furigana</a></li>
-	          <li><a href="#fragment-3EN">Romaji</a></li>
-	          <li><a href="#fragment-4EN">English</a></li>
-	        </ul>
-	      </div>
-	      <div id="fragment-1EN">
-	        <div id="lyrickanjiAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-2EN">
+    <div data-role="tabs">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#fragment-1" class="ui-btn-active">Kanji</a></li>
+          <li><a href="#fragment-2">Furigana</a></li>
+          <li><a href="#fragment-3">Romaji</a></li>
+          <li><a href="#fragment-4">English</a></li>
+        </ul>
+      </div>
+      <div id="fragment-1">
+        <div id="lyrickanjiArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-2">
 
-	        <div id="lyricfuriganaAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-3EN">
-	        <div id="lyricromajiAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	      <div id="fragment-4EN">
-	        <div id="lyricenglishAreaEnglish" style="text-align: center;line-height: 2.5em;"></div>
-	      </div>
-	    </div>
-	   </div>
+        <div id="lyricfuriganaArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-3">
+        <div id="lyricromajiArea" style="text-align: center;"></div>
+      </div>
+      <div id="fragment-4">
+        <div id="lyricenglishArea" style="text-align: center;"></div>
+      </div>
+    </div>
+	
+
 
 	<br>
     <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
   </div>
-  
+  <script src="js/lyricsManager.js"></script>
 </div>
 	
 

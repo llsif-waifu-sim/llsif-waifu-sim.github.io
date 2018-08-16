@@ -1,8 +1,6 @@
 function searchSong(){
   var songSearch = document.getElementById("songSearchBar").value;
   switchToSongByName(songSearch);
-  assignLyrics(songSearch);
-  updatePlaylistBut();
 }
 
 
@@ -109,8 +107,6 @@ input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         var songSearch = document.getElementById("songSearchBar").value;
         switchToSongByName(songSearch);
-        assignLyrics(songSearch);
-        updatePlaylistBut();
     }
 });
 

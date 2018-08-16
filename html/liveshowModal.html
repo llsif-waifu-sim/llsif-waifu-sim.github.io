@@ -13,7 +13,7 @@
 	        	<script src="js/songs/aqoursSub.js"></script>
 	        	<script src="js/songs/aqoursSolo.js"></script>
 	        	<script src="js/songs/otherIdols.js"></script>
-	        	<script src="js/list/sideBySideENForbidList.js"></script>
+
 	        	<script src="js/lyricsManager.js"></script>
 	        	<script src="js/songlist.js"></script>
 	        	<script src="js/liveshow.js"></script>
@@ -34,7 +34,6 @@
 							  <option value="4">Aqours Sub-Idols</option>
 							  <option value="5">Aqours Others</option>
 							  <option value="6">Other Idols</option>
-							  <option value="mySongList">My playlist</option>
 							</select>
 						</div>
 					
@@ -58,13 +57,6 @@
 
 						<button id='lyricsManagerBut' type="button" class="btn btn-primary" onclick="changeVisibility('lyricsDisplay','playerDisplay','show');">View Lyrics</button>
 			
-
-						<button id="saveToPlaylistBut" type="button" class="btn btn-default" onclick="saveToPlaylist()"><span class="glyphicon glyphicon glyphicon-heart"> <font face="verdana" size="3"><b>Like</b></font></button>
-
-
-						<button id="liveshowSettingBut" type="button" class="btn btn-primary btn-lg" onclick="liveshowSettingButClick();"><span class="glyphicon glyphicon glyphicon-wrench"></button>
-
-
 
 		        		<font size="6" style='color:white;'><span id='song-title-tag'>Bokura no LIVE Kimi to no LIFE</span></font>
 		        		<script type="text/javascript" src="js/bootstrap-select.js"></script>
@@ -106,74 +98,19 @@
 						</tr>
 
 	        		</table>     
-
 	        		
-
-	        		<div id="liveshowSettingDiv" style="display:none;">
-	        			<br><br>
-	        			<center>
-		        		<div class="container">
-		        		  Check the boxes of the song sections you want to be added into shuffle mode.
-		        		  
-		        		  <table style="width:60%;">
-		        		  	<tr>
-		        		  		<td>
-		        		  		<div>
-		        		  			<div class="checkbox">
-								      <input type="checkbox" id="MuseTogetherCheckBox" onchange="getSongSecInRandom('MuseTogetherCheckBox',0);" checked value="0">Muse Together
-								    </div>
-								    <div class="checkbox">
-								      <input type="checkbox" id="MuseSubIdolCheckBox" onchange="getSongSecInRandom('MuseSubIdolCheckBox',1);" checked>Muse Sub-Idol
-								    </div>
-								    <div class="checkbox">
-								      <input type="checkbox" id="MuseOtherCheckBox" onchange="getSongSecInRandom('MuseOtherCheckBox',2);" checked>Muse Other
-								    </div>
-								   </div>
-								    </div>
-		        		  		</td>
-		        		
-		        		  		<td>
-		        		  			<div>
-		        		  			<div class="checkbox">
-								      <input type="checkbox" id="AqoursTogetherCheckBox" onchange="getSongSecInRandom('AqoursTogetherCheckBox',3);" checked>Aqours Together
-								    </div>
-								     <div class="checkbox">
-								      <input type="checkbox" id="AqoursSubIdolCheckBox" onchange="getSongSecInRandom('AqoursSubIdolCheckBox',4);" checked>Aqours Sub-Idol
-								    </div>
-								     <div class="checkbox">
-								      <input type="checkbox" id="AqoursOtherCheckBox" onchange="getSongSecInRandom('AqoursOtherCheckBox',5);" checked>Aqours Other
-								    </div>
-								     </div>
-		        		  		</td>
-		        		 
-		        		  		<td>
-		        		  			<div>
-		        		  			 <div class="checkbox">
-								      <input type="checkbox" id="OtherIdolCheckBox" onchange="getSongSecInRandom('OtherIdolCheckBox',6);" checked>Other Idols
-								    </div>
-								     </div>
-		        		  		</td>
-		        		  	</tr>
-		        		  </table>
-						</div>
-					</div>
-	        		</center>
 	        		
-	        	
+	        	</center>
        	
 	        	</div>
-	        	</center>
 	        	<div id="lyricsDisplay" style="visibility:hidden;display:none;">
 	        			<link href="css/autocomplete.css" rel="stylesheet">
-	        			
+	        		
 		        		<div class="container">
-			        		<table style="width:100%;">
+			        		<table style="width:100%">
 			        			<tr>
 			        				<td style="margin-left:5px;">
 			        					<button id='lyricsManagerBut2' type="button" class="btn btn-primary" onclick="changeVisibility('lyricsDisplay','playerDisplay','hide');">Go back to player</button>
-			        				</td>
-			        				<td style="margin-right:5px;">
-			        					<button id="showEnglishSideBySideBut" type="button" class="btn btn-primary" onclick="displaySideBySideEnglish();">Display Side-By-Side English</button>
 			        				</td>
 			        			</tr>
 
@@ -182,10 +119,9 @@
 						  
 
 							  <center>
-							  <div id="normalLyricDisplayDiv">
 								  <ul class="nav nav-pills">
 								    <li class="active"><a href="#1a" data-toggle="tab">Kanji</a></li>
-								    <li><a href="#2a" data-toggle="tab"">Furigana</a></li>
+								    <li><a href="#2a" data-toggle="tab">Furigana</a></li>
 								    <li><a href="#3a" data-toggle="tab">Romaji</a></li>
 								    <li><a href="#4a" data-toggle="tab">English</a></li>
 								  </ul>
@@ -203,40 +139,8 @@
 									<div class="tab-pane" id="4a">
 										<div id="lyricenglishArea"></div>
 									</div>
-									<script src="js/list/sideBySideENForbidList.js"></script>
-									<script src="js/liveshow.js"></script>
 									<script src="js/lyricsManager.js"></script>
-									
 								</div>
-							</div>
-							<div id="sideEnglishLyricDisplayDiv" style="display:none;">
-								  <ul class="nav nav-pills">
-								    <li class="active"><a href="#1aE" data-toggle="tab">Kanji</a></li>
-								    <li><a href="#2aE" data-toggle="tab">Furigana</a></li>
-								    <li><a href="#3aE" data-toggle="tab">Romaji</a></li>
-								    <li><a href="#4aE" data-toggle="tab">English</a></li>
-								  </ul>
-
-								<div class="tab-content clearfix">
-									<div class="tab-pane active" id="1aE">
-										<div id="lyrickanjiAreaEnglish"></div>
-									</div>
-									<div class="tab-pane" id="2aE">
-										<div id="lyricfuriganaAreaEnglish"></div>
-									</div>
-								    	<div class="tab-pane" id="3aE">
-										<div id="lyricromajiAreaEnglish"></div>
-									</div>
-									<div class="tab-pane" id="4aE">
-										<div id="lyricenglishAreaEnglish"></div>
-									</div>
-									<script src="js/list/sideBySideENForbidList.js"></script>
-									<script src="js/liveshow.js"></script>
-									<script src="js/lyricsManager.js"></script>
-
-								</div>
-							</div>
-
 							</center>
 	
 					</div>
