@@ -1285,6 +1285,7 @@ function changeWaifu(name, id){
 		var waifuName = globalWaifu + "/";
 		var file;
 
+
 		if(isOthers(globalWaifu))
 		{
 			mode = 4;

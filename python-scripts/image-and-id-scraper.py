@@ -32,6 +32,9 @@ refNumPath = './text/beginRef.txt'
 begin = 0
 last = 0
 
+name = None
+x_str = None
+
 os.system('mkdir ./tmp/')
 
 for line in open(refNumPath,'r'):
@@ -117,96 +120,102 @@ text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
 
-x = begin
+def scrapeImages(limit=-1):
+	global last, name, x_str
+	x = begin
+	# The ending value should be the last id value + 1
+	#for x in range (begin,last+1):
+	while True:
+	    x_str = str(x)
+	    temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
 
-# The ending value should be the last id value + 1
-#for x in range (begin,last+1):
-while True:
-    x_str = str(x)
-    temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
+	    try:
+		data = json.load(urllib2.urlopen(temp_str))
+		x = x + 1
+	    except:
+		# If we get here, that means the page does not exist
+		# We terminate our search and record the final number that is valid
 
-    try:
-    	data = json.load(urllib2.urlopen(temp_str))
-	x = x + 1
-    except:
-	# If we get here, that means the page does not exist
-	# We terminate our search and record the final number that is valid
+		# Write to a file to record the last valid number
+		refFilePath = open('./text/beginRef.txt','w')	
+		last = x - 1
+		writeNum = str(last)
+		refFilePath.write(writeNum)
+		refFilePath.close()
 
-	# Write to a file to record the last valid number
-	refFilePath = open('./text/beginRef.txt','w')	
-	last = x - 1
-	writeNum = str(last)
-	refFilePath.write(writeNum)
-	refFilePath.close()
+		break
 
-	break
-
-    name = data['idol']['name']
-    
-    img_url = data['transparent_image']
-    img_url_idol = data['transparent_idolized_image']
-
-
-    img_url_card = data['card_image']
-    img_url_card_idol = data['card_idolized_image']
-
-    statusNum = None
-    if img_url == None and img_url_idol == None:
-        statusNum = 0
-    if img_url != None and img_url_idol == None:
-        statusNum = 1
-    if img_url == None and img_url_idol != None:
-        statusNum = 2
-    if img_url != None and img_url_idol != None:
-        statusNum = 3
+	    name = data['idol']['name']
+	    
+	    img_url = data['transparent_image']
+	    img_url_idol = data['transparent_idolized_image']
 
 
-    # Testing in foreign country, this stops working for some reason
-    #urllib.urlretrieve(img_url, path_to_save)
-    #urllib.urlretrieve(img_url_idol, path_to_save_id)
-    #########
+	    img_url_card = data['card_image']
+	    img_url_card_idol = data['card_idolized_image']
 
-    ## Substitution
-    if idol2path(name) != 'none':
-        PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
-        
-    
-    if img_url != None and idol2path(name) != 'none':
-        #print str(x) + ': ' + name
-        
-        text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
-        text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
-        text_file.write(text_to_save)
-
-	if not debugMode:	
-		addToRandFile(x_str,idol2path(name), text_to_save)
-		addToMainFile(x_str,idol2path(name), text_to_save)
-
-		generateCharImg(x_str, idol2path(name), False)
-	
-        print text_to_prnt
-        
-    if img_url_idol != None and idol2path(name) != 'none':
-        
-        text_to_save =  "['" + x_str + "','" + idol2path(name) +"','yes'],\n"
-        text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
-        text_file.write(text_to_save)
-
-	if not debugMode:
-		addToRandFile(x_str,idol2path(name), text_to_save)
-		addToMainFile(x_str,idol2path(name), text_to_save)
-	
-		generateCharImg(x_str, idol2path(name), True)
-
-        print text_to_prnt
-
-    
+	    statusNum = None
+	    if img_url == None and img_url_idol == None:
+		statusNum = 0
+	    if img_url != None and img_url_idol == None:
+		statusNum = 1
+	    if img_url == None and img_url_idol != None:
+		statusNum = 2
+	    if img_url != None and img_url_idol != None:
+		statusNum = 3
 
 
-text_file.write('];\n')
-print '];'
+	    # Testing in foreign country, this stops working for some reason
+	    #urllib.urlretrieve(img_url, path_to_save)
+	    #urllib.urlretrieve(img_url_idol, path_to_save_id)
+	    #########
+
+	    ## Substitution
+	    if idol2path(name) != 'none':
+		PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
+		
+	    
+	    if img_url != None and idol2path(name) != 'none':
+		#print str(x) + ': ' + name
+		
+		text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
+		text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
+		text_file.write(text_to_save)
+
+		if not debugMode:	
+			addToRandFile(x_str,idol2path(name), text_to_save)
+			addToMainFile(x_str,idol2path(name), text_to_save)
+
+			generateCharImg(x_str, idol2path(name), False)
+		
+		print text_to_prnt
+		
+	    if img_url_idol != None and idol2path(name) != 'none':
+		
+		text_to_save =  "['" + x_str + "','" + idol2path(name) +"','yes'],\n"
+		text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
+		text_file.write(text_to_save)
+
+		if not debugMode:
+			addToRandFile(x_str,idol2path(name), text_to_save)
+			addToMainFile(x_str,idol2path(name), text_to_save)
+		
+			generateCharImg(x_str, idol2path(name), True)
+
+		print text_to_prnt
+
+		if limit > 0 and limit+1 == x:
+			last = x
+			print 'Card max limit reached'
+			break
+	    
 
 
+	text_file.write('];\n')
+	print '];'
+
+
+scrapeImages()
 
 
 # Checks to see if there were any updates before git pushing

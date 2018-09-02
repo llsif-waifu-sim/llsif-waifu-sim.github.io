@@ -107,8 +107,6 @@ def addUntransformed(targets):
             if value is None:
                 # If we encounter an mp3 file
 
-                z = 1 + 1
-               
                 for a in td.findAll('a', href=True):
                     downloadPath = prePath + "audio/"+ str(cardID) +'-'+ str(countT) + ".mp3"
                     urllib.urlretrieve(a['href'], downloadPath)
@@ -148,7 +146,6 @@ def extractQuote(begin,last):
     id_index_file = open(prePath + "id-index-slave.txt", "w")
 
     for cardID in range(begin,last+1):
-
         urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
         r = urllib.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
@@ -206,9 +203,9 @@ def extractQuote(begin,last):
 
                 if value is None:
                     # If we encounter an mp3 file
-                    z =  + 1
                 
                     for a in cell.findAll('a', href=True):
+			#print a['href']
                         downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
                         urllib.urlretrieve(a['href'], downloadPath)
 
@@ -216,7 +213,7 @@ def extractQuote(begin,last):
                  
                 else:
                     # If we encounter a Japanese quote
-
+		    #print value
                     # Write Japanese text to file
                     quote_speech_file.write(value.encode('utf8') + '\n')
                     # write reference index to file
