@@ -118,7 +118,11 @@ def addUntransformed(targets):
                 # Write Japanese text to file
                 quote_speech_file.write(value.encode('utf8') + '\n')
                 # write referencfindChildrene index to file
-                id_index_file.write(str(cardID) + '\n')
+
+		###############
+		# TEST: Reenable the line of code below if something goes wrong
+		################
+                #id_index_file.write(str(cardID) + '\n')
                         
                 #print value
                 countT = countT + 1
