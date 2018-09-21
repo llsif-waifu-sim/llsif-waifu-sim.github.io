@@ -2577,4 +2577,10 @@ var id_log =
 ['1715','kanan','yes'],
 ['1716','riko','no'],
 ['1716','riko','yes'],
+['1717','riko','yes'],
+['1718','chika','no'],
+['1718','chika','yes'],
+['1719','ruby','no'],
+['1719','ruby','yes'],
+['1722','ruby','yes'],
 ];
