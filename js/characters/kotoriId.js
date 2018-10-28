@@ -181,4 +181,5 @@ var kotori_ar =
 ['1687','kotori','yes'],
 ['1711','kotori','yes'],
 ['1712','kotori','yes'],
+['1737','kotori','yes'],
 ];

@@ -3,6 +3,7 @@ import urllib
 import os
 import idolName
 
+batchCounter = 0
 
 # Note, DO NOT START AT AT 28, START AT 55
 # The rare cards below 55 will just give you inital selection of the game quote
@@ -86,7 +87,7 @@ def writeQuoteFile(textSave, batchNum):
 	return
 
 
-def addUntransformed(targets):
+def addUntransformed(targets, batchCounter):
     for tdT in targets:
 
         tempTD = tdT.parent
@@ -122,7 +123,8 @@ def addUntransformed(targets):
 		###############
 		# TEST: Reenable the line of code below if something goes wrong
 		################
-                #id_index_file.write(str(cardID) + '\n')
+                id_index_file.write(str(cardID) + '\n')
+		batchCounter += 1
                         
                 #print value
                 countT = countT + 1
@@ -143,6 +145,7 @@ def checkNormal():
 
 
 def extractQuote(begin,last):
+    global batchCounter
     prePath = '../special-quotes/'
     prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
 
@@ -151,9 +154,12 @@ def extractQuote(begin,last):
 
     for cardID in range(begin,last+1):
         urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
+	batchCounter = 0
+
         r = urllib.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
         
+	# I think we can set the counter here
 
         # Find the table containing all information
         body = soup.find('body')
@@ -176,12 +182,13 @@ def extractQuote(begin,last):
 
         # Find the target row (for the quotes)
         rows = targetTable.findAll('tr', {'class': 'centreunit'})
-
+        
         if len(rows) == 1:
             #print '[',cardID,']'
             
             target = body.findAll(text='At any time, when untransformed')
             addUntransformed(target)
+        
         #elif len(rows) > 0:
             #print '[',cardID,']'
 
@@ -189,8 +196,6 @@ def extractQuote(begin,last):
         
         count = 0
 
-	# I think we can set the counter here
-	batchCounter = 0
 
         for row in rows:
             cells = row.findChildren('td')
@@ -227,8 +232,9 @@ def extractQuote(begin,last):
                     print cardID, ','
                     textCount = textCount + 1
 
-		batchCounter = batchCounter + 1
-	writeQuoteFile(str(cardID)+',', int(batchCounter/2))
+		    batchCounter = batchCounter + 1
+	if len(rows) > 0:
+		writeQuoteFile(str(cardID)+',', batchCounter)
 
     quote_speech_file.close()
     id_index_file.close()

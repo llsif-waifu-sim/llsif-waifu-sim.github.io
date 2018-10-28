@@ -97,4 +97,8 @@ var mari_ar =
 ['1691','mari','no'],
 ['1691','mari','yes'],
 ['1701','mari','yes'],
+['1727','mari','no'],
+['1727','mari','yes'],
+['1757','mari','no'],
+['1757','mari','yes'],
 ];

@@ -179,4 +179,7 @@ var nozomi_ar =
 ['1663','nozomi','yes'],
 ['1676','nozomi','no'],
 ['1676','nozomi','yes'],
+['1741','nozomi','yes'],
+['1762','nozomi','no'],
+['1762','nozomi','yes'],
 ];

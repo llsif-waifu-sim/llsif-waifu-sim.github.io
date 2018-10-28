@@ -1,6 +1,7 @@
 var forbiddenSideBySide = [
 "aozorajumpingheart",
 "beginnerssailing",
+"hajimariroad",
 "hopstepwaai",
 "jimoaimantansummerlife",
 "kiminohitomiomegurubouken",
@@ -8,6 +9,7 @@ var forbiddenSideBySide = [
 "koininaritaiaquarium",
 "lonelytuning",
 "manatsuwadarenomono",
+"marineborderparasol",
 "miraclewave",
 "mirainobokurawashitteruyo",
 "natsuenotobiraneverendver",
@@ -23,6 +25,7 @@ var forbiddenSideBySide = [
 "thankyoufriends",
 "thrillingoneway",
 "todokanaihoshidatoshitemo",
+"yosokufukanoudriving",
 "afterschoolnavigators",
 "bokutachiwahitotsunohikari",
 "colorfulvoice",
