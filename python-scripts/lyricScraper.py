@@ -29,8 +29,22 @@ def iterateSongList(urlRead='http://love-live.wikia.com/wiki/Category:Aqours_Son
 	contDiv = soup.find("div",{"class":"mw-content-ltr"})
 	for ulTag in contDiv.findAll("ul"):
 		for liTag in ulTag.findAll("li"):
-			title = liTag.find("a")['title']
+			title = None
+			try:
+			    title = liTag.find("a").find("img")["alt"]
+			    urlRead = rootURL + liTag.find("a")['href']
+		 	except:
+			    pass
+			if title is None:
+			    try:
+			        title = liTag.find("a")['title']
+			    except:
+			        pass
+			if title is None:
+			    continue
+
 			urlRead = rootURL + liTag.find("a")['href']
+			#title = liTag.find("a")['title']
 			scrapeLyrics(title,urlRead)
 			
 			# We count occurrance for lyrics

@@ -7,10 +7,8 @@ import sys
 from PIL import Image
 from io import BytesIO
 from bs4 import BeautifulSoup
-from lyricScraper import scrapeLyrics
 
 import git
-
 
 
 # Editable parameters
@@ -358,7 +356,6 @@ def heavySongScraping(urlRead):
 	# Set encoding to write unicode
         reload(sys)
         sys.setdefaultencoding('utf-8')
-
         recFile = open(recordURL,"a")
 
 
@@ -395,7 +392,7 @@ def songScraping(urlRead):
 
 	soup = BeautifulSoup(r,'lxml')
 
-	divTar = soup.find("div",{"class":"category-gallery"})
+	divTar = soup.find("div",{"class":"category-page__members"})
 
 	# Set encoding to write unicode
 	reload(sys)
@@ -404,12 +401,31 @@ def songScraping(urlRead):
 	recFile = open(recordURL,"a")
 
 
+        	
+	if divTar is None:
+	    print 'Failure in songScraping for: ', urlRead
+	    return()
+
 	os.system('mkdir ' + tmpDir)
 
-	for div in divTar.findAll("div"):
+	for liTag in divTar.findAll("ul"):
+		title = None
+		try:
+                    title = liTag.find("a").find("img")["alt"]
+                    urlRead = rootURL + liTag.find("a")['href']
+                except:
+                    pass
+                if title is None:
+                    try:
+                        title = liTag.find("a")['title']
+                    except:
+                        pass
+                if title is None:
+		    print liTag.find("a")
+                    continue
+
 		print '---------------'
-		songPageURL = rootURL + div.find("a")['href']
-		title = div.find("a")['title']
+		songPageURL = rootURL + liTag.find("a")['href']
 
 		print title
 		
@@ -432,7 +448,6 @@ def songScraping(urlRead):
 def main():
 	
 	#heavySongScraping(aqoursURL)
-
 	songScraping(aqoursURL)
 	songScraping(aqoursURLSec)
 	
