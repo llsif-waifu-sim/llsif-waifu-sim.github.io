@@ -182,4 +182,6 @@ var honoka_ar =
 ['1723','honoka','yes'],
 ['1735','honoka','yes'],
 ['1753','honoka','yes'],
+['1775','honoka','no'],
+['1775','honoka','yes'],
 ];
