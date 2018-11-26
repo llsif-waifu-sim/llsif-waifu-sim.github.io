@@ -31,6 +31,7 @@ gitActive = True
 rootURL = 'http://love-live.wikia.com'
 aqoursURL = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 aqoursURLSec = 'http://love-live.wikia.com/wiki/Category:Discography:Aqours'
+nhsURL = 'http://love-live.wikia.com/wiki/Category:PERFECT_Dream_Project_Songs'
 
 recordURL = '../records/songRecords.txt'
 songListFile = '../records/tempSongList.txt' 
@@ -47,14 +48,13 @@ mp3RootRep = '../../distribution/llsif-waifu-songs-mp3/'
 
 
 
-aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together','other-idols']
+aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together','nhs-individual','nhs-sub-group','nhs-together','other-idols']
 
 subGroupList = ['cyaron','kiss','azalea']
+subGroupNHSList = []
 soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara']	
-'''
-soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara',
-		'uehara','nakasu','osaka','asaka','miyashita','konoe','yuki','verde','tennoji']	
-'''
+soloNHSList = ['uehara','nakasu','osaka','asaka','miyashita','konoe','yuki','verde','tennoji']	
+
 newSongList = []
 problemList = []
 
@@ -90,6 +90,9 @@ def getNewFileSongName(rootPath, extension):
 	rankList = []
 	for files in os.listdir(rootPath + extension):
 		rankList.append(int(files.split(".")[0]))
+	if len(rankList) <= 0:
+	    return 0
+
 	return sorted(rankList)[-1] + 1
 
 def songVisited(title):
@@ -145,7 +148,7 @@ def updateJSSongFile(title,typeValue):
 	elif typeValue == 5:
 		# Aqours others
 		path = '../js/songs/aqoursSolo.js'
-	if typeValue == 6:
+	elif typeValue == 6:
 		# Aqours together
 		path = '../js/songs/nhsTogether.js'
 
@@ -224,31 +227,30 @@ def prepareSong(title,songPageURL,rSoup,recFile):
 		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[0])
 		updateJSSongFile(title,5)
 
-	####
-	elif authorInfo == 'nhs':
+	elif authorInfo == 'club':
 		# Aqours all together
-		groupAssign = 'Aqours Together'
+		groupAssign = 'NHS Together'
 		print groupAssign
-		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[2])
-		updateJSSongFile(title,3)
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[5])
+		updateJSSongFile(title,6)
 
-	elif authorInfo in subGroupList:
-		groupAssign = 'Aqours Sub-Group'
+	elif authorInfo in subGroupNHSList:
+		groupAssign = 'NHS Sub-Group'
 		print groupAssign
-		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[1])
-		updateJSSongFile(title,4)
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[4])
+		updateJSSongFile(title,7)
 
-	elif authorInfo in soloList:
-		groupAssign = 'Aqours Individual'
+	elif authorInfo in soloNHSList:
+
+		groupAssign = 'NHS Individual'
 		print groupAssign
-		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[0])
-		updateJSSongFile(title,5)
-	###
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[3])
+		updateJSSongFile(title,8)
 
 	else:
 		groupAssign = 'Other Idols'
 		print groupAssign
-		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[3])
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[6])
 		updateJSSongFile(title,9)
 
 
@@ -258,6 +260,9 @@ def uploadSong():
 		togetherList = []
 		subUnitList = []
 		soloList = []
+		togetherNHSList = []
+		subUnitNHSList = []
+		soloNHSList = []
 		otherList = []
 
 		print '---------------------------------'
@@ -272,6 +277,12 @@ def uploadSong():
 				subUnitList.append(songs[0])
 			elif songs[1].lower() == 'aqours individual':
 				soloList.append(songs[0])
+			elif songs[1].lower() == 'nhs together':
+				togetherNHSList.append(songs[0])
+			elif songs[1].lower() == 'mhs sub-group':
+				subUnitNHSList.append(songs[0])
+			elif songs[1].lower() == 'nhs individual':
+				soloNHSList.append(songs[0])
 			else:
 				otherList.append(songs[0])
 
@@ -314,6 +325,21 @@ def uploadSong():
 				sys.stdout.write(outStr)
 			sys.stdout.write("to Aqours Sub-Unit, ")
 		if soloList:
+			for song in soloList:
+				outStr = '"' + song + '", '
+				sys.stdout.write(outStr)
+			sys.stdout.write("to NHS Others, ")
+		if togetherNHSList:
+			for song in togetherList:
+				outStr = '"' + song + '", '
+				sys.stdout.write(outStr)
+			sys.stdout.write("to NHS Together, ")
+		if subUnitNHSList:
+			for song in subUnitList:
+				outStr = '"' + song + '", '
+				sys.stdout.write(outStr)
+			sys.stdout.write("to NHS Sub-Unit, ")
+		if soloNHSList:
 			for song in soloList:
 				outStr = '"' + song + '", '
 				sys.stdout.write(outStr)
@@ -484,8 +510,9 @@ def songScraping(urlRead):
 def main():
 	
 	#heavySongScraping(aqoursURL)
-	songScraping(aqoursURL)
-	songScraping(aqoursURLSec)
+	#songScraping(aqoursURL)
+	#songScraping(aqoursURLSec)
+	songScraping(nhsURL)
 	
 	#scrapeSongFromFile()
 

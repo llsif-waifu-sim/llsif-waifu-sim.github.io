@@ -152,6 +152,8 @@ forbidFp.close
 forbidFp = open(fpPath.encode('utf8'),"a")
 ####
 
+#urlRead = 'http://love-live.wikia.com/wiki/Category:PERFECT_Dream_Project_Songs'
+#iterateSongList(urlRead)
 
 urlRead = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 iterateSongList(urlRead)

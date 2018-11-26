@@ -239,6 +239,7 @@ function changeSongMyList(sign){
 		subPath = 'aqours-sub-group/';
 	} else if (folder==5){
 		subPath = 'aqours-individual/';
+
 	} else if (folder==6){
 			subPath = 'other-idols/';
 	} else {
@@ -329,10 +330,31 @@ function switchToPlayListMode(){
 		currcategoryID = 5;
 
 
+
 	} else if (folder==6){
+		subPath = 'nhs-together/';
+		numOfSongs = numOfSongsNHSTogether;
+		currcategoryID = 6;
+
+
+	} else if (folder==7){
+		subPath = 'nhs-sub-group/';
+		numOfSongs = numOfSongsNHSSub;
+		currcategoryID = 7;
+
+
+	} else if (folder==8){
+		subPath = 'nhs-individual/';
+		numOfSongs = numOfSongsNHSOthers;
+
+		currcategoryID = 8;
+
+
+
+	} else if (folder==9){
 		subPath = 'other-idols/';
 		numOfSongs = numOfSongsIdolsOthers;
-		currcategoryID = 6;
+		currcategoryID = 9;
 
 
 	} else {
@@ -651,6 +673,12 @@ function changeSong()
 		} else if (folder==5){
 			subPath = 'aqours-individual/';
 		} else if (folder==6){
+			subPath = 'nhs-together/';
+		} else if (folder==7){
+			subPath = 'nhs-sub-group/';
+		} else if (folder==8){
+			subPath = 'nhs-individual/';
+		} else if (folder==9){
 			subPath = 'other-idols/';
 		} else {
 			alert('Something bad happened in changeSong()');
@@ -784,7 +812,19 @@ function changeSongBack()
 			subPath = 'aqours-sub-group/';
 		} else if (folder==5){
 			subPath = 'aqours-individual/';
+
+
+
 		} else if (folder==6){
+			subPath = 'nhs-together/';
+		} else if (folder==7){
+			subPath = 'nhs-sub-group/';
+		} else if (folder==8){
+			subPath = 'nhs-individual/';
+
+
+
+		} else if (folder==9){
 			subPath = 'other-idols/';
 		} else {
 			alert('Something bad happened in changeSongBack()');
@@ -854,8 +894,22 @@ function changeSongRandom(){
 		subPath = 'aqours-sub-group/';
 	} else if (folder==5){
 		subPath = 'aqours-individual/';
+
+
 	} else if (folder==6){
+		subPath = 'nhs-together/';
+	} else if (folder==7){
+		subPath = 'nhs-sub-group/';
+	} else if (folder==8){
+		subPath = 'nhs-individual/';
+
+
+
+	} else if (folder==9){
 			subPath = 'other-idols/';
+
+
+
 	} else if(folder == 7){
 			alert('Please still work on this');
 	} else {
@@ -932,13 +986,40 @@ function changeCategory()
 		songlist_ar = aqours_others_ar;
 
 		currcategoryID = 5;
+
+	////////////////////////////	
 	}else if (categoryID == 6){
+		// Aqours all together
+		numOfSongs = numOfSongsNHSTogether;
+		subPath = 'nhs-together/';
+		songlist_ar = nhs_together;
+
+		currcategoryID = 6;
+	}else if (categoryID == 7){
+		// Aqours all together
+		numOfSongs = numOfSongsNHSSub;
+		subPath = 'nhs-sub-group/';
+		songlist_ar = nhs_subgroup_ar;
+
+		currcategoryID = 7;
+	}else if (categoryID == 8){
+		// Aqours all together
+		numOfSongs = numOfSongsNHSOthers;
+		subPath = 'nhs-individual/';
+		songlist_ar = nhs_others_ar;
+
+		currcategoryID = 8;
+	////////////////////////////
+
+
+
+	}else if (categoryID == 9){
 		// Aqours all together
 		numOfSongs = numOfSongsIdolsOthers;
 		subPath = 'other-idols/';
 		songlist_ar = idol_others_ar;
 
-		currcategoryID = 6;
+		currcategoryID = 9;
 	}else if (categoryID == "mySongList"){
 		if(random_mode == true){
 			// So that we can traverse through My Playlist properly
@@ -1205,7 +1286,20 @@ function generate_random_ar(){
 	if(!isInRemoveSecList("AqoursOther")){
 		temp0 = temp0.concat(aqours_others_ar);
 	}
-	
+
+    /*
+	if(!isInRemoveSecList("NHSTogether")){
+		temp0 = temp0.concat(nhs_together);
+	}
+
+	if(!isInRemoveSecList("AqoursSubIdol")){
+		temp0 = temp0.concat(nhs_subgroup_ar);
+	}
+
+	if(!isInRemoveSecList("NHSOther")){
+		temp0 = temp0.concat(nhs_others_ar);
+	}
+	*/
 	if(!isInRemoveSecList("Other")){
 		temp0 = temp0.concat(idol_others_ar);
 	}
