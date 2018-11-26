@@ -145,7 +145,18 @@ def updateJSSongFile(title,typeValue):
 	elif typeValue == 5:
 		# Aqours others
 		path = '../js/songs/aqoursSolo.js'
-	elif typeValue == 6:
+	if typeValue == 6:
+		# Aqours together
+		path = '../js/songs/nhsTogether.js'
+
+	elif typeValue == 7:
+		# Aqours sub-unit
+		path = '../js/songs/nhsSub.js'
+	elif typeValue == 8:
+		# Aqours others
+		path = '../js/songs/nhsSolo.js'
+
+	elif typeValue == 9:
 		# Other units
 		path ='../js/songs/otherIdols.js'
 	else:
@@ -212,11 +223,33 @@ def prepareSong(title,songPageURL,rSoup,recFile):
 		print groupAssign
 		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[0])
 		updateJSSongFile(title,5)
+
+	####
+	elif authorInfo == 'nhs':
+		# Aqours all together
+		groupAssign = 'Aqours Together'
+		print groupAssign
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[2])
+		updateJSSongFile(title,3)
+
+	elif authorInfo in subGroupList:
+		groupAssign = 'Aqours Sub-Group'
+		print groupAssign
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[1])
+		updateJSSongFile(title,4)
+
+	elif authorInfo in soloList:
+		groupAssign = 'Aqours Individual'
+		print groupAssign
+		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[0])
+		updateJSSongFile(title,5)
+	###
+
 	else:
 		groupAssign = 'Other Idols'
 		print groupAssign
 		saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[3])
-		updateJSSongFile(title,6)
+		updateJSSongFile(title,9)
 
 
 def uploadSong():
