@@ -20,4 +20,6 @@ var aqours_others_ar =
 ['Beginner\'s Sailing',5],
 ['New winding road',5],
 ['Sakana ka Nanda ka?',5],
+['Hajimari Road',5],
+['Yosoku Fukanou Driving!',5],
 ];

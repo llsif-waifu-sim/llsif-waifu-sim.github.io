@@ -51,7 +51,10 @@ aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together',
 
 subGroupList = ['cyaron','kiss','azalea']
 soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara']	
-
+'''
+soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara',
+		'uehara','nakasu','osaka','asaka','miyashita','konoe','yuki','verde','tennoji']	
+'''
 newSongList = []
 problemList = []
 
