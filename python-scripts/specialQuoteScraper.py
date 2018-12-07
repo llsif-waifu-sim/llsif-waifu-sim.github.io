@@ -187,7 +187,7 @@ def extractQuote(begin,last):
             #print '[',cardID,']'
             
             target = body.findAll(text='At any time, when untransformed')
-            addUntransformed(target)
+            addUntransformed(target, batchCounter)
         
         #elif len(rows) > 0:
             #print '[',cardID,']'

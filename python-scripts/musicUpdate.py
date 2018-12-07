@@ -510,8 +510,8 @@ def songScraping(urlRead):
 def main():
 	
 	#heavySongScraping(aqoursURL)
-	#songScraping(aqoursURL)
-	#songScraping(aqoursURLSec)
+	songScraping(aqoursURL)
+	songScraping(aqoursURLSec)
 	songScraping(nhsURL)
 	
 	#scrapeSongFromFile()
