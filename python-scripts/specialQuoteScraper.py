@@ -45,7 +45,7 @@ def existInQuoteFile(filePath,textSave):
 	textSaveCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
 
 	# Only check the first few entries
-	for line in os.popen('tail -n 25 ' + filePath).readlines():
+	for line in os.popen('tail -n 600 ' + filePath).readlines():
 		lineCmp = ''.join([i for i in line if i.isalpha() or i.isdigit()])
  		
 		if textSaveCmp == lineCmp:
