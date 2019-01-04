@@ -13,6 +13,8 @@ import git
 
 # Editable parameters
 
+concatSongPath = 'allSongs.js'
+
 # Want to debug
 '''
 debugMode = True
@@ -495,13 +497,22 @@ def songScraping(urlRead):
 
 	uploadSong()
 
+def concatSongFile(outputPath):
+	path = '../js/songs/'
+
+	cmdStr = 'cat ' + path + '* > ' + path + outputPath
+
+
+	os.system(cmdStr)
+
+	print 'Concatenated song files'
+
 def main():
 	
-	#heavySongScraping(aqoursURL)
 	songScraping(aqoursURL)
-	songScraping(aqoursURLSec)
 	songScraping(nhsURL)
 	
+	concatSongFile(concatSongPath)
 	#scrapeSongFromFile()
 
 if __name__ == "__main__":

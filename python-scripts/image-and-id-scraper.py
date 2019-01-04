@@ -23,6 +23,8 @@ debugMode = False
 gitActive = True
 
 
+idolDirectory = 'allIdols.js'
+
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'
 speQuoteDir = '../../distribution/llsif-waifu-special-quotes/'
@@ -119,6 +121,16 @@ def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, stat
 text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
 print '['
+
+def concatIdols(outputPath):
+	path = '../js/characters/'
+
+	cmdStr = 'cat ' + path + '* > ' + path + outputPath
+
+        os.system(cmdStr)
+
+        print 'Concatenated character files'
+
 
 def scrapeImages(limit=-1):
 	global last, name, x_str
@@ -239,6 +251,9 @@ if begin != last:
 		gitCommit(girlImageDir,'Girl Images',strGit)
 		gitCommit(speQuoteDir,'Audio Quotes',strGit)
 
+
+	concatIdols(idolDirectory) 
+
 	fbMessage = strGit + "\n\n Come check it out here!\n https://llsif-waifu-sim.github.io"
 
 	while True:
@@ -258,4 +273,4 @@ else:
 	print 'There are no current updates'
 	print '\n\n\n'
 
-    
+

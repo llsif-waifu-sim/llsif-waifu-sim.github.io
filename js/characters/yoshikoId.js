@@ -108,4 +108,7 @@ var yoshiko_ar =
 ['1806','yoshiko','yes'],
 ['1818','yoshiko','yes'],
 ['1822','yoshiko','yes'],
+['1845','yoshiko','no'],
+['1845','yoshiko','yes'],
+['1851','yoshiko','yes'],
 ];
