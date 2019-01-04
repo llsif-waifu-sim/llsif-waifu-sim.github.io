@@ -471,34 +471,22 @@ def songScraping(urlRead):
 	os.system('mkdir ' + tmpDir)
 
 	for liTag in divTar.findAll("ul"):
-		title = None
-		try:
-                    title = liTag.find("a").find("img")["alt"]
-                    urlRead = rootURL + liTag.find("a")['href']
-                except:
-                    pass
-                if title is None:
-                    try:
-                        title = liTag.find("a")['title']
-                    except:
-                        pass
-                if title is None:
-		    print liTag.find("a")
-                    continue
+		for aTag in liTag.findAll("a"):
+			print '---------------'
 
-		print '---------------'
-		songPageURL = rootURL + liTag.find("a")['href']
+			title = aTag['title']
+			songPageURL = rootURL + aTag['href']
 
-		print title
-		
-		
-		# Now we are going to inspect the link of the song
-		#rSong = urllib.urlopen(songPageURL).read()
-		rSong = requests.get(songPageURL).content
-		rSoup = BeautifulSoup(rSong,'lxml')
-		#imgURL = rSoup.find("meta",{"property":"og:image"})['content']
+	
+			print title
+			
+			# Now we are going to inspect the link of the song
+			#rSong = urllib.urlopen(songPageURL).read()
+			rSong = requests.get(songPageURL).content
+			rSoup = BeautifulSoup(rSong,'lxml')
+			#imgURL = rSoup.find("meta",{"property":"og:image"})['content']
 
-		prepareSong(title,songPageURL,rSoup,recFile)
+			prepareSong(title,songPageURL,rSoup,recFile)
 
 	recFile.close()
 	os.system('rm -rf ' + tmpDir)

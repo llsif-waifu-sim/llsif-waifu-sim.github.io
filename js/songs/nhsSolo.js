@@ -9,4 +9,5 @@ var nhs_others_ar =
 ['Nemureru Mori ni Ikitai na',8],
 ['Starlight',8],
 ['Yume e no Ippo',8],
+['Doki Pipo ☆ Emotion',8],
 ];

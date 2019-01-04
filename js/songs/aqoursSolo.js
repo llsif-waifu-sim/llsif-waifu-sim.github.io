@@ -22,4 +22,5 @@ var aqours_others_ar =
 ['Sakana ka Nanda ka?',5],
 ['Hajimari Road',5],
 ['Yosoku Fukanou Driving!',5],
+['Marine Border Parasol',5],
 ];
