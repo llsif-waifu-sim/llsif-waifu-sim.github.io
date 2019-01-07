@@ -226,6 +226,7 @@ var dia_ar =
 ['1842','dia','yes'],
 ['1849','dia','yes'],
 ['1855','dia','yes'],
+['1861','dia','yes'],
 ];
 var eli_ar = 
 [
@@ -1086,6 +1087,7 @@ var kanan_ar =
 ['1832','kanan','no'],
 ['1832','kanan','yes'],
 ['1848','kanan','yes'],
+['1860','kanan','yes'],
 ];
 var kotori_ar = 
 [
@@ -1275,6 +1277,8 @@ var kotori_ar =
 ['1802','kotori','yes'],
 ['1827','kotori','no'],
 ['1827','kotori','yes'],
+['1856','kotori','no'],
+['1856','kotori','yes'],
 ];
 var maki_ar = 
 [
@@ -1550,7 +1554,6 @@ var mari_ar =
 ['1602','mari','yes'],
 ['1627','mari','yes'],
 ['1645','mari','no'],
-
 ['1645','mari','yes'],
 ['1673','mari','yes'],
 ['1682','mari','no'],
@@ -1571,6 +1574,7 @@ var mari_ar =
 ['1831','mari','no'],
 ['1831','mari','yes'],
 ['1853','mari','yes'],
+['1862','mari','yes'],
 ];
 var nico_ar = 
 [
@@ -1755,6 +1759,8 @@ var nico_ar =
 ['1743','nico','yes'],
 ['1803','nico','no'],
 ['1803','nico','yes'],
+['1857','nico','no'],
+['1857','nico','yes'],
 ];
 var nozomi_ar = 
 [

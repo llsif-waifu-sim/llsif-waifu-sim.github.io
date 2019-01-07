@@ -3514,4 +3514,11 @@ var id_log =
 ['1853','mari','yes'],
 ['1854','ruby','yes'],
 ['1855','dia','yes'],
+['1856','kotori','no'],
+['1856','kotori','yes'],
+['1857','nico','no'],
+['1857','nico','yes'],
+['1860','kanan','yes'],
+['1861','dia','yes'],
+['1862','mari','yes'],
 ];
