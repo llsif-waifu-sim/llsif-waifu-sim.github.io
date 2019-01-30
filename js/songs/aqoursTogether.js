@@ -37,4 +37,5 @@ var aqours_together =
 ['No.10',3],
 ['Bokura no Hashittekita Michi wa…',3],
 ['Next SPARKLING!!',3],
+['Hop? Stop? Nonstop!',3],
 ];
