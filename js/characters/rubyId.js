@@ -117,4 +117,7 @@ var ruby_ar =
 ['1854','ruby','yes'],
 ['1873','ruby','no'],
 ['1873','ruby','yes'],
+['1892','ruby','yes'],
+['1898','ruby','no'],
+['1898','ruby','yes'],
 ];

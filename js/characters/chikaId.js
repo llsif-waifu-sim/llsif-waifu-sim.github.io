@@ -114,4 +114,5 @@ var chika_ar =
 ['1865','chika','yes'],
 ['1874','chika','no'],
 ['1874','chika','yes'],
+['1884','chika','yes'],
 ];

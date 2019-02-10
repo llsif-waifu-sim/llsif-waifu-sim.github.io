@@ -38,4 +38,6 @@ var aqours_together =
 ['Bokura no Hashittekita Michi wa…',3],
 ['Next SPARKLING!!',3],
 ['Hop? Stop? Nonstop!',3],
+['Brightest Melody',3],
+['Tousou Meisou Mobius Loop',3],
 ];

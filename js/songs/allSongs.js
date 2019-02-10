@@ -85,6 +85,8 @@ var aqours_together =
 ['Bokura no Hashittekita Michi wa…',3],
 ['Next SPARKLING!!',3],
 ['Hop? Stop? Nonstop!',3],
+['Brightest Melody',3],
+['Tousou Meisou Mobius Loop',3],
 ];
 var nhs_others_ar = 
 [
@@ -113,4 +115,5 @@ var idol_others_ar =
 ['SELF CONTROL!!', 9],
 ['CRASH MIND',9],
 ['DROPOUT!?',9],
+['Over The Next Rainbow',9],
 ];
