@@ -116,4 +116,5 @@ var idol_others_ar =
 ['CRASH MIND',9],
 ['DROPOUT!?',9],
 ['Over The Next Rainbow',9],
+['Believe again',9],
 ];

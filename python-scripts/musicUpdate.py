@@ -34,6 +34,7 @@ rootURL = 'http://love-live.wikia.com'
 aqoursURL = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 aqoursURLSec = 'http://love-live.wikia.com/wiki/Category:Discography:Aqours'
 nhsURL = 'http://love-live.wikia.com/wiki/Category:PERFECT_Dream_Project_Songs'
+saintSnowURL = 'https://love-live.fandom.com/wiki/Category:Saint_Snow_Songs'
 
 recordURL = '../records/songRecords.txt'
 songListFile = '../records/tempSongList.txt' 
@@ -511,7 +512,7 @@ def main():
 	
 	songScraping(aqoursURL)
 	songScraping(nhsURL)
-	
+	songScraping(saintSnowURL)
 	concatSongFile(concatSongPath)
 	#scrapeSongFromFile()
 
