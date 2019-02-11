@@ -2,8 +2,9 @@ import facebook
 from PIL import Image
 import os
 import random
+'''
 from fbToken import token # This contains your key to make publications
-
+'''
 # fbToken usecase:
 # token = 'LONG STRING CONTAINING YOUR KEY'
 
@@ -13,7 +14,7 @@ imgGenLoc = './tmp/'
 backgroundForbid = [10,16,18,19,116]
 
 def postToFB(msg):
-
+        token = ""
         while True:
                 try:    
                         fb = facebook.GraphAPI(access_token=token)
@@ -36,7 +37,7 @@ def postToFB(msg):
                         print('Something went wrong while uploading to Facebook. Maybe your token has expired?')
                         print('If so, try getting a new one here: https://developers.facebook.com/tools/explorer')
                         print('Paste your new token here:')
-                        token = raw_input()
+                        token = input()
                         print('\n\n Attempting to republish FB post. . .')              
 
 def resizeImg(img,baseHeight):
@@ -87,5 +88,6 @@ def generateNewSet(begin, last):
 
         # If so, then generate character image
         generateCharImg(x_str, name, idolized)
+        print(groupAssign)
 
 
