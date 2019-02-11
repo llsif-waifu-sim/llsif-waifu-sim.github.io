@@ -1,6 +1,6 @@
 import json
 import urllib
-import urllib2
+#import urllib2
 from specialQuoteScraper import extractQuote
 from idolName import idol2path
 from randomArrAssign import addToRandFile, addToMainFile
@@ -40,33 +40,33 @@ x_str = None
 os.system('mkdir ./tmp/')
 
 for line in open(refNumPath,'r'):
-	begin = int(line)
+        begin = int(line)
 
 
 def gitCommit(rootRep,passStr,strGit):
-        print '\n\n\n'
+        print('\n\n\n')
         repo = git.Repo(rootRep)
-        print repo.git.status()
-        print 'Adding files. . .'
-        print repo.git.add('.')
+        print(repo.git.status())
+        print('Adding files. . .')
+        print(repo.git.add('.'))
 
-        print 'Commiting. . .'
+        print('Commiting. . .')
         # Allows if ahead by one commit 
         try:
-                print repo.git.commit(m=strGit)
+                print(repo.git.commit(m=strGit))
         except:
                 repo.git.reset('--soft','origin/master')
                 repo.git.push('-f','origin')
                 repo.git.add('.')
-                print repo.git.commit(m=strGit)
+                print(repo.git.commit(m=strGit))
 
-        print repo.git.status()
+        print(repo.git.status())
 
-	print 'Pushing. . .'
+        print('Pushing. . .')
         # Asks us again if we get username or password incorrect
 
-        print repo.git.push()
-        print '\n\n\n =============== '+ passStr +' push was successful!  =============== \n\n\n'
+        print(repo.git.push())
+        print('\n\n\n =============== ', passStr ,' push was successful!  =============== \n\n\n')
 
 
 def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum):
@@ -120,111 +120,111 @@ def PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, stat
 
 text_file = open("../records/id-list.txt", "w")
 text_file.write('[\n')
-print '['
+print('[')
 
 def concatIdols(outputPath):
-	path = '../js/characters/'
+        path = '../js/characters/'
 
-	cmdStr = 'cat ' + path + '* > ' + path + outputPath
+        cmdStr = 'cat ' + path + '* > ' + path + outputPath
 
         os.system(cmdStr)
 
-        print 'Concatenated character files'
+        print('Concatenated character files')
 
 
 def scrapeImages(limit=-1):
-	global last, name, x_str
-	x = begin
-	# The ending value should be the last id value + 1
-	#for x in range (begin,last+1):
-	while True:
-	    x_str = str(x)
-	    temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
+        global last, name, x_str
+        x = begin
+        # The ending value should be the last id value + 1
+        #for x in range (begin,last+1):
+        while True:
+            x_str = str(x)
+            temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
 
-	    try:
-		data = json.load(urllib2.urlopen(temp_str))
-		x = x + 1
-	    except:
-		# If we get here, that means the page does not exist
-		# We terminate our search and record the final number that is valid
+            try:
+                data = json.load(urllib2.urlopen(temp_str))
+                x = x + 1
+            except:
+                # If we get here, that means the page does not exist
+                # We terminate our search and record the final number that is valid
 
-		# Write to a file to record the last valid number
-		refFilePath = open('./text/beginRef.txt','w')	
-		last = x - 1
-		writeNum = str(last)
-		refFilePath.write(writeNum)
-		refFilePath.close()
+                # Write to a file to record the last valid number
+                refFilePath = open('./text/beginRef.txt','w')   
+                last = x - 1
+                writeNum = str(last)
+                refFilePath.write(writeNum)
+                refFilePath.close()
 
-		break
+                break
 
-	    name = data['idol']['name']
-	    
-	    img_url = data['transparent_image']
-	    img_url_idol = data['transparent_idolized_image']
-
-
-	    img_url_card = data['card_image']
-	    img_url_card_idol = data['card_idolized_image']
-
-	    statusNum = None
-	    if img_url == None and img_url_idol == None:
-		statusNum = 0
-	    if img_url != None and img_url_idol == None:
-		statusNum = 1
-	    if img_url == None and img_url_idol != None:
-		statusNum = 2
-	    if img_url != None and img_url_idol != None:
-		statusNum = 3
+            name = data['idol']['name']
+            
+            img_url = data['transparent_image']
+            img_url_idol = data['transparent_idolized_image']
 
 
-	    # Testing in foreign country, this stops working for some reason
-	    #urllib.urlretrieve(img_url, path_to_save)
-	    #urllib.urlretrieve(img_url_idol, path_to_save_id)
-	    #########
+            img_url_card = data['card_image']
+            img_url_card_idol = data['card_idolized_image']
 
-	    ## Substitution
-	    if idol2path(name) != 'none':
-		PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
-		
-	    
-	    if img_url != None and idol2path(name) != 'none':
-		#print str(x) + ': ' + name
-		
-		text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
-		text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
-		text_file.write(text_to_save)
-
-		if not debugMode:	
-			addToRandFile(x_str,idol2path(name), text_to_save)
-			addToMainFile(x_str,idol2path(name), text_to_save)
-
-			generateCharImg(x_str, idol2path(name), False)
-		
-		print text_to_prnt
-		
-	    if img_url_idol != None and idol2path(name) != 'none':
-		
-		text_to_save =  "['" + x_str + "','" + idol2path(name) +"','yes'],\n"
-		text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
-		text_file.write(text_to_save)
-
-		if not debugMode:
-			addToRandFile(x_str,idol2path(name), text_to_save)
-			addToMainFile(x_str,idol2path(name), text_to_save)
-		
-			generateCharImg(x_str, idol2path(name), True)
-
-		print text_to_prnt
-
-		if limit > 0 and limit+1 == x:
-			last = x
-			print 'Card max limit reached'
-			break
-	    
+            statusNum = None
+            if img_url == None and img_url_idol == None:
+                statusNum = 0
+            if img_url != None and img_url_idol == None:
+                statusNum = 1
+            if img_url == None and img_url_idol != None:
+                statusNum = 2
+            if img_url != None and img_url_idol != None:
+                statusNum = 3
 
 
-	text_file.write('];\n')
-	print '];'
+            # Testing in foreign country, this stops working for some reason
+            #urllib.urlretrieve(img_url, path_to_save)
+            #urllib.urlretrieve(img_url_idol, path_to_save_id)
+            #########
+
+            ## Substitution
+            if idol2path(name) != 'none':
+                PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
+                
+            
+            if img_url != None and idol2path(name) != 'none':
+                #print str(x) + ': ' + name
+                
+                text_to_save =  "['" + x_str + "','" + idol2path(name) +"','no'],\n"
+                text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','no'],"
+                text_file.write(text_to_save)
+
+                if not debugMode:       
+                        addToRandFile(x_str,idol2path(name), text_to_save)
+                        addToMainFile(x_str,idol2path(name), text_to_save)
+
+                        generateCharImg(x_str, idol2path(name), False)
+                
+                print(text_to_prnt)
+                
+            if img_url_idol != None and idol2path(name) != 'none':
+                
+                text_to_save =  "['" + x_str + "','" + idol2path(name) +"','yes'],\n"
+                text_to_prnt =  "['" + x_str + "','" + idol2path(name) +"','yes'],"
+                text_file.write(text_to_save)
+
+                if not debugMode:
+                        addToRandFile(x_str,idol2path(name), text_to_save)
+                        addToMainFile(x_str,idol2path(name), text_to_save)
+                
+                        generateCharImg(x_str, idol2path(name), True)
+
+                print(text_to_prnt)
+
+                if limit > 0 and limit+1 == x:
+                        last = x
+                        print('Card max limit reached')
+                        break
+            
+
+
+        text_file.write('];\n')
+        print('];')
 
 
 scrapeImages()
@@ -232,45 +232,45 @@ scrapeImages()
 
 # Checks to see if there were any updates before git pushing
 if begin != last:
-	print 'last: ',last
-	if not debugMode:
-		extractQuote(begin,last)
+        print('last: ',last)
+        if not debugMode:
+                extractQuote(begin,last)
 
-	text_file.close()   
+        text_file.close()   
  
 
   
-	strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
+        strGit = 'Added idols up from id ' + str(begin) + ' to ' + str(last)   
 
-	print '\n\n\n'
-	print 'Git message: ', strGit
-	print '\n\n\n'
+        print('\n\n\n')
+        print('Git message: ', strGit)
+        print('\n\n\n')
 
-	if gitActive:
-		gitCommit(cardPicDir,'Card Images',strGit)
-		gitCommit(girlImageDir,'Girl Images',strGit)
-		gitCommit(speQuoteDir,'Audio Quotes',strGit)
+        if gitActive:
+                gitCommit(cardPicDir,'Card Images',strGit)
+                gitCommit(girlImageDir,'Girl Images',strGit)
+                gitCommit(speQuoteDir,'Audio Quotes',strGit)
 
 
-	concatIdols(idolDirectory) 
+        concatIdols(idolDirectory) 
 
-	fbMessage = strGit + "\n\n Come check it out here!\n https://llsif-waifu-sim.github.io"
+        fbMessage = strGit + "\n\n Come check it out here!\n https://llsif-waifu-sim.github.io"
 
-	while True:
-		print 'Press [y] to upload to Facebook or [n]:'
-		res = raw_input().lower()
-	
-		if res == 'y' or res == 'n':
-			if res == 'y':
-				postToFB(fbMessage)
-				print '\n\n Uploaded images to Facebook \n\n'
-				os.system('rm -rf ./tmp')
-			
-			break
+        while True:
+                print('Press [y] to upload to Facebook or [n]:')
+                res = raw_input().lower()
+        
+                if res == 'y' or res == 'n':
+                        if res == 'y':
+                                postToFB(fbMessage)
+                                print('\n\n Uploaded images to Facebook \n\n')
+                                os.system('rm -rf ./tmp')
+                        
+                        break
 
 else:
-	print '\n\n\n'
-	print 'There are no current updates'
-	print '\n\n\n'
+        print('\n\n\n')
+        print('There are no current updates')
+        print('\n\n\n')
 
 

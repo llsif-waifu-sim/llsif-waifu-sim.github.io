@@ -9,82 +9,82 @@ batchCounter = 0
 # The rare cards below 55 will just give you inital selection of the game quote
 
 def writeTextQuoteFile():
-	# Write Japanese quotes to text file
-	
-	quSlFilePath = '../special-quotes/quote-speech-slave.txt'
-	destFilePath = '../special-quotes/speech.txt'
-	destEnFilePath = '../special-quotes/speech-en.txt'
+        # Write Japanese quotes to text file
+        
+        quSlFilePath = '../special-quotes/quote-speech-slave.txt'
+        destFilePath = '../special-quotes/speech.txt'
+        destEnFilePath = '../special-quotes/speech-en.txt'
 
-	# First, we read speechtxt and copy last line
-	
-	refLine = ''
+        # First, we read speechtxt and copy last line
+        
+        refLine = ''
 
-	for line in os.popen('tail -n 1 ' + destFilePath).readlines():
-		refLine = line
+        for line in os.popen('tail -n 1 ' + destFilePath).readlines():
+                refLine = line
 
 
-	# We take that line, find it in quote-speech-slave.txt, and append the rest to speech.txt
-	appendMode = False
-	for copyLine in open(quSlFilePath,'r'):
-		if appendMode:
-			# Open speech.txt and append the text to that
-			with open(destFilePath,'a') as speechFile:
-				speechFile.write(copyLine)
-			
-			with open(destEnFilePath,'a') as speechFile:
-				speechFile.write(copyLine)
+        # We take that line, find it in quote-speech-slave.txt, and append the rest to speech.txt
+        appendMode = False
+        for copyLine in open(quSlFilePath,'r'):
+                if appendMode:
+                        # Open speech.txt and append the text to that
+                        with open(destFilePath,'a') as speechFile:
+                                speechFile.write(copyLine)
+                        
+                        with open(destEnFilePath,'a') as speechFile:
+                                speechFile.write(copyLine)
 
-		elif copyLine == refLine:
-			# Then we start appending 
-			appendMode = True
-	return
+                elif copyLine == refLine:
+                        # Then we start appending 
+                        appendMode = True
+        return
 
 
 def existInQuoteFile(filePath,textSave):
-	# Checks to see if an entry exists in the Rand array or not
-	textSaveCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
+        # Checks to see if an entry exists in the Rand array or not
+        textSaveCmp = ''.join([i for i in textSave if i.isalpha() or i.isdigit()])
 
-	# Only check the first few entries
-	for line in os.popen('tail -n 600 ' + filePath).readlines():
-		lineCmp = ''.join([i for i in line if i.isalpha() or i.isdigit()])
- 		
-		if textSaveCmp == lineCmp:
-			return True		
+        # Only check the first few entries
+        for line in os.popen('tail -n 600 ' + filePath).readlines():
+                lineCmp = ''.join([i for i in line if i.isalpha() or i.isdigit()])
+                
+                if textSaveCmp == lineCmp:
+                        return True             
 
-	return False
+        return False
 
 def writeQuoteFile(textSave, batchNum):
-	# NOTE: we should add entry by batches
-	#print 'Main count: ', batchNum
+        # NOTE: we should add entry by batches
+        #print 'Main count: ', batchNum
 
-	# Adds entry to quote id array
-	filePath = '../js/quote-id-list.js'
+        # Adds entry to quote id array
+        filePath = '../js/quote-id-list.js'
 
-	# Skip if the entry is already in the file
-	if existInQuoteFile(filePath, textSave):
-		return
-	
-	# Otherwise, add the entry
-	with open(filePath) as rdTmpFile:
-		fileData = rdTmpFile.read()
+        # Skip if the entry is already in the file
+        if existInQuoteFile(filePath, textSave):
+                return
+        
+        # Otherwise, add the entry
+        with open(filePath) as rdTmpFile:
+                fileData = rdTmpFile.read()
 
-	endMark = '];\n'
-	fileData = fileData.replace(endMark,textSave+'\n')
+        endMark = '];\n'
+        fileData = fileData.replace(endMark,textSave+'\n')
 
-	with open(filePath,'w') as wTmpFile:
-		wTmpFile.write(fileData)
+        with open(filePath,'w') as wTmpFile:
+                wTmpFile.write(fileData)
 
     # Adding batches of 
-	with open(filePath,'a') as appendFile:
-		# Insert a for loop here to write the quote batches
-		for i in range(0,batchNum-1):
-			appendFile.write(textSave+'\n')
+        with open(filePath,'a') as appendFile:
+                # Insert a for loop here to write the quote batches
+                for i in range(0,batchNum-1):
+                        appendFile.write(textSave+'\n')
 
     # Adding the ending mark
-	with open(filePath,'a') as appendFile:
-		appendFile.write(endMark)
+        with open(filePath,'a') as appendFile:
+                appendFile.write(endMark)
 
-	return
+        return
 
 
 def addUntransformed(targets, batchCounter):
@@ -120,11 +120,11 @@ def addUntransformed(targets, batchCounter):
                 quote_speech_file.write(value.encode('utf8') + '\n')
                 # write referencfindChildrene index to file
 
-		###############
-		# TEST: Reenable the line of code below if something goes wrong
-		################
+                ###############
+                # TEST: Reenable the line of code below if something goes wrong
+                ################
                 id_index_file.write(str(cardID) + '\n')
-		batchCounter += 1
+                batchCounter += 1
                         
                 #print value
                 countT = countT + 1
@@ -154,12 +154,12 @@ def extractQuote(begin,last):
 
     for cardID in range(begin,last+1):
         urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
-	batchCounter = 0
+        batchCounter = 0
 
         r = urllib.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
         
-	# I think we can set the counter here
+        # I think we can set the counter here
 
         # Find the table containing all information
         body = soup.find('body')
@@ -214,7 +214,7 @@ def extractQuote(begin,last):
                     # If we encounter an mp3 file
                 
                     for a in cell.findAll('a', href=True):
-			#print a['href']
+                        #print a['href']
                         downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
                         urllib.urlretrieve(a['href'], downloadPath)
 
@@ -222,19 +222,19 @@ def extractQuote(begin,last):
                  
                 else:
                     # If we encounter a Japanese quote
-		    #print value
+                    #print value
                     # Write Japanese text to file
                     quote_speech_file.write(value.encode('utf8') + '\n')
                     # write reference index to file
                     id_index_file.write(str(cardID) + ',\n')
                     
                     #print value
-                    print cardID, ','
+                    print(cardID, ',')
                     textCount = textCount + 1
 
-		    batchCounter = batchCounter + 1
-	if len(rows) > 0:
-		writeQuoteFile(str(cardID)+',', batchCounter)
+                    batchCounter = batchCounter + 1
+        if len(rows) > 0:
+                writeQuoteFile(str(cardID)+',', batchCounter)
 
     quote_speech_file.close()
     id_index_file.close()
