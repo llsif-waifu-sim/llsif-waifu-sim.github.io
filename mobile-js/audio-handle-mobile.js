@@ -634,7 +634,7 @@ function timeSpeech()
 
 
 window.onload = function() {
-	$.mobile.changePage('#updateModal');
+	$.mobile.changePage('html/updateMobile.html');
 	// Preform cookie checks
 	checkCookie();
 	checkBackgroundCookie();
@@ -652,7 +652,7 @@ window.onload = function() {
 	backgroundAudio.volume= musicVolume;
 
     getCurrentOrientation();
-
+    
     //commandSelect(0);
 	
 }

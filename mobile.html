@@ -6,10 +6,9 @@
 	<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-scene.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	
+
 	<script src="mobile-js/redirect-mobile.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -38,15 +37,12 @@
   	
   	
   	<script src="js/analytics.js"></script>
-
+  	<script>$.mobile.changePage("updateMobile.html",{role:"dialog"});</script>
 
 
 
 	<title>Love Live SIF Waifu Simulator</title>
-		<script>
-			window.location.hash="";
-		    
-		</script>
+
 	</head>
 
 	
@@ -216,7 +212,7 @@
 			</select>
 	    </p>
 		<p>
-			<a href="#updateModal" data-rel="dialog" style="background:orange;border-color:orange;" class="ui-btn ui-btn-inline ui-corner-all"><span style='color:white;'>View Updates</span></a>
+			<a href="html/updateMobile.html" data-rel="dialog" style="background:orange;border-color:orange;" class="ui-btn ui-btn-inline ui-corner-all"><span style='color:white;'>View Updates</span></a>
 		</p>
 
 	    <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Exit</a>
@@ -692,21 +688,7 @@
   </div>
 
 
-<div data-history="false" data-role="dialog" id="updateModal" class="ui-content">
-	<div data-role="header">
-        <h1>Updates</h1>
-      </div>
-      <div data-role="main" class="ui-content">
-	    <b>Updates for March 4th, 2018</b>
-			<ul>
-				<li>- Added idols up from id 1907 to 1931</li>
-			</ul>
 
-			 <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline  ui-corner-all" onclick="playBackgroundMusic();">Continue</a>
-		
-	  </div>
-</div>
- 
 
 
 
