@@ -1,6 +1,7 @@
 import json
 import urllib
-#import urllib2
+import urllib.request
+
 from specialQuoteScraper import extractQuote
 from idolName import idol2path
 from randomArrAssign import addToRandFile, addToMainFile
@@ -142,7 +143,7 @@ def scrapeImages(limit=-1):
             temp_str = "http://schoolido.lu/api/cards/" + x_str + "/"
 
             try:
-                data = json.load(urllib2.urlopen(temp_str))
+                data = json.load(urllib.request.urlopen(temp_str))
                 x = x + 1
             except:
                 # If we get here, that means the page does not exist
@@ -258,7 +259,7 @@ if begin != last:
 
         while True:
                 print('Press [y] to upload to Facebook or [n]:')
-                res = raw_input().lower()
+                res = input().lower()
         
                 if res == 'y' or res == 'n':
                         if res == 'y':

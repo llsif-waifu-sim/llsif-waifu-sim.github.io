@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib
+import urllib.request
 import os
 import idolName
 
@@ -117,7 +118,8 @@ def addUntransformed(targets, batchCounter):
                 # If we encounter a Japanese quote
 
                 # Write Japanese text to file
-                quote_speech_file.write(value.encode('utf8') + '\n')
+                quote_speech_file.write(value.encode('utf8'))
+                quote_speech_file.write('\n'.encode())
                 # write referencfindChildrene index to file
 
                 ###############
@@ -149,14 +151,14 @@ def extractQuote(begin,last):
     prePath = '../special-quotes/'
     prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
 
-    quote_speech_file = open(prePath + "quote-speech-slave.txt", "w")
-    id_index_file = open(prePath + "id-index-slave.txt", "w")
+    quote_speech_file = open(prePath + "quote-speech-slave.txt", "wb")
+    id_index_file = open(prePath + "id-index-slave.txt", "wb")
 
     for cardID in range(begin,last+1):
         urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
         batchCounter = 0
 
-        r = urllib.urlopen(urlRead).read()
+        r = urllib.request.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
         
         # I think we can set the counter here
@@ -216,7 +218,7 @@ def extractQuote(begin,last):
                     for a in cell.findAll('a', href=True):
                         #print a['href']
                         downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
-                        urllib.urlretrieve(a['href'], downloadPath)
+                        urllib.request.urlretrieve(a['href'], downloadPath)
 
                         count = count + 1
                  
@@ -224,9 +226,10 @@ def extractQuote(begin,last):
                     # If we encounter a Japanese quote
                     #print value
                     # Write Japanese text to file
-                    quote_speech_file.write(value.encode('utf8') + '\n')
+                    quote_speech_file.write(value.encode('utf8'))
+                    quote_speech_file.write('\n'.encode())
                     # write reference index to file
-                    id_index_file.write(str(cardID) + ',\n')
+                    id_index_file.write(str(cardID).encode() + ',\n'.encode())
                     
                     #print value
                     print(cardID, ',')

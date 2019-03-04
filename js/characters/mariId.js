@@ -115,4 +115,7 @@ var mari_ar =
 ['1891','mari','yes'],
 ['1897','mari','no'],
 ['1897','mari','yes'],
+['1919','mari','yes'],
+['1922','mari','no'],
+['1922','mari','yes'],
 ];
