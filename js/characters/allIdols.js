@@ -118,6 +118,11 @@ var chika_ar =
 ['1908','chika','no'],
 ['1908','chika','yes'],
 ['1912','chika','yes'],
+['1944','chika','no'],
+['1944','chika','yes'],
+['1947','chika','no'],
+['1947','chika','yes'],
+['1954','chika','yes'],
 ];
 var dia_ar = 
 [
@@ -243,6 +248,8 @@ var dia_ar =
 ['1909','dia','no'],
 ['1909','dia','yes'],
 ['1915','dia','yes'],
+['1943','dia','no'],
+['1943','dia','yes'],
 ];
 var eli_ar = 
 [
@@ -434,6 +441,8 @@ var eli_ar =
 ['1864','eli','yes'],
 ['1900','eli','no'],
 ['1900','eli','yes'],
+['1937','eli','no'],
+['1937','eli','yes'],
 ];
 var hanamaru_ar =
 [
@@ -550,6 +559,11 @@ var hanamaru_ar =
 ['1918','hanamaru','yes'],
 ['1930','hanamaru','no'],
 ['1930','hanamaru','yes'],
+['1932','hanamaru','yes'],
+['1948','hanamaru','no'],
+['1948','hanamaru','yes'],
+['1952','hanamaru','no'],
+['1952','hanamaru','yes'],
 ];
 var hanayo_ar = 
 [
@@ -1640,6 +1654,8 @@ var mari_ar =
 ['1919','mari','yes'],
 ['1922','mari','no'],
 ['1922','mari','yes'],
+['1942','mari','no'],
+['1942','mari','yes'],
 ];
 var nico_ar = 
 [
@@ -2019,6 +2035,8 @@ var nozomi_ar =
 ['1771','nozomi','yes'],
 ['1826','nozomi','no'],
 ['1826','nozomi','yes'],
+['1938','nozomi','no'],
+['1938','nozomi','yes'],
 ];
 var riko_ar =
 [
@@ -2338,6 +2356,8 @@ var rin_ar =
 ['1840','rin','yes'],
 ['1906','rin','no'],
 ['1906','rin','yes'],
+['1934','rin','no'],
+['1934','rin','yes'],
 ];
 var ruby_ar =
 [
@@ -2464,6 +2484,8 @@ var ruby_ar =
 ['1920','ruby','yes'],
 ['1931','ruby','no'],
 ['1931','ruby','yes'],
+['1953','ruby','no'],
+['1953','ruby','yes'],
 ];
 var umi_ar = 
 [
@@ -2658,6 +2680,10 @@ var umi_ar =
 ['1825','umi','yes'],
 ['1926','umi','no'],
 ['1926','umi','yes'],
+['1933','umi','no'],
+['1933','umi','yes'],
+['1939','umi','yes'],
+['1940','umi','yes'],
 ];
 var yoshiko_ar = 
 [
@@ -2789,6 +2815,8 @@ var yoshiko_ar =
 ['1921','yoshiko','yes'],
 ['1929','yoshiko','no'],
 ['1929','yoshiko','yes'],
+['1951','yoshiko','no'],
+['1951','yoshiko','yes'],
 ];
 var you_ar = 
 [
@@ -2890,12 +2918,6 @@ var you_ar =
 ['1744','you','yes'],
 ['1751','you','no'],
 ['1751','you','yes'],
-['1698','you','yes'],
-['1714','you','no'],
-['1714','you','yes'],
-['1744','you','yes'],
-['1751','you','no'],
-['1751','you','yes'],
 ['1768','you','no'],
 ['1768','you','yes'],
 ['1788','you','yes'],
@@ -2914,4 +2936,6 @@ var you_ar =
 ['1896','you','no'],
 ['1896','you','yes'],
 ['1916','you','yes'],
+['1941','you','no'],
+['1941','you','yes'],
 ];

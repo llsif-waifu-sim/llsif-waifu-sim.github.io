@@ -218,9 +218,11 @@ def extractQuote(begin,last):
                     for a in cell.findAll('a', href=True):
                         #print a['href']
                         downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
-                        urllib.request.urlretrieve(a['href'], downloadPath)
-
-                        count = count + 1
+                        try:
+                            urllib.request.urlretrieve(a['href'], downloadPath)
+                            count = count + 1
+                        except:
+                            pass
                  
                 else:
                     # If we encounter a Japanese quote

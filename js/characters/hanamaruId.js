@@ -113,4 +113,9 @@ var hanamaru_ar =
 ['1918','hanamaru','yes'],
 ['1930','hanamaru','no'],
 ['1930','hanamaru','yes'],
+['1932','hanamaru','yes'],
+['1948','hanamaru','no'],
+['1948','hanamaru','yes'],
+['1952','hanamaru','no'],
+['1952','hanamaru','yes'],
 ];
