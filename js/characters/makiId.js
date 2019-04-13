@@ -188,4 +188,5 @@ var maki_ar =
 ['1901','maki','yes'],
 ['1925','maki','no'],
 ['1925','maki','yes'],
+['1967','maki','yes'],
 ];

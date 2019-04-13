@@ -116,4 +116,5 @@ var kanan_ar =
 ['1914','kanan','yes'],
 ['1928','kanan','no'],
 ['1928','kanan','yes'],
+['1973','kanan','yes'],
 ];

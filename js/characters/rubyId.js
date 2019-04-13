@@ -125,4 +125,7 @@ var ruby_ar =
 ['1931','ruby','yes'],
 ['1953','ruby','no'],
 ['1953','ruby','yes'],
+['1959','ruby','no'],
+['1959','ruby','yes'],
+['1979','ruby','yes'],
 ];

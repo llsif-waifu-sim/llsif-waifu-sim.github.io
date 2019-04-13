@@ -124,4 +124,7 @@ var riko_ar =
 ['1913','riko','yes'],
 ['1927','riko','no'],
 ['1927','riko','yes'],
+['1957','riko','no'],
+['1957','riko','yes'],
+['1972','riko','yes'],
 ];
