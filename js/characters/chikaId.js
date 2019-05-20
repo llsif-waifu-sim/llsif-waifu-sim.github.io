@@ -124,4 +124,10 @@ var chika_ar =
 ['1947','chika','yes'],
 ['1954','chika','yes'],
 ['1971','chika','yes'],
+['1993','chika','no'],
+['1993','chika','yes'],
+['2016','chika','no'],
+['2016','chika','yes'],
+['2034','chika','no'],
+['2034','chika','yes'],
 ];

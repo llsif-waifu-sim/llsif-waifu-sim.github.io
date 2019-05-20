@@ -117,4 +117,12 @@ var kanan_ar =
 ['1928','kanan','no'],
 ['1928','kanan','yes'],
 ['1973','kanan','yes'],
+['1995','kanan','no'],
+['1995','kanan','yes'],
+['2002','kanan','no'],
+['2002','kanan','yes'],
+['2005','kanan','no'],
+['2005','kanan','yes'],
+['2012','kanan','no'],
+['2012','kanan','yes'],
 ];
