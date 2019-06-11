@@ -195,4 +195,8 @@ var kotori_ar =
 ['1983','kotori','yes'],
 ['2009','kotori','no'],
 ['2009','kotori','yes'],
+['2048','kotori','no'],
+['2048','kotori','yes'],
+['2052','kotori','no'],
+['2052','kotori','yes'],
 ];

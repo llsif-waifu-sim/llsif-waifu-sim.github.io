@@ -123,4 +123,6 @@ var hanamaru_ar =
 ['1977','hanamaru','yes'],
 ['2026','hanamaru','no'],
 ['2026','hanamaru','yes'],
+['2045','hanamaru','no'],
+['2045','hanamaru','yes'],
 ];

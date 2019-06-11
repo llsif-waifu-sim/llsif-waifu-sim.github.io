@@ -193,4 +193,8 @@ var nozomi_ar =
 ['1988','nozomi','yes'],
 ['2018','nozomi','no'],
 ['2018','nozomi','yes'],
+['2041','nozomi','no'],
+['2041','nozomi','yes'],
+['2054','nozomi','yes'],
+['2055','nozomi','yes'],
 ];

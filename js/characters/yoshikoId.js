@@ -135,4 +135,6 @@ var yoshiko_ar =
 ['1996','yoshiko','yes'],
 ['2013','yoshiko','no'],
 ['2013','yoshiko','yes'],
+['2043','yoshiko','no'],
+['2043','yoshiko','yes'],
 ];

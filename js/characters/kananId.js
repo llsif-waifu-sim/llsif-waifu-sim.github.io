@@ -125,4 +125,6 @@ var kanan_ar =
 ['2005','kanan','yes'],
 ['2012','kanan','no'],
 ['2012','kanan','yes'],
+['2046','kanan','no'],
+['2046','kanan','yes'],
 ];
