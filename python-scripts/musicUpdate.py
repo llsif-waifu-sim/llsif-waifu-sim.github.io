@@ -1,4 +1,5 @@
 import urllib
+import urllib.request
 #import urllib2
 import requests
 import string
@@ -119,8 +120,8 @@ def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
         songSavePathMp3 = mp3RootPath + aqoursExtension + '/' + str(fileNum) + '.mp3'
         #urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.ogg')
         #urllib.urlretrieve(songURL, tmpDir + '/' + str(fileNum) + '.mp3')
-        urllib.urlretrieve(songURL, songSavePathOgg)
-        urllib.urlretrieve(songURL, songSavePathMp3)
+        urllib.request.urlretrieve(songURL, songSavePathOgg)
+        urllib.request.urlretrieve(songURL, songSavePathMp3)
 
         response = requests.get(imgURL)
         img = Image.open(BytesIO(response.content))

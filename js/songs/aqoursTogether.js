@@ -40,4 +40,8 @@ var aqours_together =
 ['Hop? Stop? Nonstop!',3],
 ['Brightest Melody',3],
 ['Tousou Meisou Mobius Loop',3],
+['Jump up HIGH!!',3],
+['Bouken Type A, B, C‼',3],
+['I-n-g, I TRY!!',3],
+['Jump up HIGH!!',3],
 ];
