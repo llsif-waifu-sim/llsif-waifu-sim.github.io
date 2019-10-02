@@ -530,7 +530,7 @@ function test()
 
 function playClick()
 {
-	if(originMusic){
+	if(originMusic == null){
 		originMusic = document.getElementById("origin-music-player");
 	}
 
