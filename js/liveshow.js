@@ -530,7 +530,9 @@ function test()
 
 function playClick()
 {
-
+	if(originMusic){
+		originMusic = document.getElementById("origin-music-player");
+	}
 
 
 	if(beginning || musicStopped || (changedCategory && !random_mode) ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
