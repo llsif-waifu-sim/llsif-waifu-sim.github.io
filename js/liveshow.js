@@ -530,10 +530,8 @@ function test()
 
 function playClick()
 {
-	if(originMusic == null){
-		originMusic = document.getElementById("origin-music-player");
-	}
-
+	var originMusic = document.getElementById("origin-music-player");
+	var prevMusic = document.getElementById("background-music-player");
 
 	if(beginning || musicStopped || (changedCategory && !random_mode) ||(!(currplayingSong == currSong) && musicPlaying)  ||  (!musicPlaying && !(currplayingSong == currSong))  ){
 		// Play music from beginning 
