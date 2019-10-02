@@ -8,8 +8,6 @@ var away = false;
 var timerRanOut = false;
 var enableOutsideVal = true;
 
-var removedSecList = [];
-
 
 function isAqours(waifu)
 {
@@ -658,8 +656,7 @@ window.onload = function() {
 	checkCookie();
 	checkBackgroundCookie();
 	checkBGMCookie();
-	checkVolumeCookie();
-	updatePlaylistBut();
+
 
 	backgroundAudio.volume= musicVolume;
 	backgroundAudio.play();
@@ -1694,6 +1691,7 @@ function changeWaifu(name, id){
 		}
 
 		var client;
+
         if (window.XMLHttpRequest) {
 		    // code for modern browsers
 		    client = new XMLHttpRequest();

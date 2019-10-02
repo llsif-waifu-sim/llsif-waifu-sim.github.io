@@ -90,7 +90,11 @@ var aqours_together =
 ['Bouken Type A, B, C‼',3],
 ['I-n-g, I TRY!!',3],
 ['Jump up HIGH!!',3],
+['Dance with Minotaurus',3],
+['Deep Resonance',3],
+['Mitaiken HORIZON',3],
 ];
+
 var nhs_others_ar = 
 [
 
@@ -110,7 +114,17 @@ var nhs_subgroup_ar =
 var nhs_together = 
 [
 ['TOKIMEKI Runners',6],
+['Audrey',6],
+['Kaika Sengen',6],
+['Koe Tsunagou yo',6],
+['Love U my friends',6],
+['My Own Fairy-Tale',6],
+['Teletelepathy',6],
+['Wish',6],
+['Yuu & Ai',6],
+['☆Wonderland☆',6],
 ];
+
 var idol_others_ar = 
 [
 ['Private Wars',9],
@@ -121,3 +135,13 @@ var idol_others_ar =
 ['Over The Next Rainbow',9],
 ['Believe again',9],
 ];
+var numOfSongsAqoursTogether = aqours_together.length;
+var numOfSongsAqoursSub = aqours_subgroup_ar.length;
+var numOfSongsAqoursOthers = aqours_others_ar.length;
+
+
+var numOfSongsNHSTogether = nhs_together.length;
+var numOfSongsNHSSub = nhs_subgroup_ar.length;
+var numOfSongsNHSOthers = nhs_others_ar.length;
+
+var numOfSongsIdolsOthers = idol_others_ar.length;

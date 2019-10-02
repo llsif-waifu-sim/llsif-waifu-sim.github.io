@@ -141,13 +141,3 @@ var muse_individual_ar =
 var numOfSongsMuseAll = muse_together_ar.length;
 var numOfSongsMuseSub = muse_subgroup_ar.length;
 var numOfSongsMuseOther = muse_individual_ar.length;
-var numOfSongsAqoursTogether = aqours_together.length;
-var numOfSongsAqoursSub = aqours_subgroup_ar.length;
-var numOfSongsAqoursOthers = aqours_others_ar.length;
-
-
-var numOfSongsNHSTogether = nhs_together.length;
-var numOfSongsNHSSub = nhs_subgroup_ar.length;
-var numOfSongsNHSOthers = nhs_others_ar.length;
-
-var numOfSongsIdolsOthers = idol_others_ar.length;

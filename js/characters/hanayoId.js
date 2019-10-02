@@ -283,4 +283,9 @@ var hanayo_ar =
 ['2023','hanayo','yes'],
 ['2080','hanayo','no'],
 ['2080','hanayo','yes'],
+['2122','hanayo','yes'],
+['2125','hanayo','no'],
+['2125','hanayo','yes'],
+['2154','hanayo','no'],
+['2154','hanayo','yes'],
 ];

@@ -44,4 +44,7 @@ var aqours_together =
 ['Bouken Type A, B, C‼',3],
 ['I-n-g, I TRY!!',3],
 ['Jump up HIGH!!',3],
+['Dance with Minotaurus',3],
+['Deep Resonance',3],
+['Mitaiken HORIZON',3],
 ];

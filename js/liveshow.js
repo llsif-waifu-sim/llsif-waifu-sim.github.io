@@ -2,6 +2,8 @@ var numOfSongs = numOfSongsMuseAll;
 var subPath = 'muse-together/';
 var songlist_ar = muse_together_ar;
 
+var removedSecList = [];
+
 
 var currSong = 0;
 var currplayingSong = 0;
@@ -22,10 +24,10 @@ var prevMusic = document.getElementById("background-music-player");
 var originMusic = document.getElementById("origin-music-player");
 
 var random_mode = false;
-var random_ar_original = generate_random_ar(); // contains an ordered list of song names
+var random_ar_original = []; // contains an ordered list of song names
 var random_ar = random_ar_original;    
-var random_sorted_ar = generateSortedRandomArray(); // contains an ordered list of song indexes
-var random_counter_ar = generateRandomSongArray(); // contains a shuffled list of song indexes
+var random_sorted_ar =  []; // contains an ordered list of song indexes
+var random_counter_ar =  []; // contains a shuffled list of song indexes
 var random_category = 0;
 
 var random_index = 0;
