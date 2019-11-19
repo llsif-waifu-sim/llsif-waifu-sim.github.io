@@ -19,5 +19,4 @@ var aqours_subgroup_ar =
 ['Sakura Baibai',4],
 ['Sotsugyou desu ne',4],
 ['New Romantic Sailors',4],
-['New Romantic Sailors',4],
 ];
