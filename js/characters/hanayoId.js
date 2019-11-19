@@ -288,4 +288,8 @@ var hanayo_ar =
 ['2125','hanayo','yes'],
 ['2154','hanayo','no'],
 ['2154','hanayo','yes'],
+['2198','hanayo','no'],
+['2198','hanayo','yes'],
+['2209','hanayo','no'],
+['2209','hanayo','yes'],
 ];

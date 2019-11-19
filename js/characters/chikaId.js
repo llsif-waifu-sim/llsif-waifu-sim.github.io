@@ -144,4 +144,6 @@ var chika_ar =
 ['2165','chika','yes'],
 ['2178','chika','no'],
 ['2178','chika','yes'],
+['2216','chika','no'],
+['2216','chika','yes'],
 ];

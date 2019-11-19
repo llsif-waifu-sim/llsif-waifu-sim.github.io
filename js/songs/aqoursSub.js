@@ -18,4 +18,6 @@ var aqours_subgroup_ar =
 ['Guilty!? Farewell party',4],
 ['Sakura Baibai',4],
 ['Sotsugyou desu ne',4],
+['New Romantic Sailors',4],
+['New Romantic Sailors',4],
 ];

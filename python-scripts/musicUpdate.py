@@ -23,7 +23,7 @@ debugMode = True
 gitActive = False
 '''
 
-# Normal mode
+# Normalde
 
 debugMode = False
 gitActive = True

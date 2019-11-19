@@ -47,4 +47,8 @@ var aqours_together =
 ['Dance with Minotaurus',3],
 ['Deep Resonance',3],
 ['Mitaiken HORIZON',3],
+['KOKORO Magic "A to Z"',3],
+['KOKORO Magic "A to Z"',3],
+['Wake up, Challenger!!',3],
+['Wake up, Challenger!!',3],
 ];

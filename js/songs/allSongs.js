@@ -44,6 +44,8 @@ var aqours_subgroup_ar =
 ['Guilty!? Farewell party',4],
 ['Sakura Baibai',4],
 ['Sotsugyou desu ne',4],
+['New Romantic Sailors',4],
+['New Romantic Sailors',4],
 ];
 var aqours_together = 
 [
@@ -87,14 +89,18 @@ var aqours_together =
 ['Hop? Stop? Nonstop!',3],
 ['Brightest Melody',3],
 ['Tousou Meisou Mobius Loop',3],
+['Jump up HIGH!!',3],
 ['Bouken Type A, B, C‼',3],
 ['I-n-g, I TRY!!',3],
 ['Jump up HIGH!!',3],
 ['Dance with Minotaurus',3],
 ['Deep Resonance',3],
 ['Mitaiken HORIZON',3],
+['KOKORO Magic "A to Z"',3],
+['KOKORO Magic "A to Z"',3],
+['Wake up, Challenger!!',3],
+['Wake up, Challenger!!',3],
 ];
-
 var nhs_others_ar = 
 [
 
@@ -124,7 +130,6 @@ var nhs_together =
 ['Yuu & Ai',6],
 ['☆Wonderland☆',6],
 ];
-
 var idol_others_ar = 
 [
 ['Private Wars',9],
