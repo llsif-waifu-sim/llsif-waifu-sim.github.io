@@ -19,4 +19,12 @@ var aqours_subgroup_ar =
 ['Sakura Baibai',4],
 ['Sotsugyou desu ne',4],
 ['New Romantic Sailors',4],
+['Amazing Travel DNA',4],
+['Braveheart Coaster',4],
+['CHANGELESS',4],
+['Kodoku・Teleport',4],
+["Kuuchuu Ren'ai Ron",4],
+['Love Pulsar',4],
+['Maze Sekai',4],
+['Phantom Rocket Adventure',4],
 ];
