@@ -2,6 +2,8 @@
 *.pyc
 */fbToken.py
 
+python-scripts/tmp/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
