@@ -248,9 +248,23 @@ if begin != last:
         print('\n\n\n')
 
         if gitActive:
-                gitCommit(cardPicDir,'Card Images',strGit)
-                gitCommit(girlImageDir,'Girl Images',strGit)
-                gitCommit(speQuoteDir,'Audio Quotes',strGit)
+                try:
+                    gitCommit(cardPicDir,'Card Images',strGit)
+                except:
+                    print("There was a failure in pushing Card Images, up to date")
+                    pass
+
+                try:
+                    gitCommit(girlImageDir,'Girl Images',strGit)
+                except:
+                    print("There was a failure in pushing Girl Images, up to date")
+                    pass
+
+                try:
+                    gitCommit(speQuoteDir,'Audio Quotes',strGit)
+                except:
+                    print("There was a failure in pushing Audio Quotes, up to date")
+                    pass
 
 
         concatIdols(idolDirectory) 

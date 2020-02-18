@@ -62,7 +62,7 @@ soloNHSList = ['uehara','nakasu','osaka','asaka','miyashita','konoe','yuki','ver
 
 newSongList = []
 problemList = []
-
+addedSongsList = []
 
 def gitCommit(rootRep,passStr,strGit):
         print('\n\n\n')
@@ -109,6 +109,9 @@ def songVisited(title):
 
 def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
 
+        if title in addedSongsList:
+            return
+
         fileNum = getNewFileSongName(oggRootPath, aqoursExtension)
         numFilePath = str(fileNum) + '.ogg'
         newSongList.append([title,groupAssign])
@@ -128,7 +131,7 @@ def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
         #img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
         img.save(rootAlbumCover + '/' + aqoursExtension + '/' + str(fileNum)+ '.jpg')
         img.close()
-
+        addedSongsList.append(title)
         return
 
 def updateJSSongFile(title,typeValue):

@@ -144,4 +144,11 @@ var kanan_ar =
 ['2202','kanan','yes'],
 ['2229','kanan','no'],
 ['2229','kanan','yes'],
+['2266','kanan','no'],
+['2266','kanan','yes'],
+['2271','kanan','no'],
+['2271','kanan','yes'],
+['2276','kanan','no'],
+['2276','kanan','yes'],
+['2283','kanan','yes'],
 ];
