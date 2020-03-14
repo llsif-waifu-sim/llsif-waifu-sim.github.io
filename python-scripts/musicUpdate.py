@@ -35,7 +35,9 @@ gitActive = True
 rootURL = 'http://love-live.wikia.com'
 aqoursURL = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 aqoursURLSec = 'http://love-live.wikia.com/wiki/Category:Discography:Aqours'
-nhsURL = 'http://love-live.wikia.com/wiki/Category:PERFECT_Dream_Project_Songs'
+nhsURL = 'https://love-live.fandom.com/wiki/Category:Discography:Nijigaku'
+
+
 saintSnowURL = 'https://love-live.fandom.com/wiki/Category:Saint_Snow_Songs'
 
 recordURL = '../records/songRecords.txt'
@@ -56,7 +58,7 @@ mp3RootRep = '../../distribution/llsif-waifu-songs-mp3/'
 aqoursSongExtension = ['aqours-individual','aqours-sub-group','aqours-together','nhs-individual','nhs-sub-group','nhs-together','other-idols']
 
 subGroupList = ['cyaron','kiss','azalea']
-subGroupNHSList = []
+subGroupNHSList = ['diverdiva','qu4rtz','a・zu・na']
 soloList = ['takami','watanabe','sakurauchi','kurosawa','kunikida','tsushima','matsuura','ohara']       
 soloNHSList = ['uehara','nakasu','osaka','asaka','miyashita','konoe','yuki','verde','tennoji']  
 
@@ -215,7 +217,7 @@ def prepareSong(title,songPageURL,rSoup,recFile):
         else:
                 return
         
-
+        print('authorinfo: ', authorInfo)
         if authorInfo == 'aqours':
                 # Aqours all together
                 groupAssign = 'Aqours Together'
