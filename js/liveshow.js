@@ -41,6 +41,23 @@ var loop_mode = false;
 var savedPlayList = [];
 
 
+function afterSongEnded(){
+
+	stopClick();
+	if(!loop_mode){
+		if(random_mode){
+			// If engaged in random mode
+			changeSongRandom(); 
+		} else {
+		    changeSong();  	
+		}
+		playClick();
+	} else {
+		loopPlay();
+	}
+
+}
+/*
 $('#background-music-player').on('ended', function() {
 
 	stopClick();
@@ -57,6 +74,9 @@ $('#background-music-player').on('ended', function() {
 	}
 	
 });
+*/
+
+
 
 function displaySideBySideEnglish(){
 	if($('#sideEnglishLyricDisplayDiv:visible').length == 0){
