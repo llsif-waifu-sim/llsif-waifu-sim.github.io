@@ -24,7 +24,7 @@ var prevMusic = document.getElementById("background-music-player");
 var originMusic = document.getElementById("origin-music-player");
 
 var random_mode = false;
-var random_ar_original = []; // contains an ordered list of song names
+var random_ar_original = generate_random_ar(); // contains an ordered list of song names
 var random_ar = random_ar_original;    
 var random_sorted_ar =  []; // contains an ordered list of song indexes
 var random_counter_ar =  []; // contains a shuffled list of song indexes
