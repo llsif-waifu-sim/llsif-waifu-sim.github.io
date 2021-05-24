@@ -185,7 +185,12 @@
 		<source id='ogg-player' src="" type="audio/ogg" />
 	</audio>
 
-	
+	<script>
+		var aud = document.getElementById("background-music-player");
+		aud.onended = function(){
+			afterSongEnded();
+		}
+	</script>
 	
 
 
