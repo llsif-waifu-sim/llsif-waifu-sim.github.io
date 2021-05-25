@@ -27,4 +27,10 @@ var aqours_subgroup_ar =
 ['Love Pulsar',4],
 ['Maze Sekai',4],
 ['Phantom Rocket Adventure',4],
+['Kodoku Teleport',4],
+['Kodoku Teleport',4],
+['Kodoku Teleport',4],
+['Kodoku Teleport',4],
+['Kodoku Teleport',4],
+['Kodoku Teleport',4],
 ];

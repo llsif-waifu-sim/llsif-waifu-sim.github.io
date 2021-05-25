@@ -23,6 +23,10 @@ var aqours_others_ar =
 ['Hajimari Road',5],
 ['Yosoku Fukanou Driving!',5],
 ['Marine Border Parasol',5],
+['Kimochi mo Yume mo Issho da ne!',5],
+['Misty Frosty Love',5],
+['Namida ga Yuki ni Naru Mae ni',5],
+['Party! Party! PaPaPaParty!',5],
 ];
 var aqours_subgroup_ar = 
 [
@@ -53,6 +57,7 @@ var aqours_subgroup_ar =
 ['Love Pulsar',4],
 ['Maze Sekai',4],
 ['Phantom Rocket Adventure',4],
+['Kodoku Teleport',4],
 ];
 var aqours_together = 
 [
@@ -104,6 +109,13 @@ var aqours_together =
 ['Mitaiken HORIZON',3],
 ['KOKORO Magic "A to Z"',3],
 ['Wake up, Challenger!!',3],
+['Aqours Pirates Desire',3],
+['Fantastic Departure!',3],
+['Future flight',3],
+['Hop Step Waai!',3],
+['JIMO-AI Dash!',3],
+['Kokoro no Hane yo Kimi e Tondeke!',3],
+['Smile smile ship Start!',3],
 ];
 var nhs_others_ar = 
 [
@@ -117,6 +129,16 @@ var nhs_others_ar =
 ['Starlight',8],
 ['Yume e no Ippo',8],
 ['Doki Pipo ☆ Emotion',8],
+['Awakening Promise',8],
+['Butterfly',8],
+['DIVE!',8],
+['Dream with You',8],
+['La Bella Patria',8],
+['Poppin Up!',8],
+['Saikou Heart',8],
+['Solitude Rain',8],
+['Tsunagaru Connect',8],
+['VIVID WORLD',8],
 ];
 var nhs_subgroup_ar = 
 [
@@ -126,6 +148,11 @@ var nhs_subgroup_ar =
 ['Love Triangle',7],
 ['Sing & Smile!!',7],
 ['SUPER NOVA',7],
+['Happy Nyan! Days',7],
+['Kakushiaji!',7],
+['Make-up session ABC',7],
+['POWER SPOT!!',7],
+['Saika -saika-',7],
 ];
 var nhs_together = 
 [
@@ -139,6 +166,23 @@ var nhs_together =
 ['Wish',6],
 ['Yuu & Ai',6],
 ['☆Wonderland☆',6],
+['Aion no Uta',6],
+['Analog Heart',6],
+['Fire Bird',6],
+['Just Believe!!!',6],
+['Ketsui no Hikari',6],
+['LIKE IT! LOVE IT!',6],
+['Margaret',6],
+['Mirai Harmony',6],
+['Muteki-kyuu*Believer',6],
+['Märchen Star',6],
+['NEO SKY, NEO MAP!',6],
+['Nijiiro Passions!',6],
+['Say Good-Bye Namida',6],
+['Sweet Eyes',6],
+['Tanoshii no Tensai',6],
+['Yagate Hitotsu no Monogatari',6],
+['Zensoku Dreamer',6],
 ];
 var idol_others_ar = 
 [
@@ -149,6 +193,10 @@ var idol_others_ar =
 ['DROPOUT!?',9],
 ['Over The Next Rainbow',9],
 ['Believe again',9],
+['CYaZALEA☆Kiss☆DADANDAAAN',9],
+['After The Rain',9],
+['Dazzling White Town',9],
+['Lonely Snow Planet',9],
 ];
 var numOfSongsAqoursTogether = aqours_together.length;
 var numOfSongsAqoursSub = aqours_subgroup_ar.length;

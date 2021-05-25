@@ -131,6 +131,7 @@ def saveContent(title,songURL,imgURL,groupAssign,aqoursExtension):
         response = requests.get(imgURL)
         img = Image.open(BytesIO(response.content))
         #img.save(tmpDir + '/' + str(fileNum)+ '.jpg')
+        img = img.convert('RGB')
         img.save(rootAlbumCover + '/' + aqoursExtension + '/' + str(fileNum)+ '.jpg')
         img.close()
         addedSongsList.append(title)
@@ -202,14 +203,18 @@ def prepareSong(title,songPageURL,rSoup,recFile):
                 imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
                 authorInfoPunc = rSoup.find("section",{"class":"pi-item pi-group pi-border-color"}).find("h2").getText().split(" ")[-1]
                 authorInfo = ''.join(c for c in authorInfoPunc if c not in string.punctuation).lower()
-                songURLSearch = rSoup.find("div",{"id":"ogg_player_1"}).find("div").find("button")['onclick'].split('"')
+                #print('authorInfo: ', authorInfo)
+                songURL = rSoup.find("audio",{"id":"mwe_player_0"}).find('source')['src']
+                
+
+                #print('songURL: ',songURL)
         except:
                 print('There was a problem retrieving the song: %s' % title)
                 if [title,songPageURL] not in problemList:
                         problemList.append([title,songPageURL])
                 return
         
-        songURL = list(filter(lambda x: 'http' in x,songURLSearch))[0]
+        #songURL = list(filter(lambda x: 'http' in x,songURLSearch))[0]
         
         if not songVisited(title):
                 recFile.write(title.lower())
