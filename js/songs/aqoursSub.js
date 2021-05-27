@@ -28,9 +28,4 @@ var aqours_subgroup_ar =
 ['Maze Sekai',4],
 ['Phantom Rocket Adventure',4],
 ['Kodoku Teleport',4],
-['Kodoku Teleport',4],
-['Kodoku Teleport',4],
-['Kodoku Teleport',4],
-['Kodoku Teleport',4],
-['Kodoku Teleport',4],
 ];
