@@ -16,4 +16,10 @@ var nhs_subgroup_ar =
 ['POWER SPOT!!',7],
 ['Saika -saika-',7],
 ['Saika -saika-',7],
+['Fly into the sky',7],
+['Fly into the sky',7],
+['THE SECRET NiGHT',7],
+['THE SECRET NiGHT',7],
+['Twinkle Town',7],
+['Twinkle Town',7],
 ];

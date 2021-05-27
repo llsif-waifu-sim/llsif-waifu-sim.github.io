@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import re
 import os
 
-localFile = './testLyrics.txt'
+#localFile = './testLyrics.txt'
 lyricRoot = "../../distribution/llsif-waifu-lyrics"
 rootURL = 'http://love-live.wikia.com'
 
@@ -30,16 +30,25 @@ def iterateSongList(urlRead='http://love-live.wikia.com/wiki/Category:Aqours_Son
         for ulTag in contDiv.findAll("ul"):
                 for liTag in ulTag.findAll("li"):
                         title = None
+                        
+                        #print(liTag)
+                        #title = liTag.find("a").find("img")["alt"]
+                        #urlRead = rootURL + liTag.find("a")['href']
                         try:
                             title = liTag.find("a").find("img")["alt"]
                             urlRead = rootURL + liTag.find("a")['href']
                         except:
+                            #print('We have an error 1!')
+                            ##exit()
                             pass
+                            
                         if title is None:
                             try:
                                 title = liTag.find("a")['title']
                             except:
                                 pass
+                                #print('We have an error 2!')
+                                #exit()
                         if title is None:
                             continue
 
@@ -52,7 +61,7 @@ def iterateSongList(urlRead='http://love-live.wikia.com/wiki/Category:Aqours_Son
                                 print('    (Lyrics misaligned)')
                                 fpPath = lyricRoot + '/revision.txt'
                                 fp = open(fpPath.encode('utf8'), 'a')
-                                fp.write(title.encode('utf8') + '\n')
+                                fp.write(str(title.encode('utf8')) +'\n')
                                 fp.write('JP: ' + str(jpCount) + ' - EN: ' + str(enCount)+'\n')
                                 fp.write('--------------------------\n')
                                 fp.close()
@@ -61,7 +70,7 @@ def iterateSongList(urlRead='http://love-live.wikia.com/wiki/Category:Aqours_Son
                                 title = ''.join(ch for ch in title if ch.isalnum()).lower()
 
                                 tmpStr = '"'+title + '",\n'
-                                forbidFp.write(tmpStr.encode('utf8'))
+                                forbidFp.write(str(tmpStr.encode('utf8')))
 
 def scrapeLyrics(title,urlRead):
         global enCount
@@ -69,17 +78,65 @@ def scrapeLyrics(title,urlRead):
 
         r = requests.get(urlRead).content
         soup = BeautifulSoup(r,'lxml')
-        lyricListDiv = soup.findAll("div",{"class":"tabbertab"})
+        #lyricListDiv = soup.findAll("div",{"class":"tabbertab"})
+        lyricListDiv = soup.findAll("div",{"class":"poem"})
+        
+
+        #tabberDiv = soup.findAll("div",{"class":"tabbertab","title":"Kanji"})
+        #tabberDiv = soup.findAll("div",{"class":"tabbertab","title":["Rōmaji","Kanji","English"]})
 
         print('-----------')
         print(title)
+        
+        tabList = ["Rōmaji","Kanji","English"]
+        for i,lyricTab in enumerate(lyricListDiv):
+                #print(lyricTab.text)
+                #exit()
+                #print('________-')
+                lyricType = tabList[i]
+                text = lyricTab.text 
 
-        for lyricTab in lyricListDiv:
+                title = title.replace(" ","")
+                title = re.sub(r'\W+', '', title).lower()
+
+
+                #print(text)
+
+
+                if lyricType == 'English':
+                        enCount = text.count("\n")      
+
+                if lyricType == 'Rōmaji':
+                        filePath = lyricRoot+'/romaji/'+title+'-romaji.txt'
+                        fd = open(filePath,"wb")
+                else:
+                        filePath = lyricRoot+'/'+lyricType.lower()+'/'+title.replace(' ','')+'-'+lyricType.lower()+'.txt'
+                        fd = open(filePath.encode('utf8'),"wb")
+                fd.write(text.encode('utf8'))
+                fd.close()
+
+
+
+                if lyricType == 'Kanji':
+                        # We already wrote the kanji text, so we will write the furigana path
+                        filePath = lyricRoot+'/furigana/'+title+'-furigana.txt'
+                        transText = furiganaLineTrans(text)
+                        jpCount = transText.count("\n") 
+                        fd = open(filePath,"wb")
+                        fd.write(transText.encode('utf8'))
+                        print('  Written') 
+                        fd.close()
+                '''
                 lyricInnerDiv = lyricTab.find("div")
+                
+                #print(lyricInnerDiv)
+                ########## Problem is with this if statement #######
                 if lyricInnerDiv and lyricTab['title'].lower().encode('utf8') in siteTabList:
                         #print '-----------'
                         lyricType = lyricTab['title'].lower().encode('utf8')
                         text = lyricInnerDiv.getText()
+                        print(text)
+                        #exit()
                         #print lyricType
                         #print text
 
@@ -107,7 +164,11 @@ def scrapeLyrics(title,urlRead):
                                 jpCount = transText.count("\n") 
                                 fd = open(filePath,"w")
                                 fd.write(transText.encode('utf8'))
+             
                                 fd.close()
+                #exit()
+                '''
+        #exit()
         return
 
 def scrapeLocalFile(path):
@@ -124,7 +185,9 @@ def furiganaLineTrans(text):
         stitchStr = ''
         for segWord in segmenter.tokenize(text):
                 result = ""
-                if transDict.has_key(segWord):
+                
+                #if transDict.has_key(segWord):
+                if segWord in transDict:
                         result = transDict[segWord]
                 else:
                         result = conv.do(segWord)
@@ -154,7 +217,7 @@ forbidFp = open(fpPath.encode('utf8'),"a")
 
 #urlRead = 'http://love-live.wikia.com/wiki/Category:PERFECT_Dream_Project_Songs'
 #iterateSongList(urlRead)
-
+'''
 urlRead = 'http://love-live.wikia.com/wiki/Category:Aqours_Songs'
 iterateSongList(urlRead)
 urlRead = 'http://love-live.wikia.com/wiki/Category:Μ%27s_Songs'
@@ -164,6 +227,11 @@ urlRead = "http://love-live.wikia.com/wiki/Category:A-RISE_Songs"
 iterateSongList(urlRead)
 urlRead = "http://love-live.wikia.com/wiki/Category:Saint_Snow_Songs"
 iterateSongList(urlRead)
+'''
+
+urlRead = 'https://love-live.fandom.com/wiki/Category:Discography:Nijigaku'
+iterateSongList(urlRead)
+
 
 forbidFp.write('];')
 forbidFp.close()

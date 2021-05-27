@@ -134,7 +134,7 @@ var nhs_others_ar =
 ['DIVE!',8],
 ['Dream with You',8],
 ['La Bella Patria',8],
-['Poppin Up!',8],
+['Poppin\' Up!',8],
 ['Saikou Heart',8],
 ['Solitude Rain',8],
 ['Tsunagaru Connect',8],
@@ -153,6 +153,9 @@ var nhs_subgroup_ar =
 ['Make-up session ABC',7],
 ['POWER SPOT!!',7],
 ['Saika -saika-',7],
+['Fly into the sky',7],
+['THE SECRET NiGHT',7],
+['Twinkle Town',7],
 ];
 var nhs_together = 
 [
