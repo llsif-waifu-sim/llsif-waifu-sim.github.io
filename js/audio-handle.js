@@ -1207,6 +1207,57 @@ function searchId()
 	    type:'HEAD',
 	    error: function()
 	    {
+	    	//---------------------------------
+            var scrapePath = "https://raw.githubusercontent.com/lsif-waifu-girl-images/scraped-images/";
+			var cardPicPath = "https://raw.githubusercontent.com/llsif-waifu-card-pics/scraped-images/"
+
+			// If talking about Muse & Aqours
+			if(idolized == 'yes')
+			{
+				path = scrapePath + name + "/" + id + "_id.png";
+				cardPicPath = cardPicPath + name + "/" + id + "_id.png";
+			}else{
+				path = scrapePath + name +  "/" + id + ".png";
+				cardPicPath = cardPicPath + name +  "/" + id + ".png";
+			}
+
+			$.ajax({
+			    url:path,
+			    type:'HEAD',
+			    error: function()
+			    {
+
+
+			        //file not exists
+			        alert('Idolized / Non-idolized version of card not found. Trying filling out the alternate option bubble.');
+					commandSelect(0);
+					return;
+			    },
+			    success: function()
+			    {
+			        //file exists
+			        document.getElementById("idol_img").src=path;
+
+			        document.getElementById("cardPicImg").src = cardPicPath;
+
+					nameAssign(name);
+
+					globalIndex = searchIndexById(id, idolized);
+
+					if (globalAudio!=null){
+						globalAudio.pause();
+					}
+
+					var index = parseInt(searchIndexById(id, idolized));
+					storeCookie(index);
+
+					setTimeout(function() {
+						commandSelect(0);
+					}, 500, true)
+					  }
+				});
+				//---------------------------------
+
 	        //file not exists
 	        alert('Idolized / Non-idolized version of card not found. Trying filling out the alternate option bubble.');
 			commandSelect(0);
