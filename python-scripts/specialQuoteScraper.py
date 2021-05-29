@@ -1,8 +1,11 @@
-from bs4 import BeautifulSoup
-import urllib
-import urllib.request
 import os
 import idolName
+import urllib
+from urllib.request import Request, urlopen
+import bs4 as BeautifulSoup
+import re
+import requests
+import shutil
 
 batchCounter = 0
 
@@ -87,7 +90,7 @@ def writeQuoteFile(textSave, batchNum):
 
         return
 
-
+'''
 def addUntransformed(targets, batchCounter):
     for tdT in targets:
 
@@ -115,7 +118,7 @@ def addUntransformed(targets, batchCounter):
                     countT = countT + 1
                         
             else:
-                # If we encounter a Japanese quote
+                # If we encounter a Jahttp://s.llsif.org/en/voices/400635.ogg?b3eae9bfpanese quote
 
                 # Write Japanese text to file
                 quote_speech_file.write(value.encode('utf8'))
@@ -130,7 +133,8 @@ def addUntransformed(targets, batchCounter):
                         
                 #print value
                 countT = countT + 1
-            
+'''
+'''            
 
 def checkNormal():
     # This function is unnecessary at the moment
@@ -144,20 +148,155 @@ def checkNormal():
                 # This is not normal card
                 isNormal = False
                 break
+'''
+
+
+
+def txtPro(text):
+    #text = text.replace(',','')
+    text = re.sub(r'[^\w\s]', '', text)
+    text = text.lower()
+    text = text.replace(' ','')
+    return text
+
+def isTDTagWithAudio(compStr):
+    if txtPro(compStr) == txtPro("At any time, when unidolized"):
+        return True
+    if txtPro(compStr) == txtPro("At any time, when idolized"):
+        return True
+
+    if txtPro(compStr) == txtPro("At any time, when level maxed"):
+        return True
+    if txtPro(compStr) == txtPro("At any time, when bond maxed"):
+        return True
+    if txtPro(compStr) == txtPro("At any time, when bond + level maxed"):
+        return True
+    if txtPro(compStr) == txtPro("At any time, when bond maxed"):
+        return True
+    if txtPro(compStr) == txtPro("At any time, when bond + level maxed"):
+        return True
+    if txtPro(compStr) == txtPro("Home screen (during cameo appearance) (bond maxed)"):
+        return True
+
+    if txtPro(compStr) == txtPro("Home screen (during cameo appearance) (bond + level maxed)"):
+        return True
+
+    return False
+
+
+
 
 
 def extractQuote(begin,last):
     global batchCounter
-    prePath = '../special-quotes/'
+    prePath = '../special-quotes/'At any time, when level maxed
     prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
-
+    assert os.path.exists(prePath)
+    assert os.path.exists(prePathDist)
     quote_speech_file = open(prePath + "quote-speech-slave.txt", "wb")
     id_index_file = open(prePath + "id-index-slave.txt", "wb")
 
     for cardID in range(begin,last+1):
-        urlRead = 'https://sif.kirara.ca/card/'+ str(cardID)
-        batchCounter = 0
+        urlRead = 'https://llsif.org/en/cards/'+ str(cardID)
+        print('=======================Id: ',  cardID,'=======================')
+        req = Request(urlRead, headers={'User-Agent': 'Mozilla/5.0'})
+        
+        
+        try:
+            web_byte = urlopen(req).read()
+            web_byte = web_byte.decode('utf-8')
+            r = web_byte
+        
+            soup = BeautifulSoup.BeautifulSoup(r, "lxml")
+        except KeyboardInterrupt:
+            exit()
+        except:
+            print('Problem access webpage at id: ', cardID)
+            continue
 
+        # Find the table containing all information
+        body = soup.find('div',{'id':'voices'})
+        urlDict = {}
+        try:
+            divList = body.find_all('tr')
+        except KeyboardInterrupt:
+            exit()
+        except:
+            print("Unable to find table for id ", cardID)
+            continue
+        divListLen = len(divList) 
+        
+        
+        batchCounter = 0
+        count = 0
+        
+        for tdTag in divList:
+            
+            try:
+                compStr = tdTag.find('td').text
+            except:
+                continue
+            ########
+
+            if len(tdTag.findAll('td')) <= 1:
+                continue
+
+
+            # We check to see if our row matches our desired phrases
+            if isTDTagWithAudio(compStr):
+
+                urlLocation = tdTag.findAll('td')[1].find('card-voice')['url'].replace('//s.llsif','http://s.llsif')
+                
+                ###### We deal with audio data #####
+                if urlLocation in urlDict:
+                    # We try to prevent downloading duplicate clips
+                    continue
+                else:
+                    # We proceed with downloading audio clip
+                    urlDict[urlLocation] = True
+                    
+                    downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
+                    #urllib.request.urlretrieve(urlLocation, downloadPath)
+                    count = count + 1
+                    
+
+                                 
+                    '''
+                    try:
+                        r = requests.get(urlLocation, stream=True)
+                        with open(downloadPath, 'wb') as f:
+                            print(downloadPath)
+                            r.raw.decode_content = True
+                            shutil.copyfileobj(r.raw, f) 
+                    except:
+                        print("Problem retrieving audio from this path location: ", )
+                        pass
+                    '''
+                    ######################
+                    ########## Now we deal with text data ###########
+                    targetText = tdTag.findAll('td')[2].text
+                
+                
+                    quote_speech_file.write(targetText.replace('\n','').encode('utf8'))
+                    quote_speech_file.write('\n'.encode())
+                    # write reference index to file
+                    id_index_file.write(str(cardID).encode() + ',\n'.encode())
+            
+                    #print value
+                    print(cardID, ',')
+                    #textCount = textCount + 1
+
+                    batchCounter = batchCounter + 1
+                
+                
+                
+                ##########################################
+                print(targetText)
+                print(urlLocation)
+                print('________________')
+        
+        
+        '''
         r = urllib.request.urlopen(urlRead).read()
         soup = BeautifulSoup(r, "lxml")
         
@@ -170,7 +309,7 @@ def extractQuote(begin,last):
         ATags = body.find_all('a', {'href': hrefIDSearch})
         
         tables = body.find_all('table', {'width': '100%'})
-
+speech-en
         
         # Check if the card is a normal card
         if len(tables) < 1:
@@ -240,8 +379,17 @@ def extractQuote(begin,last):
                     batchCounter = batchCounter + 1
         if len(rows) > 0:
                 writeQuoteFile(str(cardID)+',', batchCounter)
-
+        '''
+        if batchCounter > 0:
+            writeQuoteFile(str(cardID)+',', batchCounter)
+        #print(batchCounter)
     quote_speech_file.close()
     id_index_file.close()
-
+    
     writeTextQuoteFile()
+    
+    
+#extractQuote(2000,2010)   
+#extractQuote(2146,2803)
+extractQuote(2501,2803)
+#extractQuote(2728,2803)
