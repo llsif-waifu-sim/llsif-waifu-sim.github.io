@@ -106,7 +106,6 @@ function specialQuoteSpeech()
 	var chosenIndex = indexAr[0];
 	var maxIndex = indexAr[1]; 
 
-
 	// If the card does not have a special quote
 	if (chosenIndex == -1)
 	{
@@ -136,9 +135,10 @@ function specialQuoteSpeech()
 
     var fileIndex = chosenIndex  + addValue;
     var pathString = "".concat(simpleAudioPath);
+    
     changeSpeechText(pathString, fileIndex);
-    refreshBubble();
 
+    refreshBubble();
     return 0;
 
 }
