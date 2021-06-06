@@ -232,4 +232,6 @@ var maki_ar =
 ['2700','maki','yes'],
 ['2728','maki','yes'],
 ['2801','maki','yes'],
+['2812','maki','no'],
+['2812','maki','yes'],
 ];
