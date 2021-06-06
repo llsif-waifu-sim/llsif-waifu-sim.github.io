@@ -189,7 +189,7 @@ def isTDTagWithAudio(compStr):
 
 def extractQuote(begin,last):
     global batchCounter
-    prePath = '../special-quotes/'At any time, when level maxed
+    prePath = '../special-quotes/'
     prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
     assert os.path.exists(prePath)
     assert os.path.exists(prePathDist)

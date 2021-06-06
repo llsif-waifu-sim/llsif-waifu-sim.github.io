@@ -58,6 +58,9 @@ var aqours_subgroup_ar =
 ['Maze Sekai',4],
 ['Phantom Rocket Adventure',4],
 ['Kodoku Teleport',4],
+['Aru Hi...Eien Mitai ni!',4],
+['Dragon Riders',4],
+['Whistle of Revolution',4],
 ];
 var aqours_together = 
 [
@@ -119,7 +122,6 @@ var aqours_together =
 ];
 var nhs_others_ar = 
 [
-
 ['Anata no Risou no Heroine',8],
 ['CHASE!',8],
 ['Diamond',8],

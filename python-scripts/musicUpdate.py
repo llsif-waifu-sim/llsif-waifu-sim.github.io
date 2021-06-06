@@ -66,6 +66,9 @@ newSongList = []
 problemList = []
 addedSongsList = []
 
+
+visitedDict = {}
+
 def gitCommit(rootRep,passStr,strGit):
         print('\n\n\n')
         repo = git.Repo(rootRep)
@@ -197,7 +200,7 @@ def updateJSSongFile(title,typeValue):
 
 
 def prepareSong(title,songPageURL,rSoup,recFile):
-
+        foundNewSong = False
         # Check to see if the song page has an audio file
         try:
                 imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
@@ -216,11 +219,12 @@ def prepareSong(title,songPageURL,rSoup,recFile):
         
         #songURL = list(filter(lambda x: 'http' in x,songURLSearch))[0]
         
-        if not songVisited(title):
+        if not songVisited(title) and title.lower() not in visitedDict:
                 recFile.write(title.lower())
                 recFile.write('\n')
+                foundNewSong = True
         else:
-                return
+                return False
         
         print('authorinfo: ', authorInfo)
         if authorInfo == 'aqours':
@@ -267,7 +271,7 @@ def prepareSong(title,songPageURL,rSoup,recFile):
                 print(groupAssign)
                 saveContent(title,songURL,imgURL,groupAssign,aqoursSongExtension[6])
                 updateJSSongFile(title,9)
-
+        return foundNewSong
 
 def uploadSong():
 
@@ -392,6 +396,7 @@ def uploadSong():
 
 
 def scrapeSongFromFile():
+        global visitedDict
 
         # Set encoding to write unicode
         reload(sys)
@@ -401,7 +406,7 @@ def scrapeSongFromFile():
 
 
         os.system('mkdir ' + tmpDir)
-
+        
         #for div in divTar.findAll("div"):
         for songPageURL in open(songListFile,'r'):
                 print('---------------')
@@ -415,9 +420,13 @@ def scrapeSongFromFile():
                 print(songPageURL)
                 print('\n\n')
 
-
-                prepareSong(title,songPageURL,rSoup,recFile)
+                if title.lower() not in visitedDict:
+                    foundNewSong = prepareSong(title,songPageURL,rSoup,recFile)
         
+                if foundNewSong:
+                    visitedDict[title.lower()] = True
+
+
 
         recFile.close()
         os.system('rm -rf ' + tmpDir)
@@ -464,7 +473,7 @@ def heavySongScraping(urlRead):
 
 
 def songScraping(urlRead):
-
+        global visitedDict 
         r = requests.get(urlRead).content
 
         soup = BeautifulSoup(r,'lxml')
@@ -484,7 +493,8 @@ def songScraping(urlRead):
             return()
 
         os.system('mkdir ' + tmpDir)
-
+        visitDict = {}
+        newSongCounter = 0
         for liTag in divTar.findAll("ul"):
                 for aTag in liTag.findAll("a"):
                         print('---------------')
@@ -501,14 +511,19 @@ def songScraping(urlRead):
                         rSoup = BeautifulSoup(rSong,'lxml')
                         #imgURL = rSoup.find("meta",{"property":"og:image"})['content']
 
-                        prepareSong(title,songPageURL,rSoup,recFile)
+                        if title.lower() not in visitedDict:
+                            foundNewSong = prepareSong(title,songPageURL,rSoup,recFile)
+                
+                        if foundNewSong:
+                            visitedDict[title.lower()] = True
+                            newSongCounter += 1
 
         recFile.close()
         os.system('rm -rf ' + tmpDir)
 
         print('\n\n\n')
-
-        uploadSong()
+        if newSongCounter > 0:
+            uploadSong()
 
 def concatSongFile(outputPath):
         path = '../js/songs/'
