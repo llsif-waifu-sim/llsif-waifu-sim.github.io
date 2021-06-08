@@ -1,16 +1,4 @@
 [
-['2805','honoka','yes'],
-['2806','nico','yes'],
-['2808','nozomi','yes'],
-['2809','eli','yes'],
-['2810','kotori','no'],
-['2810','kotori','yes'],
-['2811','rin','no'],
-['2811','rin','yes'],
-['2812','maki','no'],
-['2812','maki','yes'],
-['2813','yoshiko','yes'],
-['2814','hanamaru','yes'],
-['2815','ruby','yes'],
 ['2816','mari','yes'],
+['2817','nozomi','yes'],
 ];
