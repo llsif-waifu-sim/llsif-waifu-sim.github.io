@@ -248,7 +248,7 @@ function mainWaifuSet(index)
     }
 
 
-        
+  
 
 
     //file exists

@@ -4650,4 +4650,7 @@ var id_log =
 ['2815','ruby','yes'],
 ['2816','mari','yes'],
 ['2817','nozomi','yes'],
+['2818','mari','yes'],
+['2819','yoshiko','yes'],
+['2820','ruby','yes'],
 ];

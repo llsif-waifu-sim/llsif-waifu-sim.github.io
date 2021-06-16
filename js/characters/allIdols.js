@@ -2206,6 +2206,7 @@ var mari_ar =
 ['2793','mari','yes'],
 ['2795','mari','yes'],
 ['2816','mari','yes'],
+['2818','mari','yes'],
 ];
 var nico_ar = 
 [
@@ -3295,6 +3296,7 @@ var ruby_ar =
 ['2799','ruby','no'],
 ['2799','ruby','yes'],
 ['2815','ruby','yes'],
+['2820','ruby','yes'],
 ];
 var umi_ar = 
 [
@@ -3733,6 +3735,7 @@ var yoshiko_ar =
 ['2798','yoshiko','no'],
 ['2798','yoshiko','yes'],
 ['2813','yoshiko','yes'],
+['2819','yoshiko','yes'],
 ];
 var you_ar = 
 [

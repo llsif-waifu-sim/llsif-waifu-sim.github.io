@@ -1220,7 +1220,7 @@ function searchId()
 				path = scrapePath + name +  "/" + id + ".png";
 				cardPicPath = cardPicPath + name +  "/" + id + ".png";
 			}
-
+			alert(cardPicPath);	 
 			$.ajax({
 			    url:path,
 			    type:'HEAD',
@@ -1235,6 +1235,7 @@ function searchId()
 			    },
 			    success: function()
 			    {
+
 			        //file exists
 			        document.getElementById("idol_img").src=path;
 
