@@ -158,6 +158,8 @@ var nhs_subgroup_ar =
 ['Fly into the sky',7],
 ['THE SECRET NiGHT',7],
 ['Twinkle Town',7],
+['Folklore ~Kanki no Uta~',7],
+['Maze Town',7],
 ];
 var nhs_together = 
 [
