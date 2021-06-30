@@ -61,6 +61,9 @@ var aqours_subgroup_ar =
 ['Aru Hi...Eien Mitai ni!',4],
 ['Dragon Riders',4],
 ['Whistle of Revolution',4],
+['Metamorphism',4],
+['PHOENIX DANCE',4],
+["We'll get the next dream!!!",4],
 ];
 var aqours_together = 
 [
@@ -120,6 +123,7 @@ var aqours_together =
 ['Kokoro no Hane yo Kimi e Tondeke!',3],
 ['Smile smile ship Start!',3],
 ];
+
 var nhs_others_ar = 
 [
 ['Anata no Risou no Heroine',8],

@@ -536,12 +536,20 @@ def concatSongFile(outputPath):
         print('Concatenated song files')
 
 def main():
-        
+                
         songScraping(aqoursURL)
         songScraping(nhsURL)
         songScraping(saintSnowURL)
         concatSongFile(concatSongPath)
         #scrapeSongFromFile()
+        
+
+
+        
+        #strGit = "Adding songs 'Metamorphism', 'PHOENIX DANCE', 'We'll get the next dream!!!'"
+        #gitCommit(oggRootRep,'OGG', strGit)
+        #gitCommit(mp3RootRep,'MP3', strGit)
+
 
 if __name__ == "__main__":
         main()

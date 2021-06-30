@@ -31,4 +31,7 @@ var aqours_subgroup_ar =
 ['Aru Hi...Eien Mitai ni!',4],
 ['Dragon Riders',4],
 ['Whistle of Revolution',4],
+['Metamorphism',4],
+['PHOENIX DANCE',4],
+['We'll get the next dream!!!',4],
 ];
