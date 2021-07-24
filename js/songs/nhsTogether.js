@@ -27,4 +27,5 @@ var nhs_together =
 ['Tanoshii no Tensai',6],
 ['Yagate Hitotsu no Monogatari',6],
 ['Zensoku Dreamer',6],
+['Hurray Hurray',6],
 ];

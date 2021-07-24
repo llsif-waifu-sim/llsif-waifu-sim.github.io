@@ -63,7 +63,7 @@ var aqours_subgroup_ar =
 ['Whistle of Revolution',4],
 ['Metamorphism',4],
 ['PHOENIX DANCE',4],
-["We'll get the next dream!!!",4],
+['We\'ll get the next dream!!!',4],
 ];
 var aqours_together = 
 [
@@ -122,8 +122,8 @@ var aqours_together =
 ['JIMO-AI Dash!',3],
 ['Kokoro no Hane yo Kimi e Tondeke!',3],
 ['Smile smile ship Start!',3],
+['DREAMY COLOR',3],
 ];
-
 var nhs_others_ar = 
 [
 ['Anata no Risou no Heroine',8],
@@ -164,6 +164,8 @@ var nhs_subgroup_ar =
 ['Twinkle Town',7],
 ['Folklore ~Kanki no Uta~',7],
 ['Maze Town',7],
+['Not Sad',7],
+['Swinging!',7],
 ];
 var nhs_together = 
 [
@@ -194,6 +196,7 @@ var nhs_together =
 ['Tanoshii no Tensai',6],
 ['Yagate Hitotsu no Monogatari',6],
 ['Zensoku Dreamer',6],
+['Hurray Hurray',6],
 ];
 var idol_others_ar = 
 [

@@ -55,4 +55,5 @@ var aqours_together =
 ['JIMO-AI Dash!',3],
 ['Kokoro no Hane yo Kimi e Tondeke!',3],
 ['Smile smile ship Start!',3],
+['DREAMY COLOR',3],
 ];
