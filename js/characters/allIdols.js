@@ -3971,3 +3971,7 @@ var you_ar =
 ['2831','you','yes'],
 ['2847','you','yes'],
 ];
+kasumi_ar = [
+['1513','kasumi','no'],
+['1513','kasumi','yes'],
+];

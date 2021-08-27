@@ -34,4 +34,7 @@ var aqours_subgroup_ar =
 ['Metamorphism',4],
 ['PHOENIX DANCE',4],
 ['We'll get the next dream!!!',4],
+['Deep Sea Cocoon',4],
+['Nameless Love Song',4],
+['Shooting Star Warrior',4],
 ];

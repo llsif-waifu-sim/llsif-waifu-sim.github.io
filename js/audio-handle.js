@@ -22,6 +22,20 @@ function isAqours(waifu)
 	}
 }
 
+function isNHS(waifu)
+{
+	if(waifu == 'ai' || waifu == 'ayamu' || waifu == 'emma' ||
+		waifu == 'karin' || waifu == 'katana' || waifu == 'kasumi' ||
+		waifu == 'rina' || waifu == 'setsuna' || waifu == 'shizuku'){
+
+		return true;
+
+	}else {
+		return false;
+	}
+}
+
+
 function forgetWaifuRNG(maxRandNum)
 {
 	// Random number generation for forget speech
@@ -98,8 +112,7 @@ function specialQuoteSpeech()
 	// Activate special quote
 	var audioPath = "https://raw.githubusercontent.com/llsif-waifu-sim/llsif-waifu-special-quotes/master/special-quotes/";
 	var simpleAudioPath = "special-quotes/";
-	var id = id_log[globalIndex
-	][0];
+	var id = id_log[globalIndex][0];
 
 	var indexAr = searchQuoteIndexByID(id);
 
@@ -313,6 +326,7 @@ function seasonSpeech()
 	}
 
 	var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+
 	globalAudio = new Audio(superString);
 	globalAudio.volume = voiceVolume;
 	globalAudio.play();
@@ -864,6 +878,10 @@ function getWaifuAr(name)
 		for (var i = 0; i < nozomi_ar.length; i++){
 		    newArray[i] = nozomi_ar[i].slice();
 		}
+	} else if(name== 'kasumi'){
+		for (var i = 0; i < kasumi_ar.length; i++){
+		    newArray[i] = kasumi_ar[i].slice();
+		}
 	
 
 
@@ -1220,7 +1238,7 @@ function searchId()
 				path = scrapePath + name +  "/" + id + ".png";
 				cardPicPath = cardPicPath + name +  "/" + id + ".png";
 			}
-			alert(cardPicPath);	 
+			//alert(cardPicPath);	 
 			$.ajax({
 			    url:path,
 			    type:'HEAD',
@@ -1332,6 +1350,7 @@ function changeWaifu(name, id){
 
 		var audioPath = "audio/";
 		var waifuName = globalWaifu + "/";
+		
 		var file;
 
 
@@ -1345,9 +1364,13 @@ function changeWaifu(name, id){
 		if(mode == 0){
 			// Home button RNG
 			var maxNum = 18;
+			if(isNHS(globalWaifu)){
+				maxNum = 13
+			}
+
 			n = Math.floor(Math.random() * maxNum);
 			file = "home/";
-		
+			//console.log(n)
 			// Activate month speech
 			if(n == maxNum - 1){
 				seasonSpeech();
@@ -1358,7 +1381,7 @@ function changeWaifu(name, id){
 
 				// Activating event speech
 
-				if(!isAqours(globalWaifu)){
+				if(!isAqours(globalWaifu) && !isNHS(globalWaifu)){
 					var result = eventSpeech();
 
 					if(result == 0){
@@ -1377,9 +1400,6 @@ function changeWaifu(name, id){
 							return;
 						}
 					}
-
-
-
 
 				}
 			}
@@ -1450,6 +1470,7 @@ function changeWaifu(name, id){
 		
 
 		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
+		console.log(superString)
 		globalAudio = new Audio(superString);
 		globalAudio.volume = voiceVolume;
 		globalAudio.play();

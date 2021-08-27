@@ -2208,6 +2208,8 @@ var id_log =
 ['1511','dia','yes'],
 ['1512','hanamaru','no'],
 ['1512','hanamaru','yes'],
+['1513','kasumi','no'],
+['1513','kasumi','yes'],
 ['1516','honoka','yes'],
 ['1517','eli','yes'],
 ['1518','kotori','yes'],
