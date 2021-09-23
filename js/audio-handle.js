@@ -24,8 +24,8 @@ function isAqours(waifu)
 
 function isNHS(waifu)
 {
-	if(waifu == 'ai' || waifu == 'ayamu' || waifu == 'emma' ||
-		waifu == 'karin' || waifu == 'katana' || waifu == 'kasumi' ||
+	if(waifu == 'ai' || waifu == 'ayumu' || waifu == 'emma' ||
+		waifu == 'karin' || waifu == 'kanata' || waifu == 'kasumi' ||
 		waifu == 'rina' || waifu == 'setsuna' || waifu == 'shizuku'){
 
 		return true;
@@ -878,9 +878,50 @@ function getWaifuAr(name)
 		for (var i = 0; i < nozomi_ar.length; i++){
 		    newArray[i] = nozomi_ar[i].slice();
 		}
+
+
+	} else if(name== 'ai'){
+		for (var i = 0; i < ai_ar.length; i++){
+		    newArray[i] = ai_ar[i].slice();
+		}
+	
+	} else if(name== 'ayumu'){
+		for (var i = 0; i < ayumu_ar.length; i++){
+		    newArray[i] = ayumu_ar[i].slice();
+		}
+	
+	} else if(name== 'emma'){
+		for (var i = 0; i < emma_ar.length; i++){
+		    newArray[i] = emma_ar[i].slice();
+		}
+	} else if(name== 'kanata'){
+		for (var i = 0; i < kanata_ar.length; i++){
+		    newArray[i] = kanata_ar[i].slice();
+		}
+	
+	} else if(name== 'karin'){
+		for (var i = 0; i < karin_ar.length; i++){
+		    newArray[i] = karin_ar[i].slice();
+		}
+	
 	} else if(name== 'kasumi'){
 		for (var i = 0; i < kasumi_ar.length; i++){
 		    newArray[i] = kasumi_ar[i].slice();
+		}
+	
+	} else if(name== 'rina'){
+		for (var i = 0; i < rina_ar.length; i++){
+		    newArray[i] = rina_ar[i].slice();
+		}
+	
+	} else if(name== 'setsuna'){
+		for (var i = 0; i < setsuna_ar.length; i++){
+		    newArray[i] = setsuna_ar[i].slice();
+		}
+
+	} else if(name== 'shizuku'){
+		for (var i = 0; i < shizuku_ar.length; i++){
+		    newArray[i] = shizuku_ar[i].slice();
 		}
 	
 
@@ -1439,6 +1480,9 @@ function changeWaifu(name, id){
 		} else if (mode == 1){
 			// Waifu button RNG
 			var maxNum = 11;
+			if(isNHS(globalWaifu)){
+				maxNum = 2;
+			}
 			n = Math.floor(Math.random() * maxNum);
 			file = "waifu/";
 		} else if (mode == 2){

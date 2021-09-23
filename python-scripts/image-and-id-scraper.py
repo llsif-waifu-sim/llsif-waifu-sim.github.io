@@ -24,7 +24,17 @@ debugMode = False
 gitActive = True
 
 
+def concatIdols(outputPath):
+        path = '../js/characters/'
+
+        cmdStr = 'cat ' + path + '* > ' + path + outputPath
+
+        os.system(cmdStr)
+
+        print('Concatenated character files')
 idolDirectory = 'allIdols.js'
+concatIdols(idolDirectory) 
+exit()
 
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'
@@ -185,8 +195,11 @@ def scrapeImages(limit=-1):
 
             ## Substitution
             if idol2path(name) != 'none':
-                PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
-                
+                try:
+                    PILRetrieveImage(img_url,img_url_idol, img_url_card, img_url_card_idol, statusNum)
+                except:
+                    print('There was a problem with: ', name,' at ',x_str)
+                    continue
             
             if img_url != None and idol2path(name) != 'none':
                 #print str(x) + ': ' + name

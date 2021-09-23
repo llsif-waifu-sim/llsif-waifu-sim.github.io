@@ -397,6 +397,28 @@ function getFullName(name)
         return 'Matssura Kanan';
 
 
+    } else if (name == 'ai'){
+        return 'Miyashita Ai';
+    } else if(name == 'ayumu'){
+        return 'Uehara Ayumu';
+    }else if(name == 'emma'){
+        return 'Emma Verde';
+    } else if(name == 'kanata'){
+        return 'Konoe Kanata';
+    } else if(name == 'karin'){
+        return 'Asaka Karin';
+    } else if(name == 'kasumi'){
+        return 'Nakasu Kasumi';
+    } else if(name == 'rina'){
+        return 'Tennoji Rina';
+    } else if(name == 'setsuna'){
+        return 'Yuki Setsuna';
+    } else if(name == 'shizuku'){
+        return 'Ousaka Shizuku';
+
+
+
+
     } else if(name == 'tsubasa'){
         return 'Kira Tsubasa';
     } else if(name == 'anju'){

@@ -1,5 +1,6 @@
 
 def idol2path(name):
+    
     if name == 'Koizumi Hanayo':
         return 'hanayo'
     elif name == 'Hoshizora Rin':
@@ -36,5 +37,24 @@ def idol2path(name):
         return 'mari'
     elif name == 'Matsuura Kanan':
         return 'kanan'
+    elif name == 'Miyashita Ai':
+        return 'ai'
+    elif name == 'Uehara Ayumu':
+        return 'ayumu'
+    elif name == 'Emma Verde':
+        return 'emma'
+    elif name == 'Konoe Kanata':
+        return 'kanata'
+    elif name == 'Asaka Karin':
+        return 'karin'
+    elif name == 'Tennoji Rina':
+        return 'rina'
+    elif name == 'Yuki Setsuna':
+        return 'setsuna'
+    elif name == 'Ousaka Shizuku':
+        return 'shizuku'
+    elif name == 'Nakasu Kasumi':
+        return 'kasumi'
+
     else:
         return 'none'
