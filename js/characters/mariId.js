@@ -191,4 +191,6 @@ var mari_ar =
 ['2926','mari','no'],
 ['2926','mari','yes'],
 ['2935','mari','yes'],
+['2950','mari','yes'],
+['2962','mari','yes'],
 ];

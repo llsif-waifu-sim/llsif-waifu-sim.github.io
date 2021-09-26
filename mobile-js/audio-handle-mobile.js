@@ -1248,6 +1248,26 @@ function getIndexChangeWaifu(name)
 		return 793;
 	}else if(name=='kanan'){
 		return 788;
+
+	}else if(name=='kasumi'){
+		return 1513;
+	}else if(name=='shizuku'){
+		return 1514;
+	}else if(name=='rina'){
+		return 1515;
+	}else if(name=='ayumu'){
+		return 1472;
+	}else if(name=='setsuna'){
+		return 1574;
+	}else if(name=='ai'){
+		return 1573;
+	}else if(name=='karin'){
+		return 1569;
+	}else if(name=='emma'){
+		return 1571;
+	}else if(name=='kanata'){
+		return 1559;
+
 	} else {
 		alert('Impossible state achieved in changeWaifu()');
 		return -1;
