@@ -33,8 +33,6 @@ def concatIdols(outputPath):
 
         print('Concatenated character files')
 idolDirectory = 'allIdols.js'
-concatIdols(idolDirectory) 
-exit()
 
 cardPicDir = '../../distribution/llsif-waifu-card-pics/'
 girlImageDir = '../../distribution/llsif-waifu-girl-images/'

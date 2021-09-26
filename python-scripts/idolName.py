@@ -37,6 +37,7 @@ def idol2path(name):
         return 'mari'
     elif name == 'Matsuura Kanan':
         return 'kanan'
+    
     elif name == 'Miyashita Ai':
         return 'ai'
     elif name == 'Uehara Ayumu':
