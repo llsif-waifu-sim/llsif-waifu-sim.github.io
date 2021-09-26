@@ -1406,7 +1406,8 @@ function changeWaifu(name, id){
 			// Home button RNG
 			var maxNum = 18;
 			if(isNHS(globalWaifu)){
-				maxNum = 13
+				maxNum = 10;
+				//maxNum = 13
 			}
 
 			n = Math.floor(Math.random() * maxNum);
@@ -1458,6 +1459,10 @@ function changeWaifu(name, id){
 				}
 				// If not, recalculate random number generator
 				maxNum = 15;
+				if(isNHS(globalWaifu)){
+					maxNum = 10;
+				}
+
 				n = Math.floor(Math.random() * maxNum);
 
 				// Activate month speech
@@ -1514,7 +1519,7 @@ function changeWaifu(name, id){
 		
 
 		var superString = "".concat(audioPath, waifuName, file, n, ".mp3");
-		console.log(superString)
+		//console.log(superString)
 		globalAudio = new Audio(superString);
 		globalAudio.volume = voiceVolume;
 		globalAudio.play();
@@ -1705,8 +1710,24 @@ function changeWaifu(name, id){
 		} else if(clicked_id == 'dia_but'){
 			document.getElementById("dia_but").src="images/chibi-waifu/dia-hover.png";
 
-
-
+		} else if(clicked_id == 'ai_but'){
+			document.getElementById("ai_but").src="images/chibi-waifu/ai-hover.png";
+		} else if(clicked_id == 'ayumu_but'){
+			document.getElementById("ayumu_but").src="images/chibi-waifu/ayumu-hover.png";
+		} else if(clicked_id == 'emma_but'){
+			document.getElementById("emma_but").src="images/chibi-waifu/emma-hover.png";
+		} else if(clicked_id == 'kanata_but'){
+			document.getElementById("kanata_but").src="images/chibi-waifu/kanata-hover.png";
+		} else if(clicked_id == 'karin_but'){
+			document.getElementById("karin_but").src="images/chibi-waifu/karin-hover.png";
+		} else if(clicked_id == 'kasumi_but'){
+			document.getElementById("kasumi_but").src="images/chibi-waifu/kasumi-hover.png";
+		} else if(clicked_id == 'rina_but'){
+			document.getElementById("rina_but").src="images/chibi-waifu/rina-hover.png";
+		} else if(clicked_id == 'setsuna_but'){
+			document.getElementById("setsuna_but").src="images/chibi-waifu/setsuna-hover.png";
+		} else if(clicked_id == 'shizuku_but'){
+			document.getElementById("shizuku_but").src="images/chibi-waifu/shizuku-hover.png";
 
 		} else if(clicked_id == 'eng_but'){
 			document.getElementById("eng_but").src="images/buttons/english-icon-hover.png";
@@ -1771,6 +1792,26 @@ function changeWaifu(name, id){
 			document.getElementById("mari_but").src="images/chibi-waifu/mari.png";
 		} else if(clicked_id == 'dia_but'){
 			document.getElementById("dia_but").src="images/chibi-waifu/dia.png";
+
+
+		} else if(clicked_id == 'ai_but'){
+			document.getElementById("ai_but").src="images/chibi-waifu/ai.png";
+		} else if(clicked_id == 'ayumu_but'){
+			document.getElementById("ayumu_but").src="images/chibi-waifu/ayumu.png";
+		} else if(clicked_id == 'emma_but'){
+			document.getElementById("emma_but").src="images/chibi-waifu/emma.png";
+		} else if(clicked_id == 'kanata_but'){
+			document.getElementById("kanata_but").src="images/chibi-waifu/kanata.png";
+		} else if(clicked_id == 'karin_but'){
+			document.getElementById("karin_but").src="images/chibi-waifu/karin.png";
+		} else if(clicked_id == 'kasumi_but'){
+			document.getElementById("kasumi_but").src="images/chibi-waifu/kasumi.png";
+		} else if(clicked_id == 'rina_but'){
+			document.getElementById("rina_but").src="images/chibi-waifu/rina.png";
+		} else if(clicked_id == 'setsuna_but'){
+			document.getElementById("setsuna_but").src="images/chibi-waifu/setsuna.png";
+		} else if(clicked_id == 'shizuku_but'){
+			document.getElementById("shizuku_but").src="images/chibi-waifu/shizuku.png";
 
 
 
