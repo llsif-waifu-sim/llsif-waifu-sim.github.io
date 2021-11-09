@@ -47,7 +47,9 @@ var muse_together_ar =
 ['HEART to HEART!',0],
 ['Arashi no Naka no Koi dakara',0],
 ['MOMENT RING',0],
-['Sayounara e Sayonara!',0]
+['Sayounara e Sayonara!',0],
+['A song for You! You? You!!',0],
+['Natte Shimatta!',0]
 ];
 
 var muse_subgroup_ar = 
