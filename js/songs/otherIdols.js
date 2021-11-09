@@ -11,4 +11,8 @@ var idol_others_ar =
 ['After The Rain',9],
 ['Dazzling White Town',9],
 ['Lonely Snow Planet',9],
+['Aoi Canaria',9],
+["I'm Still...",9],
+['MONSTER GIRLS',9],
+['Queendom',9],
 ];

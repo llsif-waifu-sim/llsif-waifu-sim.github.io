@@ -63,7 +63,7 @@ var aqours_subgroup_ar =
 ['Whistle of Revolution',4],
 ['Metamorphism',4],
 ['PHOENIX DANCE',4],
-['We\'ll get the next dream!!!',4],
+["We'll get the next dream!!!",4],
 ['Deep Sea Cocoon',4],
 ['Nameless Love Song',4],
 ['Shooting Star Warrior',4],
@@ -214,6 +214,10 @@ var idol_others_ar =
 ['After The Rain',9],
 ['Dazzling White Town',9],
 ['Lonely Snow Planet',9],
+['Aoi Canaria',9],
+["I'm Still...",9],
+['MONSTER GIRLS',9],
+['Queendom',9],
 ];
 var numOfSongsAqoursTogether = aqours_together.length;
 var numOfSongsAqoursSub = aqours_subgroup_ar.length;

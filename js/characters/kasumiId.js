@@ -15,4 +15,5 @@ var kasumi_ar =
 ['2757','kasumi','yes'],
 ['2873','kasumi','yes'],
 ['2940','kasumi','yes'],
+['3008','kasumi','yes'],
 ];
