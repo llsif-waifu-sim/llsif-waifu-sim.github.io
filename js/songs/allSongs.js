@@ -27,6 +27,17 @@ var aqours_others_ar =
 ['Misty Frosty Love',5],
 ['Namida ga Yuki ni Naru Mae ni',5],
 ['Party! Party! PaPaPaParty!',5],
+['Akogare Ranraran',5],
+['Cotton Candy Ei-Ei-Oh!',5],
+['Love Spiral Tower',5],
+['Motto ne!',5],
+['Never giving up!',5],
+['OKAWARI Happy life!',5],
+['Perfect SEKAI',5],
+['PURE PHRASE',5],
+['Shiny Racers',5],
+['Tatehoko Tsubasa',5],
+['Totsuzen GIRL',5],
 ];
 var aqours_subgroup_ar = 
 [
@@ -126,6 +137,10 @@ var aqours_together =
 ['Kokoro no Hane yo Kimi e Tondeke!',3],
 ['Smile smile ship Start!',3],
 ['DREAMY COLOR',3],
+['KU-RU-KU-RU Cruller!',3],
+['Namida×',3],
+['Not ALONE not HITORI',3],
+['SUKI for you, DREAM for you!',3],
 ];
 var nhs_others_ar = 
 [
@@ -200,6 +215,19 @@ var nhs_together =
 ['Yagate Hitotsu no Monogatari',6],
 ['Zensoku Dreamer',6],
 ['Hurray Hurray',6],
+['Break The System',6],
+['Concentrate!',6],
+['Diabolic mulier',6],
+['Eieisa',6],
+['First Love Again',6],
+['Itsu datte for you!',6],
+['L! L! L! (Love the Life We Live)',6],
+['Miracle STAY TUNE!',6],
+['Silent Blaze',6],
+['TO BE YOURSELF',6],
+['Turn it Up!',6],
+['Yada!',6],
+['Ye Mingzhu',6],
 ];
 var idol_others_ar = 
 [
@@ -218,6 +246,8 @@ var idol_others_ar =
 ["I'm Still...",9],
 ['MONSTER GIRLS',9],
 ['Queendom',9],
+['LIVE with a smile!',9],
+['Toy Doll',9],
 ];
 var numOfSongsAqoursTogether = aqours_together.length;
 var numOfSongsAqoursSub = aqours_subgroup_ar.length;

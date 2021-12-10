@@ -56,4 +56,8 @@ var aqours_together =
 ['Kokoro no Hane yo Kimi e Tondeke!',3],
 ['Smile smile ship Start!',3],
 ['DREAMY COLOR',3],
+['KU-RU-KU-RU Cruller!',3],
+['Namida×',3],
+['Not ALONE not HITORI',3],
+['SUKI for you, DREAM for you!',3],
 ];

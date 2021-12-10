@@ -200,4 +200,6 @@ var ruby_ar =
 ['2997','ruby','yes'],
 ['3007','ruby','yes'],
 ['3041','ruby','yes'],
+['3064','ruby','yes'],
+['3077','ruby','yes'],
 ];

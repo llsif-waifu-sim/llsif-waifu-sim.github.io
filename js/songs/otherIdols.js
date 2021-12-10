@@ -15,4 +15,6 @@ var idol_others_ar =
 ["I'm Still...",9],
 ['MONSTER GIRLS',9],
 ['Queendom',9],
+['LIVE with a smile!',9],
+['Toy Doll',9],
 ];

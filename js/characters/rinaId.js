@@ -17,4 +17,5 @@ var rina_ar =
 ['2875','rina','yes'],
 ['3010','rina','yes'],
 ['3056','rina','yes'],
+['3062','rina','yes'],
 ];
