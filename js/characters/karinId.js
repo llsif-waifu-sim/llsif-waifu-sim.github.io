@@ -19,4 +19,6 @@ var karin_ar =
 ['2888','karin','yes'],
 ['3018','karin','yes'],
 ['3088','karin','yes'],
+['3152','karin','yes'],
+['3170','karin','yes'],
 ];

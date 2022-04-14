@@ -187,21 +187,22 @@ def isTDTagWithAudio(compStr):
 
 
 
-def extractQuote(begin,last):
+def extractQuote(begin,last,ignoreWriteQuote=False):
     global batchCounter
     prePath = '../special-quotes/'
     prePathDist = '../../distribution/llsif-waifu-special-quotes/special-quotes/'
     assert os.path.exists(prePath)
     assert os.path.exists(prePathDist)
-    quote_speech_file = open(prePath + "quote-speech-slave.txt", "wb")
-    id_index_file = open(prePath + "id-index-slave.txt", "wb")
+    if not ignoreWriteQuote:
+        quote_speech_file = open(prePath + "quote-speech-slave.txt", "wb")
+        id_index_file = open(prePath + "id-index-slave.txt", "wb")
 
     for cardID in range(begin,last+1):
         urlRead = 'https://llsif.org/en/cards/'+ str(cardID)
         print('=======================Id: ',  cardID,'=======================')
         req = Request(urlRead, headers={'User-Agent': 'Mozilla/5.0'})
         
-        
+         
         try:
             web_byte = urlopen(req).read()
             web_byte = web_byte.decode('utf-8')
@@ -244,7 +245,6 @@ def extractQuote(begin,last):
 
             # We check to see if our row matches our desired phrases
             if isTDTagWithAudio(compStr):
-
                 urlLocation = tdTag.findAll('td')[1].find('card-voice')['url'].replace('//s.llsif','http://s.llsif')
                 
                 ###### We deal with audio data #####
@@ -256,7 +256,13 @@ def extractQuote(begin,last):
                     urlDict[urlLocation] = True
                     
                     downloadPath = prePathDist + "audio/"+ str(cardID) +'-'+ str(count) + ".mp3"
+                    #print(urlLocation)
                     #urllib.request.urlretrieve(urlLocation, downloadPath)
+                    
+                    r = requests.get(urlLocation)
+                    with open(downloadPath, 'wb') as outfile:
+                        outfile.write(r.content)
+
                     count = count + 1
                     
 
@@ -276,12 +282,12 @@ def extractQuote(begin,last):
                     ########## Now we deal with text data ###########
                     targetText = tdTag.findAll('td')[2].text
                 
+                    if not ignoreWriteQuote:
+                        quote_speech_file.write(targetText.replace('\n','').encode('utf8'))
+                        quote_speech_file.write('\n'.encode())
+                        # write reference index to file
+                        id_index_file.write(str(cardID).encode() + ',\n'.encode())
                 
-                    quote_speech_file.write(targetText.replace('\n','').encode('utf8'))
-                    quote_speech_file.write('\n'.encode())
-                    # write reference index to file
-                    id_index_file.write(str(cardID).encode() + ',\n'.encode())
-            
                     #print value
                     print(cardID, ',')
                     #textCount = textCount + 1
@@ -383,13 +389,15 @@ speech-en
         if batchCounter > 0:
             writeQuoteFile(str(cardID)+',', batchCounter)
         #print(batchCounter)
-    quote_speech_file.close()
-    id_index_file.close()
+    if not ignoreWriteQuote:
+        quote_speech_file.close()
+        id_index_file.close()
     
-    writeTextQuoteFile()
+        writeTextQuoteFile()
     
     
-#extractQuote(2000,2010)   
+extractQuote(2728,3533,ignoreWriteQuote=True)   
+
 #extractQuote(2146,2803)
 #extractQuote(2501,2803)
 #extractQuote(2728,2803)

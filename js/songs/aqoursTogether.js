@@ -60,4 +60,5 @@ var aqours_together =
 ['Namida×',3],
 ['Not ALONE not HITORI',3],
 ['SUKI for you, DREAM for you!',3],
+['GEMSTONE "DE‐A‐I"',3],
 ];

@@ -241,4 +241,11 @@ var nico_ar =
 ['3031','nico','yes'],
 ['3055','nico','no'],
 ['3055','nico','yes'],
+['3115','nico','yes'],
+['3139','nico','yes'],
+['3187','nico','no'],
+['3187','nico','yes'],
+['3247','nico','yes'],
+['3317','nico','yes'],
+['3336','nico','yes'],
 ];

@@ -143,16 +143,25 @@ function specialQuoteSpeech()
 
 	globalAudio = new Audio(superString);
     globalAudio.volume = voiceVolume;
-    globalAudio.play();
 
 
-    var fileIndex = chosenIndex  + addValue;
-    var pathString = "".concat(simpleAudioPath);
     
-    changeSpeechText(pathString, fileIndex);
+    $(globalAudio).on("canplay",function(){
+    	
+    	globalAudio.play();
+    	var fileIndex = chosenIndex  + addValue;
+    	var pathString = "".concat(simpleAudioPath);
+    
+    	changeSpeechText(pathString, fileIndex);
 
-    refreshBubble();
-    return 0;
+    	refreshBubble();
+    	return 0;
+    });
+    
+
+    //alert("Audio not found")
+    
+    return -1;
 
 }
 

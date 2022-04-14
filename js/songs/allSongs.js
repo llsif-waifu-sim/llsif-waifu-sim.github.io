@@ -38,6 +38,10 @@ var aqours_others_ar =
 ['Shiny Racers',5],
 ['Tatehoko Tsubasa',5],
 ['Totsuzen GIRL',5],
+['1STAR',5],
+['MOTTO-ZUTTO be with you',5],
+['RUN KAKERU RUN',5],
+['Yaa! Kouunryuusui!?',5],
 ];
 var aqours_subgroup_ar = 
 [
@@ -141,6 +145,7 @@ var aqours_together =
 ['Namida×',3],
 ['Not ALONE not HITORI',3],
 ['SUKI for you, DREAM for you!',3],
+['GEMSTONE "DE‐A‐I"',3],
 ];
 var nhs_others_ar = 
 [

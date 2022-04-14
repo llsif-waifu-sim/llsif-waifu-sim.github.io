@@ -38,4 +38,8 @@ var aqours_others_ar =
 ['Shiny Racers',5],
 ['Tatehoko Tsubasa',5],
 ['Totsuzen GIRL',5],
+['1STAR',5],
+['MOTTO-ZUTTO be with you',5],
+['RUN KAKERU RUN',5],
+['Yaa! Kouunryuusui!?',5],
 ];

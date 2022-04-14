@@ -18,4 +18,8 @@ var shizuku_ar =
 ['2874','shizuku','yes'],
 ['2982','shizuku','yes'],
 ['3009','shizuku','yes'],
+['3151','shizuku','yes'],
+['3169','shizuku','yes'],
+['3308','shizuku','yes'],
+['3346','shizuku','yes'],
 ];
