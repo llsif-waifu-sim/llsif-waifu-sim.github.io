@@ -216,4 +216,12 @@ var riko_ar =
 ['3294','riko','yes'],
 ['3299','riko','yes'],
 ['3319','riko','yes'],
+['3367','riko','yes'],
+['3392','riko','yes'],
+['3404','riko','yes'],
+['3443','riko','yes'],
+['3466','riko','yes'],
+['3503','riko','yes'],
+['3515','riko','yes'],
+['3539','riko','yes'],
 ];

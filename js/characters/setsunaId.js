@@ -22,4 +22,6 @@ var setsuna_ar =
 ['3155','setsuna','yes'],
 ['3173','setsuna','yes'],
 ['3248','setsuna','yes'],
+['3381','setsuna','yes'],
+['3418','setsuna','yes'],
 ];

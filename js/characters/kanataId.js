@@ -24,4 +24,6 @@ var kanata_ar =
 ['3154','kanata','yes'],
 ['3172','kanata','yes'],
 ['3207','kanata','yes'],
+['3380','kanata','yes'],
+['3417','kanata','yes'],
 ];

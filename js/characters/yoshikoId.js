@@ -220,4 +220,13 @@ var yoshiko_ar =
 ['3296','yoshiko','yes'],
 ['3303','yoshiko','yes'],
 ['3323','yoshiko','yes'],
+['3371','yoshiko','yes'],
+['3408','yoshiko','yes'],
+['3447','yoshiko','yes'],
+['3451','yoshiko','yes'],
+['3454','yoshiko','yes'],
+['3495','yoshiko','yes'],
+['3507','yoshiko','yes'],
+['3524','yoshiko','yes'],
+['3533','yoshiko','yes'],
 ];

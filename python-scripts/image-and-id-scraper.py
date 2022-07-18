@@ -49,8 +49,7 @@ x_str = None
 os.system('mkdir ./tmp/')
 
 for line in open(refNumPath,'r'):
-        begin = int(line)
-
+    begin = int(line)
 
 def gitCommit(rootRep,passStr,strGit):
         print('\n\n\n')

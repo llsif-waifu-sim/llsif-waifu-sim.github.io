@@ -20,4 +20,8 @@ var ayumu_ar =
 ['3167','ayumu','yes'],
 ['3243','ayumu','yes'],
 ['3249','ayumu','yes'],
+['3375','ayumu','yes'],
+['3412','ayumu','yes'],
+['3440','ayumu','yes'],
+['3501','ayumu','yes'],
 ];

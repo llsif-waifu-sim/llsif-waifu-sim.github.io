@@ -396,7 +396,7 @@ speech-en
         writeTextQuoteFile()
     
     
-extractQuote(2728,3533,ignoreWriteQuote=True)   
+#extractQuote(2728,3533,ignoreWriteQuote=True)   
 
 #extractQuote(2146,2803)
 #extractQuote(2501,2803)

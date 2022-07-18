@@ -202,6 +202,12 @@ def updateJSSongFile(title,typeValue):
 def prepareSong(title,songPageURL,rSoup,recFile):
         foundNewSong = False
         # Check to see if the song page has an audio file
+        #print(rSoup)
+        #imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
+        #songURL = rSoup.find("audio",{"id":"mwe_player_0"}).find('source')['src']
+        songURL = rSoup.find("audio",{"id":"mwe_player_0"})
+        print(songURL)
+        exit()
         try:
                 imgURL = rSoup.find("img",{"class":"pi-image-thumbnail"})['src']
                 authorInfoPunc = rSoup.find("section",{"class":"pi-item pi-group pi-border-color"}).find("h2").getText().split(" ")[-1]
